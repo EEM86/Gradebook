@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+ <!--      <context:property-placeholder location="classpath:application.properties, classpath:log4j.properties"/>
+
+       <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+              <property name="driverClassName" value="${ORACLE_DB_DRIVER_CLASS}"/>
+              <property name="url" value="${ORACLE_DB_URL}"/>
+              <property name="username" value="${ORACLE_DB_USERNAME}"/>
+              <property name="password" value="${ORACLE_DB_PASSWORD}"/>
+       </bean>
+
+       <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+              <property name="dataSource" ref="ds"/>
+       </bean>
+
+       <bean id="dao" class="ua.gradebook.model.dao.DAOImpl">
+              <property name="jdbcTemplate" ref="jt"/>
+       </bean>-->
+
+</beans>
