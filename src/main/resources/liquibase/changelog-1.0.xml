@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet author="EEM" id="tables:createPerson" dbms="oracle">
+        <sqlFile path="/sql/tables/person.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="tables:createRoles" dbms="oracle">
+        <sqlFile path="/sql/tables/roles.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="tables:createMessages" dbms="oracle">
+        <sqlFile path="/sql/tables/messages.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="tables:createLessonsPlan" dbms="oracle">
+        <sqlFile path="/sql/tables/lessonsPlan.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="tables:gradesJournal" dbms="oracle">
+        <sqlFile path="/sql/tables/gradesJournal.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="tables:createDisciplines" dbms="oracle">
+        <sqlFile path="/sql/tables/disciplines.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="tables:createContainer" dbms="oracle">
+        <sqlFile path="/sql/tables/container.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="tables:createBranchTypes" dbms="oracle">
+        <sqlFile path="/sql/tables/branchTypes.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="sequences:createSequences" dbms="oracle">
+        <sqlFile path="/sql/sequences/sequences.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersBranchTypes" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_branchTypes.sql" splitStatements="false"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersContainer" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_container.sql" splitStatements="false"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersDisciplines" dbms="false">
+        <sqlFile path="/sql/triggers/trigger_disciplines.sql"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersGradesJournal" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_gradesJournal.sql" splitStatements="false"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersLessonsPlan" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_lessonsPlan.sql" splitStatements="false"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersMessages" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_messages.sql" splitStatements="false"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersPerson" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_person.sql" splitStatements="false"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="constraints:createFK_Constraints" dbms="oracle">
+        <sqlFile path="/sql/constraints/fkConstraints.sql"/>
+    </changeSet>
+
+</databaseChangeLog>
