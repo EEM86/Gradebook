@@ -1,5 +1,10 @@
 package ua.gradebook.model.dao;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
+
 public interface DAO {
-    void setDataSource();
+    //void setJdbcTemplate(JdbcTemplate jdbcTemplate);
+    void setDataSource(DataSource dataSource);
 }
