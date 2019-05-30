@@ -3,7 +3,7 @@ package ua.gradebook.model.beans;
 import java.time.LocalDate;
 
 public class Person {
-    Integer id;
+    Integer person_id;
     Roles role;
     Container container;
     String firstName;
@@ -19,10 +19,10 @@ public class Person {
     public Person() {
     }
 
-    public Person(Integer id, Roles role, Container container, String firstName, String lastName,
+    public Person(Integer person_id, Roles role, Container container, String firstName, String lastName,
                   String address, LocalDate birthday, Integer departmentId, Integer curatorId,
                   Integer groupId, String login, String password) {
-        this.id = id;
+        this.person_id = person_id;
         this.role = role;
         this.container = container;
         this.firstName = firstName;
@@ -37,8 +37,8 @@ public class Person {
 
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPerson_id(Integer person_id) {
+        this.person_id = person_id;
     }
 
     public void setRole(Roles role) {
@@ -85,10 +85,58 @@ public class Person {
         this.password = password;
     }
 
+    public Integer getPerson_id() {
+        return person_id;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public Container getContainer() {
+        return container;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public Integer getCuratorId() {
+        return curatorId;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
+                "person_id=" + person_id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';

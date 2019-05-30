@@ -74,4 +74,8 @@
         <sqlFile path="/sql/constraints/fkConstraints.sql"/>
     </changeSet>
 
+    <changeSet author="EEM" id="data:initialData" dbms="oracle">
+        <sqlFile path="/sql/data/data.sql"/>
+    </changeSet>
+
 </databaseChangeLog>

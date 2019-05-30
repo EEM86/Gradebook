@@ -25,13 +25,13 @@ public class DAOImpl implements DAO {
 
     public List<Person> getPerson() {
 
-        return jdbcTemplate.query("SELECT * FROM MYLAB3_PERSON", new RowMapper<Person>() {
+        return jdbcTemplate.query("SELECT * FROM PERSON", new RowMapper<Person>() {
             @Override
             public Person mapRow(ResultSet resultSet, int i) throws SQLException {
                 Person person = new Person();
-                person.setId(resultSet.getInt(1));
-                person.setFirstName(resultSet.getString(2));
-                person.setLastName(resultSet.getString(3));
+                person.setPerson_id(resultSet.getInt(1));
+                person.setFirstName(resultSet.getString(3));
+                person.setLastName(resultSet.getString(4));
                 System.out.println(person.toString());
                 return person;
             }
@@ -39,14 +39,13 @@ public class DAOImpl implements DAO {
     }
     public List<Roles> getRoles() {
 
-        return jdbcTemplate.query("SELECT * FROM MYLAB3_ROLE", new RowMapper<Roles>() {
+        return jdbcTemplate.query("SELECT * FROM ROLES", new RowMapper<Roles>() {
             @Override
             public Roles mapRow(ResultSet resultSet, int i) throws SQLException {
-                Roles roles = new Roles(resultSet.getInt(1), resultSet.getString(2));
+                Roles roles = new Roles(resultSet.getString(1));
                 System.out.println(roles.toString());
                 return roles;
             }
         });
     }
-
 }
