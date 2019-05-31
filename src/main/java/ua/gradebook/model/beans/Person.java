@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class Person extends ParentBean {
+    Integer id;
     Integer roleId;
     Container container;
     String firstName;

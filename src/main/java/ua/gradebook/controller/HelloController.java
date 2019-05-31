@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.model.beans.Role;
+import ua.gradebook.model.dao.PersonDAOImpl;
 import ua.gradebook.model.dao.RoleDAOImpl;
 
 import java.util.List;
@@ -41,4 +42,7 @@ public class HelloController {
         //model.addAttribute("getPersons", dao.getPerson());
         return "welcome";
     }
+
+
+
 }

@@ -2,6 +2,7 @@ package ua.gradebook.model.dao;
 
 
 import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.beans.Person;
 
 import java.util.List;
 

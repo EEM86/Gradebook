@@ -19,7 +19,7 @@ public class RoleDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "mylab3_role";
+    private String table = "L3G3_role";
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE id=?";
     private String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
@@ -27,7 +27,7 @@ public class RoleDAOImpl implements DAO {
     private String updateSQL = "UPDATE " + table + " SET id=?, name=? WHERE id=?";
     private String deleteSQL = "DELETE FROM " + table + " WHERE id=?";
     private String findNextSQL = "SELECT id.nextval as Id from dual";
-    private String CREATE_SQL = "insert into mylab3_role (name) values(:name)";
+    private String CREATE_SQL = "insert into L3G3_role (name) values(:name)";
 
     public RoleDAOImpl() {
     }
@@ -77,7 +77,7 @@ public class RoleDAOImpl implements DAO {
 
     @Override
     public Long getNextId() {
-        String sql = "SELECT mylab3_role.id.nextval as id from dual";
+        String sql = "SELECT L3G3_role.id.nextval as id from dual";
         return jdbcTemplate.query(sql, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps) throws SQLException {

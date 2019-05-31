@@ -54,7 +54,7 @@
         </tr>
         <c:forEach items="${getPersons}" var="person">
             <tr>
-                <td>${person.person_id}</td>
+                <td>${person.id}</td>
                 <td>${person.firstName}</td>
                 <td>${person.lastName}</td>
             </tr>

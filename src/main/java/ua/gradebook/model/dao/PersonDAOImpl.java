@@ -19,7 +19,7 @@ public class PersonDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_person";
+    private String table = "L3G3_PERSON";
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE id=?";
     private String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
@@ -97,7 +97,7 @@ public class PersonDAOImpl implements DAO {
         @Override
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {
             Person person = new Person();
-            person.setId(resultSet.getInt(1));
+            person.setPerson_id(resultSet.getInt(1));
             person.setRoleId(resultSet.getInt(2));
             person.setFirstName(resultSet.getString(3));
             person.setLastName(resultSet.getString(4));
