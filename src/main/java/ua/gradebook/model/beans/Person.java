@@ -1,15 +1,17 @@
 package ua.gradebook.model.beans;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
-public class Person {
-    Integer person_id;
-    Roles role;
+public class Person extends ParentBean {
+    Integer roleId;
     Container container;
     String firstName;
     String lastName;
+    String email;
+    String phone;
     String address;
-    LocalDate birthday;
+    Date birthday;
     Integer departmentId;
     Integer curatorId;
     Integer groupId;
@@ -19,11 +21,11 @@ public class Person {
     public Person() {
     }
 
-    public Person(Integer person_id, Roles role, Container container, String firstName, String lastName,
-                  String address, LocalDate birthday, Integer departmentId, Integer curatorId,
+    public Person(Integer person_id, Integer roleId, Container container, String firstName, String lastName,
+                  String address, Date birthday, Integer departmentId, Integer curatorId,
                   Integer groupId, String login, String password) {
-        this.person_id = person_id;
-        this.role = role;
+        this.id = person_id;
+        this.roleId = roleId;
         this.container = container;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,11 +40,7 @@ public class Person {
     }
 
     public void setPerson_id(Integer person_id) {
-        this.person_id = person_id;
-    }
-
-    public void setRole(Roles role) {
-        this.role = role;
+        this.id = person_id;
     }
 
     public void setContainer(Container container) {
@@ -61,7 +59,7 @@ public class Person {
         this.address = address;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -86,11 +84,7 @@ public class Person {
     }
 
     public Integer getPerson_id() {
-        return person_id;
-    }
-
-    public Roles getRole() {
-        return role;
+        return id;
     }
 
     public Container getContainer() {
@@ -109,7 +103,7 @@ public class Person {
         return address;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
@@ -133,10 +127,34 @@ public class Person {
         return password;
     }
 
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "person_id=" + person_id +
+                "person_id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';

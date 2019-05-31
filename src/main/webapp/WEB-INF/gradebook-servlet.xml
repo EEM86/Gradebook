@@ -16,7 +16,7 @@
             base-package="ua.gradebook" />
     <mvc:default-servlet-handler />
 
-    <context:property-placeholder location="classpath:application.properties, classpath:log4j.properties"/>
+    <import resource="applicationContext.xml"/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -25,37 +25,24 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--Database Info-->
-    <bean id="springDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
-        <property name="url" value="${ORACLE_DB_URL}" />
-        <property name="driverClassName" value="${ORACLE_DB_DRIVER_CLASS}" />
-        <property name="username" value="${ORACLE_DB_USERNAME}" />
-        <property name="password" value="${ORACLE_DB_PASSWORD}" />
-        <property name="removeAbandoned" value="true"/>
-        <property name="initialSize" value="20" />
-        <property name="maxActive" value="30" />
+    <!--    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+            <property name="dataSource" ref="springDataSource"/>
+            <property name="changeLog" value="classpath:/liquibase/changelog-master.xml" />
+        </bean>-->
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg type="javax.sql.DataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
-        <property name="dataSource" ref="springDataSource"/>
-        <property name="changeLog" value="classpath:/liquibase/changelog-master.xml" />
-    </bean>
-
-    <bean id="dao" class="ua.gradebook.model.dao.DAOImpl">
-        <property name="dataSource" ref="springDataSource"/>
-    </bean>
-
-
-
-<!--    <bean id="springDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="java:comp/env/jdbc/springDataSource"/>
-        <property name="lookupOnStartup" value="true"/>
-        <property name="proxyInterface" value="javax.sql.DataSource"/>
-    </bean>-->
-
-<!--    <jee:jndi-lookup person_id="dbDataSource"
-                     jndi-name="jdbc/DatabaseName"
-                     expected-type="javax.sql.DataSource" />
-    <jee:jndi-lookup person_id="dataSource" jndi-name="jdbc/MyDataSource"/>-->
-
+    <bean id="ParentBean" class="ua.gradebook.model.beans.ParentBean"/>
+    <bean id="Container" class="ua.gradebook.model.beans.Container"/>
+    <bean id="Department" class="ua.gradebook.model.beans.Department"/>
+    <bean id="Discipline" class="ua.gradebook.model.beans.Discipline"/>
+    <bean id="GradesJournal" class="ua.gradebook.model.beans.GradesJournal"/>
+    <bean id="Group" class="ua.gradebook.model.beans.Group"/>
+    <bean id="Institution" class="ua.gradebook.model.beans.Institution"/>
+    <bean id="LessonsPlan" class="ua.gradebook.model.beans.LessonsPlan"/>
+    <bean id="Message" class="ua.gradebook.model.beans.Message"/>
+    <bean id="Person" class="ua.gradebook.model.beans.Person"/>
+    <bean id="Role" class="ua.gradebook.model.beans.Role" parent="ParentBean"/>
 </beans>

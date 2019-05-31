@@ -1,10 +1,24 @@
 package ua.gradebook.model.dao;
 
-import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.sql.DataSource;
+import ua.gradebook.model.beans.ParentBean;
+
+import java.util.List;
 
 public interface DAO {
-    //void setJdbcTemplate(JdbcTemplate jdbcTemplate);
-    void setDataSource(DataSource dataSource);
+    //1 вариант
+/*    List<Person> getPerson();
+    Person findPersonById();
+    Person findPersonByName(String name);
+    Long insertPerson(Person item);
+    void updatePerson(Person item);
+    void deletePerson(Person item);*/
+
+    List<ParentBean> findAll();
+    ParentBean findById(Long id);
+    ParentBean findByName(String name);
+    boolean insert(ParentBean item);
+    boolean update(ParentBean item);
+    boolean delete(int id);
+    Long getNextId();
 }
