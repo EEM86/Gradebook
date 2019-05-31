@@ -1,4 +1,4 @@
-CREATE TABLE Container (
+CREATE TABLE L3G3_container (
   person_id number NOT NULL,
 	parent_id number,
 	name varchar2(50) NOT NULL,

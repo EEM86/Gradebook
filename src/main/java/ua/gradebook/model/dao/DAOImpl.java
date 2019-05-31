@@ -25,7 +25,7 @@ public class DAOImpl implements DAO {
 
     public List<Person> getPerson() {
 
-        return jdbcTemplate.query("SELECT * FROM PERSON", new RowMapper<Person>() {
+        return jdbcTemplate.query("SELECT * FROM L3G3_PERSON", new RowMapper<Person>() {
             @Override
             public Person mapRow(ResultSet resultSet, int i) throws SQLException {
                 Person person = new Person();
@@ -39,10 +39,10 @@ public class DAOImpl implements DAO {
     }
     public List<Roles> getRoles() {
 
-        return jdbcTemplate.query("SELECT * FROM ROLES", new RowMapper<Roles>() {
+        return jdbcTemplate.query("SELECT * FROM L3G3_ROLE", new RowMapper<Roles>() {
             @Override
             public Roles mapRow(ResultSet resultSet, int i) throws SQLException {
-                Roles roles = new Roles(resultSet.getString(1));
+                Roles roles = new Roles(resultSet.getInt(1), resultSet.getString(2));
                 System.out.println(roles.toString());
                 return roles;
             }

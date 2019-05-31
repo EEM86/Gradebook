@@ -1,7 +1,7 @@
-CREATE trigger BI_LESSONSPLAN
-  before insert on LESSONSPLAN
+CREATE trigger L3G3_BI_LESSONSPLAN
+  before insert on L3G3_LESSONSPLAN
   for each row
 begin
-  select LESSONSPLAN_SEQ.nextval into :NEW.plan_id from dual;
+  select L3G3_LESSONSPLAN_SEQ.nextval into :NEW.plan_id from dual;
 end;
 /

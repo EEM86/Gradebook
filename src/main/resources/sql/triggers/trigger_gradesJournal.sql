@@ -1,7 +1,7 @@
-CREATE trigger BI_GRADESJOURNAL
-  before insert on GRADESJOURNAL
+CREATE trigger L3G3_BI_GRADESJOURNAL
+  before insert on L3G3_GRADESJOURNAL
   for each row
 begin
-  select GRADESJOURNAL_SEQ.nextval into :NEW.journal_id from dual;
+  select L3G3_GRADESJOURNAL_SEQ.nextval into :NEW.journal_id from dual;
 end;
 /

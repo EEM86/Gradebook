@@ -11,11 +11,11 @@
     </changeSet>
 
     <changeSet author="EEM" id="tables:createRoles" dbms="oracle">
-        <sqlFile path="/sql/tables/roles.sql"/>
+        <sqlFile path="/sql/tables/role.sql"/>
     </changeSet>
 
     <changeSet author="EEM" id="tables:createMessages" dbms="oracle">
-        <sqlFile path="/sql/tables/messages.sql"/>
+        <sqlFile path="/sql/tables/message.sql"/>
     </changeSet>
 
     <changeSet author="EEM" id="tables:createLessonsPlan" dbms="oracle">
@@ -27,7 +27,7 @@
     </changeSet>
 
     <changeSet author="EEM" id="tables:createDisciplines" dbms="oracle">
-        <sqlFile path="/sql/tables/disciplines.sql"/>
+        <sqlFile path="/sql/tables/discipline.sql"/>
     </changeSet>
 
     <changeSet author="EEM" id="tables:createContainer" dbms="oracle">
@@ -35,7 +35,7 @@
     </changeSet>
 
     <changeSet author="EEM" id="tables:createBranchTypes" dbms="oracle">
-        <sqlFile path="/sql/tables/branchTypes.sql"/>
+        <sqlFile path="/sql/tables/branchType.sql"/>
     </changeSet>
 
     <changeSet author="EEM" id="sequences:createSequences" dbms="oracle">
@@ -43,7 +43,7 @@
     </changeSet>
 
     <changeSet author="EEM" id="triggers:createTriggersBranchTypes" dbms="oracle">
-        <sqlFile path="/sql/triggers/trigger_branchTypes.sql" splitStatements="false"/>
+        <sqlFile path="/sql/triggers/trigger_branchType.sql" splitStatements="false"/>
     </changeSet>
 
     <changeSet author="EEM" id="triggers:createTriggersContainer" dbms="oracle">
@@ -51,7 +51,7 @@
     </changeSet>
 
     <changeSet author="EEM" id="triggers:createTriggersDisciplines" dbms="false">
-        <sqlFile path="/sql/triggers/trigger_disciplines.sql"/>
+        <sqlFile path="/sql/triggers/trigger_discipline.sql"/>
     </changeSet>
 
     <changeSet author="EEM" id="triggers:createTriggersGradesJournal" dbms="oracle">
@@ -63,11 +63,15 @@
     </changeSet>
 
     <changeSet author="EEM" id="triggers:createTriggersMessages" dbms="oracle">
-        <sqlFile path="/sql/triggers/trigger_messages.sql" splitStatements="false"/>
+        <sqlFile path="/sql/triggers/trigger_message.sql" splitStatements="false"/>
     </changeSet>
 
     <changeSet author="EEM" id="triggers:createTriggersPerson" dbms="oracle">
         <sqlFile path="/sql/triggers/trigger_person.sql" splitStatements="false"/>
+    </changeSet>
+
+    <changeSet author="EEM" id="triggers:createTriggersRole" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_role.sql" splitStatements="false"/>
     </changeSet>
 
     <changeSet author="EEM" id="constraints:createFK_Constraints" dbms="oracle">

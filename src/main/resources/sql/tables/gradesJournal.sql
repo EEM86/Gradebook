@@ -1,4 +1,4 @@
-CREATE TABLE GradesJournal (
+CREATE TABLE L3G3_gradesJournal (
 	journal_id number NOT NULL,
 	disc_id number NOT NULL,
 	person_id number NOT NULL,

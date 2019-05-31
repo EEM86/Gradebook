@@ -1,4 +1,4 @@
-CREATE TABLE LessonsPlan (
+CREATE TABLE L3G3_lessonsPlan (
 	plan_id number NOT NULL,
 	disc_id number NOT NULL,
 	teacher_id number NOT NULL,
