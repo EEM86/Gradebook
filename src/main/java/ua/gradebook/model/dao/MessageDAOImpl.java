@@ -33,7 +33,7 @@ public class MessageDAOImpl implements DAO {
     }
 
     @Override
-    public ParentBean findById(Long id) {
+    public ParentBean findById(Integer id) {
         return jdbcTemplate.queryForObject(findByIdSQL, Message.class, new NewRowMapper());
     }
 

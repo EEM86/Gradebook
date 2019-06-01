@@ -38,7 +38,7 @@ public class RoleDAOImpl implements DAO {
     }
 
     @Override
-    public ParentBean findById(Long id) {
+    public ParentBean findById(Integer id) {
         return jdbcTemplate.queryForObject(findByIdSQL, Role.class, new NewRowMapper());
     }
 

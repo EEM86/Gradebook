@@ -2,7 +2,6 @@ package ua.gradebook.model.dao;
 
 
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.model.beans.Person;
 
 import java.util.List;
 
@@ -15,8 +14,8 @@ public interface DAO {
     void updatePerson(Person item);
     void deletePerson(Person item);*/
 
-    List<ParentBean> findAll();
-    ParentBean findById(Long id);
+    List findAll();
+    ParentBean findById(Integer id);
     ParentBean findByName(String name);
     boolean insert(ParentBean item);
     boolean update(ParentBean item);

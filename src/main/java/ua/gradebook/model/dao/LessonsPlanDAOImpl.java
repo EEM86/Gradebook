@@ -33,7 +33,7 @@ public class LessonsPlanDAOImpl implements DAO {
     }
 
     @Override
-    public ParentBean findById(Long id) {
+    public ParentBean findById(Integer id) {
         return jdbcTemplate.queryForObject(findByIdSQL, LessonsPlan.class, new NewRowMapper());
     }
 

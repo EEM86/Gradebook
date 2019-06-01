@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.*;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
@@ -14,19 +16,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
+@Repository
 public class PersonDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     private String table = "L3G3_PERSON";
     private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE id=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
-    private String insertSQL1 = "INSERT INTO " + table + " (id, name) VALUES (?, ?)";
+    private String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
+    private String findByNameSQL = "SELECT * FROM " + table + " WHERE first_name=?";
+    private String insertSQL1 = "INSERT INTO " + table + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     // Add parametrs
-    private String updateSQL = "UPDATE " + table + " SET id=?, name=? WHERE id=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE id=?";
+    private String updateSQL = "UPDATE " + table + " SET PERSON_ID=?, LAST_NAME=? WHERE PERSON_ID=?";
+    private String deleteSQL = "DELETE FROM " + table + " WHERE PERSON_ID=?";
 
     @Override
     public List<ParentBean> findAll() {
@@ -34,8 +36,8 @@ public class PersonDAOImpl implements DAO {
     }
 
     @Override
-    public ParentBean findById(Long id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, Person.class, new NewRowMapper());
+    public ParentBean findById(Integer id) {
+        return (Person) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new BeanPropertyRowMapper<>(Person.class));
     }
 
     @Override
@@ -43,21 +45,41 @@ public class PersonDAOImpl implements DAO {
         return jdbcTemplate.queryForObject(findByNameSQL, Person.class, new NewRowMapper());
     }
 
+    //ToDo fix code
     @Override
     public boolean insert(ParentBean item) {
+//        Person person = (Person) item;
+//        String insertSQL = "INSERT INTO " + table + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//        KeyHolder keyHolder = new GeneratedKeyHolder();
+//        jdbcTemplate.update(
+//                new PreparedStatementCreator() {
+//                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+//                        PreparedStatement ps = connection.prepareStatement(insertSQL, new String[] {"id"});
+//                        ps.setString(1, person.getFirstName());
+//                        return ps;
+//                    }
+//                },
+//                keyHolder);
+//        return jdbcTemplate.update(insertSQL1, keyHolder.getKey(), person.getFirstName()) != 0;
         Person person = (Person) item;
-        String insertSQL = "INSERT INTO " + table + " (name) VALUES (?)";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(
-                new PreparedStatementCreator() {
-                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                        PreparedStatement ps = connection.prepareStatement(insertSQL, new String[] {"id"});
-                        ps.setString(1, person.getFirstName());
-                        return ps;
-                    }
-                },
-                keyHolder);
-        return jdbcTemplate.update(insertSQL1, keyHolder.getKey(), person.getFirstName()) != 0;
+        String insertSQL = "INSERT INTO " + table
+                + "(ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
+                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(insertSQL, new Object[] {
+                person.getRoleId(),
+                person.getFirstName(),
+                person.getLastName(),
+                person.getEmail(),
+                person.getPhone(),
+                person.getAddress(),
+                person.getBirthday(),
+                person.getDepartmentId(),
+                person.getCuratorId(),
+                person.getGroupId(),
+                person.getLogin(),
+                person.getPassword()
+        });
+        return true;
     }
 
     @Override
@@ -69,7 +91,7 @@ public class PersonDAOImpl implements DAO {
 
     @Override
     public boolean delete(int id) {
-        return jdbcTemplate.update(deleteSQL, id) != 0;
+        return jdbcTemplate.update(deleteSQL, id) == 1;
     }
 
     @Override
@@ -97,7 +119,6 @@ public class PersonDAOImpl implements DAO {
         @Override
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {
             Person person = new Person();
-            person.setPerson_id(resultSet.getInt(1));
             person.setRoleId(resultSet.getInt(2));
             person.setFirstName(resultSet.getString(3));
             person.setLastName(resultSet.getString(4));
@@ -113,5 +134,4 @@ public class PersonDAOImpl implements DAO {
             return person;
         }
     }
-
 }
