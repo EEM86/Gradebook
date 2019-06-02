@@ -99,6 +99,7 @@ public class PersonDAOImpl implements DAO {
         @Override
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {
             Person person = new Person();
+            person.setId(resultSet.getInt(1));
             person.setRoleId(resultSet.getInt(2));
             person.setFirstName(resultSet.getString(3));
             person.setLastName(resultSet.getString(4));

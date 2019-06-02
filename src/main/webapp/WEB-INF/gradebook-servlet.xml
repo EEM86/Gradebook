@@ -49,12 +49,12 @@
     <bean id="Person" class="ua.gradebook.model.beans.Person"/>
     <bean id="Role" class="ua.gradebook.model.beans.Role" parent="ParentBean"/>
 
-    <bean id = "loggingAspect" class="ua.gradebook.aop.LoggingAspect"/>
+    <!--<bean id = "loggingAspect" class="ua.gradebook.aop.LoggingAspect"/>-->
 
-    <aop:config>
-        <aop:aspect ref="loggingAspect">
-            <aop:pointcut id="loggingPointcut" expression="execution(* ua.gradebook.controller.HelloController.*(..))"/>
-            <aop:before method="addMethodBeforeAll" pointcut-ref="loggingPointcut"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="loggingAspect">-->
+            <!--<aop:pointcut id="loggingPointcut" expression="execution(* ua.gradebook.controller.HelloController.*(..))"/>-->
+            <!--<aop:before method="addMethodBeforeAll" pointcut-ref="loggingPointcut"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 </beans>
