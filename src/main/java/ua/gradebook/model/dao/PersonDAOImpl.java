@@ -25,9 +25,11 @@ public class PersonDAOImpl implements DAO {
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
     private String findByNameSQL = "SELECT * FROM " + table + " WHERE first_name=?";
-    private String insertSQL1 = "INSERT INTO " + table + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    // Add parametrs
-    private String updateSQL = "UPDATE " + table + " SET PERSON_ID=?, LAST_NAME=? WHERE PERSON_ID=?";
+    private String insertSQL = "INSERT INTO " + table
+            + "(ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
+            + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private String updateSQL = "UPDATE " + table + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
+            "BIRTHDAY=?, DEPARTMENT_ID=?, CURATOR_ID=?, GROUP_ID=?, LOGIN=?, PASSWORD=? WHERE PERSON_ID=?";
     private String deleteSQL = "DELETE FROM " + table + " WHERE PERSON_ID=?";
 
     @Override
@@ -37,7 +39,7 @@ public class PersonDAOImpl implements DAO {
 
     @Override
     public ParentBean findById(Integer id) {
-        return (Person) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new BeanPropertyRowMapper<>(Person.class));
+        return (Person) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
     }
 
     @Override
@@ -62,9 +64,6 @@ public class PersonDAOImpl implements DAO {
 //                keyHolder);
 //        return jdbcTemplate.update(insertSQL1, keyHolder.getKey(), person.getFirstName()) != 0;
         Person person = (Person) item;
-        String insertSQL = "INSERT INTO " + table
-                + "(ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
-                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(insertSQL, new Object[] {
                 person.getRoleId(),
                 person.getFirstName(),
@@ -77,16 +76,32 @@ public class PersonDAOImpl implements DAO {
                 person.getCuratorId(),
                 person.getGroupId(),
                 person.getLogin(),
-                person.getPassword()
+                person.getPassword(),
         });
         return true;
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        Person person = (Person) item;
+    public boolean update(ParentBean old, ParentBean newData) {
+        Person oldPerson = (Person) old;
+        Person newPerson = (Person) newData;
         // Add parametrs
-        return jdbcTemplate.update(updateSQL, person.getId(), person.getFirstName(), person.getId()) != 0;
+       jdbcTemplate.update(updateSQL, new Object[]{
+               newPerson.getRoleId(),
+               newPerson.getFirstName(),
+               newPerson.getLastName(),
+               newPerson.getEmail(),
+               newPerson.getPhone(),
+               newPerson.getAddress(),
+               newPerson.getBirthday(),
+               newPerson.getDepartmentId(),
+               newPerson.getCuratorId(),
+               newPerson.getGroupId(),
+               newPerson.getLogin(),
+               newPerson.getPassword(),
+               oldPerson.getId()
+        });
+        return true;
     }
 
     @Override

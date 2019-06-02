@@ -45,7 +45,7 @@ public class ContainerDAOImpl implements DAO {
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(ParentBean oldItem, ParentBean newItem) {
         return false;
     }
 

@@ -60,8 +60,8 @@ public class LessonsPlanDAOImpl implements DAO {
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        LessonsPlan lessonsPlan = (LessonsPlan) item;
+    public boolean update(ParentBean oldItem, ParentBean newItem) {
+        LessonsPlan lessonsPlan = (LessonsPlan) oldItem;
         return jdbcTemplate.update(updateSQL, lessonsPlan.getId(), lessonsPlan.getDisc_id(),
                 lessonsPlan.getTeacher_id(), lessonsPlan.getGroup_id(),
                 lessonsPlan.getHours(), lessonsPlan.getId()) != 0;

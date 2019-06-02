@@ -29,8 +29,8 @@ public class PersonService {
         return personDAO.insert(item);
     }
 
-    public boolean update(ParentBean item) {
-        return personDAO.update(item);
+    public boolean update(ParentBean oldItem, ParentBean newItem) {
+        return personDAO.update(oldItem, newItem);
     }
 
     public boolean delete(int id) {

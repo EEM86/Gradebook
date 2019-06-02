@@ -21,31 +21,25 @@ public class PersonRestController {
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAll(){
-
         List<ParentBean> parentBeanList = personService.findAll();
         return new ResponseEntity<>(parentBeanList, HttpStatus.OK);
-
     }
 
-    @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createPerson(@RequestBody Person person){
-
         try {
             personService.insert(person);
         }catch (Throwable s) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updatePerson(@PathVariable int id, @RequestBody Person person){
-
         try {
             Person model  = (Person) personService.findById(id);
-            model.setFirstName(person.getFirstName());
-            model.setLastName(person.getLastName());
+            personService.update(model, person);
             return new ResponseEntity<>(model, HttpStatus.OK);
         }catch (EmptyResultDataAccessException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -55,7 +49,6 @@ public class PersonRestController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deletePerson(@PathVariable int id){
-
         try {
             Person model  = (Person) personService.findById(id);
             personService.delete(id);
@@ -63,8 +56,15 @@ public class PersonRestController {
         }catch (EmptyResultDataAccessException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
-
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> findById(@PathVariable int id) {
+        try {
+            Person person = (Person) personService.findById(id);
+            return new ResponseEntity<>(person, HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

@@ -60,8 +60,8 @@ public class MessageDAOImpl implements DAO {
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        Message message = (Message) item;
+    public boolean update(ParentBean oldItem, ParentBean newItem) {
+        Message message = (Message) oldItem;
         return jdbcTemplate.update(updateSQL, message.getId(), message.getReceiver_id(),
                 message.getSender_id(), message.getMessage(), message.getId()) != 0;
     }

@@ -15,7 +15,7 @@
 
 </header>
 <section>
-    <div class="href">
+    <div class="href" align="center">
         <div class="href1">
             <a href="">Profile</a>
         </div>
@@ -29,7 +29,7 @@
             <a href="">Messages</a>
         </div>
         <div class="href1">
-            <a href="/persons">persons - rest</a>
+            <a href="persons-rest">persons - rest</a>
         </div>
     </div>
 </section>
