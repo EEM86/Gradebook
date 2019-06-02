@@ -20,5 +20,4 @@ public interface DAO {
     boolean insert(ParentBean item);
     boolean update(ParentBean item);
     boolean delete(int id);
-    Long getNextId();
 }

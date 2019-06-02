@@ -75,26 +75,6 @@ public class RoleDAOImpl implements DAO {
         return jdbcTemplate.update(deleteSQL, id) != 0;
     }
 
-    @Override
-    public Long getNextId() {
-        String sql = "SELECT L3G3_role.id.nextval as id from dual";
-        return jdbcTemplate.query(sql, new PreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-/*                ps.setLong(1, i);
-                ps.setLong(2, parameterID);*/
-            }
-        }, new ResultSetExtractor<Long>() {
-            @Override
-            public Long extractData(ResultSet resultSet) throws SQLException {
-                if (resultSet.next()) {
-                    return resultSet.getLong("id");
-                }
-                return null;
-            }
-        });
-    }
-
     private static final class NewRowMapper<P> implements RowMapper<Role> {
 
         @Override

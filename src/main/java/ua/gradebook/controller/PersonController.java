@@ -12,7 +12,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping(value="persons")
+    @GetMapping(value="/persons")
     public String getPersons(Model model) {
         model.addAttribute("person", new Person());
         model.addAttribute("getPersons", personService.findAll());

@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
@@ -9,11 +10,13 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <mvc:annotation-driven />
-    <context:component-scan
-            base-package="ua.gradebook" />
+    <context:component-scan base-package="ua.gradebook" />
+
     <mvc:default-servlet-handler />
 
     <import resource="applicationContext.xml"/>
@@ -28,7 +31,7 @@
     <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
             <property name="dataSource" ref="dataSource"/>
             <property name="changeLog" value="classpath:/liquibase/changelog-master.xml" />
-        </bean>
+    </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <constructor-arg type="javax.sql.DataSource" ref="dataSource"/>
@@ -45,4 +48,13 @@
     <bean id="Message" class="ua.gradebook.model.beans.Message"/>
     <bean id="Person" class="ua.gradebook.model.beans.Person"/>
     <bean id="Role" class="ua.gradebook.model.beans.Role" parent="ParentBean"/>
+
+    <bean id = "loggingAspect" class="ua.gradebook.aop.LoggingAspect"/>
+
+    <aop:config>
+        <aop:aspect ref="loggingAspect">
+            <aop:pointcut id="loggingPointcut" expression="execution(* ua.gradebook.controller.HelloController.*(..))"/>
+            <aop:before method="addMethodBeforeAll" pointcut-ref="loggingPointcut"/>
+        </aop:aspect>
+    </aop:config>
 </beans>

@@ -1,14 +1,22 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
-    <title>Welcome page</title>
-</head>
-<body>
-    <div>Welcome</div>
+<%@ page language="java" pageEncoding="UTF-8" %>
 
-<p align="left">Profile</p> <p align="center"><a href="persons.html">Persons</a></p>
-<p align="center">Disciplines</p> <p align="right">Messages</p>
+<section>
 
-</body>
-</html>
+    <div class="href">
+        <div class="href1">
+            <a href="/student-list">Profile</a>
+        </div>
+        <div class="href1">
+            <a href="persons.html">Person</a>
+        </div>
+        <div class="href1">
+            <a href="/terms-list">Disciplines</a>
+        </div>
+        <div class="href1">
+            <a href="/terms-list">Messages</a>
+        </div>
+        <div class="href1">
+            <a href="/persons">persons - rest</a>
+        </div>
+    </div>
+</section>

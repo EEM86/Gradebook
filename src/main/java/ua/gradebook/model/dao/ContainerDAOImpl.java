@@ -54,11 +54,6 @@ public class ContainerDAOImpl implements DAO {
         return false;
     }
 
-    @Override
-    public Long getNextId() {
-        return null;
-    }
-
     private static final class NewRowMapper<P> implements RowMapper<Container> {
 
         @Override

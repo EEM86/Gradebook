@@ -1,16 +1,42 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
 <head>
-    <title>Gradebook</title>
+    <meta http-equiv="content-type" content="text/html">
+    <meta charset="utf=8">
+
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
 </head>
+
 <body>
-    <h1 style="text-align: center">Gradebook index.jsp page</h1>
-    <h2 style="text-align: center">
-        <a href="welcome.html">Click here</a> for a Welcome page.
-        <br>
-        <a href="persons.html">Click here</a> for a Persons page.
-        <br>
-        <br>
-        <a href="persons-rest.html">Click here</a> for a persons - rest page.
-    </h2>
+<header>
+
+</header>
+<section>
+    <div class="href">
+        <div class="href1">
+            <a href="">Profile</a>
+        </div>
+        <div class="href1">
+            <a href="persons.html">Person</a>
+        </div>
+        <div class="href1">
+            <a href="">Disciplines</a>
+        </div>
+        <div class="href1">
+            <a href="">Messages</a>
+        </div>
+        <div class="href1">
+            <a href="/persons">persons - rest</a>
+        </div>
+    </div>
+</section>
+<%--<jsp:include page="${page}" />--%>
+
 </body>
+
+
 </html>
+

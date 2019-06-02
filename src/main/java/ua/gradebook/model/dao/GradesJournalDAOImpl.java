@@ -55,11 +55,6 @@ public class GradesJournalDAOImpl implements DAO {
         return false;
     }
 
-    @Override
-    public Long getNextId() {
-        return null;
-    }
-
     private static final class NewRowMapper<P> implements RowMapper<GradesJournal> {
 
         @Override

@@ -37,8 +37,4 @@ public class PersonService {
         return personDAO.delete(id);
     }
 
-    public Long getNextId() {
-        return personDAO.getNextId();
-    }
-
 }
