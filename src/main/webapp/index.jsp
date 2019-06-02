@@ -17,19 +17,32 @@
 <section>
     <div class="href" align="center">
         <div class="href1">
-            <a href="">Profile</a>
+            Profile
         </div>
+        <br>
         <div class="href1">
             <a href="persons.html">Person</a>
         </div>
+        <br>
         <div class="href1">
-            <a href="">Disciplines</a>
+            <a href="disciplines.html">Disciplines</a>
         </div>
+        <br>
         <div class="href1">
-            <a href="">Messages</a>
+            Messages
         </div>
+        <br>
         <div class="href1">
+            REST API:
+            <br>
+            <br>
             <a href="persons-rest">persons - rest</a>
+            <br>
+            <br>
+            <a href="roles-rest">roles - rest</a>
+            <br>
+            <br>
+            <a href="disciplines-rest">disciplines - rest</a>
         </div>
     </div>
 </section>

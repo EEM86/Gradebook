@@ -34,9 +34,20 @@ public class HelloController {
 
     @RequestMapping(value = "persons-rest",  method = {RequestMethod.GET})
     public String restPage() {
-
         return "persons-rest";
     }
+
+    @GetMapping(value = "roles-rest")
+    public String rolesRestPage() {
+        return "roles-rest";
+    }
+
+    @GetMapping(value = "disciplines-rest")
+    public String disciplinesRestPage() {
+        return "disciplines-rest";
+    }
+
+
 
 //    @GetMapping(value="welcome")
 //    public String getPersons(Model model) {

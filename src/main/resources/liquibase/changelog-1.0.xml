@@ -50,8 +50,8 @@
         <sqlFile path="/sql/triggers/trigger_container.sql" splitStatements="false"/>
     </changeSet>
 
-    <changeSet author="EEM" id="triggers:createTriggersDisciplines" dbms="false">
-        <sqlFile path="/sql/triggers/trigger_discipline.sql"/>
+    <changeSet author="EEM" id="triggers:createTriggersDisciplines" dbms="oracle">
+        <sqlFile path="/sql/triggers/trigger_discipline.sql" splitStatements="false"/>
     </changeSet>
 
     <changeSet author="EEM" id="triggers:createTriggersGradesJournal" dbms="oracle">

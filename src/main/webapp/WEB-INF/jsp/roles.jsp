@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-    <title>Disciplines</title>
+    <title>Roles</title>
     <style type="text/css">
         .tg {
             border-collapse: collapse;
@@ -47,20 +47,20 @@
 </head>
 <body>
 
-<c:if test="${!empty getDisciplines}">
+<c:if test="${!empty getRoles}">
     <table class="tg">
         <tr>
             <th width="80">ID</th>
-            <th width="80">discName</th>
+            <th width="80">roleName</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
-        <c:forEach items="${getDisciplines}" var="discipline">
+        <c:forEach items="${getRoles}" var="role">
             <tr>
-                <td>${discipline.id}</td>
-                <td>${discipline.discName}</td>
-                <td><a href="<c:url value='/disciplines/edit/${discipline.id}'/>">Edit</a></td>
-                <td><a href="<c:url value='/disciplines/delete/${discipline.id}'/>">Delete</a></td>
+                <td>${role.id}</td>
+                <td>${role.roleName}</td>
+                <td><a href="<c:url value='/roles/edit/${role.id}'/>">Edit</a></td>
+                <td><a href="<c:url value='/roles/delete/${role.id}'/>">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
@@ -69,13 +69,13 @@
 <a href="index.jsp">Back to main menu</a>
 <br/>
 
-<h1>Add a Discipline</h1>
+<h1>Add a Role</h1>
 
-<c:url var="addAction" value="/disciplines/add"/>
+<c:url var="addAction" value="/roles/add"/>
 
-<form:form action="${addAction}" modelAttribute="discipline">
+<form:form action="${addAction}" modelAttribute="role">
     <table>
-        <c:if test="${!empty discipline.discName}">
+        <c:if test="${!empty role.roleName}">
             <tr>
                 <td>
                     <form:label path="id">
@@ -90,23 +90,23 @@
         </c:if>
         <tr>
             <td>
-                <form:label path="discName">
-                    <spring:message text="discName"/>
+                <form:label path="roleName">
+                    <spring:message text="RoleName"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="discName"/>
+                <form:input path="roleName"/>
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <c:if test="${!empty discipline.discName}">
+                <c:if test="${!empty role.roleName}">
                     <input type="submit"
-                           value="<spring:message text="Edit Discipline"/>"/>
+                           value="<spring:message text="Edit Role"/>"/>
                 </c:if>
-                <c:if test="${empty discipline.discName}">
+                <c:if test="${empty role.roleName}">
                     <input type="submit"
-                           value="<spring:message text="Add Discipline"/>"/>
+                           value="<spring:message text="Add Role"/>"/>
                 </c:if>
             </td>
         </tr>

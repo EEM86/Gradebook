@@ -1,17 +1,12 @@
 package ua.gradebook.model.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.*;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Component;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -26,7 +21,7 @@ public class PersonDAOImpl implements DAO {
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
     private String findByNameSQL = "SELECT * FROM " + table + " WHERE FIRST_NAME=?";
     private String insertSQL = "INSERT INTO " + table
-            + "(ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
+            + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private String updateSQL = "UPDATE " + table + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
             "BIRTHDAY=?, DEPARTMENT_ID=?, CURATOR_ID=?, GROUP_ID=?, LOGIN=?, PASSWORD=? WHERE PERSON_ID=?";
@@ -44,7 +39,7 @@ public class PersonDAOImpl implements DAO {
 
     @Override
     public ParentBean findByName(String name) {
-        return jdbcTemplate.queryForObject(findByNameSQL, Person.class, new NewRowMapper());
+        return (Person) jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper());
     }
 
     @Override

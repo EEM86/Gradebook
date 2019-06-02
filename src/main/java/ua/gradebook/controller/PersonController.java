@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.PersonService;
 
-import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
-
 @Controller
 public class PersonController {
     @Autowired

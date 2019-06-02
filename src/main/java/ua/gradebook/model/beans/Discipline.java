@@ -1,13 +1,13 @@
 package ua.gradebook.model.beans;
 
 public class Discipline  extends ParentBean {
-    private String name;
+    private String discName;
 
-    public String getName() {
-        return name;
+    public String getDiscName() {
+        return discName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDiscName(String name) {
+        this.discName = name;
     }
 }

@@ -1,33 +1,31 @@
 package ua.gradebook.model.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.*;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Role;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
+@Repository
 public class RoleDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_role";
+    private String table = "L3G3_ROLE";
     private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE id=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
-    private String insertSQL1 = "INSERT INTO " + table + " (id, name) VALUES (?, ?)";
-    private String updateSQL = "UPDATE " + table + " SET id=?, name=? WHERE id=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE id=?";
+    private String findByIdSQL = "SELECT * FROM " + table + " WHERE ROLE_ID=?";
+    private String findByNameSQL = "SELECT * FROM " + table + " WHERE ROLE_NAME=?";
+    private String insertSQL1 = "INSERT INTO " + table + " (ROLE_NAME) VALUES (?)";
+    private String updateSQL = "UPDATE " + table + " SET ROLE_NAME=? WHERE ROLE_ID=?";
+    private String deleteSQL = "DELETE FROM " + table + " WHERE ROLE_ID=?";
     private String findNextSQL = "SELECT id.nextval as Id from dual";
-    private String CREATE_SQL = "insert into L3G3_role (name) values(:name)";
+    private String insertSQL = "INSERT into " + table + " (ROLE_NAME)" + "VALUES(?)";
 
     public RoleDAOImpl() {
     }
@@ -39,40 +37,29 @@ public class RoleDAOImpl implements DAO {
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, Role.class, new NewRowMapper());
+        return (Role) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
     }
 
     @Override
     public ParentBean findByName(String name) {
-        return jdbcTemplate.queryForObject(findByNameSQL, Role.class, new NewRowMapper());
+        return (Role) jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper());
     }
 
     @Override
     public boolean insert(ParentBean item) {
         Role role = (Role) item;
-        String insertSQL = "INSERT INTO " + table + " (name) VALUES (?)";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(
-                new PreparedStatementCreator() {
-                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                        PreparedStatement ps = connection.prepareStatement(insertSQL, new String[] {"id"});
-                        ps.setString(1, role.getRole());
-                        return ps;
-                    }
-                },
-                keyHolder);
-        return jdbcTemplate.update(insertSQL1, keyHolder.getKey(), role.getRole()) != 0;
+        return (jdbcTemplate.update(insertSQL, role.getRoleName()) == 1);
     }
 
     @Override
     public boolean update(ParentBean item) {
         Role role = (Role) item;
-        return jdbcTemplate.update(updateSQL, role.getId(), role.getRole(), role.getId()) != 0;
+        return jdbcTemplate.update(updateSQL, role.getRoleName(), role.getId()) != 0;
     }
 
     @Override
     public boolean delete(int id) {
-        return jdbcTemplate.update(deleteSQL, id) != 0;
+        return (jdbcTemplate.update(deleteSQL, id) == 1);
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Role> {
@@ -81,7 +68,7 @@ public class RoleDAOImpl implements DAO {
         public Role mapRow(ResultSet resultSet, int i) throws SQLException {
             Role role = new Role();
             role.setId(resultSet.getInt(1));
-            role.setRole(resultSet.getString(2));
+            role.setRoleName(resultSet.getString(2));
             return role;
         }
     }
