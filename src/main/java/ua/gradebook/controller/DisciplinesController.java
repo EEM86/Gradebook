@@ -19,6 +19,8 @@ public class DisciplinesController {
     public String showAllDisciplines(Model model) {
         model.addAttribute("discipline", new Discipline());
         model.addAttribute("getDisciplines", disciplineService.findAll());
+       // model.addAttribute("header1", "/");
+      //  model.addAttribute("footer1", "/welcome");
         return "disciplines";
     }
 
@@ -29,6 +31,7 @@ public class DisciplinesController {
         } else {
             this.disciplineService.update(discipline);
         }
+
         return "redirect:/disciplines";
     }
 

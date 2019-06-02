@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.*;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.Message;
 import ua.gradebook.model.beans.ParentBean;
@@ -14,18 +15,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
+@Repository
 public class MessageDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     private String table = "L3G3_message";
     private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE id=?";
-  //  private String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
-    private String insertSQL1 = "INSERT INTO " + table + " (id, reseiver_id, sender_id, message) VALUES (?, ?, ?, ?)";
-    private String updateSQL = "UPDATE " + table + " SET id=?, reseiver_id=?, sender_id=?, message=? WHERE id=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE id=?";
+    private String findByIdSQL = "SELECT * FROM " + table + " WHERE MESSAGE_ID=?";
+    private String insertSQL = "INSERT INTO " + table +
+            " (RECEIVER_ID, sender_id, message) VALUES (?, ?, ?)";
+    private String updateSQL = "UPDATE " + table +
+            " SET reseiver_id=?, sender_id=?, message=? WHERE MESSAGE_ID=?";
+    private String deleteSQL = "DELETE FROM " + table + " WHERE MESSAGE_ID=?";
 
     @Override
     public List<ParentBean> findAll() {
@@ -34,7 +36,8 @@ public class MessageDAOImpl implements DAO {
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, Message.class, new NewRowMapper());
+        return (Message) jdbcTemplate.queryForObject(findByIdSQL,
+                new Object[]{id}, new NewRowMapper());
     }
 
     @Override
@@ -45,30 +48,29 @@ public class MessageDAOImpl implements DAO {
     @Override
     public boolean insert(ParentBean item) {
         Message message = (Message) item;
-        String insertSQL = "INSERT INTO " + table + " (name) VALUES (?)";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(
-                new PreparedStatementCreator() {
-                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                        PreparedStatement ps = connection.prepareStatement(insertSQL, new String[] {"id"});
-                        ps.setString(1, message.getMessage());
-                        return ps;
-                    }
-                },
-                keyHolder);
-        return jdbcTemplate.update(insertSQL1, keyHolder.getKey(), message.getMessage()) != 0;
+        jdbcTemplate.update(insertSQL, new Object[] {
+                message.getReceiver_id(),
+                message.getSender_id(),
+                message.getMessage()
+        });
+        return true;
     }
 
     @Override
     public boolean update(ParentBean item) {
         Message message = (Message) item;
-        return jdbcTemplate.update(updateSQL, message.getId(), message.getReceiver_id(),
-                message.getSender_id(), message.getMessage(), message.getId()) != 0;
+        jdbcTemplate.update(updateSQL, new Object[]{
+                message.getReceiver_id(),
+                message.getSender_id(),
+                message.getMessage(),
+                message.getId()
+        });
+        return true;
     }
 
     @Override
     public boolean delete(int id) {
-        return jdbcTemplate.update(deleteSQL, id) != 0;
+        return jdbcTemplate.update(deleteSQL, id) == 1;
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Message> {

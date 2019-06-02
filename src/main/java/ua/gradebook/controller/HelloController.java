@@ -24,15 +24,19 @@ public class HelloController {
 
     private List<ParentBean> rolesList;
     private static final Logger logger = Logger.getLogger(HelloController.class);
-
-    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    @GetMapping(value="welcome")
+    public String Main (Model model) {
+        model.addAttribute("page", "/welcome");
+        return "welcome";
+    }
+/*    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public ModelAndView helloWorld() {
         String message = "<br><div style='text-align:center;'>"
                 + "<h3>Hello World, this is Gradebook Spring MVC</h3></div><br><br>";
         return new ModelAndView("welcome", "message", message);
-    }
+    }*/
 
-    @RequestMapping(value = "persons-rest",  method = {RequestMethod.GET})
+/*    @RequestMapping(value = "persons-rest",  method = {RequestMethod.GET})
     public String restPage() {
         return "persons-rest";
     }
@@ -50,7 +54,7 @@ public class HelloController {
     @GetMapping(value = "containers-rest")
     public String containersRestPage() {
         return "containers-rest";
-    }
+    }*/
 
 
 

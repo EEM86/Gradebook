@@ -14,6 +14,8 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <mvc:resources mapping="/resources/**" location="/resources/"
+                   cache-period="31556926"/>
     <mvc:annotation-driven />
     <context:component-scan base-package="ua.gradebook" />
 

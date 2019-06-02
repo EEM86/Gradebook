@@ -2,30 +2,27 @@ package ua.gradebook.model.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.*;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.LessonsPlan;
 import ua.gradebook.model.beans.ParentBean;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
+@Repository
 public class LessonsPlanDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     private String table = "L3G3_lessonsplan";
     private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE id=?";
-  //  private String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
-    private String insertSQL1 = "INSERT INTO " + table + " (id, disc_id, teacher_id, group_id, hours) VALUES (?, ?, ?, ?, ?)";
-    private String updateSQL = "UPDATE " + table + " SET id=?, disc_id=?, teacher_id=?, group_id=?, hours=? WHERE id=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE id=?";
+    private String findByIdSQL = "SELECT * FROM " + table + " WHERE PLAN_ID=?";
+    private String insertSQL = "INSERT INTO " + table +
+          " (disc_id, teacher_id, group_id, hours) VALUES (?, ?, ?, ?)";
+    private String updateSQL = "UPDATE " + table +
+            " SET disc_id=?, teacher_id=?, group_id=?, hours=? WHERE PLAN_ID=?";
+    private String deleteSQL = "DELETE FROM " + table + " WHERE PLAN_ID=?";
 
     @Override
     public List<ParentBean> findAll() {
@@ -34,7 +31,8 @@ public class LessonsPlanDAOImpl implements DAO {
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, LessonsPlan.class, new NewRowMapper());
+        return (LessonsPlan) jdbcTemplate.queryForObject(findByIdSQL,
+                new Object[]{id}, new NewRowMapper());
     }
 
     @Override
@@ -45,31 +43,31 @@ public class LessonsPlanDAOImpl implements DAO {
     @Override
     public boolean insert(ParentBean item) {
         LessonsPlan lessonsPlan = (LessonsPlan) item;
-        String insertSQL = "INSERT INTO " + table + " (name) VALUES (?)";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(
-                new PreparedStatementCreator() {
-                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                        PreparedStatement ps = connection.prepareStatement(insertSQL, new String[] {"id"});
-                        ps.setInt(1, lessonsPlan.getDisc_id());
-                        return ps;
-                    }
-                },
-                keyHolder);
-        return jdbcTemplate.update(insertSQL1, keyHolder.getKey(), lessonsPlan.getDisc_id()) != 0;
+        jdbcTemplate.update(insertSQL, new Object[] {
+                lessonsPlan.getDisc_id(),
+                lessonsPlan.getTeacher_id(),
+                lessonsPlan.getGroup_id(),
+                lessonsPlan.getHours()
+        });
+        return true;
     }
 
     @Override
     public boolean update(ParentBean item) {
         LessonsPlan lessonsPlan = (LessonsPlan) item;
-        return jdbcTemplate.update(updateSQL, lessonsPlan.getId(), lessonsPlan.getDisc_id(),
-                lessonsPlan.getTeacher_id(), lessonsPlan.getGroup_id(),
-                lessonsPlan.getHours(), lessonsPlan.getId()) != 0;
+        jdbcTemplate.update(updateSQL, new Object[]{
+                lessonsPlan.getDisc_id(),
+                lessonsPlan.getTeacher_id(),
+                lessonsPlan.getGroup_id(),
+                lessonsPlan.getHours(),
+                lessonsPlan.getId()
+        });
+        return true;
     }
 
     @Override
     public boolean delete(int id) {
-        return jdbcTemplate.update(deleteSQL, id) != 0;
+        return jdbcTemplate.update(deleteSQL, id) == 1;
     }
 
     private static final class NewRowMapper<P> implements RowMapper<LessonsPlan> {

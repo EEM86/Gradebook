@@ -3,42 +3,37 @@ package ua.gradebook.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.model.dao.RoleDAOImpl;
+import ua.gradebook.model.dao.MessageDAOImpl;
 
 import java.util.List;
 
 @Service
-public class RoleService implements AppService {
+public class MessageService {
     @Autowired
-    RoleDAOImpl roleDAO;
+    MessageDAOImpl messageDAO;
 
-    @Override
-    public List findAll() {
-        return this.roleDAO.findAll();
+    public List<ParentBean> findAll() {
+        return this.messageDAO.findAll();
     }
 
-    @Override
     public ParentBean findById(Integer id) {
-        return this.roleDAO.findById(id);
+        return this.messageDAO.findById(id);
     }
 
-    @Override
     public ParentBean findByName(String name) {
-        return this.roleDAO.findByName(name);
+        return this.messageDAO.findByName(name);
     }
 
-    @Override
     public boolean insert(ParentBean item) {
-        return this.roleDAO.insert(item);
+        return this.messageDAO.insert(item);
     }
 
-    @Override
     public boolean update(ParentBean item) {
-        return this.roleDAO.update(item);
+        return this.messageDAO.update(item);
     }
 
-    @Override
     public boolean delete(int id) {
-        return this.roleDAO.delete(id);
+        return this.messageDAO.delete(id);
     }
+
 }
