@@ -34,7 +34,20 @@
                     }
                 })
             });
+        }
 
+        function deletePerson(x) {
+            var rowID = x.parentElement.parentElement.cells[0].textContent;
+            $(document).ready(function () {
+                $.ajax({
+                    method: "DELETE",
+                    url: "person/" + rowID,
+                    success: function (data, textStatus) {
+                        window.location.reload(false);
+                    }
+
+                })
+            });
         }
 
         $(document).ready(function () {
@@ -47,7 +60,8 @@
                                 + "<td>"+val.lastName + "</td><td>"+ val.email + "</td><td>" + val.phone + "</td>"
                             + "<td>" + val.address + "</td><td>"+ val.birthday + "</td><td>" + val.departmentId + "</td>"
                             + "<td>" + val.curatorId + "</td><td>"+ val.groupId + "</td><td>" + val.login + "</td>"
-                            + "<td>" + val.password + "</td>  <td><button type=\"button\" class=\"mybutton\" onclick=\"edit(this)\">Edit</button> </td></tr> ");
+                            + "<td>" + val.password + "</td><td><button type=\"button\" class=\"mybutton\" onclick=\"edit(this)\">Edit</button> "
+                            + "<td><button type=\"button\" class=\"mybutton\" onclick=\"deletePerson(this)\">Delete</button></td></tr>");
                     })
                 }
             })
@@ -83,6 +97,7 @@
                 data: JSON.stringify(myJson),
                 success: function (data, textStatus, xhr) {
                     $('#createModalForm').modal('hide')
+                    window.location.reload(false);
                 }
             });
         };
@@ -369,8 +384,11 @@
         <th width="120">login</th>
         <th width="120">password</th>
         <th width="80">Edit</th>
+        <th width="80">Delete</th>
     </tr>
 </table>
+
+<a href="../Gradebook/index.jsp">Back to main menu</a>
 
 </body>
 </html>

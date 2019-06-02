@@ -18,6 +18,6 @@ public interface DAO {
     ParentBean findById(Integer id);
     ParentBean findByName(String name);
     boolean insert(ParentBean item);
-    boolean update(ParentBean oldItem, ParentBean newItem);
+    boolean update(ParentBean item);
     boolean delete(int id);
 }

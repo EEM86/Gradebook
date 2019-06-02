@@ -65,8 +65,8 @@ public class RoleDAOImpl implements DAO {
     }
 
     @Override
-    public boolean update(ParentBean oldItem, ParentBean newItem) {
-        Role role = (Role) oldItem;
+    public boolean update(ParentBean item) {
+        Role role = (Role) item;
         return jdbcTemplate.update(updateSQL, role.getId(), role.getRole(), role.getId()) != 0;
     }
 

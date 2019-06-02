@@ -82,9 +82,8 @@ public class PersonDAOImpl implements DAO {
     }
 
     @Override
-    public boolean update(ParentBean old, ParentBean newData) {
-        Person oldPerson = (Person) old;
-        Person newPerson = (Person) newData;
+    public boolean update(ParentBean item) {
+        Person newPerson = (Person) item;
         // Add parametrs
        jdbcTemplate.update(updateSQL, new Object[]{
                newPerson.getRoleId(),
@@ -99,7 +98,7 @@ public class PersonDAOImpl implements DAO {
                newPerson.getGroupId(),
                newPerson.getLogin(),
                newPerson.getPassword(),
-               oldPerson.getId()
+               newPerson.getId()
         });
         return true;
     }
