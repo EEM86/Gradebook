@@ -24,7 +24,7 @@ public class PersonDAOImpl implements DAO {
     private String table = "L3G3_PERSON";
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE first_name=?";
+    private String findByNameSQL = "SELECT * FROM " + table + " WHERE FIRST_NAME=?";
     private String insertSQL = "INSERT INTO " + table
             + "(ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -47,22 +47,8 @@ public class PersonDAOImpl implements DAO {
         return jdbcTemplate.queryForObject(findByNameSQL, Person.class, new NewRowMapper());
     }
 
-    //ToDo fix code
     @Override
     public boolean insert(ParentBean item) {
-//        Person person = (Person) item;
-//        String insertSQL = "INSERT INTO " + table + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//        KeyHolder keyHolder = new GeneratedKeyHolder();
-//        jdbcTemplate.update(
-//                new PreparedStatementCreator() {
-//                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-//                        PreparedStatement ps = connection.prepareStatement(insertSQL, new String[] {"id"});
-//                        ps.setString(1, person.getFirstName());
-//                        return ps;
-//                    }
-//                },
-//                keyHolder);
-//        return jdbcTemplate.update(insertSQL1, keyHolder.getKey(), person.getFirstName()) != 0;
         Person person = (Person) item;
         jdbcTemplate.update(insertSQL, new Object[] {
                 person.getRoleId(),
@@ -84,7 +70,6 @@ public class PersonDAOImpl implements DAO {
     @Override
     public boolean update(ParentBean item) {
         Person newPerson = (Person) item;
-        // Add parametrs
        jdbcTemplate.update(updateSQL, new Object[]{
                newPerson.getRoleId(),
                newPerson.getFirstName(),
@@ -109,7 +94,6 @@ public class PersonDAOImpl implements DAO {
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Person> {
-
         @Override
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {
             Person person = new Person();
@@ -121,9 +105,9 @@ public class PersonDAOImpl implements DAO {
             person.setPhone(resultSet.getString(6));
             person.setAddress(resultSet.getString(7));
             person.setBirthday(resultSet.getDate(8));
-            person.setDepartmentId(resultSet.getInt(9));
-            person.setCuratorId(resultSet.getInt(10));
-            person.setGroupId(resultSet.getInt(11));
+            person.setDepartmentId((Integer) resultSet.getObject(9));
+            person.setCuratorId((Integer) resultSet.getObject(10));
+            person.setGroupId((Integer) resultSet.getObject(11));
             person.setLogin(resultSet.getString(12));
             person.setPassword(resultSet.getString(13));
             return person;
