@@ -60,12 +60,12 @@ public class ContainerDAOImpl implements DAO {
         public Container mapRow(ResultSet resultSet, int i) throws SQLException {
             Container container = new Container();
             container.setId(resultSet.getInt(1));
-            container.setParent_id(resultSet.getInt(2));
+            container.setParentId(resultSet.getInt(2));
             container.setName(resultSet.getString(3));
-            container.setChief_id(resultSet.getInt(4));
+            container.setChiefId(resultSet.getInt(4));
             container.setType(resultSet.getInt(5));
-            container.setInstitution_city(resultSet.getString(6));
-            container.setInstitution_address(resultSet.getString(7));
+            container.setInstitutionCity(resultSet.getString(6));
+            container.setInstitutionAddress(resultSet.getString(7));
             container.setPhone(resultSet.getString(8));
             return container;
         }

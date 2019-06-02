@@ -82,4 +82,8 @@
         <sqlFile path="/sql/data/data.sql"/>
     </changeSet>
 
+    <changeSet author="EEM" id="data:initialData-01" dbms="oracle">
+        <sqlFile path="/sql/data/data-01.sql"/>
+    </changeSet>
+
 </databaseChangeLog>
