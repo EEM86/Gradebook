@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -57,7 +59,7 @@ public class PersonDAOImpl implements DAO {
                 person.getCuratorId(),
                 person.getGroupId(),
                 person.getLogin(),
-                person.getPassword(),
+                person.getPassword()
         });
         return true;
     }
@@ -100,9 +102,22 @@ public class PersonDAOImpl implements DAO {
             person.setPhone(resultSet.getString(6));
             person.setAddress(resultSet.getString(7));
             person.setBirthday(resultSet.getDate(8));
-            person.setDepartmentId((Integer) resultSet.getObject(9));
-            person.setCuratorId((Integer) resultSet.getObject(10));
-            person.setGroupId((Integer) resultSet.getObject(11));
+            //ToDo find how to get Integer instead of BigDecimal
+            if ((resultSet.getObject(9) == null)) {
+                person.setDepartmentId((Integer) resultSet.getObject(9));
+            } else {
+                person.setDepartmentId(Integer.valueOf(resultSet.getObject(9).toString()));
+            }
+            if ((resultSet.getObject(10) == null)) {
+                person.setCuratorId((Integer) resultSet.getObject(10));
+            } else {
+                person.setCuratorId(Integer.valueOf(resultSet.getObject(10).toString()));
+            }
+            if ((resultSet.getObject(11) == null)) {
+                person.setGroupId((Integer) resultSet.getObject(11));
+            } else {
+                person.setGroupId(Integer.valueOf(resultSet.getObject(11).toString()));
+            }
             person.setLogin(resultSet.getString(12));
             person.setPassword(resultSet.getString(13));
             return person;

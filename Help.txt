@@ -1,4 +1,4 @@
-Delete all application tables in DB if troubles with liquibase exists.
+Delete all application tables in DB if troubles with liquibase exist.
 Type sql script into data base console:
 
 /

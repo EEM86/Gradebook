@@ -1,8 +1,8 @@
 CREATE TABLE L3G3_gradesJournal (
-	journal_id number NOT NULL,
-	disc_id number NOT NULL,
-	person_id number NOT NULL,
-	grade number,
-	teacher_id number NOT NULL,
+	journal_id number(19) NOT NULL,
+	disc_id number(19) NOT NULL,
+	person_id number(19) NOT NULL,
+	grade number(19),
+	teacher_id number(19) NOT NULL,
 	constraint GRADESJOURNAL_PK PRIMARY KEY (journal_id)
 );

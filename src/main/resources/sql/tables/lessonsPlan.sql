@@ -1,8 +1,8 @@
 CREATE TABLE L3G3_lessonsPlan (
-	plan_id number NOT NULL,
-	disc_id number NOT NULL,
-	teacher_id number NOT NULL,
-	group_id number NOT NULL,
-	hours number,
+	plan_id number(19) NOT NULL,
+	disc_id number(19) NOT NULL,
+	teacher_id number(19) NOT NULL,
+	group_id number(19) NOT NULL,
+	hours number(19),
 	constraint LESSONSPLAN_PK PRIMARY KEY (plan_id)
 );

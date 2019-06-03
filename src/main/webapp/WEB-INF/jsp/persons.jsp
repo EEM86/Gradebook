@@ -56,17 +56,17 @@
 <c:if test="${!empty getPersons}">
     <table class="tg" width="100%">
         <tr>
-            <th width="80">ID</th>
-            <th width="80">roleId</th>
+            <th width="60">ID</th>
+            <th width="60">roleId</th>
             <th width="120">FirstName</th>
             <th width="120">LastName</th>
             <th width="120">email</th>
             <th width="120">phone</th>
             <th width="120">address</th>
             <th width="120">birthday</th>
-            <th width="120">departmentId</th>
-            <th width="120">curatorId</th>
-            <th width="120">groupId</th>
+            <th width="60">departmentId</th>
+            <th width="60">curatorId</th>
+            <th width="60">groupId</th>
             <th width="120">login</th>
             <th width="120">password</th>
             <th width="60">Edit</th>
