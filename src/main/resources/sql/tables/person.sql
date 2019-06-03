@@ -1,6 +1,6 @@
 CREATE TABLE L3G3_person (
 	person_id number(19) NOT NULL,
-	role_id number(19 NOT NULL,
+	role_id number(19) NOT NULL,
 	first_name varchar2(20) NOT NULL,
 	last_name varchar2(20) NOT NULL,
 	email varchar2(30) UNIQUE,

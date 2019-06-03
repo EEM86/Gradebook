@@ -4,7 +4,7 @@ public class Container extends ParentBean {
     private Integer parentId;
     private String name;
     private Integer chiefId;
-    private Integer type;
+    private Integer typeId;
     private String institutionCity;
     private String institutionAddress;
     private String phone;
@@ -16,7 +16,7 @@ public class Container extends ParentBean {
         this.name = name;
         this.parentId = parentId;
         this.chiefId = chief_id;
-        this.type = type;
+        this.typeId = type;
         this.institutionCity = institution_city;
         this.institutionAddress = institution_address;
         this.phone = phone;
@@ -46,12 +46,12 @@ public class Container extends ParentBean {
         this.chiefId = chiefId;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setTypeId(Integer type) {
+        this.typeId = type;
     }
 
     public String getInstitutionCity() {

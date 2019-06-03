@@ -47,6 +47,11 @@ public class HelloController {
         return "disciplines-rest";
     }
 
+    @GetMapping(value = "containers-rest")
+    public String containersRestPage() {
+        return "containers-rest";
+    }
+
 
 
 //    @GetMapping(value="welcome")
