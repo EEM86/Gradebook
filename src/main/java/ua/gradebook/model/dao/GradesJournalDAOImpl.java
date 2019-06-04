@@ -45,10 +45,10 @@ public class GradesJournalDAOImpl implements DAO {
     public boolean insert(ParentBean item) {
         GradesJournal gradesJournal = (GradesJournal) item;
         jdbcTemplate.update(insertSQL, new Object[] {
-                gradesJournal.getDiscipline(),
-                gradesJournal.getPerson_id(),
+                gradesJournal.getDiscId(),
+                gradesJournal.getPersonId(),
                 gradesJournal.getGrade(),
-                gradesJournal.getTeacher_id()
+                gradesJournal.getTeacherId()
         });
         return true;
     }
@@ -57,10 +57,10 @@ public class GradesJournalDAOImpl implements DAO {
     public boolean update(ParentBean item) {
         GradesJournal gradesJournal = (GradesJournal) item;
         jdbcTemplate.update(updateSQL, new Object[]{
-                gradesJournal.getDiscipline(),
-                gradesJournal.getPerson_id(),
+                gradesJournal.getDiscId(),
+                gradesJournal.getPersonId(),
                 gradesJournal.getGrade(),
-                gradesJournal.getTeacher_id(),
+                gradesJournal.getTeacherId(),
                 gradesJournal.getId()
         });
         return true;
@@ -77,8 +77,8 @@ public class GradesJournalDAOImpl implements DAO {
         public GradesJournal mapRow(ResultSet resultSet, int i) throws SQLException {
             GradesJournal gradesJournal = new GradesJournal();
             gradesJournal.setId(resultSet.getInt(1));
-            gradesJournal.setDiscipline(resultSet.getInt(2));
-            gradesJournal.setPerson_id(resultSet.getInt(3));
+            gradesJournal.setDiscId(resultSet.getInt(2));
+            gradesJournal.setPersonId(resultSet.getInt(3));
             gradesJournal.setGrade(resultSet.getInt(4));
             gradesJournal.setTeacher_id(resultSet.getInt(5));
             return gradesJournal;

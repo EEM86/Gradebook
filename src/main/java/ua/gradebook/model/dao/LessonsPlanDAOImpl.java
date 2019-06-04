@@ -19,9 +19,9 @@ public class LessonsPlanDAOImpl implements DAO {
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE PLAN_ID=?";
     private String insertSQL = "INSERT INTO " + table +
-          " (disc_id, teacher_id, group_id, hours) VALUES (?, ?, ?, ?)";
+          " (DISC_ID, TEACHER_ID, GROUP_ID, HOURS) VALUES (?, ?, ?, ?)";
     private String updateSQL = "UPDATE " + table +
-            " SET disc_id=?, teacher_id=?, group_id=?, hours=? WHERE PLAN_ID=?";
+            " SET DISC_ID=?, TEACHER_ID=?, GROUP_ID=?, HOURS=? WHERE PLAN_ID=?";
     private String deleteSQL = "DELETE FROM " + table + " WHERE PLAN_ID=?";
 
     @Override
@@ -44,9 +44,9 @@ public class LessonsPlanDAOImpl implements DAO {
     public boolean insert(ParentBean item) {
         LessonsPlan lessonsPlan = (LessonsPlan) item;
         jdbcTemplate.update(insertSQL, new Object[] {
-                lessonsPlan.getDisc_id(),
-                lessonsPlan.getTeacher_id(),
-                lessonsPlan.getGroup_id(),
+                lessonsPlan.getDiscId(),
+                lessonsPlan.getTeacherId(),
+                lessonsPlan.getGroupId(),
                 lessonsPlan.getHours()
         });
         return true;
@@ -56,9 +56,9 @@ public class LessonsPlanDAOImpl implements DAO {
     public boolean update(ParentBean item) {
         LessonsPlan lessonsPlan = (LessonsPlan) item;
         jdbcTemplate.update(updateSQL, new Object[]{
-                lessonsPlan.getDisc_id(),
-                lessonsPlan.getTeacher_id(),
-                lessonsPlan.getGroup_id(),
+                lessonsPlan.getDiscId(),
+                lessonsPlan.getTeacherId(),
+                lessonsPlan.getGroupId(),
                 lessonsPlan.getHours(),
                 lessonsPlan.getId()
         });
@@ -76,9 +76,9 @@ public class LessonsPlanDAOImpl implements DAO {
         public LessonsPlan mapRow(ResultSet resultSet, int i) throws SQLException {
             LessonsPlan lessonsPlan = new LessonsPlan();
             lessonsPlan.setId(resultSet.getInt(1));
-            lessonsPlan.setDisc_id(resultSet.getInt(2));
-            lessonsPlan.setTeacher_id(resultSet.getInt(3));
-            lessonsPlan.setGroup_id(resultSet.getInt(4));
+            lessonsPlan.setDiscId(resultSet.getInt(2));
+            lessonsPlan.setTeacherId(resultSet.getInt(3));
+            lessonsPlan.setGroupId(resultSet.getInt(4));
             lessonsPlan.setHours(resultSet.getInt(5));
             return lessonsPlan;
         }

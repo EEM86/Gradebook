@@ -24,9 +24,9 @@ public class MessageDAOImpl implements DAO {
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE MESSAGE_ID=?";
     private String insertSQL = "INSERT INTO " + table +
-            " (RECEIVER_ID, sender_id, message) VALUES (?, ?, ?)";
+            " (RECEIVER_ID, SENDER_ID, MESSAGE) VALUES (?, ?, ?)";
     private String updateSQL = "UPDATE " + table +
-            " SET reseiver_id=?, sender_id=?, message=? WHERE MESSAGE_ID=?";
+            " SET RECEIVER_ID=?, SENDER_ID=?, MESSAGE=? WHERE MESSAGE_ID=?";
     private String deleteSQL = "DELETE FROM " + table + " WHERE MESSAGE_ID=?";
 
     @Override
@@ -49,8 +49,8 @@ public class MessageDAOImpl implements DAO {
     public boolean insert(ParentBean item) {
         Message message = (Message) item;
         jdbcTemplate.update(insertSQL, new Object[] {
-                message.getReceiver_id(),
-                message.getSender_id(),
+                message.getReceiverId(),
+                message.getSenderId(),
                 message.getMessage()
         });
         return true;
@@ -60,8 +60,8 @@ public class MessageDAOImpl implements DAO {
     public boolean update(ParentBean item) {
         Message message = (Message) item;
         jdbcTemplate.update(updateSQL, new Object[]{
-                message.getReceiver_id(),
-                message.getSender_id(),
+                message.getReceiverId(),
+                message.getSenderId(),
                 message.getMessage(),
                 message.getId()
         });
@@ -79,8 +79,8 @@ public class MessageDAOImpl implements DAO {
         public Message mapRow(ResultSet resultSet, int i) throws SQLException {
             Message message = new Message();
             message.setId(resultSet.getInt(1));
-            message.setReceiver_id(resultSet.getInt(2));
-            message.setSender_id(resultSet.getInt(3));
+            message.setReceiverId(resultSet.getInt(2));
+            message.setSenderId(resultSet.getInt(3));
             message.setMessage(resultSet.getString(4));
             return message;
         }
