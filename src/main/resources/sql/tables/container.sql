@@ -7,5 +7,5 @@ CREATE TABLE L3G3_container (
 	institution_city varchar2(50),
 	institution_address varchar2(50),
 	phone varchar2(50),
-	constraint CONTAINER_PK PRIMARY KEY (id)
+	constraint L3G3_CONTAINER_PK PRIMARY KEY (id)
 );

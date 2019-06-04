@@ -55,7 +55,7 @@
 
     <!--<aop:config>-->
         <!--<aop:aspect ref="loggingAspect">-->
-            <!--<aop:pointcut id="loggingPointcut" expression="execution(* ua.gradebook.controller.HelloController.*(..))"/>-->
+            <!--<aop:pointcut id="loggingPointcut" expression="execution(* ua.gradebook.controller.HomeController.*(..))"/>-->
             <!--<aop:before method="addMethodBeforeAll" pointcut-ref="loggingPointcut"/>-->
         <!--</aop:aspect>-->
     <!--</aop:config>-->

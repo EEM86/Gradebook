@@ -3,5 +3,5 @@ CREATE TABLE L3G3_message (
 	receiver_id number(19) NOT NULL,
 	sender_id number(19) NOT NULL,
 	message varchar2(255) NOT NULL,
-	constraint MESSAGE_PK PRIMARY KEY (message_id)
+	constraint L3G3_MESSAGE_PK PRIMARY KEY (message_id)
 );
