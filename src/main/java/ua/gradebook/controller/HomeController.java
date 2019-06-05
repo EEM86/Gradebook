@@ -37,4 +37,26 @@ public class HomeController {
         return "containers-rest";
     }
 
+    @GetMapping(value = "branchtypes-rest")
+    public String branchTypesRestPage() {
+        return "branchtypes-rest";
+    }
+
+    @GetMapping(value = "journal-rest")
+    public String journalRestPage() {
+        return "journal-rest";
+    }
+
+    @GetMapping(value = "lessonsplan-rest")
+    public String lessonsPlanRestPage() {
+        return "lessonsplan-rest";
+    }
+
+    @GetMapping(value = "message-rest")
+    public String messageRestPage() {
+        return "message-rest";
+    }
+
+
+
 }

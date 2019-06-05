@@ -56,23 +56,23 @@
         </div>
 
         <div class="href1">
-            <a href="">Messages - rest</a>
+            <a href="message-rest/all">Messages - rest</a>
         </div>
 
         <div class="href1">
             <a href="containers-rest">Containers - rest</a>
         </div>
         <div class="href1">
-            <a href="">Branch Type - rest</a>
+            <a href="branchtypes-rest/all">Branch Type - rest</a>
         </div>
         <div class="href1">
             <a href="roles-rest">Roles - rest</a>
         </div>
         <div class="href1">
-            <a href="">Journal - rest</a>
+            <a href="journal-rest/all">Journal - rest</a>
         </div>
         <div class="href1">
-            <a href="">Lessons Plan - rest</a>
+            <a href="lessonsplan-rest/all">Lessons Plan - rest</a>
         </div>
     </div>
 </header>
