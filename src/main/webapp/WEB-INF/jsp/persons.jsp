@@ -13,14 +13,24 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        $( function() {
-            $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
-        } );
+        $(function () {
+            $("#datepicker").datepicker({dateFormat: 'yy-mm-dd'}).val();
+        });
     </script>
     <title>Persons</title>
 </head>
 <body>
-<div align="center"><jsp:include page="/"/></div>
+<div align="center">
+    <jsp:include page="/"/>
+</div>
+<br>
+<br>
+    <form action="persons" method="post" align="center">
+        <input type="text" name="lastName" placeholder="Enter last name to search">
+        <button>Find</button>
+    </form>
+<br>
+<br>
 
 <section>
 

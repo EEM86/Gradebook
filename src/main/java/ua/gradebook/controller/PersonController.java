@@ -5,8 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.PersonService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PersonController {
@@ -43,6 +47,13 @@ public class PersonController {
     public String editPerson(@PathVariable("id") int id, Model model){
         model.addAttribute("person", this.personService.findById(id));
         model.addAttribute("getPersons", this.personService.findAll());
+        return "persons";
+    }
+
+    @RequestMapping(value="persons", method = RequestMethod.POST)
+    public String searchPerson(@RequestParam("lastName") String lastName, Model model) {
+        model.addAttribute("person", new Person());
+        model.addAttribute("getPersons", this.personService.findNames(lastName));
         return "persons";
     }
 }

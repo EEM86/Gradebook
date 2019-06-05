@@ -25,6 +25,10 @@ public class PersonService implements AppService {
        return this.personDAO.findByName(name);
     }
 
+    public List<ParentBean> findNames(String text) {
+       return this.personDAO.findNames(text);
+    }
+
     public boolean insert(ParentBean item) {
         return this.personDAO.insert(item);
     }

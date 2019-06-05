@@ -21,7 +21,8 @@ public class PersonDAOImpl implements DAO {
     private String table = "L3G3_PERSON";
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE FIRST_NAME=?";
+    private String findByNameSQL = "SELECT * FROM " + table + " WHERE LAST_NAME=?";
+    private String findNamesSQL = "SELECT * FROM " + table + " WHERE LAST_NAME LIKE ?";
     private String insertSQL = "INSERT INTO " + table
             + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -42,6 +43,11 @@ public class PersonDAOImpl implements DAO {
     @Override
     public ParentBean findByName(String name) {
         return (Person) jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper());
+    }
+
+    public List<ParentBean> findNames(String text) {
+        String corText = "%" + text + "%";
+        return (List) jdbcTemplate.query(findNamesSQL, new Object[]{corText}, new NewRowMapper());
     }
 
     @Override
