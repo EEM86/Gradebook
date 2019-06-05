@@ -3,7 +3,7 @@ package ua.gradebook.model.beans;
 public class Message extends ParentBean {
     private Integer receiverId;
     private Integer senderId;
-    private String message;
+    private String messageText;
 
     public Integer getReceiverId() {
         return receiverId;
@@ -21,11 +21,11 @@ public class Message extends ParentBean {
         this.senderId = senderId;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 }

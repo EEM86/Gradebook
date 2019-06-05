@@ -20,11 +20,6 @@
     <title>Persons</title>
 </head>
 <body>
-<%--<script>
-    $(function () {
-        $("#datepicker").datepicker({ dateFormat: 'yyyy-mm-dd' }).val();
-    });
-</script>--%>
 <div align="center"><jsp:include page="/"/></div>
 
 <section>
@@ -169,7 +164,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="departmentId"/>
+                    <form:input type="number" min="1" path="departmentId"/>
                 </td>
             </tr>
             <tr>
@@ -179,7 +174,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="curatorId"/>
+                    <form:input type="number" min="1" path="curatorId"/>
                 </td>
             </tr>
             <tr>
@@ -189,7 +184,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="groupId"/>
+                    <form:input type="number" min="1" path="groupId"/>
                 </td>
             </tr>
             <tr>

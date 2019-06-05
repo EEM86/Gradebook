@@ -13,24 +13,24 @@
 <body>
 <div><jsp:include page="/"/></div>
 <section>
-    <c:if test="${!empty getMessage}">
+    <c:if test="${!empty getMessages}">
         <table class="tg">
             <tr>
-                <th width="80">ID</th>
+                <th width="40">ID</th>
                 <th width="80">Receiver</th>
                 <th width="80">Sender</th>
-                <th width="100">message</th>
+                <th width="200">message</th>
                 <th width="60">Edit</th>
                 <th width="60">Delete</th>
             </tr>
-            <c:forEach items="${getMessage}" var="message">
+            <c:forEach items="${getMessages}" var="message">
                 <tr>
                     <td>${message.id}</td>
-                    <td>${message.receiver_id}</td>
-                    <td>${message.sender_id}</td>
-                    <td>${message.message}</td>
-                    <td><a href="<c:url value='/message/edit/${message.id}'/>">Edit</a></td>
-                    <td><a href="<c:url value='/message/delete/${message.id}'/>">Delete</a></td>
+                    <td>${message.receiverId}</td>
+                    <td>${message.senderId}</td>
+                    <td>${message.messageText}</td>
+                    <td><a href="<c:url value='/messages/edit/${message.id}'/>">Edit</a></td>
+                    <td><a href="<c:url value='/messages/delete/${message.id}'/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -39,10 +39,10 @@
     <a href="/Gradebook/">Back to main menu</a>
     <br/>
     <h1>Add message</h1>
-    <c:url var="addAction" value="/message/add"/>
+    <c:url var="addAction" value="/messages/add"/>
     <form:form action="${addAction}" modelAttribute="message">
         <table>
-            <c:if test="${!empty message.disc_id}">
+            <c:if test="${!empty message.receiverId}">
                 <tr>
                     <td>
                         <form:label path="id">
@@ -57,42 +57,42 @@
             </c:if>
             <tr>
                 <td>
-                    <form:label value="receiver_id" path="receiver_id">
+                    <form:label value="receiverId" path="receiverId">
                         <spring:message text="Receiver"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="receiver_id"/>
+                    <form:input type="number" min="1" pattern="[0-9]" path="receiverId"/>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <form:label path="sender_id">
+                    <form:label path="senderId">
                         <spring:message text="Sender"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="sender_id"/>
+                    <form:input type="number" min="1" pattern="[0-9]" path="senderId"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="message">
-                        <spring:message text="Message"/>
+                    <form:label path="messageText">
+                        <spring:message text="Message Text"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="message"/>
+                    <form:input type="text" size="100px" path="messageText"/>
                 </td>
             </tr>
              <tr>
                 <td colspan="2">
-                    <c:if test="${!empty message.receiver_id}">
+                    <c:if test="${!empty message.receiverId}">
                         <input type="submit"
                                value="<spring:message text="Edit message"/>"/>
                     </c:if>
-                    <c:if test="${empty message.receiver_id}">
+                    <c:if test="${empty message.receiverId}">
                         <input type="submit"
                                value="<spring:message text="Add message"/>"/>
                     </c:if>

@@ -30,7 +30,7 @@
     </table>
 </c:if>
 
-<a href="index.jsp">Back to main menu</a>
+    <a href="/Gradebook/">Back to main menu</a>
 <br/>
 
 <h1>Add a Role</h1>

@@ -27,9 +27,9 @@
             <c:forEach items="${getLessonsplan}" var="lessonsplan">
                 <tr>
                     <td>${lessonsplan.id}</td>
-                    <td>${lessonsplan.disc_id}</td>
-                    <td>${lessonsplan.teacher_id}</td>
-                    <td>${lessonsplan.group_id}</td>
+                    <td>${lessonsplan.discId}</td>
+                    <td>${lessonsplan.teacherId}</td>
+                    <td>${lessonsplan.groupId}</td>
                     <td>${lessonsplan.hours}</td>
                     <td><a href="<c:url value='/lessonsplan/edit/${lessonsplan.id}'/>">Edit</a></td>
                     <td><a href="<c:url value='/lessonsplan/delete/${lessonsplan.id}'/>">Delete</a></td>
@@ -45,7 +45,7 @@
     <c:url var="addAction" value="/lessonsplan/add"/>
     <form:form action="${addAction}" modelAttribute="lessonsplan">
         <table>
-            <c:if test="${!empty lessonsplan.disc_id}">
+            <c:if test="${!empty lessonsplan.discId}">
                 <tr>
                     <td>
                         <form:label path="id">
@@ -60,33 +60,33 @@
             </c:if>
             <tr>
                 <td>
-                    <form:label value="Discipline" path="disc_id">
+                    <form:label value="Discipline" path="discId">
                         <spring:message text="Discipline"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="disc_id"/>
+                    <form:input type="number" min="1" path="discId"/>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <form:label path="teacher_id">
+                    <form:label path="teacherId">
                         <spring:message text="Teacher"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="teacher_id"/>
+                    <form:input type="number" min="1" path="teacherId"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="group_id">
+                    <form:label path="groupId">
                         <spring:message text="Group"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="group_id"/>
+                    <form:input type="number" min="1" path="groupId"/>
                 </td>
             </tr>
             <tr>
@@ -96,16 +96,16 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="hours"/>
+                    <form:input type="number" min="1" path="hours"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <c:if test="${!empty lessonsplan.disc_id}">
+                    <c:if test="${!empty lessonsplan.discId}">
                         <input type="submit"
                                value="<spring:message text="Edit lessons plan"/>"/>
                     </c:if>
-                    <c:if test="${empty lessonsplan.disc_id}">
+                    <c:if test="${empty lessonsplan.discId}">
                         <input type="submit"
                                value="<spring:message text="Add lessons plan"/>"/>
                     </c:if>

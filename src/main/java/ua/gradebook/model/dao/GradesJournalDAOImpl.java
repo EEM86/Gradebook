@@ -80,7 +80,7 @@ public class GradesJournalDAOImpl implements DAO {
             gradesJournal.setDiscId(resultSet.getInt(2));
             gradesJournal.setPersonId(resultSet.getInt(3));
             gradesJournal.setGrade(resultSet.getInt(4));
-            gradesJournal.setTeacher_id(resultSet.getInt(5));
+            gradesJournal.setTeacherId(resultSet.getInt(5));
             return gradesJournal;
         }
     }

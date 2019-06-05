@@ -24,15 +24,15 @@
                 <th width="60">Edit</th>
                 <th width="60">Delete</th>
             </tr>
-            <c:forEach items="${getJournals}" var="lessonsplan">
+            <c:forEach items="${getJournals}" var="journal">
                 <tr>
-                    <td>${lessonsplan.id}</td>
-                    <td>${lessonsplan.discipline}</td>
-                    <td>${lessonsplan.person_id}</td>
-                    <td>${lessonsplan.grade}</td>
-                    <td>${lessonsplan.teacher_id}</td>
-                    <td><a href="<c:url value='/journal/edit/${lessonsplan.id}'/>">Edit</a></td>
-                    <td><a href="<c:url value='/journal/delete/${lessonsplan.id}'/>">Delete</a></td>
+                    <td>${journal.id}</td>
+                    <td>${journal.discId}</td>
+                    <td>${journal.personId}</td>
+                    <td>${journal.grade}</td>
+                    <td>${journal.teacherId}</td>
+                    <td><a href="<c:url value='/journal/edit/${journal.id}'/>">Edit</a></td>
+                    <td><a href="<c:url value='/journal/delete/${journal.id}'/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -46,7 +46,7 @@
     <c:url var="addAction" value="/journal/add"/>
     <form:form action="${addAction}" modelAttribute="journal">
         <table>
-            <c:if test="${!empty journal.discipline}">
+            <c:if test="${!empty journal.discId}">
                 <tr>
                     <td>
                         <form:label path="id">
@@ -61,23 +61,23 @@
             </c:if>
             <tr>
                 <td>
-                    <form:label value="Discipline" path="discipline">
+                    <form:label value="Discipline" path="discId">
                         <spring:message text="Discipline"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="discipline"/>
+                    <form:input type="number" min="1" path="discId"/>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <form:label path="person_id">
+                    <form:label path="personId">
                         <spring:message text="Student"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="person_id"/>
+                    <form:input type="number" min="1" path="personId"/>
                 </td>
             </tr>
             <tr>
@@ -87,26 +87,26 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="grade"/>
+                    <form:input type="number" min="1" path="grade"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="teacher_id">
-                        <spring:message text="Teacher_id"/>
+                    <form:label path="teacherId">
+                        <spring:message text="Teacher"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="0" path="teacher_id"/>
+                    <form:input type="number" min="1" path="teacherId"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <c:if test="${!empty journal.discipline}">
+                    <c:if test="${!empty journal.discId}">
                         <input type="submit"
                                value="<spring:message text="Edit journal"/>"/>
                     </c:if>
-                    <c:if test="${empty journal.discipline}">
+                    <c:if test="${empty journal.discId}">
                         <input type="submit"
                                value="<spring:message text="Add journal"/>"/>
                     </c:if>

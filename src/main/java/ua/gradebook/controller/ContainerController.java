@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import ua.gradebook.model.beans.Container;
 import ua.gradebook.service.ContainerService;
 
@@ -20,6 +19,7 @@ public class ContainerController {
     public String showAllContainer(Model model) {
         model.addAttribute("container", new Container());
         model.addAttribute("getContainers", containerService.findAll());
+        logger.info("containers load");
         return "containers";
     }
 

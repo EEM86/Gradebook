@@ -24,17 +24,14 @@
             <a href="disciplines">Disciplines</a>
         </div>
         <div class="href1">
-            <a href="message">Messages</a>
+            <a href="messages">Messages</a>
         </div>
 
         <div class="href1">
-            <a href="containers">Institute</a>
+            <a href="containers">Containers</a>
         </div>
         <div class="href1">
-            <a href="containers">Departament</a>
-        </div>
-        <div class="href1">
-            <a href="containers">Group</a>
+            <a href="branchtypes">Branch Type</a>
         </div>
         <div class="href1">
             <a href="roles">Roles</a>
@@ -63,13 +60,10 @@
         </div>
 
         <div class="href1">
-            <a href="">Institute - rest</a>
+            <a href="containers-rest">Containers - rest</a>
         </div>
         <div class="href1">
-            <a href="">Departament - rest</a>
-        </div>
-        <div class="href1">
-            <a href="">Group - rest</a>
+            <a href="">Branch Type - rest</a>
         </div>
         <div class="href1">
             <a href="roles-rest">Roles - rest</a>

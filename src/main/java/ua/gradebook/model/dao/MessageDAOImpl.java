@@ -2,15 +2,10 @@ package ua.gradebook.model.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.*;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.Message;
 import ua.gradebook.model.beans.ParentBean;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -51,7 +46,7 @@ public class MessageDAOImpl implements DAO {
         jdbcTemplate.update(insertSQL, new Object[] {
                 message.getReceiverId(),
                 message.getSenderId(),
-                message.getMessage()
+                message.getMessageText()
         });
         return true;
     }
@@ -62,7 +57,7 @@ public class MessageDAOImpl implements DAO {
         jdbcTemplate.update(updateSQL, new Object[]{
                 message.getReceiverId(),
                 message.getSenderId(),
-                message.getMessage(),
+                message.getMessageText(),
                 message.getId()
         });
         return true;
@@ -81,7 +76,7 @@ public class MessageDAOImpl implements DAO {
             message.setId(resultSet.getInt(1));
             message.setReceiverId(resultSet.getInt(2));
             message.setSenderId(resultSet.getInt(3));
-            message.setMessage(resultSet.getString(4));
+            message.setMessageText(resultSet.getString(4));
             return message;
         }
     }

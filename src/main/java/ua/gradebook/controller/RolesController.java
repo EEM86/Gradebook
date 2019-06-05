@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import ua.gradebook.model.beans.Role;
 import ua.gradebook.service.RoleService;
 
@@ -20,6 +19,7 @@ public class RolesController {
     public String showAllRoles(Model model) {
         model.addAttribute("role", new Role());
         model.addAttribute("getRoles", roleService.findAll());
+        logger.info("roles load");
         return "roles";
     }
 

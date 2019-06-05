@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua.gradebook.model.beans.LessonsPlan;
 import ua.gradebook.model.beans.Message;
 import ua.gradebook.service.MessageService;
 
@@ -17,14 +16,15 @@ public class MessagesController {
 
     private static final Logger logger = Logger.getLogger(MessagesController.class);
 
-    @GetMapping(value = "message")
+    @GetMapping(value = "messages")
     public String showAllMessage (Model model) {
-        model.addAttribute("message", new LessonsPlan());
-        model.addAttribute("getMessage", messageService.findAll());
-        return "message";
+        model.addAttribute("message", new Message());
+        model.addAttribute("getMessages", messageService.findAll());
+        logger.info("messages load");
+        return "messages";
     }
 
-    @PostMapping(value = "/message/add")
+    @PostMapping(value = "/messages/add")
     public String addMessage(@ModelAttribute("message") Message message){
         if (message.getId() == null) {
             this.messageService.insert(message);
@@ -32,19 +32,19 @@ public class MessagesController {
             this.messageService.update(message);
         }
 
-        return "redirect:/message";
+        return "redirect:/messages";
     }
 
-    @RequestMapping(value = "/message/delete/{id}")
+    @RequestMapping(value = "/messages/delete/{id}")
     public String deleteMessage(@PathVariable("id") int id){
         this.messageService.delete(id);
-        return "redirect:/message";
+        return "redirect:/messages";
     }
 
-    @RequestMapping(value = "/message/edit/{id}")
+    @RequestMapping(value = "/messages/edit/{id}")
     public String editMessage(@PathVariable("id") int id, Model model){
         model.addAttribute("message", this.messageService.findById(id));
-        model.addAttribute("getMessage", this.messageService.findAll());
-        return "message";
+        model.addAttribute("getMessages", this.messageService.findAll());
+        return "messages";
     }
 }

@@ -1,5 +1,6 @@
 package ua.gradebook.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,13 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    private static final Logger logger = Logger.getLogger(PersonController.class);
+
     @GetMapping(value="persons")
     public String getPersons(Model model) {
         model.addAttribute("person", new Person());
         model.addAttribute("getPersons", personService.findAll());
+        logger.info("persons load");
         return "persons";
     }
 

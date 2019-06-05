@@ -19,6 +19,7 @@ public class LessonsPlanController {
     public String showAllLessonsPlans (Model model) {
         model.addAttribute("lessonsplan", new LessonsPlan());
         model.addAttribute("getLessonsplan", lessonsPlanService.findAll());
+        logger.info("lessonsplan load");
         return "lessonsplan";
     }
 

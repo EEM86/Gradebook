@@ -13,14 +13,13 @@ public class DisciplinesController {
     @Autowired
     private DisciplineService disciplineService;
 
-    private static final Logger logger = Logger.getLogger(RolesController.class);
+    private static final Logger logger = Logger.getLogger(DisciplinesController.class);
 
     @GetMapping(value = "disciplines")
     public String showAllDisciplines(Model model) {
         model.addAttribute("discipline", new Discipline());
         model.addAttribute("getDisciplines", disciplineService.findAll());
-       // model.addAttribute("header1", "/");
-      //  model.addAttribute("footer1", "/welcome");
+        logger.info("disciplines load");
         return "disciplines";
     }
 

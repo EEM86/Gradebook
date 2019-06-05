@@ -34,7 +34,7 @@ public class GradesJournal extends ParentBean {
         return teacherId;
     }
 
-    public void setTeacher_id(Integer teacherId) {
+    public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
 }

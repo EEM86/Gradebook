@@ -41,11 +41,9 @@
 
     <bean id="ParentBean" class="ua.gradebook.model.beans.ParentBean"/>
     <bean id="Container" class="ua.gradebook.model.beans.Container" parent="ParentBean"/>
-    <bean id="Department" class="ua.gradebook.model.beans.Department" parent="ParentBean"/>
+    <bean id="BranchType" class="ua.gradebook.model.beans.BranchType" parent="ParentBean"/>
     <bean id="Discipline" class="ua.gradebook.model.beans.Discipline" parent="ParentBean"/>
     <bean id="GradesJournal" class="ua.gradebook.model.beans.GradesJournal" parent="ParentBean"/>
-    <bean id="Group" class="ua.gradebook.model.beans.Group" parent="ParentBean"/>
-    <bean id="Institution" class="ua.gradebook.model.beans.Institution" parent="ParentBean"/>
     <bean id="LessonsPlan" class="ua.gradebook.model.beans.LessonsPlan" parent="ParentBean"/>
     <bean id="Message" class="ua.gradebook.model.beans.Message" parent="ParentBean"/>
     <bean id="Person" class="ua.gradebook.model.beans.Person" parent="ParentBean"/>

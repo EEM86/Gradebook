@@ -14,12 +14,13 @@ public class JournalController {
     @Autowired
     private JournalService journalService;
 
-    private static final Logger logger = Logger.getLogger(RolesController.class);
+    private static final Logger logger = Logger.getLogger(JournalController.class);
 
     @GetMapping(value = "journal")
     public String showAllJournals(Model model) {
         model.addAttribute("journal", new GradesJournal());
         model.addAttribute("getJournals", journalService.findAll());
+        logger.info("journal load");
         return "journal";
     }
 
