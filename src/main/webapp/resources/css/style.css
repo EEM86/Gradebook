@@ -40,6 +40,11 @@ a{
     text-decoration:underline;
 }
 
+.logout {
+    width: 100%;
+    text-align: left;
+}
+
 .href{
     width: 90%;
     padding: 10px;

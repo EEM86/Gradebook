@@ -1,11 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html">
-    <meta charset="utf=8">
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <title>Disciplines</title>
 

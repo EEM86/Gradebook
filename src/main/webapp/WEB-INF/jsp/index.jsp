@@ -1,12 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="content-type" content="text/html">
-    <meta charset="utf=8">
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
 </head>
@@ -76,6 +73,13 @@
         </div>
     </div>
 </header>
+
+<div class="logout">
+    Вы вошли как:
+    <security:authentication property= "principal.username"/> с ролью:
+    <b><security:authentication property= "principal.authorities"/></b>
+    <a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
+</div>
 </body>
 
 </html>

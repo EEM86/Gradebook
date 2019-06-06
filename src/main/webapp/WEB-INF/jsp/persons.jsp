@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -6,8 +6,6 @@
 
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html">
-    <meta charset="utf=8">
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -20,20 +18,19 @@
     <title>Persons</title>
 </head>
 <body>
-<div align="center">
+<div>
     <jsp:include page="/"/>
 </div>
-<br>
-<br>
-    <form action="persons" method="post" align="center">
+
+<section>
+    <br>
+    <br>
+    <form action="persons" method="post" >
         <input type="text" name="lastName" placeholder="Enter last name to search">
         <button>Find</button>
     </form>
-<br>
-<br>
-
-<section>
-
+    <br>
+    <br>
     <c:if test="${!empty getPersons}">
         <table class="tg" width="100%">
             <tr>

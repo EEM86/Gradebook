@@ -17,6 +17,9 @@
 </head>
 
 <body>
+<div class="logout">
+    <a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
+</div>
 
 <div id="ftp-addresses-grid-buttons" class="bootgrid-header container-fluid pull-left">
     <div class="row actionBar">
