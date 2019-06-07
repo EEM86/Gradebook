@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
@@ -76,8 +77,8 @@
 
 <div class="logout">
     Вы вошли как:
-    <security:authentication property= "principal.username"/> с ролью:
-    <b><security:authentication property= "principal.authorities"/></b>
+    <sec:authentication property="principal.username"/> с ролью:
+    <b><sec:authentication property= "principal.authorities"/></b>
     <a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
 </div>
 </body>
