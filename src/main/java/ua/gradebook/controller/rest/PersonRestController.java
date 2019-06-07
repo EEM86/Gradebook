@@ -36,16 +36,15 @@ public class PersonRestController {
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> updatePerson(@PathVariable int id, @RequestBody Person person){
+    public ResponseEntity<?> updatePerson(@PathVariable int id, @RequestBody Person person) {
         try {
-            Person model  = (Person) personService.findById(id);
+            Person model = (Person) personService.findById(id);
             person.setId(model.getId());
             personService.update(person);
-            return new ResponseEntity<>(model, HttpStatus.OK);
-        }catch (EmptyResultDataAccessException e){
+        return new ResponseEntity<>(model, HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
     }
 
     @DeleteMapping(value = "/{id}")

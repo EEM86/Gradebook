@@ -75,11 +75,12 @@
     </div>
 </header>
 
-<div class="logout">
+<div class="logout" margin-left="20px">
     Вы вошли как:
-    <sec:authentication property="principal.username"/> с ролью:
+    <b><sec:authentication property="principal.username"/></b>
+    <br>с ролью:
     <b><sec:authentication property= "principal.authorities"/></b>
-    <a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
+    <br><a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
 </div>
 </body>
 
