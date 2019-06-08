@@ -1,5 +1,6 @@
 Delete all application tables in DB if troubles with liquibase exist.
-Type sql script into data base console:
+Type sql script into data base console.
+Than manually clean table DATABASECHANGELOG;
 
 /
 drop sequence L3G3_BRANCH_TYPE_SEQ;
@@ -20,24 +21,24 @@ drop trigger L3G3_BI_CONTAINER;
 drop trigger L3G3_BI_BRANCH_TYPE;
 drop trigger L3G3_BI_DISCIPLINE;
 /
-alter table L3G3_MESSAGE drop constraint MESSAGE_FK0;
-alter table L3G3_MESSAGE drop constraint MESSAGE_FK1;
+alter table L3G3_MESSAGE drop constraint L3G3_MESSAGE_FK0;
+alter table L3G3_MESSAGE drop constraint L3G3_MESSAGE_FK1;
 /
-alter table L3G3_PERSON drop constraint PERSON_FK0;
-alter table L3G3_PERSON drop constraint PERSON_FK1;
-alter table L3G3_PERSON drop constraint PERSON_FK2;
-alter table L3G3_PERSON drop constraint PERSON_FK3;
+alter table L3G3_PERSON drop constraint L3G3_PERSON_FK0;
+alter table L3G3_PERSON drop constraint L3G3_PERSON_FK1;
+alter table L3G3_PERSON drop constraint L3G3_PERSON_FK2;
+alter table L3G3_PERSON drop constraint L3G3_PERSON_FK3;
 /
-alter table L3G3_LESSONSPLAN drop constraint LESSONSPLAN_FK0;
-alter table L3G3_LESSONSPLAN drop constraint LESSONSPLAN_FK1;
-alter table L3G3_LESSONSPLAN drop constraint LESSONSPLAN_FK2;
+alter table L3G3_LESSONSPLAN drop constraint L3G3_LESSONSPLAN_FK0;
+alter table L3G3_LESSONSPLAN drop constraint L3G3_LESSONSPLAN_FK1;
+alter table L3G3_LESSONSPLAN drop constraint L3G3_LESSONSPLAN_FK2;
 /
-alter table L3G3_GRADESJOURNAL drop constraint GRADESJOURNAL_FK0;
-alter table L3G3_GRADESJOURNAL drop constraint GRADESJOURNAL_FK1;
-alter table L3G3_GRADESJOURNAL drop constraint GRADESJOURNAL_FK2;
+alter table L3G3_GRADESJOURNAL drop constraint L3G3_GRADESJOURNAL_FK0;
+alter table L3G3_GRADESJOURNAL drop constraint L3G3_GRADESJOURNAL_FK1;
+alter table L3G3_GRADESJOURNAL drop constraint L3G3_GRADESJOURNAL_FK2;
 /
-alter table L3G3_CONTAINER drop constraint CONTAINER_FK0;
-alter table L3G3_CONTAINER drop constraint CONTAINER_FK1;
+alter table L3G3_CONTAINER drop constraint L3G3_CONTAINER_FK0;
+alter table L3G3_CONTAINER drop constraint L3G3_CONTAINER_FK1;
 /
 drop table L3G3_PERSON;
 drop table L3G3_ROLE;
@@ -47,5 +48,4 @@ drop table L3G3_GRADESJOURNAL;
 drop table L3G3_DISCIPLINE;
 drop table L3G3_CONTAINER;
 drop table L3G3_BRANCH_TYPE;
-drop table DATABASECHANGELOG;
 /
