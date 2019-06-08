@@ -25,6 +25,8 @@ public class PersonService implements AppService {
        return this.personDAO.findByName(name);
     }
 
+    public ParentBean findByLogin(String login) {return this.personDAO.findByLogin(login); }
+
     public List<ParentBean> findNames(String text) {
        return this.personDAO.findNames(text);
     }
@@ -40,5 +42,6 @@ public class PersonService implements AppService {
     public boolean delete(int id) {
         return this.personDAO.delete(id);
     }
+
 
 }

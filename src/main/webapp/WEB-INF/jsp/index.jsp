@@ -1,3 +1,4 @@
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -13,7 +14,7 @@
 <header>
     <div class="href">
         <div class="href1">
-            <a href="">Profile</a>
+            <a href="profile/<%=SecurityContextHolder.getContext().getAuthentication().getName()%>">Profile</a>
         </div>
         <div class="href1">
             <a href="persons">Person</a>
@@ -82,10 +83,9 @@
     Вы вошли как:
     <b><sec:authentication property="principal.username"/></b>
     <br>с ролью:
-    <b><sec:authentication property= "principal.authorities"/></b>
+    <b><sec:authentication property="principal.authorities"/></b>
     <br><a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
 </div>
 </body>
 
 </html>
-
