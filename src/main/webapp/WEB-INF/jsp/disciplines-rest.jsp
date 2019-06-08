@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,15 +24,16 @@
     <a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
 </div>
 
-<div id="ftp-addresses-grid-buttons" class="bootgrid-header container-fluid pull-left">
-    <div class="row actionBar">
-        <div class="col-sm-12"></div>
-        <button type="button" class="btn btn-primary btn-margin pull-left" onclick="showCreateForm()">
-            Create discipline
-        </button>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+    <div id="ftp-addresses-grid-buttons" class="bootgrid-header container-fluid pull-left">
+        <div class="row actionBar">
+            <div class="col-sm-12"></div>
+            <button type="button" class="btn btn-primary btn-margin pull-left" onclick="showCreateForm()">
+                Create discipline
+            </button>
+        </div>
     </div>
-</div>
-
+</sec:authorize>
 <div class="modal fade in" id="createModalForm">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -86,8 +88,10 @@
     <tr>
         <th width="80">ID</th>
         <th width="200">discName</th>
-        <th width="80">Edit</th>
-        <th width="80">Delete</th>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <th width="80">Edit</th>
+            <th width="80">Delete</th>
+        </sec:authorize>
     </tr>
 </table>
 

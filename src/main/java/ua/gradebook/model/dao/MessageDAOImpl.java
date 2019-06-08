@@ -17,7 +17,7 @@ public class MessageDAOImpl implements DAO {
 
     private String table = "L3G3_message";
     private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE MESSAGE_ID=?";
+    private String findByIdSQL = "SELECT * FROM " + table + " WHERE RECEIVER_ID=? OR SENDER_ID=?";
     private String insertSQL = "INSERT INTO " + table +
             " (RECEIVER_ID, SENDER_ID, MESSAGE) VALUES (?, ?, ?)";
     private String updateSQL = "UPDATE " + table +

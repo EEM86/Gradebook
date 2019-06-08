@@ -25,15 +25,17 @@
             <a href="messages">Messages</a>
         </div>
 
-        <div class="href1">
-            <a href="containers">Containers</a>
-        </div>
-        <div class="href1">
-            <a href="branchtypes">Branch Type</a>
-        </div>
-        <div class="href1">
-            <a href="roles">Roles</a>
-        </div>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <div class="href1">
+                <a href="containers">Containers</a>
+            </div>
+            <div class="href1">
+                <a href="branchtypes">Branch Type</a>
+            </div>
+            <div class="href1">
+                <a href="roles">Roles</a>
+            </div>
+        </sec:authorize>
         <div class="href1">
             <a href="journal">Journal</a>
         </div>
@@ -56,16 +58,17 @@
         <div class="href1">
             <a href="message-rest/all">Messages - rest</a>
         </div>
-
-        <div class="href1">
-            <a href="containers-rest">Containers - rest</a>
-        </div>
-        <div class="href1">
-            <a href="branchtypes-rest/all">Branch Type - rest</a>
-        </div>
-        <div class="href1">
-            <a href="roles-rest">Roles - rest</a>
-        </div>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <div class="href1">
+                <a href="containers-rest">Containers - rest</a>
+            </div>
+            <div class="href1">
+                <a href="branchtypes-rest/all">Branch Type - rest</a>
+            </div>
+            <div class="href1">
+                <a href="roles-rest">Roles - rest</a>
+            </div>
+        </sec:authorize>
         <div class="href1">
             <a href="journal-rest/all">Journal - rest</a>
         </div>

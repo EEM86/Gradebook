@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
@@ -18,8 +19,9 @@
                 <th width="80">Receiver</th>
                 <th width="80">Sender</th>
                 <th width="200">message</th>
-                <th width="60">Edit</th>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <th width="60">Delete</th>
+                </sec:authorize>
             </tr>
             <c:forEach items="${getMessages}" var="message">
                 <tr>
@@ -27,8 +29,9 @@
                     <td>${message.receiverId}</td>
                     <td>${message.senderId}</td>
                     <td>${message.messageText}</td>
-                    <td><a href="<c:url value='/messages/edit/${message.id}'/>">Edit</a></td>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <td><a href="<c:url value='/messages/delete/${message.id}'/>">Delete</a></td>
+                    </sec:authorize>
                 </tr>
             </c:forEach>
         </table>
@@ -40,6 +43,7 @@
     <c:url var="addAction" value="/messages/add"/>
     <form:form action="${addAction}" modelAttribute="message">
         <table>
+<%--
             <c:if test="${!empty message.receiverId}">
                 <tr>
                     <td>
@@ -53,6 +57,7 @@
                     </td>
                 </tr>
             </c:if>
+--%>
             <tr>
                 <td>
                     <form:label value="receiverId" path="receiverId">
@@ -60,7 +65,9 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="1" pattern="[0-9]" path="receiverId"/>
+                <%--    <form:input type="number" min="1" pattern="[0-9]" path="receiverId"/>--%>
+                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                    <form:hidden path="id"/>
                 </td>
             </tr>
 
@@ -84,18 +91,16 @@
                     <form:input type="text" size="100px" path="messageText"/>
                 </td>
             </tr>
+
              <tr>
                 <td colspan="2">
-                    <c:if test="${!empty message.receiverId}">
-                        <input type="submit"
-                               value="<spring:message text="Edit message"/>"/>
-                    </c:if>
                     <c:if test="${empty message.receiverId}">
                         <input type="submit"
                                value="<spring:message text="Add message"/>"/>
                     </c:if>
                 </td>
             </tr>
+
         </table>
     </form:form>
 </section>
