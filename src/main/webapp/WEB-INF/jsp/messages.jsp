@@ -66,8 +66,8 @@
                 </td>
                 <td>
                 <%--    <form:input type="number" min="1" pattern="[0-9]" path="receiverId"/>--%>
-                    <form:input path="id" readonly="true" size="8" disabled="true"/>
-                    <form:hidden path="id"/>
+                    <form:input type="number" min="1" path="receiverId" size="8" />
+                    <form:hidden path="receiverId"/>
                 </td>
             </tr>
 

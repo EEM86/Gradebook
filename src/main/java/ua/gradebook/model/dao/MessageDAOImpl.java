@@ -32,7 +32,7 @@ public class MessageDAOImpl implements DAO {
     @Override
     public ParentBean findById(Integer id) {
         return (Message) jdbcTemplate.queryForObject(findByIdSQL,
-                new Object[]{id}, new NewRowMapper());
+                new Object[]{id, id}, new NewRowMapper());
     }
 
     @Override

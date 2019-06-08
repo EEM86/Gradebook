@@ -5,14 +5,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.gradebook.mail.SimpleOrderManager;
 import ua.gradebook.model.beans.Message;
+import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.MessageService;
+import ua.gradebook.service.PersonService;
 
 @Controller
 public class MessagesController {
 
     @Autowired
     private MessageService messageService;
+
+    @Autowired
+    private SimpleOrderManager simpleOrderManager;
+
+    @Autowired
+    private PersonService personService;
 
     private static final Logger logger = Logger.getLogger(MessagesController.class);
 
@@ -31,7 +40,7 @@ public class MessagesController {
         } else {
             this.messageService.update(message);
         }
-
+        simpleOrderManager.sendMessage((Person) personService.findById(message.getReceiverId()));
         return "redirect:/messages";
     }
 
@@ -39,12 +48,5 @@ public class MessagesController {
     public String deleteMessage(@PathVariable("id") int id){
         this.messageService.delete(id);
         return "redirect:/messages";
-    }
-
-    @RequestMapping(value = "/messages/edit/{id}")
-    public String editMessage(@PathVariable("id") int id, Model model){
-        model.addAttribute("message", this.messageService.findById(id));
-        model.addAttribute("getMessages", this.messageService.findAll());
-        return "messages";
     }
 }

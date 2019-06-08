@@ -48,6 +48,32 @@
     <bean id="Person" class="ua.gradebook.model.beans.Person" parent="ParentBean"/>
     <bean id="Role" class="ua.gradebook.model.beans.Role" parent="ParentBean"/>
 
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${spring.mail.host}"/>
+        <property name="port" value="${spring.mail.port}"/>
+        <property name="username" value="${spring.mail.username}"/>
+        <property name="password" value="${spring.mail.password}"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from" value="eljbeta.1@gmail.com"/>
+        <property name="subject" value="you received a message"/>
+    </bean>
+
+    <bean id="messageManager" class="ua.gradebook.mail.SimpleOrderManager">
+        <property name="mailSender" ref="mailSender"/>
+        <property name="templateMessage" ref="templateMessage"/>
+    </bean>
+
     <bean id = "loggingAspect" class="ua.gradebook.aop.LoggingAspect"/>
     <aop:config>
         <aop:aspect ref="loggingAspect">

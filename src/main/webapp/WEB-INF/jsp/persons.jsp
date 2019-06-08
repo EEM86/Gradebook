@@ -141,7 +141,7 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="email"/>
+                        <form:input type="email" path="email"/>
                     </td>
                 </tr>
                 <tr>
