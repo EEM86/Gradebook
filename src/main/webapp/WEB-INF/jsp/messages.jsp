@@ -43,21 +43,6 @@
     <c:url var="addAction" value="/messages/add"/>
     <form:form action="${addAction}" modelAttribute="message">
         <table>
-<%--
-            <c:if test="${!empty message.receiverId}">
-                <tr>
-                    <td>
-                        <form:label path="id">
-                            <spring:message text="ID"/>
-                        </form:label>
-                    </td>
-                    <td>
-                        <form:input path="id" readonly="true" size="8" disabled="true"/>
-                        <form:hidden path="id"/>
-                    </td>
-                </tr>
-            </c:if>
---%>
             <tr>
                 <td>
                     <form:label path="receiverId">

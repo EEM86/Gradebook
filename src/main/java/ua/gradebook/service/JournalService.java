@@ -45,5 +45,4 @@ public class JournalService implements AppService {
     public boolean delete(int id) {
         return this.journalDAO.delete(id);
     }
-
 }

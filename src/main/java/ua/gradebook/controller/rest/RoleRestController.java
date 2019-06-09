@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.model.beans.Person;
 import ua.gradebook.model.beans.Role;
 import ua.gradebook.service.RoleService;
 

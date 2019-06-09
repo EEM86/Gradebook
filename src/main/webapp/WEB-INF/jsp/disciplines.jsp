@@ -10,7 +10,6 @@
 
 </head>
 <body>
-<%--<div><jsp:include page="${header1}"/></div>--%>
 <div><jsp:include page="/"/></div>
 <section>
     <c:if test="${!empty getDisciplines}">

@@ -45,5 +45,4 @@ public class LessonsPlanService implements AppService {
     public boolean delete(int id) {
         return this.lessonsPlanDAO.delete(id);
     }
-
 }

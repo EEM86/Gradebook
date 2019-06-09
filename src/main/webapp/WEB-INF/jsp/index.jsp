@@ -15,39 +15,40 @@
 <header>
     <div class="href">
         <div class="href1">
-            <a href="profile/${loggedPerson.id}">Profile</a>
+            <a href="/Gradebook/profile/${loggedPerson.id}">Profile</a>
         </div>
         <div class="href1">
-            <a href="persons">Person</a>
+            <a href="/Gradebook/persons">Person</a>
         </div>
         <div class="href1">
-            <a href="disciplines">Disciplines</a>
+            <a href="/Gradebook/disciplines">Disciplines</a>
         </div>
         <div class="href1">
-            <a href="messages/${loggedPerson.id}">Messages</a>
+            <a href="/Gradebook/messages/${loggedPerson.id}">Messages</a>
         </div>
 
         <sec:authorize access="hasRole('ROLE_ADMIN')">
             <div class="href1">
-                <a href="containers">Containers</a>
+                <a href="/Gradebook/containers">Containers</a>
             </div>
             <div class="href1">
-                <a href="branchtypes">Branch Type</a>
+                <a href="/Gradebook/branchtypes">Branch Type</a>
             </div>
             <div class="href1">
-                <a href="roles">Roles</a>
+                <a href="/Gradebook/roles">Roles</a>
             </div>
         </sec:authorize>
         <div class="href1">
-            <a href="journal/${loggedPerson.id}">Journal</a>
+            <a href="/Gradebook/journal/${loggedPerson.id}">Journal</a>
         </div>
         <sec:authorize access="hasAnyAuthority('ROLE_TEACHER', 'ROLE_ADMIN')">
         <div class="href1">
-            <a href="lessonsplan/${loggedPerson.id}">Lessons Plan</a>
+            <a href="/Gradebook/lessonsplan/${loggedPerson.id}">Lessons Plan</a>
         </div>
         </sec:authorize>
     </div>
 
+    <sec:authorize access="hasAnyAuthority('ROLE_ADMIN', 'ROLE_TEACHER')">
     <div class="href">
         <hr>
         <div class="href1"> REST API: </div>
@@ -80,6 +81,7 @@
             <a href="lessonsplan-rest/all">Lessons Plan - rest</a>
         </div>
     </div>
+    </sec:authorize>
 </header>
 
 <div class="logout" margin-left="20px">

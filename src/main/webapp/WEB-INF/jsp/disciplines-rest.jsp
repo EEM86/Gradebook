@@ -88,10 +88,8 @@
     <tr>
         <th width="80">ID</th>
         <th width="200">discName</th>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <th width="80">Edit</th>
-            <th width="80">Delete</th>
-        </sec:authorize>
+        <th width="80">Edit</th>
+        <th width="80">Delete</th>
     </tr>
 </table>
 

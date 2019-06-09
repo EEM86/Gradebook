@@ -58,5 +58,4 @@ public class LessonsPlanController {
         model.addAttribute("getLessonsplan", this.lessonsPlanService.findAll());
         return "lessonsplan";
     }
-
 }

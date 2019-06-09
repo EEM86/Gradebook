@@ -2,12 +2,9 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;

@@ -7,19 +7,19 @@ import java.sql.Date;
 import java.util.Collection;
 
 public class Person extends ParentBean {
-    Integer roleId;
-    String firstName;
-    String lastName;
-    String email;
-    String phone;
-    String address;
-    Date birthday;
-    Container container;
-    Integer departmentId;
-    Integer curatorId;
-    Integer groupId;
-    String login;
-    String password;
+    private Integer roleId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+    private String address;
+    private Date birthday;
+    private Container container;
+    private Integer departmentId;
+    private Integer curatorId;
+    private Integer groupId;
+    private String login;
+    private String password;
 
     public Person() {
     }

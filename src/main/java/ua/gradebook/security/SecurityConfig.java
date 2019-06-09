@@ -16,8 +16,6 @@ package ua.gradebook.security;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-/*    @Autowired
-    private JdbcTemplate jdbcTemplate;*/
 
     private String loginPasswordSQL = "SELECT LOGIN AS username, PASSWORD, 'true' AS enabled FROM L3G3_PERSON WHERE LOGIN=?";
     private String roleSQL =

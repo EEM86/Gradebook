@@ -39,5 +39,4 @@ public class MessageService {
     public boolean delete(int id) {
         return this.messageDAO.delete(id);
     }
-
 }

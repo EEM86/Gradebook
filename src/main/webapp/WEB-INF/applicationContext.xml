@@ -10,16 +10,15 @@
 
     <context:component-scan base-package="ua.gradebook.security"/>
 
-     <context:property-placeholder location="classpath:application.properties, classpath:log4j.properties"/>
+    <context:property-placeholder location="classpath:application.properties, classpath:log4j.properties"/>
 
-     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-         <property name="driverClassName" value="${ORACLE_DB_DRIVER_CLASS}"/>
-         <property name="url" value="${ORACLE_DB_URL}"/>
-         <property name="username" value="${ORACLE_DB_USERNAME}"/>
-         <property name="password" value="${ORACLE_DB_PASSWORD}"/>
-         <property name="removeAbandoned" value="true"/>
-         <property name="initialSize" value="20" />
-         <property name="maxActive" value="30" />
-     </bean>
-
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${ORACLE_DB_DRIVER_CLASS}"/>
+        <property name="url" value="${ORACLE_DB_URL}"/>
+        <property name="username" value="${ORACLE_DB_USERNAME}"/>
+        <property name="password" value="${ORACLE_DB_PASSWORD}"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="initialSize" value="20"/>
+        <property name="maxActive" value="30"/>
+    </bean>
 </beans>

@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;

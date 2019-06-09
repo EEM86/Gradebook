@@ -7,3 +7,30 @@ Lab#3/Group3/2019
 Students grades journal
 =====================
 A web-application based on Spring MVC framework.
+
+Test logins and passwords:
+<p>admin admin - for admin rules;</p>
+<p>ivan ivanov - as a teacher;</p>
+<p>petr petrov - as a student.</p>
+
+##
+Some screens:
+<p>Email notification after sending a message:</p>
+
+![screenshot of sample](https://i.imgur.com/WphZQjy.png)
+##
+<p>Admin's and student's pages:</p>
+
+![screenshot of sample](https://i.imgur.com/TzUQadn.png)
+
+![screenshot of sample](https://i.imgur.com/Lb5Pwbq.png)
+
+##
+Technology Stack and project features:
+<p>Spring MVC, Spring Security</p>
+<p>Spring JDBC</p>
+<p>Liquibase</p>
+<p>jQuery, AJAX</p>
+<p>Oracle XE DB</p>
+<p>Maven</p>
+<p>REST API</p>

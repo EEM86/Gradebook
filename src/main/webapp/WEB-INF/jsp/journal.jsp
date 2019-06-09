@@ -45,7 +45,6 @@
 
     <a href="/Gradebook/">Back to main menu</a>
     <br/>
-    <%--<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_TEACHER')">--%>
     <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
         <h1>Add a journal</h1>
 
@@ -103,7 +102,7 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="teacherId"/>
+                        <form:input type="number" value="${loggedPerson.id}" min="1" path="teacherId"/>
                     </td>
                 </tr>
                 <tr>

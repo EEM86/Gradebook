@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.Discipline;
 import ua.gradebook.model.beans.ParentBean;
 
@@ -24,11 +23,6 @@ public class DisciplineDAOImpl implements DAO {
     private String insertSQL = "INSERT INTO " + table + " (DISC_NAME) VALUES (?)";
     private String updateSQL = "UPDATE " + table + " SET DISC_NAME=? WHERE DISC_ID=?";
     private String deleteSQL = "DELETE FROM " + table + " WHERE DISC_ID=?";
-
-    public DisciplineDAOImpl() {
-    }
-
-
 
     @Override
     public List<ParentBean> findAll() {

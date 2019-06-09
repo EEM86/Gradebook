@@ -29,7 +29,7 @@ public class SimpleOrderManager {
         msg.setTo(person.getEmail());
         msg.setText(
                 "Dear " + person.getFirstName()
-                        + ", you received a new message in Gradebook!");
+                        + ", you've received a new message in Gradebook!");
         try{
             this.mailSender.send(msg);
         }
@@ -37,5 +37,4 @@ public class SimpleOrderManager {
             logger.error("MailException error ", ex);
         }
     }
-
 }

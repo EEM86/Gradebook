@@ -65,10 +65,4 @@ public class PersonController {
         model.addAttribute("person", this.personService.findById(id));
         return "profile";
     }
-
-//    @RequestMapping(value="profile/{login}", method = RequestMethod.GET)
-//    public String profile(@PathVariable("login") String login, Model model) {
-//        model.addAttribute("person", this.personService.findByLogin(login));
-//        return "profile";
-//    }
 }

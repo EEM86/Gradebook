@@ -1,6 +1,6 @@
-Delete all application tables in DB if troubles with liquibase exist.
-Type sql script into data base console.
-Than manually clean table DATABASECHANGELOG;
+If you are in troubles with liquibase, you should:
+Delete all application tables in DB, using script below.
+Then manually clean up this table: DATABASECHANGELOG;
 
 /
 drop sequence L3G3_BRANCH_TYPE_SEQ;

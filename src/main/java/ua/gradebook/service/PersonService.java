@@ -3,7 +3,6 @@ package ua.gradebook.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.model.beans.Person;
 import ua.gradebook.model.dao.PersonDAOImpl;
 
 import java.util.List;
@@ -42,6 +41,4 @@ public class PersonService implements AppService {
     public boolean delete(int id) {
         return this.personDAO.delete(id);
     }
-
-
 }
