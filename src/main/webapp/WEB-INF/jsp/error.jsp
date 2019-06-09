@@ -6,5 +6,6 @@
 <body>
 <h1>Upps, seems you did something wrong...</h1>
 Please, contact the support...
+<p>${exception}</p>
 </body>
 </html>

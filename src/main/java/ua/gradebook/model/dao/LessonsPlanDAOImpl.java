@@ -18,6 +18,7 @@ public class LessonsPlanDAOImpl implements DAO {
     private String table = "L3G3_lessonsplan";
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE PLAN_ID=?";
+    private String findRelativePlanByIdSQL = "SELECT * FROM " + table + " WHERE TEACHER_ID=?";
     private String insertSQL = "INSERT INTO " + table +
           " (DISC_ID, TEACHER_ID, GROUP_ID, HOURS) VALUES (?, ?, ?, ?)";
     private String updateSQL = "UPDATE " + table +
@@ -38,6 +39,10 @@ public class LessonsPlanDAOImpl implements DAO {
     @Override
     public ParentBean findByName(String name) {
         return null;
+    }
+
+    public List<ParentBean> findRelativePlanById(Integer id) {
+        return (List) jdbcTemplate.query(findRelativePlanByIdSQL, new Object[]{id}, new NewRowMapper());
     }
 
     @Override

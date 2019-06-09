@@ -2,11 +2,20 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.GradesJournal;
+import ua.gradebook.model.beans.Message;
+import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.JournalService;
+import ua.gradebook.service.PersonService;
+
+import java.util.Collection;
 
 @Controller
 public class JournalController {
@@ -21,6 +30,17 @@ public class JournalController {
         model.addAttribute("journal", new GradesJournal());
         model.addAttribute("getJournals", journalService.findAll());
         logger.info("journal load");
+        return "journal";
+    }
+
+    @GetMapping(value = "journal/{id}")
+    public String showRelativeJournalById (@PathVariable("id") int id, Model model) {
+        if (Person.isAdmin()) {
+            return "redirect:/journal";
+        }
+        model.addAttribute("journal", new GradesJournal());
+        model.addAttribute("getJournals", journalService.findRelativeDataById(id));
+        logger.info("journals load");
         return "journal";
     }
 

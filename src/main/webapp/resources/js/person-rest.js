@@ -45,7 +45,7 @@ $(document).ready(function () {
                     + "<td>"+val.lastName + "</td><td>"+ val.email + "</td><td>" + val.phone + "</td>"
                     + "<td>" + val.address + "</td><td>"+ val.birthday + "</td><td>" + val.departmentId + "</td>"
                     + "<td>" + val.curatorId + "</td><td>"+ val.groupId + "</td><td>" + val.login + "</td>"
-                    + "<td>" + val.password + "</td><td><button type=\"button\" class=\"mybutton\" onclick=\"edit(this)\">Edit</button> "
+                    + "<td>" + val.password + "</td><td><button type=\"button\" class=\"mybutton\" onclick=\"edit(this)\">Edit</button></td> "
                     + "<td><button type=\"button\" class=\"mybutton\" onclick=\"deletePerson(this)\">Delete</button></td></tr>");
             })
         }

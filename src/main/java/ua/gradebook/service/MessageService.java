@@ -20,6 +20,10 @@ public class MessageService {
         return this.messageDAO.findById(id);
     }
 
+    public List<ParentBean> findMessagesById(Integer id) {
+        return this.messageDAO.findMessagesById(id);
+    }
+
     public ParentBean findByName(String name) {
         return this.messageDAO.findByName(name);
     }

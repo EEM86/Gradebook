@@ -22,6 +22,10 @@ public class JournalService implements AppService {
         return this.journalDAO.findById(id);
     }
 
+    public List<ParentBean> findRelativeDataById(Integer id) {
+        return this.journalDAO.findRelativeDataById(id);
+    }
+
     @Override
     public ParentBean findByName(String name) {
         return this.journalDAO.findByName(name);

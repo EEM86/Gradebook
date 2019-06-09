@@ -1,6 +1,10 @@
 package ua.gradebook.model.beans;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import java.sql.Date;
+import java.util.Collection;
 
 public class Person extends ParentBean {
     Integer roleId;
@@ -34,6 +38,16 @@ public class Person extends ParentBean {
         this.groupId = groupId;
         this.login = login;
         this.password = password;
+    }
+
+    public static boolean isAdmin() {
+        Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        for (SimpleGrantedAuthority role : authorities ) {
+            if ("ROLE_ADMIN".equalsIgnoreCase(role.getAuthority())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Integer getRoleId() {
@@ -143,7 +157,7 @@ public class Person extends ParentBean {
     @Override
     public String toString() {
         return "Person{" +
-                "person_id=" + id +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';

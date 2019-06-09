@@ -60,14 +60,12 @@
 --%>
             <tr>
                 <td>
-                    <form:label value="receiverId" path="receiverId">
+                    <form:label path="receiverId">
                         <spring:message text="Receiver"/>
                     </form:label>
                 </td>
                 <td>
-                <%--    <form:input type="number" min="1" pattern="[0-9]" path="receiverId"/>--%>
-                    <form:input type="number" min="1" path="receiverId" size="8" />
-                    <form:hidden path="receiverId"/>
+                    <form:input type="number" min="1" pattern="[0-999]" path="receiverId" size="8" />
                 </td>
             </tr>
 
@@ -78,7 +76,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="1" pattern="[0-9]" path="senderId"/>
+                    <form:input type="number" value="${loggedPerson.id}" path="senderId" readonly="true"/>
                 </td>
             </tr>
             <tr>
@@ -94,10 +92,8 @@
 
              <tr>
                 <td colspan="2">
-                    <c:if test="${empty message.receiverId}">
-                        <input type="submit"
-                               value="<spring:message text="Add message"/>"/>
-                    </c:if>
+                    <input type="submit"
+                           value="<spring:message text="Add message"/>"/>
                 </td>
             </tr>
 

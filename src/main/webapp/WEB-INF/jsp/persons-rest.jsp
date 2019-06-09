@@ -233,8 +233,10 @@
         <th width="120">groupId</th>
         <th width="120">login</th>
         <th width="120">password</th>
-        <th width="80">Edit</th>
-        <th width="80">Delete</th>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <th width="80">Edit</th>
+            <th width="80">Delete</th>
+        </sec:authorize>
     </tr>
 </table>
 

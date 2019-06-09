@@ -33,6 +33,22 @@ public class MessagesController {
         return "messages";
     }
 
+//    @GetMapping(value = "messages/{id}")
+//    public String showById (@PathVariable("id") int id, Model model) {
+//        model.addAttribute("message", new Message());
+//        model.addAttribute("getMessages", messageService.findById(id));
+//        logger.info("messages load");
+//        return "messages";
+//    }
+
+    @GetMapping(value = "messages/{id}")
+    public String showMessagesById (@PathVariable("id") int id, Model model) {
+        model.addAttribute("message", new Message());
+        model.addAttribute("getMessages", messageService.findMessagesById(id));
+        logger.info("messages load");
+        return "messages";
+    }
+
     @PostMapping(value = "/messages/add")
     public String addMessage(@ModelAttribute("message") Message message){
         if (message.getId() == null) {
@@ -49,4 +65,11 @@ public class MessagesController {
         this.messageService.delete(id);
         return "redirect:/messages";
     }
+
+//    @RequestMapping(value = "/messages/edit/{id}")
+//    public String editMessage(@PathVariable("id") int id, Model model){
+//        model.addAttribute("message", this.messageService.findById(id));
+//        model.addAttribute("getMessages", this.messageService.findAll());
+//        return "messages";
+//    }
 }

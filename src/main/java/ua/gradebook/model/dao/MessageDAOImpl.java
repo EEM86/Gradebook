@@ -29,10 +29,15 @@ public class MessageDAOImpl implements DAO {
         return jdbcTemplate.query(findAllSQL, new NewRowMapper());
     }
 
+    //ToDo make return type List?
     @Override
     public ParentBean findById(Integer id) {
         return (Message) jdbcTemplate.queryForObject(findByIdSQL,
                 new Object[]{id, id}, new NewRowMapper());
+    }
+
+    public List<ParentBean> findMessagesById(Integer id) {
+        return (List) jdbcTemplate.query(findByIdSQL, new Object[]{id, id}, new NewRowMapper());
     }
 
     @Override

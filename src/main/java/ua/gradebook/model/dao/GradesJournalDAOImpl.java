@@ -21,6 +21,7 @@ public class GradesJournalDAOImpl implements DAO {
     private String table = "L3G3_gradesjournal";
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE JOURNAL_ID=?";
+    private String findRelativeDataByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=? OR TEACHER_ID=?";
     private String insertSQL = "INSERT INTO " + table + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID)"
            + " VALUES (?, ?, ?, ?)";
     private String updateSQL = "UPDATE " + table + " SET DISC_ID=?, PERSON_ID=?, GRADE=?, TEACHER_ID=? WHERE JOURNAL_ID=?";
@@ -34,6 +35,10 @@ public class GradesJournalDAOImpl implements DAO {
     @Override
     public ParentBean findById(Integer id) {
         return (GradesJournal) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
+    }
+
+    public List<ParentBean> findRelativeDataById(Integer id) {
+        return (List) jdbcTemplate.query(findRelativeDataByIdSQL, new Object[]{id, id}, new NewRowMapper());
     }
 
     @Override

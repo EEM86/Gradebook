@@ -65,7 +65,7 @@
     </bean>
 
     <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
-        <property name="from" value="eljbeta.1@gmail.com"/>
+        <property name="from" value="GradebookMessenger@gmail.com"/>
         <property name="subject" value="you received a message"/>
     </bean>
 

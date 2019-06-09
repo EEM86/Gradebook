@@ -1,4 +1,5 @@
 <%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%@ page import="ua.gradebook.model.beans.Person" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -14,7 +15,7 @@
 <header>
     <div class="href">
         <div class="href1">
-            <a href="profile/<%=SecurityContextHolder.getContext().getAuthentication().getName()%>">Profile</a>
+            <a href="profile/${loggedPerson.id}">Profile</a>
         </div>
         <div class="href1">
             <a href="persons">Person</a>
@@ -23,7 +24,7 @@
             <a href="disciplines">Disciplines</a>
         </div>
         <div class="href1">
-            <a href="messages">Messages</a>
+            <a href="messages/${loggedPerson.id}">Messages</a>
         </div>
 
         <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -38,11 +39,13 @@
             </div>
         </sec:authorize>
         <div class="href1">
-            <a href="journal">Journal</a>
+            <a href="journal/${loggedPerson.id}">Journal</a>
         </div>
+        <sec:authorize access="hasAnyAuthority('ROLE_TEACHER', 'ROLE_ADMIN')">
         <div class="href1">
-            <a href="lessonsplan">Lessons Plan</a>
+            <a href="lessonsplan/${loggedPerson.id}">Lessons Plan</a>
         </div>
+        </sec:authorize>
     </div>
 
     <div class="href">
@@ -82,6 +85,7 @@
 <div class="logout" margin-left="20px">
     Вы вошли как:
     <b><sec:authentication property="principal.username"/></b>
+
     <br>с ролью:
     <b><sec:authentication property="principal.authorities"/></b>
     <br><a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>

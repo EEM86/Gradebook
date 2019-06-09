@@ -10,7 +10,9 @@
 
 </head>
 <body>
-<div><jsp:include page="/"/></div>
+<div>
+    <jsp:include page="/"/>
+</div>
 <section>
     <c:if test="${!empty getJournals}">
         <table class="tg">

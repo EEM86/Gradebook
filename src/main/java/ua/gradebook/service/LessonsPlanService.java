@@ -22,6 +22,10 @@ public class LessonsPlanService implements AppService {
         return this.lessonsPlanDAO.findById(id);
     }
 
+    public List<ParentBean> findRelativePlanById(Integer id) {
+        return this.lessonsPlanDAO.findRelativePlanById(id);
+    }
+
     @Override
     public ParentBean findByName(String name) {
         return this.lessonsPlanDAO.findByName(name);
