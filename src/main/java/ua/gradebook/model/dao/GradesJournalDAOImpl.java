@@ -71,12 +71,7 @@ public class GradesJournalDAOImpl implements DAOExtension {
     }
 
     @Override
-    public List<ParentBean> findListByName(String text) {
-        return null;
-    }
-
-    @Override
-    public List<ParentBean> findListById(Integer id) {
+    public List<ParentBean> findListByObject(Object id) {
         return (List) jdbcTemplate.query(findRelativeDataByIdSQL, new Object[]{id, id}, new NewRowMapper());
     }
 

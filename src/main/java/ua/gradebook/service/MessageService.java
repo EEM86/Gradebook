@@ -30,11 +30,8 @@ public class MessageService implements AppServiceExtension {
     }
 
     @Override
-    public List<ParentBean> findListByName(String query) {return null;}
-
-    @Override
-    public List<ParentBean> findListById(Integer id) {
-        return this.messageDAO.findListById(id);
+    public List<ParentBean> findListByObject(Object id) {
+        return this.messageDAO.findListByObject(id);
     }
 
     @Override

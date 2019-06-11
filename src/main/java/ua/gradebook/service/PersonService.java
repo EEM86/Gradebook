@@ -33,12 +33,9 @@ public class PersonService implements AppServiceExtension {
     public ParentBean findByLogin(String login) {return this.personDAO.findByLogin(login); }
 
     @Override
-    public List<ParentBean> findListByName(String text) {
-       return this.personDAO.findListByName(text);
+    public List<ParentBean> findListByObject(Object obj) {
+        return this.personDAO.findListByObject(obj);
     }
-
-    @Override
-    public List<ParentBean> findListById(Integer id) { return null; }
 
     @Override
     public boolean insert(ParentBean item) {

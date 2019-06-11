@@ -51,7 +51,7 @@ public class PersonController {
     @RequestMapping(value="persons", method = RequestMethod.POST)
     public String searchPerson(@RequestParam("lastName") String lastName, Model model) {
         model.addAttribute("person", new Person());
-        model.addAttribute("getPersons", this.personService.findListByName(lastName));
+        model.addAttribute("getPersons", this.personService.findListByObject(lastName));
         return "persons";
     }
 

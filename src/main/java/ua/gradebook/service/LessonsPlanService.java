@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.dao.DAOExtension;
-import ua.gradebook.model.dao.LessonsPlanDAOImpl;
 
 import java.util.List;
 
@@ -46,13 +45,8 @@ public class LessonsPlanService implements AppServiceExtension {
     }
 
     @Override
-    public List<ParentBean> findListByName(String text) {
-        return null;
-    }
-
-    @Override
-    public List<ParentBean> findListById(Integer id) {
-        return this.lessonsPlanDAO.findListById(id);
+    public List<ParentBean> findListByObject(Object id) {
+        return this.lessonsPlanDAO.findListByObject(id);
     }
 
     @Override

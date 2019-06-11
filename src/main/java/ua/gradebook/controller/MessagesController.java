@@ -36,9 +36,9 @@ public class MessagesController {
     }
 
     @GetMapping(value = "messages/{id}")
-    public String showMessagesById (@PathVariable("id") int id, Model model) {
+    public String showMessagesById (@PathVariable("id") Integer id, Model model) {
         model.addAttribute("message", new Message());
-        model.addAttribute("getMessages", messageService.findListById(id));
+        model.addAttribute("getMessages", messageService.findListByObject(id));
         logger.info("messages load");
         return "messages";
     }

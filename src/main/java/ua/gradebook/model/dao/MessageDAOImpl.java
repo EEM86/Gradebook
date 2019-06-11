@@ -1,7 +1,8 @@
 package ua.gradebook.model.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.*;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.Message;
 import ua.gradebook.model.beans.ParentBean;
@@ -70,10 +71,7 @@ public class MessageDAOImpl implements DAOExtension {
     }
 
     @Override
-    public List<ParentBean> findListByName(String text) { return null; }
-
-    @Override
-    public List<ParentBean> findListById(Integer id) {
+    public List<ParentBean> findListByObject(Object id) {
         return (List) jdbcTemplate.query(findByIdSQL, new Object[]{id, id}, new NewRowMapper());
     }
 

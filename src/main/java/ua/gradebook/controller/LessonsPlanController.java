@@ -27,12 +27,12 @@ public class LessonsPlanController {
     }
 
     @GetMapping(value = "lessonsplan/{id}")
-    public String findRelativePlanById (@PathVariable("id") int id, Model model) {
+    public String findRelativePlanById (@PathVariable("id") Integer id, Model model) {
         if (Person.isAdmin()) {
             return "redirect:/lessonsplan";
         }
         model.addAttribute("lessonsplan", new LessonsPlan());
-        model.addAttribute("getLessonsplan", lessonsPlanService.findListById(id));
+        model.addAttribute("getLessonsplan", lessonsPlanService.findListByObject(id));
         logger.info("lessonsplan load");
         return "lessonsplan";
     }

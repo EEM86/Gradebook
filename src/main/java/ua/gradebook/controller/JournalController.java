@@ -28,12 +28,12 @@ public class JournalController {
     }
 
     @GetMapping(value = "journal/{id}")
-    public String showRelativeJournalById (@PathVariable("id") int id, Model model) {
+    public String showRelativeJournalById (@PathVariable("id") Integer id, Model model) {
         if (Person.isAdmin()) {
             return "redirect:/journal";
         }
         model.addAttribute("journal", new GradesJournal());
-        model.addAttribute("getJournals", journalService.findListById(id));
+        model.addAttribute("getJournals", journalService.findListByObject(id));
         logger.info("journals load");
         return "journal";
     }

@@ -50,14 +50,9 @@ public class PersonDAOImpl implements DAOExtension {
     }
 
     @Override
-    public List<ParentBean> findListByName(String text) {
-        String corText = "%" + text + "%";
+    public List<ParentBean> findListByObject(Object obj) {
+        String corText = "%" + obj + "%";
         return (List) jdbcTemplate.query(findNamesSQL, new Object[]{corText}, new NewRowMapper());
-    }
-
-    @Override
-    public List<ParentBean> findListById(Integer id) {
-        return null;
     }
 
     @Override
