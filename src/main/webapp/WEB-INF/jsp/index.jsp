@@ -53,11 +53,11 @@
         <hr>
         <div class="href1"> REST API: </div>
         <div class="href1">
-            <a href="persons-rest">Persons - rest</a>
+            <a href="person/all">Persons - rest</a>
         </div>
 
         <div class="href1">
-            <a href="disciplines-rest">Disciplines - rest</a>
+            <a href="discipline/all">Disciplines - rest</a>
         </div>
 
         <div class="href1">
@@ -65,13 +65,13 @@
         </div>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
             <div class="href1">
-                <a href="containers-rest">Containers - rest</a>
+                <a href="container/all">Containers - rest</a>
             </div>
             <div class="href1">
                 <a href="branchtypes-rest/all">Branch Type - rest</a>
             </div>
             <div class="href1">
-                <a href="roles-rest">Roles - rest</a>
+                <a href="role/all">Roles - rest</a>
             </div>
         </sec:authorize>
         <div class="href1">
