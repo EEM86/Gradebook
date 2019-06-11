@@ -49,7 +49,6 @@ public class JournalRestController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteJournal(@PathVariable int id) {
         try {
-            GradesJournal model = (GradesJournal) journalService.findById(id);
             journalService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {

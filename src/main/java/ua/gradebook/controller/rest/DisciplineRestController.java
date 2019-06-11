@@ -49,7 +49,6 @@ public class DisciplineRestController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteDiscipline(@PathVariable int id) {
         try {
-            Discipline model = (Discipline) disciplineService.findById(id);
             disciplineService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {

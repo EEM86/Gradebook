@@ -20,10 +20,8 @@ public class RoleDAOImpl implements DAO {
     private String findAllSQL = "SELECT * FROM " + table;
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE ROLE_ID=?";
     private String findByNameSQL = "SELECT * FROM " + table + " WHERE ROLE_NAME=?";
-    private String insertSQL1 = "INSERT INTO " + table + " (ROLE_NAME) VALUES (?)";
     private String updateSQL = "UPDATE " + table + " SET ROLE_NAME=? WHERE ROLE_ID=?";
     private String deleteSQL = "DELETE FROM " + table + " WHERE ROLE_ID=?";
-    private String findNextSQL = "SELECT id.nextval as Id from dual";
     private String insertSQL = "INSERT into " + table + " (ROLE_NAME)" + "VALUES(?)";
 
     public RoleDAOImpl() {

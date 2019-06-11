@@ -50,7 +50,6 @@ public class PersonRestController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deletePerson(@PathVariable int id){
         try {
-            Person model  = (Person) personService.findById(id);
             personService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (EmptyResultDataAccessException e){

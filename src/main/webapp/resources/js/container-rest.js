@@ -100,4 +100,4 @@ function update() {
             window.location.reload(false);
         }
     });
-};
+}

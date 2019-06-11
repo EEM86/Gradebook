@@ -50,7 +50,6 @@ public class ContainerRestController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteContainer(@PathVariable int id) {
         try {
-            Container model = (Container) containerService.findById(id);
             containerService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {

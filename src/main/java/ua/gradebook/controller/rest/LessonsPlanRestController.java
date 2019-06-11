@@ -49,7 +49,6 @@ public class LessonsPlanRestController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteLessonsPlan(@PathVariable int id) {
         try {
-            LessonsPlan model = (LessonsPlan) lessonsPlanService.findById(id);
             lessonsPlanService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {

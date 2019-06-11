@@ -49,7 +49,6 @@ public class RoleRestController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteRole(@PathVariable int id) {
         try {
-            Role model = (Role) roleService.findById(id);
             roleService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {

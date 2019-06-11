@@ -51,7 +51,6 @@ public class BranchTypeRestController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteBranchType(@PathVariable int id) {
         try {
-            BranchType model = (BranchType) branchTypeService.findById(id);
             branchTypeService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {

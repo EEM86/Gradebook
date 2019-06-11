@@ -49,7 +49,6 @@ public class MessageRestController {
         @DeleteMapping(value = "/{id}")
         public ResponseEntity<?> deleteMessage(@PathVariable int id) {
             try {
-                Message model = (Message) messageService.findById(id);
                 messageService.delete(id);
                 return new ResponseEntity<>(HttpStatus.OK);
             } catch (EmptyResultDataAccessException e) {
