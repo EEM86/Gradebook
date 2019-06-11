@@ -61,7 +61,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" value="${loggedPerson.id}" path="senderId" readonly="true"/>
+                    <form:input value="${loggedPerson.id}" path="senderId" readonly="true" disabled="true"/>
+                    <form:hidden value="${loggedPerson.id}" path="senderId"/>
                 </td>
             </tr>
             <tr>

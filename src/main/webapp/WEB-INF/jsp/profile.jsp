@@ -3,23 +3,18 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <html>
 <head>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker({dateFormat: 'yy-mm-dd'}).val();
-        });
-    </script>
     <title>Profile</title>
 </head>
 <body>
 <title>Profile</title>
+<div>
+    <jsp:include page="/"/>
+</div>
 <section>
         <table class="tg" width="100%" var="person">
             <tr>
@@ -63,7 +58,6 @@
 
     <form:form action="${editAction}" modelAttribute="person">
         <table>
-            <c:if test="${!empty person.lastName}">
                 <tr>
                     <td>
                         <form:label path="id">
@@ -71,11 +65,10 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="id" readonly="true" size="8" disabled="true"/>
+                        <form:input path="id" readonly="true" disabled="true"/>
                         <form:hidden path="id"/>
                     </td>
                 </tr>
-            </c:if>
             <tr>
                 <td>
                     <form:label path="roleId">
@@ -83,7 +76,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="1" path="roleId"/>
+                    <form:input path="roleId" readonly="true" disabled="true"/>
+                    <form:hidden path="roleId"/>
                 </td>
             </tr>
             <tr>
@@ -93,7 +87,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="firstName"/>
+                    <form:input path="firstName" readonly="true" disabled="true"/>
+                    <form:hidden path="firstName"/>
                 </td>
             </tr>
             <tr>
@@ -103,7 +98,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="lastName"/>
+                    <form:input path="lastName" readonly="true" disabled="true"/>
+                    <form:hidden path="lastName"/>
                 </td>
             </tr>
             <tr>
@@ -113,7 +109,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="email" path="email"/>
+                    <form:input path="email" readonly="true" disabled="true"/>
+                    <form:hidden path="email"/>
                 </td>
             </tr>
             <tr>
@@ -133,7 +130,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="address"/>
+                    <form:input path="address" readonly="true" disabled="true"/>
+                    <form:hidden path="address"/>
                 </td>
             </tr>
             <tr>
@@ -143,7 +141,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="text" id="datepicker" path="birthday"/>
+                    <form:input path="birthday" readonly="true" disabled="true"/>
+                    <form:hidden path="birthday"/>
                 </td>
             </tr>
             <tr>
@@ -153,7 +152,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="1" path="departmentId"/>
+                    <form:input path="departmentId" readonly="true" disabled="true"/>
+                    <form:hidden path="departmentId"/>
                 </td>
             </tr>
             <tr>
@@ -163,7 +163,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="1" path="curatorId"/>
+                    <form:input path="curatorId" readonly="true" disabled="true"/>
+                    <form:hidden path="curatorId"/>
                 </td>
             </tr>
             <tr>
@@ -173,7 +174,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="1" path="groupId"/>
+                    <form:input path="groupId" readonly="true" disabled="true"/>
+                    <form:hidden path="groupId"/>
                 </td>
             </tr>
             <tr>
