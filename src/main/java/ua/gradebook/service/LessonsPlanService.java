@@ -1,16 +1,19 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.dao.DAOExtension;
 import ua.gradebook.model.dao.LessonsPlanDAOImpl;
 
 import java.util.List;
 
-@Service
-public class LessonsPlanService implements AppService {
+@Service(value="LessonsPlanService")
+public class LessonsPlanService implements AppServiceExtension {
     @Autowired
-    LessonsPlanDAOImpl lessonsPlanDAO;
+    @Qualifier("LessonsPlanDAO")
+    DAOExtension lessonsPlanDAO;
 
     @Override
     public List findAll() {
@@ -20,10 +23,6 @@ public class LessonsPlanService implements AppService {
     @Override
     public ParentBean findById(Integer id) {
         return this.lessonsPlanDAO.findById(id);
-    }
-
-    public List<ParentBean> findRelativePlanById(Integer id) {
-        return this.lessonsPlanDAO.findRelativePlanById(id);
     }
 
     @Override
@@ -44,5 +43,20 @@ public class LessonsPlanService implements AppService {
     @Override
     public boolean delete(int id) {
         return this.lessonsPlanDAO.delete(id);
+    }
+
+    @Override
+    public List<ParentBean> findListByName(String text) {
+        return null;
+    }
+
+    @Override
+    public List<ParentBean> findListById(Integer id) {
+        return this.lessonsPlanDAO.findListById(id);
+    }
+
+    @Override
+    public ParentBean findByLogin(String login) {
+        return null;
     }
 }

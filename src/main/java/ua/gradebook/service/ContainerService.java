@@ -7,7 +7,7 @@ import ua.gradebook.model.dao.ContainerDAOImpl;
 
 import java.util.List;
 
-@Service
+@Service(value="ContainerService")
 public class ContainerService implements AppService {
     @Autowired
     ContainerDAOImpl containerDAO;

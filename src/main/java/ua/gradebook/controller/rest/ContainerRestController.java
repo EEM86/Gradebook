@@ -1,6 +1,7 @@
 package ua.gradebook.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Container;
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.service.ContainerService;
+import ua.gradebook.service.AppService;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ import java.util.List;
 @RequestMapping("container")
 public class ContainerRestController {
     @Autowired
-    ContainerService containerService;
+    @Qualifier("ContainerService")
+    AppService containerService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllContainers() {

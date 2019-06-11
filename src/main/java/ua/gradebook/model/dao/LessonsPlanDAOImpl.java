@@ -10,8 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
-public class LessonsPlanDAOImpl implements DAO {
+@Repository(value="LessonsPlanDAO")
+public class LessonsPlanDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -39,10 +39,6 @@ public class LessonsPlanDAOImpl implements DAO {
     @Override
     public ParentBean findByName(String name) {
         return null;
-    }
-
-    public List<ParentBean> findRelativePlanById(Integer id) {
-        return (List) jdbcTemplate.query(findRelativePlanByIdSQL, new Object[]{id}, new NewRowMapper());
     }
 
     @Override
@@ -73,6 +69,21 @@ public class LessonsPlanDAOImpl implements DAO {
     @Override
     public boolean delete(int id) {
         return jdbcTemplate.update(deleteSQL, id) == 1;
+    }
+
+    @Override
+    public List<ParentBean> findListByName(String text) {
+        return null;
+    }
+
+    @Override
+    public List<ParentBean> findListById(Integer id) {
+        return (List) jdbcTemplate.query(findRelativePlanByIdSQL, new Object[]{id}, new NewRowMapper());
+    }
+
+    @Override
+    public ParentBean findByLogin(String login) {
+        return null;
     }
 
     private static final class NewRowMapper<P> implements RowMapper<LessonsPlan> {

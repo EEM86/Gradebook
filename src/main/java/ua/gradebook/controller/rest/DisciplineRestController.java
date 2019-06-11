@@ -1,6 +1,7 @@
 package ua.gradebook.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Discipline;
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.service.DisciplineService;
+import ua.gradebook.service.AppService;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ import java.util.List;
 @RequestMapping("discipline")
 public class DisciplineRestController {
     @Autowired
-    DisciplineService disciplineService;
+    @Qualifier("DisciplineService")
+    AppService disciplineService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllDisciplines() {

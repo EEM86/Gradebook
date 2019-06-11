@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
+@Repository(value="ContainerDAO")
 public class ContainerDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;

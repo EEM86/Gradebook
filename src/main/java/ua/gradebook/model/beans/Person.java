@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.sql.Date;
 import java.util.Collection;
+import java.util.Objects;
 
 public class Person extends ParentBean {
     private Integer roleId;
@@ -155,11 +156,48 @@ public class Person extends ParentBean {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Person person = (Person) o;
+        return Objects.equals(roleId, person.roleId) &&
+                Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(email, person.email) &&
+                Objects.equals(phone, person.phone) &&
+                Objects.equals(address, person.address) &&
+                Objects.equals(birthday, person.birthday) &&
+                Objects.equals(container, person.container) &&
+                Objects.equals(departmentId, person.departmentId) &&
+                Objects.equals(curatorId, person.curatorId) &&
+                Objects.equals(groupId, person.groupId) &&
+                Objects.equals(login, person.login) &&
+                Objects.equals(password, person.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), roleId, firstName, lastName, email, phone, address, birthday, container, departmentId, curatorId, groupId, login, password);
+    }
+
+    @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
+                ", roleId=" + roleId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", birthday=" + birthday +
+                ", container=" + container +
+                ", departmentId=" + departmentId +
+                ", curatorId=" + curatorId +
+                ", groupId=" + groupId +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

@@ -2,20 +2,22 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.mail.SimpleOrderManager;
 import ua.gradebook.model.beans.Message;
 import ua.gradebook.model.beans.Person;
-import ua.gradebook.service.MessageService;
+import ua.gradebook.service.AppServiceExtension;
 import ua.gradebook.service.PersonService;
 
 @Controller
 public class MessagesController {
 
     @Autowired
-    private MessageService messageService;
+    @Qualifier("MessageService")
+    private AppServiceExtension messageService;
 
     @Autowired
     private SimpleOrderManager simpleOrderManager;
@@ -36,7 +38,7 @@ public class MessagesController {
     @GetMapping(value = "messages/{id}")
     public String showMessagesById (@PathVariable("id") int id, Model model) {
         model.addAttribute("message", new Message());
-        model.addAttribute("getMessages", messageService.findMessagesById(id));
+        model.addAttribute("getMessages", messageService.findListById(id));
         logger.info("messages load");
         return "messages";
     }

@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
+@Repository(value="RoleDAO")
 public class RoleDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;

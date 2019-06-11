@@ -1,5 +1,7 @@
 package ua.gradebook.model.beans;
 
+import java.util.Objects;
+
 public class Container extends ParentBean {
     private Integer parentId;
     private String name;
@@ -76,5 +78,38 @@ public class Container extends ParentBean {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Container container = (Container) o;
+        return Objects.equals(parentId, container.parentId) &&
+                Objects.equals(name, container.name) &&
+                Objects.equals(chiefId, container.chiefId) &&
+                Objects.equals(typeId, container.typeId) &&
+                Objects.equals(institutionCity, container.institutionCity) &&
+                Objects.equals(institutionAddress, container.institutionAddress) &&
+                Objects.equals(phone, container.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parentId, name, chiefId, typeId, institutionCity, institutionAddress, phone);
+    }
+
+    @Override
+    public String toString() {
+        return "Container{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", name='" + name + '\'' +
+                ", chiefId=" + chiefId +
+                ", typeId=" + typeId +
+                ", institutionCity='" + institutionCity + '\'' +
+                ", institutionAddress='" + institutionAddress + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

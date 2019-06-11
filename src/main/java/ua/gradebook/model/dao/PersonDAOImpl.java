@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
-public class PersonDAOImpl implements DAO {
+@Repository(value="PersonDAO")
+public class PersonDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -44,13 +44,20 @@ public class PersonDAOImpl implements DAO {
         return (Person) jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper());
     }
 
+    @Override
     public ParentBean findByLogin(String login) {
         return (Person) jdbcTemplate.queryForObject(findByLoginSQL, new Object[]{login}, new NewRowMapper());
     }
 
-    public List<ParentBean> findNames(String text) {
+    @Override
+    public List<ParentBean> findListByName(String text) {
         String corText = "%" + text + "%";
         return (List) jdbcTemplate.query(findNamesSQL, new Object[]{corText}, new NewRowMapper());
+    }
+
+    @Override
+    public List<ParentBean> findListById(Integer id) {
+        return null;
     }
 
     @Override

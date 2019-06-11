@@ -1,5 +1,7 @@
 package ua.gradebook.model.beans;
 
+import java.util.Objects;
+
 public class GradesJournal extends ParentBean {
     private Integer discId;
     private Integer personId;
@@ -36,5 +38,32 @@ public class GradesJournal extends ParentBean {
 
     public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GradesJournal that = (GradesJournal) o;
+        return Objects.equals(discId, that.discId) &&
+                Objects.equals(personId, that.personId) &&
+                Objects.equals(grade, that.grade) &&
+                Objects.equals(teacherId, that.teacherId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(discId, personId, grade, teacherId);
+    }
+
+    @Override
+    public String toString() {
+        return "GradesJournal{" +
+                "id=" + id +
+                ", discId=" + discId +
+                ", personId=" + personId +
+                ", grade=" + grade +
+                ", teacherId=" + teacherId +
+                '}';
     }
 }

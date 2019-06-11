@@ -7,7 +7,7 @@ import ua.gradebook.model.dao.DisciplineDAOImpl;
 
 import java.util.List;
 
-@Service
+@Service(value="DisciplineService")
 public class DisciplineService implements AppService {
     @Autowired
     DisciplineDAOImpl disciplineDAO;

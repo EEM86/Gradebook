@@ -1,21 +1,21 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.model.dao.RoleDAOImpl;
+import ua.gradebook.model.dao.DAO;
 
 import java.util.List;
 
-@Service
+@Service(value="RoleService")
 public class RoleService implements AppService {
     @Autowired
-    RoleDAOImpl roleDAO;
+    @Qualifier("RoleDAO")
+    DAO roleDAO;
 
     @Override
-    public List findAll() {
-        return this.roleDAO.findAll();
-    }
+    public List findAll() { return this.roleDAO.findAll(); }
 
     @Override
     public ParentBean findById(Integer id) {

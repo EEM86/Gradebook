@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
-public class GradesJournalDAOImpl implements DAO {
+@Repository(value="GradesJournalDAO")
+public class GradesJournalDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -33,10 +33,6 @@ public class GradesJournalDAOImpl implements DAO {
     @Override
     public ParentBean findById(Integer id) {
         return (GradesJournal) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
-    }
-
-    public List<ParentBean> findRelativeDataById(Integer id) {
-        return (List) jdbcTemplate.query(findRelativeDataByIdSQL, new Object[]{id, id}, new NewRowMapper());
     }
 
     @Override
@@ -72,6 +68,21 @@ public class GradesJournalDAOImpl implements DAO {
     @Override
     public boolean delete(int id) {
         return jdbcTemplate.update(deleteSQL, id) == 1;
+    }
+
+    @Override
+    public List<ParentBean> findListByName(String text) {
+        return null;
+    }
+
+    @Override
+    public List<ParentBean> findListById(Integer id) {
+        return (List) jdbcTemplate.query(findRelativeDataByIdSQL, new Object[]{id, id}, new NewRowMapper());
+    }
+
+    @Override
+    public ParentBean findByLogin(String login) {
+        return null;
     }
 
     private static final class NewRowMapper<P> implements RowMapper<GradesJournal> {

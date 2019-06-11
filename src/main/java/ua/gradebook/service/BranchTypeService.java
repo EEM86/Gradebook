@@ -7,7 +7,7 @@ import ua.gradebook.model.dao.BranchTypeDAOImpl;
 
 import java.util.List;
 
-@Service
+@Service(value="BranchTypeService")
 public class BranchTypeService implements AppService {
     @Autowired
     BranchTypeDAOImpl branchTypeDAO;

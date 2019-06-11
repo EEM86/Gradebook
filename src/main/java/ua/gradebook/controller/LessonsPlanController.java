@@ -2,17 +2,19 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.LessonsPlan;
 import ua.gradebook.model.beans.Person;
-import ua.gradebook.service.LessonsPlanService;
+import ua.gradebook.service.AppServiceExtension;
 
 @Controller
 public class LessonsPlanController {
     @Autowired
-    private LessonsPlanService lessonsPlanService;
+    @Qualifier("LessonsPlanService")
+    private AppServiceExtension lessonsPlanService;
 
     private static final Logger logger = Logger.getLogger(LessonsPlanController.class);
 
@@ -30,7 +32,7 @@ public class LessonsPlanController {
             return "redirect:/lessonsplan";
         }
         model.addAttribute("lessonsplan", new LessonsPlan());
-        model.addAttribute("getLessonsplan", lessonsPlanService.findRelativePlanById(id));
+        model.addAttribute("getLessonsplan", lessonsPlanService.findListById(id));
         logger.info("lessonsplan load");
         return "lessonsplan";
     }

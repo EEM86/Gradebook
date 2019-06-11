@@ -10,8 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository
-public class MessageDAOImpl implements DAO {
+@Repository(value="MessageDAO")
+public class MessageDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -34,10 +34,6 @@ public class MessageDAOImpl implements DAO {
     public ParentBean findById(Integer id) {
         return (Message) jdbcTemplate.queryForObject(findByIdSQL,
                 new Object[]{id, id}, new NewRowMapper());
-    }
-
-    public List<ParentBean> findMessagesById(Integer id) {
-        return (List) jdbcTemplate.query(findByIdSQL, new Object[]{id, id}, new NewRowMapper());
     }
 
     @Override
@@ -72,6 +68,17 @@ public class MessageDAOImpl implements DAO {
     public boolean delete(int id) {
         return jdbcTemplate.update(deleteSQL, id) == 1;
     }
+
+    @Override
+    public List<ParentBean> findListByName(String text) { return null; }
+
+    @Override
+    public List<ParentBean> findListById(Integer id) {
+        return (List) jdbcTemplate.query(findByIdSQL, new Object[]{id, id}, new NewRowMapper());
+    }
+
+    @Override
+    public ParentBean findByLogin(String login) { return null; }
 
     private static final class NewRowMapper<P> implements RowMapper<Message> {
 

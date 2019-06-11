@@ -2,16 +2,18 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Discipline;
-import ua.gradebook.service.DisciplineService;
+import ua.gradebook.service.AppService;
 
 @Controller
 public class DisciplinesController {
     @Autowired
-    private DisciplineService disciplineService;
+    @Qualifier("DisciplineService")
+    private AppService disciplineService;
 
     private static final Logger logger = Logger.getLogger(DisciplinesController.class);
 
