@@ -31,9 +31,11 @@ public class HomeController {
      */
     @GetMapping(value="/")
     public String Main (HttpSession session, Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Person person = (Person) personService.findByLogin(user.getUsername());
-        session.setAttribute("loggedPerson", person);
+        if (session.getAttribute("loggedPerson") == null) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            Person person = (Person) personService.findByLogin(user.getUsername());
+            session.setAttribute("loggedPerson", person);
+        }
         logger.info("index load");
         return "index";
     }
