@@ -80,5 +80,10 @@
             <aop:pointcut id="loggingPointcut" expression="execution(* ua.gradebook.controller.HomeController.*(..))"/>
             <aop:before method="addMethodBeforeAll" pointcut-ref="loggingPointcut"/>
         </aop:aspect>
+        <aop:aspect ref="loggingAspect">
+            <aop:pointcut id="addLoggedUserToSession"
+                          expression="execution(void ua.gradebook.security.SecurityConfig.configureGlobal())"/>
+            <aop:after method="addLoggedPersonToSession" pointcut-ref="addLoggedUserToSession"/>
+        </aop:aspect>
     </aop:config>
 </beans>
