@@ -21,7 +21,7 @@ public class PersonDAOImpl implements DAOExtension {
     private String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
     private String findByNameSQL = "SELECT * FROM " + table + " WHERE LAST_NAME=?";
     String findByLoginSQL = "SELECT * FROM " + table + " WHERE LOGIN=?";
-    private String findNamesSQL = "SELECT * FROM " + table + " WHERE LAST_NAME LIKE ?";
+    private String findNamesSQL = "SELECT * FROM " + table + " WHERE UPPER(LAST_NAME) LIKE UPPER(?)";
     private String insertSQL = "INSERT INTO " + table
             + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
