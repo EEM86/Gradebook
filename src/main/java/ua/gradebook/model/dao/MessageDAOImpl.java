@@ -33,8 +33,8 @@ public class MessageDAOImpl implements DAOExtension {
     //ToDo make return type List?
     @Override
     public ParentBean findById(Integer id) {
-        return (Message) jdbcTemplate.queryForObject(findByIdSQL,
-                new Object[]{id, id}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByIdSQL,
+                new Object[]{id, id}, new NewRowMapper<Message>());
     }
 
     @Override

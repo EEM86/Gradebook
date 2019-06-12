@@ -31,12 +31,12 @@ public class DisciplineDAOImpl implements DAO {
 
     @Override
     public ParentBean findById(Integer id) {
-        return (Discipline) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<Discipline>());
     }
 
     @Override
     public ParentBean findByName(String name) {
-        return (Discipline) jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper<Discipline>());
     }
 
     @Override

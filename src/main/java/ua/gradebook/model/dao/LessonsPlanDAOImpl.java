@@ -33,8 +33,8 @@ public class LessonsPlanDAOImpl implements DAOExtension {
 
     @Override
     public ParentBean findById(Integer id) {
-        return (LessonsPlan) jdbcTemplate.queryForObject(findByIdSQL,
-                new Object[]{id}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByIdSQL,
+                new Object[]{id}, new NewRowMapper<LessonsPlan>());
     }
 
     @Override

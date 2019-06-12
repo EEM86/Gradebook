@@ -32,7 +32,7 @@ public class GradesJournalDAOImpl implements DAOExtension {
 
     @Override
     public ParentBean findById(Integer id) {
-        return (GradesJournal) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<GradesJournal>());
     }
 
     @Override
@@ -72,7 +72,7 @@ public class GradesJournalDAOImpl implements DAOExtension {
 
     @Override
     public List<ParentBean> findListByObject(Object id) {
-        return (List) jdbcTemplate.query(findRelativeDataByIdSQL, new Object[]{id, id}, new NewRowMapper());
+        return (List) jdbcTemplate.query(findRelativeDataByIdSQL, new Object[]{id, id}, new NewRowMapper<>());
     }
 
     @Override

@@ -36,17 +36,17 @@ public class PersonDAOImpl implements DAOExtension {
 
     @Override
     public ParentBean findById(Integer id) {
-        return (Person) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<Person>());
     }
 
     @Override
     public ParentBean findByName(String name) {
-        return (Person) jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper<Person>());
     }
 
     @Override
     public ParentBean findByLogin(String login) {
-        return (Person) jdbcTemplate.queryForObject(findByLoginSQL, new Object[]{login}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByLoginSQL, new Object[]{login}, new NewRowMapper<Person>());
     }
 
     @Override

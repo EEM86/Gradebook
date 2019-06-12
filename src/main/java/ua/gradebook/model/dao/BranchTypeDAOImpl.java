@@ -34,12 +34,12 @@ public class BranchTypeDAOImpl implements DAO{
 
     @Override
     public ParentBean findById(Integer id) {
-        return (BranchType) jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<BranchType>());
     }
 
     @Override
     public ParentBean findByName(String name) {
-        return (BranchType) jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper());
+        return jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper<BranchType>());
     }
 
     @Override
