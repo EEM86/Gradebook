@@ -16,18 +16,18 @@ public class PersonDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_PERSON";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE LAST_NAME=?";
+    private static final String table = "L3G3_PERSON";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
+    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE LAST_NAME=?";
     String findByLoginSQL = "SELECT * FROM " + table + " WHERE LOGIN=?";
-    private String findNamesSQL = "SELECT * FROM " + table + " WHERE UPPER(LAST_NAME) LIKE UPPER(?)";
-    private String insertSQL = "INSERT INTO " + table
+    private static final String findNamesSQL = "SELECT * FROM " + table + " WHERE UPPER(LAST_NAME) LIKE UPPER(?)";
+    private static final String insertSQL = "INSERT INTO " + table
             + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private String updateSQL = "UPDATE " + table + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
+    private static final String updateSQL = "UPDATE " + table + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
             "BIRTHDAY=?, DEPARTMENT_ID=?, CURATOR_ID=?, GROUP_ID=?, LOGIN=?, PASSWORD=? WHERE PERSON_ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE PERSON_ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE PERSON_ID=?";
 
     @Override
     public List<ParentBean> findAll() {

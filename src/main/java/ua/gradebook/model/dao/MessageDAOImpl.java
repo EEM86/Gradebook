@@ -16,14 +16,14 @@ public class MessageDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_message";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE RECEIVER_ID=? OR SENDER_ID=?";
-    private String insertSQL = "INSERT INTO " + table +
+    private static final String table = "L3G3_message";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE RECEIVER_ID=? OR SENDER_ID=?";
+    private static final String insertSQL = "INSERT INTO " + table +
             " (RECEIVER_ID, SENDER_ID, MESSAGE) VALUES (?, ?, ?)";
-    private String updateSQL = "UPDATE " + table +
+    private static final String updateSQL = "UPDATE " + table +
             " SET RECEIVER_ID=?, SENDER_ID=?, MESSAGE=? WHERE MESSAGE_ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE MESSAGE_ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE MESSAGE_ID=?";
 
     @Override
     public List<ParentBean> findAll() {

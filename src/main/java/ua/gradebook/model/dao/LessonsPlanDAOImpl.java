@@ -16,15 +16,15 @@ public class LessonsPlanDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_lessonsplan";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE PLAN_ID=?";
-    private String findRelativePlanByIdSQL = "SELECT * FROM " + table + " WHERE TEACHER_ID=?";
-    private String insertSQL = "INSERT INTO " + table +
+    private static final String table = "L3G3_lessonsplan";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE PLAN_ID=?";
+    private static final String findRelativePlanByIdSQL = "SELECT * FROM " + table + " WHERE TEACHER_ID=?";
+    private static final String insertSQL = "INSERT INTO " + table +
           " (DISC_ID, TEACHER_ID, GROUP_ID, HOURS) VALUES (?, ?, ?, ?)";
-    private String updateSQL = "UPDATE " + table +
+    private static final String updateSQL = "UPDATE " + table +
             " SET DISC_ID=?, TEACHER_ID=?, GROUP_ID=?, HOURS=? WHERE PLAN_ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE PLAN_ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE PLAN_ID=?";
 
     @Override
     public List<ParentBean> findAll() {

@@ -16,15 +16,15 @@ public class ContainerDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_CONTAINER";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE ID=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE NAME=?";
-    private String insertSQL = "INSERT INTO " + table + " (PARENT_ID, NAME, CHIEF_ID, TYPE_ID, INSTITUTION_CITY, INSTITUTION_ADDRESS, PHONE)" +
+    private static final String table = "L3G3_CONTAINER";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE ID=?";
+    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE NAME=?";
+    private static final String insertSQL = "INSERT INTO " + table + " (PARENT_ID, NAME, CHIEF_ID, TYPE_ID, INSTITUTION_CITY, INSTITUTION_ADDRESS, PHONE)" +
             " VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private String updateSQL = "UPDATE " + table + " SET PARENT_ID=?, NAME=?, CHIEF_ID=?, TYPE_ID=?, INSTITUTION_CITY=?, INSTITUTION_ADDRESS=?, PHONE=? " +
+    private static final String updateSQL = "UPDATE " + table + " SET PARENT_ID=?, NAME=?, CHIEF_ID=?, TYPE_ID=?, INSTITUTION_CITY=?, INSTITUTION_ADDRESS=?, PHONE=? " +
             "WHERE ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE ID=?";
 
     @Override
     public List<ParentBean> findAll() {

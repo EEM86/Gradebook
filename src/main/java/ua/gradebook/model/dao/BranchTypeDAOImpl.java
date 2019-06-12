@@ -16,13 +16,13 @@ public class BranchTypeDAOImpl implements DAO{
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_branch_type";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE TYPE_ID=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE TYPE_NAME=?";
-    private String insertSQL = "INSERT INTO " + table + " (TYPE_NAME) VALUES (?)";
-    private String updateSQL = "UPDATE " + table + " SET TYPE_NAME=? WHERE TYPE_ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE TYPE_ID=?";
+    private static final String table = "L3G3_branch_type";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE TYPE_ID=?";
+    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE TYPE_NAME=?";
+    private static final String insertSQL = "INSERT INTO " + table + " (TYPE_NAME) VALUES (?)";
+    private static final String updateSQL = "UPDATE " + table + " SET TYPE_NAME=? WHERE TYPE_ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE TYPE_ID=?";
 
     public BranchTypeDAOImpl() {
     }

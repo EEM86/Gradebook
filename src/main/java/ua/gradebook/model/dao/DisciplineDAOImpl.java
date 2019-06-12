@@ -16,13 +16,13 @@ public class DisciplineDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_DISCIPLINE";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE DISC_ID=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
-    private String insertSQL = "INSERT INTO " + table + " (DISC_NAME) VALUES (?)";
-    private String updateSQL = "UPDATE " + table + " SET DISC_NAME=? WHERE DISC_ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE DISC_ID=?";
+    private static final String table = "L3G3_DISCIPLINE";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE DISC_ID=?";
+    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
+    private static final String insertSQL = "INSERT INTO " + table + " (DISC_NAME) VALUES (?)";
+    private static final String updateSQL = "UPDATE " + table + " SET DISC_NAME=? WHERE DISC_ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE DISC_ID=?";
 
     @Override
     public List<ParentBean> findAll() {

@@ -16,13 +16,13 @@ public class RoleDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_ROLE";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE ROLE_ID=?";
-    private String findByNameSQL = "SELECT * FROM " + table + " WHERE ROLE_NAME=?";
-    private String updateSQL = "UPDATE " + table + " SET ROLE_NAME=? WHERE ROLE_ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE ROLE_ID=?";
-    private String insertSQL = "INSERT into " + table + " (ROLE_NAME)" + "VALUES(?)";
+    private static final String table = "L3G3_ROLE";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE ROLE_ID=?";
+    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE ROLE_NAME=?";
+    private static final String updateSQL = "UPDATE " + table + " SET ROLE_NAME=? WHERE ROLE_ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE ROLE_ID=?";
+    private static final String insertSQL = "INSERT into " + table + " (ROLE_NAME)" + "VALUES(?)";
 
     public RoleDAOImpl() {
     }

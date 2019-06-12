@@ -16,14 +16,14 @@ public class GradesJournalDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private String table = "L3G3_gradesjournal";
-    private String findAllSQL = "SELECT * FROM " + table;
-    private String findByIdSQL = "SELECT * FROM " + table + " WHERE JOURNAL_ID=?";
-    private String findRelativeDataByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=? OR TEACHER_ID=?";
-    private String insertSQL = "INSERT INTO " + table + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID)"
+    private static final String table = "L3G3_gradesjournal";
+    private static final String findAllSQL = "SELECT * FROM " + table;
+    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE JOURNAL_ID=?";
+    private static final String findRelativeDataByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=? OR TEACHER_ID=?";
+    private static final String insertSQL = "INSERT INTO " + table + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID)"
            + " VALUES (?, ?, ?, ?)";
-    private String updateSQL = "UPDATE " + table + " SET DISC_ID=?, PERSON_ID=?, GRADE=?, TEACHER_ID=? WHERE JOURNAL_ID=?";
-    private String deleteSQL = "DELETE FROM " + table + " WHERE JOURNAL_ID=?";
+    private static final String updateSQL = "UPDATE " + table + " SET DISC_ID=?, PERSON_ID=?, GRADE=?, TEACHER_ID=? WHERE JOURNAL_ID=?";
+    private static final String deleteSQL = "DELETE FROM " + table + " WHERE JOURNAL_ID=?";
 
     @Override
     public List<ParentBean> findAll() {
