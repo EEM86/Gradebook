@@ -1,5 +1,6 @@
 package ua.gradebook.aop;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,19 +14,9 @@ import ua.gradebook.service.AppServiceExtension;
 import javax.servlet.http.HttpSession;
 
 public class LoggingAspect {
-    @Autowired
-    @Qualifier("PersonService")
-    AppServiceExtension personService;
+    private static final Logger logger = Logger.getLogger(LoggingAspect.class);
 
     public void addMethodBeforeAll(JoinPoint joinPoint) {
-        System.out.println("***LoggingAspect.addMethodBeforeAll***" + joinPoint.getSignature().getName());
-    }
-
-    public void addLoggedPersonToSession() {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        HttpSession session = attr.getRequest().getSession();
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Person person = (Person) personService.findByLogin(user.getUsername());
-        session.setAttribute("loggedPerson", person);
+        logger.debug("***LoggingAspect.addMethodBeforeAll***" + joinPoint.getSignature().getName());
     }
 }
