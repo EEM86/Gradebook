@@ -16,35 +16,35 @@ public class ContainerDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String table = "L3G3_CONTAINER";
-    private static final String findAllSQL = "SELECT * FROM " + table;
-    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE ID=?";
-    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE NAME=?";
-    private static final String insertSQL = "INSERT INTO " + table + " (PARENT_ID, NAME, CHIEF_ID, TYPE_ID, INSTITUTION_CITY, INSTITUTION_ADDRESS, PHONE)" +
+    private static final String TABLE = "L3G3_CONTAINER";
+    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
+    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE ID=?";
+    private static final String FIND_BY_NAME = "SELECT * FROM " + TABLE + " WHERE NAME=?";
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (PARENT_ID, NAME, CHIEF_ID, TYPE_ID, INSTITUTION_CITY, INSTITUTION_ADDRESS, PHONE)" +
             " VALUES (?, ?, ?, ?, ?, ?, ?)";
-    private static final String updateSQL = "UPDATE " + table + " SET PARENT_ID=?, NAME=?, CHIEF_ID=?, TYPE_ID=?, INSTITUTION_CITY=?, INSTITUTION_ADDRESS=?, PHONE=? " +
+    private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET PARENT_ID=?, NAME=?, CHIEF_ID=?, TYPE_ID=?, INSTITUTION_CITY=?, INSTITUTION_ADDRESS=?, PHONE=? " +
             "WHERE ID=?";
-    private static final String deleteSQL = "DELETE FROM " + table + " WHERE ID=?";
+    private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ID=?";
 
     @Override
     public List<ParentBean> findAll() {
-        return jdbcTemplate.query(findAllSQL, new NewRowMapper());
+        return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
     }
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<Container>());
+        return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Container>());
     }
 
     @Override
     public ParentBean findByName(String name) {
-        return jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper<Container>());
+        return jdbcTemplate.queryForObject(FIND_BY_NAME, new Object[]{name}, new NewRowMapper<Container>());
     }
 
     @Override
     public boolean insert(ParentBean item) {
         Container container = (Container) item;
-        jdbcTemplate.update(insertSQL, new Object[] {
+        jdbcTemplate.update(INSERT_SQL, new Object[] {
                 container.getParentId(),
                 container.getName(),
                 container.getChiefId(),
@@ -59,7 +59,7 @@ public class ContainerDAOImpl implements DAO {
     @Override
     public boolean update(ParentBean item) {
         Container container = (Container) item;
-        jdbcTemplate.update(updateSQL, new Object[]{
+        jdbcTemplate.update(UPDATE_SQL, new Object[]{
                 container.getParentId(),
                 container.getName(),
                 container.getChiefId(),
@@ -74,7 +74,7 @@ public class ContainerDAOImpl implements DAO {
 
     @Override
     public boolean delete(int id) {
-        return jdbcTemplate.update(deleteSQL, id) == 1;
+        return jdbcTemplate.update(DELETE_SQL, id) == 1;
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Container> {

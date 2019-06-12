@@ -17,8 +17,8 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String loginPasswordSQL = "SELECT LOGIN AS username, PASSWORD, 'true' AS enabled FROM L3G3_PERSON WHERE LOGIN=?";
-    private static final String roleSQL =
+    private static final String LOGIN_PASSWORD_SQL = "SELECT LOGIN AS username, PASSWORD, 'true' AS enabled FROM L3G3_PERSON WHERE LOGIN=?";
+    private static final String ROLE_SQL =
             "SELECT U.LOGIN AS username, UR.ROLE_NAME AS authority FROM L3G3_PERSON U INNER JOIN L3G3_ROLE UR ON U.ROLE_ID = UR.ROLE_ID WHERE U.LOGIN=?";
 
     @Autowired
@@ -36,8 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery(loginPasswordSQL)
-                .authoritiesByUsernameQuery(roleSQL);
+                .usersByUsernameQuery(LOGIN_PASSWORD_SQL)
+                .authoritiesByUsernameQuery(ROLE_SQL);
     }
 
     @Override

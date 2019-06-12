@@ -16,27 +16,27 @@ public class PersonDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String table = "L3G3_PERSON";
-    private static final String findAllSQL = "SELECT * FROM " + table;
-    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE PERSON_ID=?";
-    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE LAST_NAME=?";
-    String findByLoginSQL = "SELECT * FROM " + table + " WHERE LOGIN=?";
-    private static final String findNamesSQL = "SELECT * FROM " + table + " WHERE UPPER(LAST_NAME) LIKE UPPER(?)";
-    private static final String insertSQL = "INSERT INTO " + table
+    private static final String TABLE = "L3G3_PERSON";
+    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
+    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE PERSON_ID=?";
+    private static final String findByNameSQL = "SELECT * FROM " + TABLE + " WHERE LAST_NAME=?";
+    String findByLoginSQL = "SELECT * FROM " + TABLE + " WHERE LOGIN=?";
+    private static final String FIND_NAMES = "SELECT * FROM " + TABLE + " WHERE UPPER(LAST_NAME) LIKE UPPER(?)";
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE
             + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String updateSQL = "UPDATE " + table + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
+    private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
             "BIRTHDAY=?, DEPARTMENT_ID=?, CURATOR_ID=?, GROUP_ID=?, LOGIN=?, PASSWORD=? WHERE PERSON_ID=?";
-    private static final String deleteSQL = "DELETE FROM " + table + " WHERE PERSON_ID=?";
+    private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE PERSON_ID=?";
 
     @Override
     public List<ParentBean> findAll() {
-        return jdbcTemplate.query(findAllSQL, new NewRowMapper());
+        return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
     }
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<Person>());
+        return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Person>());
     }
 
     @Override
@@ -52,13 +52,13 @@ public class PersonDAOImpl implements DAOExtension {
     @Override
     public List<ParentBean> findListByObject(Object obj) {
         String corText = "%" + obj + "%";
-        return (List) jdbcTemplate.query(findNamesSQL, new Object[]{corText}, new NewRowMapper());
+        return (List) jdbcTemplate.query(FIND_NAMES, new Object[]{corText}, new NewRowMapper());
     }
 
     @Override
     public boolean insert(ParentBean item) {
         Person person = (Person) item;
-        jdbcTemplate.update(insertSQL, new Object[] {
+        jdbcTemplate.update(INSERT_SQL, new Object[] {
                 person.getRoleId(),
                 person.getFirstName(),
                 person.getLastName(),
@@ -78,7 +78,7 @@ public class PersonDAOImpl implements DAOExtension {
     @Override
     public boolean update(ParentBean item) {
         Person newPerson = (Person) item;
-       jdbcTemplate.update(updateSQL, new Object[]{
+       jdbcTemplate.update(UPDATE_SQL, new Object[]{
                newPerson.getRoleId(),
                newPerson.getFirstName(),
                newPerson.getLastName(),
@@ -98,7 +98,7 @@ public class PersonDAOImpl implements DAOExtension {
 
     @Override
     public boolean delete(int id) {
-        return jdbcTemplate.update(deleteSQL, id) == 1;
+        return jdbcTemplate.update(DELETE_SQL, id) == 1;
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Person> {

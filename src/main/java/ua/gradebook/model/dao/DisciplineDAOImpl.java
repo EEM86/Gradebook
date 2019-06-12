@@ -16,44 +16,44 @@ public class DisciplineDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String table = "L3G3_DISCIPLINE";
-    private static final String findAllSQL = "SELECT * FROM " + table;
-    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE DISC_ID=?";
-    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE name=?";
-    private static final String insertSQL = "INSERT INTO " + table + " (DISC_NAME) VALUES (?)";
-    private static final String updateSQL = "UPDATE " + table + " SET DISC_NAME=? WHERE DISC_ID=?";
-    private static final String deleteSQL = "DELETE FROM " + table + " WHERE DISC_ID=?";
+    private static final String TABLE = "L3G3_DISCIPLINE";
+    private static final String FIND_All = "SELECT * FROM " + TABLE;
+    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE DISC_ID=?";
+    private static final String FIND_BY_NAME = "SELECT * FROM " + TABLE + " WHERE name=?";
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (DISC_NAME) VALUES (?)";
+    private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET DISC_NAME=? WHERE DISC_ID=?";
+    private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE DISC_ID=?";
 
     @Override
     public List<ParentBean> findAll() {
-        return jdbcTemplate.query(findAllSQL, new NewRowMapper());
+        return jdbcTemplate.query(FIND_All, new NewRowMapper());
     }
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<Discipline>());
+        return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Discipline>());
     }
 
     @Override
     public ParentBean findByName(String name) {
-        return jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper<Discipline>());
+        return jdbcTemplate.queryForObject(FIND_BY_NAME, new Object[]{name}, new NewRowMapper<Discipline>());
     }
 
     @Override
     public boolean insert(ParentBean item) {
         Discipline discipline = (Discipline) item;
-        return (jdbcTemplate.update(insertSQL, discipline.getDiscName()) == 1);
+        return (jdbcTemplate.update(INSERT_SQL, discipline.getDiscName()) == 1);
     }
 
     @Override
     public boolean update(ParentBean item) {
         Discipline discipline = (Discipline) item;
-        return jdbcTemplate.update(updateSQL, discipline.getDiscName(), discipline.getId()) == 1;
+        return jdbcTemplate.update(UPDATE_SQL, discipline.getDiscName(), discipline.getId()) == 1;
     }
 
     @Override
     public boolean delete(int id) {
-        return (jdbcTemplate.update(deleteSQL, id) == 1);
+        return (jdbcTemplate.update(DELETE_SQL, id) == 1);
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Discipline> {

@@ -16,24 +16,24 @@ public class LessonsPlanDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String table = "L3G3_lessonsplan";
-    private static final String findAllSQL = "SELECT * FROM " + table;
-    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE PLAN_ID=?";
-    private static final String findRelativePlanByIdSQL = "SELECT * FROM " + table + " WHERE TEACHER_ID=?";
-    private static final String insertSQL = "INSERT INTO " + table +
+    private static final String TABLE = "L3G3_lessonsplan";
+    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
+    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE PLAN_ID=?";
+    private static final String FIND_RELATIVE_PLAN_BY_ID = "SELECT * FROM " + TABLE + " WHERE TEACHER_ID=?";
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE +
           " (DISC_ID, TEACHER_ID, GROUP_ID, HOURS) VALUES (?, ?, ?, ?)";
-    private static final String updateSQL = "UPDATE " + table +
+    private static final String UPDATE_SQL = "UPDATE " + TABLE +
             " SET DISC_ID=?, TEACHER_ID=?, GROUP_ID=?, HOURS=? WHERE PLAN_ID=?";
-    private static final String deleteSQL = "DELETE FROM " + table + " WHERE PLAN_ID=?";
+    private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE PLAN_ID=?";
 
     @Override
     public List<ParentBean> findAll() {
-        return jdbcTemplate.query(findAllSQL, new NewRowMapper());
+        return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
     }
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL,
+        return jdbcTemplate.queryForObject(FIND_BY_ID,
                 new Object[]{id}, new NewRowMapper<LessonsPlan>());
     }
 
@@ -45,7 +45,7 @@ public class LessonsPlanDAOImpl implements DAOExtension {
     @Override
     public boolean insert(ParentBean item) {
         LessonsPlan lessonsPlan = (LessonsPlan) item;
-        jdbcTemplate.update(insertSQL, new Object[] {
+        jdbcTemplate.update(INSERT_SQL, new Object[] {
                 lessonsPlan.getDiscId(),
                 lessonsPlan.getTeacherId(),
                 lessonsPlan.getGroupId(),
@@ -57,7 +57,7 @@ public class LessonsPlanDAOImpl implements DAOExtension {
     @Override
     public boolean update(ParentBean item) {
         LessonsPlan lessonsPlan = (LessonsPlan) item;
-        jdbcTemplate.update(updateSQL, new Object[]{
+        jdbcTemplate.update(UPDATE_SQL, new Object[]{
                 lessonsPlan.getDiscId(),
                 lessonsPlan.getTeacherId(),
                 lessonsPlan.getGroupId(),
@@ -69,12 +69,12 @@ public class LessonsPlanDAOImpl implements DAOExtension {
 
     @Override
     public boolean delete(int id) {
-        return jdbcTemplate.update(deleteSQL, id) == 1;
+        return jdbcTemplate.update(DELETE_SQL, id) == 1;
     }
 
     @Override
     public List<ParentBean> findListByObject(Object id) {
-        return (List) jdbcTemplate.query(findRelativePlanByIdSQL, new Object[]{id}, new NewRowMapper());
+        return (List) jdbcTemplate.query(FIND_RELATIVE_PLAN_BY_ID, new Object[]{id}, new NewRowMapper());
     }
 
     @Override

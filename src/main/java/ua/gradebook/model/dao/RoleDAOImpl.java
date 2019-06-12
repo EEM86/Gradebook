@@ -16,25 +16,25 @@ public class RoleDAOImpl implements DAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String table = "L3G3_ROLE";
-    private static final String findAllSQL = "SELECT * FROM " + table;
-    private static final String findByIdSQL = "SELECT * FROM " + table + " WHERE ROLE_ID=?";
-    private static final String findByNameSQL = "SELECT * FROM " + table + " WHERE ROLE_NAME=?";
-    private static final String updateSQL = "UPDATE " + table + " SET ROLE_NAME=? WHERE ROLE_ID=?";
-    private static final String deleteSQL = "DELETE FROM " + table + " WHERE ROLE_ID=?";
-    private static final String insertSQL = "INSERT into " + table + " (ROLE_NAME)" + "VALUES(?)";
+    private static final String TABLE = "L3G3_ROLE";
+    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
+    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE ROLE_ID=?";
+    private static final String findByNameSQL = "SELECT * FROM " + TABLE + " WHERE ROLE_NAME=?";
+    private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET ROLE_NAME=? WHERE ROLE_ID=?";
+    private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ROLE_ID=?";
+    private static final String INSERT_SQL = "INSERT into " + TABLE + " (ROLE_NAME)" + "VALUES(?)";
 
     public RoleDAOImpl() {
     }
 
     @Override
     public List<ParentBean> findAll() {
-        return jdbcTemplate.query(findAllSQL, new NewRowMapper());
+        return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
     }
 
     @Override
     public ParentBean findById(Integer id) {
-        return jdbcTemplate.queryForObject(findByIdSQL, new Object[]{id}, new NewRowMapper<Role>());
+        return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Role>());
     }
 
     @Override
@@ -45,18 +45,18 @@ public class RoleDAOImpl implements DAO {
     @Override
     public boolean insert(ParentBean item) {
         Role role = (Role) item;
-        return (jdbcTemplate.update(insertSQL, role.getRoleName()) == 1);
+        return (jdbcTemplate.update(INSERT_SQL, role.getRoleName()) == 1);
     }
 
     @Override
     public boolean update(ParentBean item) {
         Role role = (Role) item;
-        return jdbcTemplate.update(updateSQL, role.getRoleName(), role.getId()) != 0;
+        return jdbcTemplate.update(UPDATE_SQL, role.getRoleName(), role.getId()) != 0;
     }
 
     @Override
     public boolean delete(int id) {
-        return (jdbcTemplate.update(deleteSQL, id) == 1);
+        return (jdbcTemplate.update(DELETE_SQL, id) == 1);
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Role> {
