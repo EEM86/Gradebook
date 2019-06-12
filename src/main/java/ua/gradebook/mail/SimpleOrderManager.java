@@ -10,11 +10,14 @@ import ua.gradebook.model.beans.Person;
 public class SimpleOrderManager {
     private static final Logger logger = Logger.getLogger(SimpleOrderManager.class);
 
-    @Autowired
     private MailSender mailSender;
+    private SimpleMailMessage templateMessage;
 
     @Autowired
-    private SimpleMailMessage templateMessage;
+    public SimpleOrderManager(MailSender mailSender, SimpleMailMessage templateMessage) {
+        this.mailSender = mailSender;
+        this.templateMessage = templateMessage;
+    }
 
     public void setMailSender(MailSender mailSender) {
         this.mailSender = mailSender;

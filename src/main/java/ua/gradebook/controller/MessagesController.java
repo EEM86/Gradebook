@@ -14,18 +14,18 @@ import ua.gradebook.service.PersonService;
 
 @Controller
 public class MessagesController {
-
-    @Autowired
-    @Qualifier("MessageService")
-    private AppServiceExtension messageService;
-
-    @Autowired
-    private SimpleOrderManager simpleOrderManager;
-
-    @Autowired
-    private PersonService personService;
-
     private static final Logger logger = Logger.getLogger(MessagesController.class);
+
+    private final AppServiceExtension messageService;
+    private final SimpleOrderManager simpleOrderManager;
+    private final PersonService personService;
+
+    @Autowired
+    public MessagesController(@Qualifier("MessageService") AppServiceExtension messageService, SimpleOrderManager simpleOrderManager, PersonService personService) {
+        this.messageService = messageService;
+        this.simpleOrderManager = simpleOrderManager;
+        this.personService = personService;
+    }
 
     @GetMapping(value = "messages")
     public String showAllMessage (Model model) {

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
-import ua.gradebook.model.dao.BranchTypeDAOImpl;
 import ua.gradebook.model.dao.DAO;
 
 import java.util.List;
