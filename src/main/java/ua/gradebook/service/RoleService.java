@@ -12,7 +12,7 @@ import java.util.List;
 public class RoleService implements AppService {
     @Autowired
     @Qualifier("RoleDAO")
-    DAO roleDAO;
+    private DAO roleDAO;
 
     @Override
     public List findAll() { return this.roleDAO.findAll(); }

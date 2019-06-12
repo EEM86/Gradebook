@@ -12,7 +12,7 @@ import java.util.List;
 public class JournalService implements AppServiceExtension {
     @Autowired
     @Qualifier("GradesJournalDAO")
-    DAOExtension journalDAO;
+    private DAOExtension journalDAO;
 
     @Override
     public List findAll() {

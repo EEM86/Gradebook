@@ -18,7 +18,7 @@ import java.util.List;
 public class RoleRestController {
     @Autowired
     @Qualifier("RoleService")
-    AppService roleService;
+    private AppService roleService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllRoles() {

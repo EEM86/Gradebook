@@ -18,7 +18,7 @@ import java.util.List;
 public class JournalRestController {
     @Autowired
     @Qualifier("JournalService")
-    AppServiceExtension journalService;
+    private AppServiceExtension journalService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllJournals() {

@@ -19,7 +19,7 @@ public class PersonRestController {
 
     @Autowired
     @Qualifier("PersonService")
-    AppServiceExtension personService;
+    private AppServiceExtension personService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAll(){

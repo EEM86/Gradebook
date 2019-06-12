@@ -12,7 +12,7 @@ import java.util.List;
 public class MessageService implements AppServiceExtension {
     @Autowired
     @Qualifier("MessageDAO")
-    DAOExtension messageDAO;
+    private DAOExtension messageDAO;
 
     @Override
     public List<ParentBean> findAll() {

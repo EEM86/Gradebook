@@ -102,7 +102,9 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" value="${loggedPerson.id}" min="1" path="teacherId" readonly="true"/>
+                        <form:input type="number" value="${loggedPerson.id}" min="1"
+                                    path="teacherId" readonly="true" disabled="true"/>
+                        <form:hidden path="teacherId"/>
                     </td>
                 </tr>
                 <tr>

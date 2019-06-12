@@ -18,7 +18,7 @@ import java.util.List;
 public class LessonsPlanRestController {
     @Autowired
     @Qualifier("LessonsPlanService")
-    AppServiceExtension lessonsPlanService;
+    private AppServiceExtension lessonsPlanService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllLessonsPlans() {

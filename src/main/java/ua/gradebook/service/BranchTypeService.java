@@ -1,16 +1,19 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.dao.BranchTypeDAOImpl;
+import ua.gradebook.model.dao.DAO;
 
 import java.util.List;
 
 @Service(value="BranchTypeService")
 public class BranchTypeService implements AppService {
     @Autowired
-    BranchTypeDAOImpl branchTypeDAO;
+    @Qualifier("BranchTypeDAO")
+    private DAO branchTypeDAO;
 
     @Override
     public List findAll() {

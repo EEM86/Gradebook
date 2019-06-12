@@ -18,7 +18,7 @@ import java.util.List;
 public class MessageRestController {
         @Autowired
         @Qualifier("MessageService")
-        AppServiceExtension messageService;
+        private AppServiceExtension messageService;
 
         @GetMapping(value = "/all")
         public ResponseEntity<?> getAllMessages() {

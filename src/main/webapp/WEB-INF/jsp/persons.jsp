@@ -239,8 +239,6 @@
             </table>
         </form:form>
     </sec:authorize>
-
-    <jsp:include page="validationMessage.jsp"/>
 </section>
 
 </body>

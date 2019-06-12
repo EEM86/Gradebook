@@ -18,7 +18,7 @@ import java.util.List;
 public class ContainerRestController {
     @Autowired
     @Qualifier("ContainerService")
-    AppService containerService;
+    private AppService containerService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllContainers() {

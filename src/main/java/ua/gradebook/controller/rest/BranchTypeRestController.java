@@ -18,7 +18,7 @@ import java.util.List;
 public class BranchTypeRestController {
     @Autowired
     @Qualifier("BranchTypeService")
-    AppService branchTypeService;
+    private AppService branchTypeService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllBranchTypes() {

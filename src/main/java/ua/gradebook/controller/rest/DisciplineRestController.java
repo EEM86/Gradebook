@@ -18,7 +18,7 @@ import java.util.List;
 public class DisciplineRestController {
     @Autowired
     @Qualifier("DisciplineService")
-    AppService disciplineService;
+    private AppService disciplineService;
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllDisciplines() {
