@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.AppServiceExtension;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PersonController {
@@ -55,9 +56,9 @@ public class PersonController {
         return "persons";
     }
 
-    @RequestMapping(value="profile/{id}", method = RequestMethod.GET)
-    public String profile(@PathVariable("id") int id, Model model) {
-        model.addAttribute("person", this.personService.findById(id));
+    @RequestMapping(value="profile", method = RequestMethod.GET)
+    public String profile(HttpServletRequest request, Model model) {
+        model.addAttribute("person", this.personService.findByLogin(request.getUserPrincipal().getName()));
         return "profile";
     }
 }

@@ -40,6 +40,10 @@ a{
     text-decoration:underline;
 }
 
+.submit{
+    background: #00e3fc;
+}
+
 .logout {
     width: 100%;
     text-align: left;

@@ -12,6 +12,8 @@ import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.AppServiceExtension;
 import ua.gradebook.service.PersonService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class MessagesController {
     private static final Logger logger = Logger.getLogger(MessagesController.class);
@@ -35,14 +37,23 @@ public class MessagesController {
         return "messages";
     }
 
-    @GetMapping(value = "messages/{id}")
-    public String showMessagesById (@PathVariable("id") Integer id, Model model) {
+    @RequestMapping(value="personalmessages", method = RequestMethod.GET)
+    public String showMessagesById(HttpServletRequest request, Model model) {
+        if (Person.isAdmin()) {
+            return "redirect:/messages";
+        }
         model.addAttribute("message", new Message());
+        Integer id = (personService.findByLogin(request.getUserPrincipal().getName())).getId();
+        model.addAttribute("idSender", id);
         model.addAttribute("getMessages", messageService.findListByObject(id));
         logger.info("messages load");
         return "messages";
     }
-
+    @RequestMapping(value = "/messages/delete/{id}")
+    public String deleteMessage(@PathVariable("id") int id){
+        this.messageService.delete(id);
+        return "redirect:/messages";
+    }
     @PostMapping(value = "/messages/add")
     public String addMessage(@ModelAttribute("message") Message message){
         if (message.getId() == null) {
@@ -54,9 +65,5 @@ public class MessagesController {
         return "redirect:/messages";
     }
 
-    @RequestMapping(value = "/messages/delete/{id}")
-    public String deleteMessage(@PathVariable("id") int id){
-        this.messageService.delete(id);
-        return "redirect:/messages";
-    }
+
 }

@@ -1,11 +1,9 @@
-<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
-<%@ page import="ua.gradebook.model.beans.Person" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
@@ -15,7 +13,7 @@
 <header>
     <div class="href">
         <div class="href1">
-            <a href="/Gradebook/profile/${loggedPerson.id}">Profile</a>
+            <a href="/Gradebook/profile">Profile</a>
         </div>
         <div class="href1">
             <a href="/Gradebook/persons">Person</a>
@@ -24,13 +22,12 @@
             <a href="/Gradebook/disciplines">Disciplines</a>
         </div>
         <div class="href1">
-            <a href="/Gradebook/messages/${loggedPerson.id}">Messages</a>
+            <a href="/Gradebook/personalmessages">Messages</a>
         </div>
-
+        <div class="href1">
+            <a href="/Gradebook/containers">Containers</a>
+        </div>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <div class="href1">
-                <a href="/Gradebook/containers">Containers</a>
-            </div>
             <div class="href1">
                 <a href="/Gradebook/branchtypes">Branch Type</a>
             </div>
@@ -39,48 +36,48 @@
             </div>
         </sec:authorize>
         <div class="href1">
-            <a href="/Gradebook/journal/${loggedPerson.id}">Journal</a>
+            <a href="/Gradebook/personaljournal">Journal</a>
         </div>
         <sec:authorize access="hasAnyAuthority('ROLE_TEACHER', 'ROLE_ADMIN')">
-        <div class="href1">
-            <a href="/Gradebook/lessonsplan/${loggedPerson.id}">Lessons Plan</a>
-        </div>
+            <div class="href1">
+                <a href="/Gradebook/personallessonsplan">Lessons Plan</a>
+            </div>
         </sec:authorize>
     </div>
 
     <sec:authorize access="hasAnyAuthority('ROLE_ADMIN', 'ROLE_TEACHER')">
-    <div class="href">
-        <hr>
-        <div class="href1"> REST API: </div>
-        <div class="href1">
-            <a href="person/all">Persons - rest</a>
-        </div>
+        <div class="href">
+            <hr>
+            <div class="href1"> REST API: </div>
+            <div class="href1">
+                <a href="person/all">Persons - rest</a>
+            </div>
 
-        <div class="href1">
-            <a href="discipline/all">Disciplines - rest</a>
-        </div>
+            <div class="href1">
+                <a href="discipline/all">Disciplines - rest</a>
+            </div>
 
-        <div class="href1">
-            <a href="message-rest/all">Messages - rest</a>
-        </div>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
             <div class="href1">
-                <a href="container/all">Containers - rest</a>
+                <a href="message-rest/all">Messages - rest</a>
+            </div>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <div class="href1">
+                    <a href="container/all">Containers - rest</a>
+                </div>
+                <div class="href1">
+                    <a href="branchtypes-rest/all">Branch Type - rest</a>
+                </div>
+                <div class="href1">
+                    <a href="role/all">Roles - rest</a>
+                </div>
+            </sec:authorize>
+            <div class="href1">
+                <a href="journal-rest/all">Journal - rest</a>
             </div>
             <div class="href1">
-                <a href="branchtypes-rest/all">Branch Type - rest</a>
+                <a href="lessonsplan-rest/all">Lessons Plan - rest</a>
             </div>
-            <div class="href1">
-                <a href="role/all">Roles - rest</a>
-            </div>
-        </sec:authorize>
-        <div class="href1">
-            <a href="journal-rest/all">Journal - rest</a>
         </div>
-        <div class="href1">
-            <a href="lessonsplan-rest/all">Lessons Plan - rest</a>
-        </div>
-    </div>
     </sec:authorize>
 </header>
 

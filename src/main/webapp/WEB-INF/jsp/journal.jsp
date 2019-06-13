@@ -102,9 +102,14 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" value="${loggedPerson.id}" min="1"
-                                    path="teacherId" readonly="true" disabled="true"/>
-                        <form:hidden path="teacherId"/>
+                        <sec:authorize access="hasRole('ROLE_TEACHER')">
+                            <form:input type="number" value="${teacher}" min="1"
+                                        path="teacherId" readonly="true" disabled="true"/>
+                            <form:hidden path="teacherId"/>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <form:input type="number" min="1" path="teacherId"/>
+                        </sec:authorize>
                     </td>
                 </tr>
                 <tr>
