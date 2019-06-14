@@ -48,7 +48,6 @@
     <bean id="Person" class="ua.gradebook.model.beans.Person" parent="ParentBean"/>
     <bean id="Role" class="ua.gradebook.model.beans.Role" parent="ParentBean"/>
 
-
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="${spring.mail.host}"/>
         <property name="port" value="${spring.mail.port}"/>

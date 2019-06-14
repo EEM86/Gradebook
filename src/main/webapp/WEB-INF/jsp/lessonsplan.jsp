@@ -28,9 +28,9 @@
             <c:forEach items="${getLessonsplan}" var="lessonsplan">
                 <tr>
                     <td>${lessonsplan.id}</td>
-                    <td>${lessonsplan.discId}</td>
-                    <td>${lessonsplan.teacherId}</td>
-                    <td>${lessonsplan.groupId}</td>
+                    <td>${lessonsplan.discName}</td>
+                    <td>${lessonsplan.teacherName}</td>
+                    <td>${lessonsplan.groupName}</td>
                     <td>${lessonsplan.hours}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <td><a href="<c:url value='/lessonsplan/edit/${lessonsplan.id}'/>">Edit</a></td>
@@ -63,33 +63,33 @@
                 </c:if>
                 <tr>
                     <td>
-                        <form:label value="Discipline" path="discId">
+                        <form:label value="Discipline" path="discName">
                             <spring:message text="Discipline"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="discId"/>
+                        <form:input type="text" path="discName"/>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        <form:label path="teacherId">
+                        <form:label path="teacherName">
                             <spring:message text="Teacher"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="teacherId"/>
+                        <form:input type="text" path="teacherName"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="groupId">
+                        <form:label path="groupName">
                             <spring:message text="Group"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="groupId"/>
+                        <form:input type="text" path="groupName"/>
                     </td>
                 </tr>
                 <tr>
