@@ -30,10 +30,13 @@
             <c:forEach items="${getJournals}" var="journal">
                 <tr>
                     <td>${journal.id}</td>
-                    <td>${journal.discId}</td>
-                    <td>${journal.personId}</td>
+                    <%--<td>${journal.discId}</td>--%>
+                    <td>${journal.discName}</td>
+                    <%--<td>${journal.personId}</td>--%>
+                    <td>${journal.studentName}</td>
                     <td>${journal.grade}</td>
-                    <td>${journal.teacherId}</td>
+                    <%--<td>${journal.teacherId}</td>--%>
+                    <td>${journal.teacherName}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <td><a href="<c:url value='/journal/edit/${journal.id}'/>">Edit</a></td>
                         <td><a href="<c:url value='/journal/delete/${journal.id}'/>">Delete</a></td>
@@ -66,23 +69,25 @@
                 </c:if>
                 <tr>
                     <td>
-                        <form:label value="Discipline" path="discId">
+                        <form:label value="Discipline" path="discName">
                             <spring:message text="Discipline"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="discId"/>
+                        <form:input type="text" path="discName"/>
+                        <%--<form:input type="number" min="1" path="discId"/>--%>
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        <form:label path="personId">
+                        <form:label path="studentName">
                             <spring:message text="Student"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="personId"/>
+                        <form:input type="text" path="studentName"/>
+                        <%--<form:input type="number" min="1" path="personId"/>--%>
                     </td>
                 </tr>
                 <tr>
@@ -97,20 +102,24 @@
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="teacherId">
+                        <form:label path="teacherName">
                             <spring:message text="Teacher"/>
                         </form:label>
                     </td>
                     <td>
-                        <sec:authorize access="hasRole('ROLE_TEACHER')">
-                            <form:input type="number" value="${teacher}" min="1"
-                                        path="teacherId" readonly="true" disabled="true"/>
-                            <form:hidden path="teacherId"/>
-                        </sec:authorize>
-                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <form:input type="number" min="1" path="teacherId"/>
-                        </sec:authorize>
+                        <form:input type="text" path="teacherName"/>
                     </td>
+
+                    <%--<td>--%>
+                        <%--<sec:authorize access="hasRole('ROLE_TEACHER')">--%>
+                            <%--<form:input type="number" value="${teacher}" min="1"--%>
+                                        <%--path="teacherId" readonly="true" disabled="true"/>--%>
+                            <%--<form:hidden path="teacherId"/>--%>
+                        <%--</sec:authorize>--%>
+                        <%--<sec:authorize access="hasRole('ROLE_ADMIN')">--%>
+                            <%--<form:input type="number" min="1" path="teacherId"/>--%>
+                        <%--</sec:authorize>--%>
+                    <%--</td>--%>
                 </tr>
                 <tr>
                     <td colspan="2">

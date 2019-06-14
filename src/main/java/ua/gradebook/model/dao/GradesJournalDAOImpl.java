@@ -17,7 +17,12 @@ public class GradesJournalDAOImpl implements DAOExtension {
     private JdbcTemplate jdbcTemplate;
 
     private static final String TABLE = "L3G3_gradesjournal";
-    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
+    private static final String FIND_ALL = "SELECT j.JOURNAL_ID, j.DISC_ID, d.DISC_NAME, j.PERSON_ID, concat(concat(p.FIRST_NAME, ' '), p.LAST_NAME) as StudName, " +
+            "j.GRADE, j.TEACHER_ID, concat(concat(p2.FIRST_NAME, ' '), p2.LAST_NAME) as TeachName FROM " + TABLE + " j " +
+            "LEFT JOIN L3G3_DISCIPLINE d ON j.DISC_ID = d.DISC_ID " +
+            "LEFT JOIN L3G3_PERSON p ON j.PERSON_ID = p.PERSON_ID " +
+            "LEFT JOIN L3G3_PERSON p2 ON j.TEACHER_ID = p2.PERSON_ID";
+//    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
     private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE JOURNAL_ID=?";
     private static final String FIND_RELATIVE_DATA_BY_ID = "SELECT * FROM " + TABLE + " WHERE PERSON_ID=? OR TEACHER_ID=?";
     private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID)"
@@ -87,9 +92,12 @@ public class GradesJournalDAOImpl implements DAOExtension {
             GradesJournal gradesJournal = new GradesJournal();
             gradesJournal.setId(resultSet.getInt(1));
             gradesJournal.setDiscId(resultSet.getInt(2));
-            gradesJournal.setPersonId(resultSet.getInt(3));
-            gradesJournal.setGrade(resultSet.getInt(4));
-            gradesJournal.setTeacherId(resultSet.getInt(5));
+            gradesJournal.setDiscName(resultSet.getString(3));
+            gradesJournal.setPersonId(resultSet.getInt(4));
+            gradesJournal.setStudentName(resultSet.getString(5));
+            gradesJournal.setGrade(resultSet.getInt(6));
+            gradesJournal.setTeacherId(resultSet.getInt(7));
+            gradesJournal.setTeacherName(resultSet.getString(8));
             return gradesJournal;
         }
     }

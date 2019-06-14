@@ -29,31 +29,26 @@ public class MessagesController {
         this.personService = personService;
     }
 
-    @GetMapping(value = "messages")
-    public String showAllMessage (Model model) {
+    @RequestMapping(value="messages", method = RequestMethod.GET)
+    public String showMessagesById(HttpServletRequest request, Model model) {
+        Integer id = (personService.findByLogin(request.getUserPrincipal().getName())).getId();
+        model.addAttribute("idSender", id);
         model.addAttribute("message", new Message());
-        model.addAttribute("getMessages", messageService.findAll());
+        if (Person.isAdmin()) {
+            model.addAttribute("getMessages", messageService.findAll());
+        } else {
+            model.addAttribute("getMessages", messageService.findListByObject(id));
+        }
         logger.info("messages load");
         return "messages";
     }
 
-    @RequestMapping(value="personalmessages", method = RequestMethod.GET)
-    public String showMessagesById(HttpServletRequest request, Model model) {
-        if (Person.isAdmin()) {
-            return "redirect:/messages";
-        }
-        model.addAttribute("message", new Message());
-        Integer id = (personService.findByLogin(request.getUserPrincipal().getName())).getId();
-        model.addAttribute("idSender", id);
-        model.addAttribute("getMessages", messageService.findListByObject(id));
-        logger.info("messages load");
-        return "messages";
-    }
     @RequestMapping(value = "/messages/delete/{id}")
     public String deleteMessage(@PathVariable("id") int id){
         this.messageService.delete(id);
         return "redirect:/messages";
     }
+
     @PostMapping(value = "/messages/add")
     public String addMessage(@ModelAttribute("message") Message message){
         if (message.getId() == null) {
@@ -64,6 +59,4 @@ public class MessagesController {
         simpleOrderManager.sendMessage((Person) personService.findById(message.getReceiverId()));
         return "redirect:/messages";
     }
-
-
 }

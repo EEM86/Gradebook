@@ -22,7 +22,7 @@
             <a href="/Gradebook/disciplines">Disciplines</a>
         </div>
         <div class="href1">
-            <a href="/Gradebook/personalmessages">Messages</a>
+            <a href="/Gradebook/messages">Messages</a>
         </div>
         <div class="href1">
             <a href="/Gradebook/containers">Containers</a>

@@ -3,9 +3,12 @@ package ua.gradebook.model.beans;
 import java.util.Objects;
 
 public class GradesJournal extends ParentBean {
+    private String discName;
     private Integer discId;
+    private String studentName;
     private Integer personId;
     private Integer grade;
+    private String teacherName;
     private Integer teacherId;
 
     public Integer getDiscId() {
@@ -40,6 +43,30 @@ public class GradesJournal extends ParentBean {
         this.teacherId = teacherId;
     }
 
+    public String getDiscName() {
+        return discName;
+    }
+
+    public void setDiscName(String discName) {
+        this.discName = discName;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,9 +87,12 @@ public class GradesJournal extends ParentBean {
     public String toString() {
         return "GradesJournal{" +
                 "id=" + id +
+                ", discName='" + discName + '\'' +
                 ", discId=" + discId +
+                ", studentName='" + studentName + '\'' +
                 ", personId=" + personId +
                 ", grade=" + grade +
+                ", teacherName='" + teacherName + '\'' +
                 ", teacherId=" + teacherId +
                 '}';
     }
