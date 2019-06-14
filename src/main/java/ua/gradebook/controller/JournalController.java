@@ -26,24 +26,18 @@ public class JournalController {
         this.personService = personService;
     }
 
-    @GetMapping(value = "journal")
-    public String showAllJournals(Model model) {
-        model.addAttribute("journal", new GradesJournal());
-        model.addAttribute("getJournals", journalService.findAll());
-        logger.info("journal load");
-        return "journal";
-    }
-
-    @RequestMapping(value="personaljournal", method = RequestMethod.GET)
+    @RequestMapping(value="journal", method = RequestMethod.GET)
     public String showRelativeJournalById(HttpServletRequest request, Model model) {
-        if (Person.isAdmin()) {
-            return "redirect:/journal";
-        }
-        model.addAttribute("journal", new GradesJournal());
         Integer id = (personService.findByLogin(request.getUserPrincipal().getName())).getId();
         model.addAttribute("teacher", id);
-        model.addAttribute("getJournals", journalService.findListByObject(id));
-        logger.info("journals load");
+        model.addAttribute("journal", new GradesJournal());
+        if (Person.isAdmin()) {
+            model.addAttribute("getJournals", journalService.findAll());
+            return "journal";
+        } else {
+            model.addAttribute("getJournals", journalService.findListByObject(id));
+        }
+        logger.info("journals loaded");
         return "journal";
     }
 

@@ -30,12 +30,9 @@
             <c:forEach items="${getJournals}" var="journal">
                 <tr>
                     <td>${journal.id}</td>
-                    <%--<td>${journal.discId}</td>--%>
                     <td>${journal.discName}</td>
-                    <%--<td>${journal.personId}</td>--%>
                     <td>${journal.studentName}</td>
                     <td>${journal.grade}</td>
-                    <%--<td>${journal.teacherId}</td>--%>
                     <td>${journal.teacherName}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <td><a href="<c:url value='/journal/edit/${journal.id}'/>">Edit</a></td>
@@ -75,7 +72,6 @@
                     </td>
                     <td>
                         <form:input type="text" path="discName"/>
-                        <%--<form:input type="number" min="1" path="discId"/>--%>
                     </td>
                 </tr>
 
@@ -87,7 +83,6 @@
                     </td>
                     <td>
                         <form:input type="text" path="studentName"/>
-                        <%--<form:input type="number" min="1" path="personId"/>--%>
                     </td>
                 </tr>
                 <tr>
@@ -107,19 +102,13 @@
                         </form:label>
                     </td>
                     <td>
+                    <sec:authorize access="hasRole('ROLE_TEACHER')">
                         <form:input type="text" path="teacherName"/>
+                    </sec:authorize>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <form:input type="text" path="teacherName"/>
+                    </sec:authorize>
                     </td>
-
-                    <%--<td>--%>
-                        <%--<sec:authorize access="hasRole('ROLE_TEACHER')">--%>
-                            <%--<form:input type="number" value="${teacher}" min="1"--%>
-                                        <%--path="teacherId" readonly="true" disabled="true"/>--%>
-                            <%--<form:hidden path="teacherId"/>--%>
-                        <%--</sec:authorize>--%>
-                        <%--<sec:authorize access="hasRole('ROLE_ADMIN')">--%>
-                            <%--<form:input type="number" min="1" path="teacherId"/>--%>
-                        <%--</sec:authorize>--%>
-                    <%--</td>--%>
                 </tr>
                 <tr>
                     <td colspan="2">

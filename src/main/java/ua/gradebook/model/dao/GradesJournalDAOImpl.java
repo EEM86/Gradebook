@@ -16,18 +16,45 @@ public class GradesJournalDAOImpl implements DAOExtension {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String TABLE = "L3G3_gradesjournal";
-    private static final String FIND_ALL = "SELECT j.JOURNAL_ID, j.DISC_ID, d.DISC_NAME, j.PERSON_ID, concat(concat(p.FIRST_NAME, ' '), p.LAST_NAME) as StudName, " +
-            "j.GRADE, j.TEACHER_ID, concat(concat(p2.FIRST_NAME, ' '), p2.LAST_NAME) as TeachName FROM " + TABLE + " j " +
+    private static final String TABLE = "L3G3_GRADESJOURNAL";
+    private static final String FIND_ALL =
+        "SELECT j.JOURNAL_ID, j.DISC_ID, d.DISC_NAME, j.PERSON_ID, concat(concat(p.FIRST_NAME, ' '), p.LAST_NAME), " +
+            "j.GRADE, j.TEACHER_ID, concat(concat(p2.FIRST_NAME, ' '), p2.LAST_NAME) FROM " + TABLE + " j " +
             "LEFT JOIN L3G3_DISCIPLINE d ON j.DISC_ID = d.DISC_ID " +
             "LEFT JOIN L3G3_PERSON p ON j.PERSON_ID = p.PERSON_ID " +
             "LEFT JOIN L3G3_PERSON p2 ON j.TEACHER_ID = p2.PERSON_ID";
-//    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
-    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE JOURNAL_ID=?";
-    private static final String FIND_RELATIVE_DATA_BY_ID = "SELECT * FROM " + TABLE + " WHERE PERSON_ID=? OR TEACHER_ID=?";
-    private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID)"
-           + " VALUES (?, ?, ?, ?)";
-    private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET DISC_ID=?, PERSON_ID=?, GRADE=?, TEACHER_ID=? WHERE JOURNAL_ID=?";
+    private static final String FIND_BY_ID =
+        "SELECT j.JOURNAL_ID, j.DISC_ID, d.DISC_NAME, j.PERSON_ID, concat(concat(p.FIRST_NAME, ' '), p.LAST_NAME), " +
+            "j.GRADE, j.TEACHER_ID, concat(concat(p2.FIRST_NAME, ' '), p2.LAST_NAME) FROM " + TABLE + " j " +
+                "LEFT JOIN L3G3_DISCIPLINE d ON j.DISC_ID = d.DISC_ID " +
+                "LEFT JOIN L3G3_PERSON p ON j.PERSON_ID = p.PERSON_ID " +
+                "LEFT JOIN L3G3_PERSON p2 ON j.TEACHER_ID = p2.PERSON_ID " +
+            "WHERE j.JOURNAL_ID=?";
+    private static final String FIND_RELATIVE_DATA_BY_ID =
+        "SELECT j.JOURNAL_ID, j.DISC_ID, d.DISC_NAME, j.PERSON_ID, concat(concat(p.FIRST_NAME, ' '), p.LAST_NAME), " +
+            "j.GRADE, j.TEACHER_ID, concat(concat(p2.FIRST_NAME, ' '), p2.LAST_NAME) FROM " + TABLE + " j " +
+                "LEFT JOIN L3G3_DISCIPLINE d ON j.DISC_ID = d.DISC_ID " +
+                "LEFT JOIN L3G3_PERSON p ON j.PERSON_ID = p.PERSON_ID " +
+                "LEFT JOIN L3G3_PERSON p2 ON j.TEACHER_ID = p2.PERSON_ID " +
+            "WHERE j.PERSON_ID=? OR j.TEACHER_ID=?";
+
+    private static final String INSERT_SQL =
+            "INSERT INTO " + TABLE + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID) " +
+            "VALUES ((SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?))," +
+            "        (SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?))," +
+            "         ?," +
+            "         (SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?)))";
+
+    private static final String UPDATE_SQL =
+            "UPDATE " + TABLE + " SET " +
+                    "DISC_ID=(SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?)), " +
+                    "PERSON_ID=(SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?)), " +
+                    "GRADE=?, " +
+                    "TEACHER_ID=(SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?))" +
+                    "WHERE JOURNAL_ID=?";
+
+
+
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE JOURNAL_ID=?";
 
     @Override
@@ -48,25 +75,23 @@ public class GradesJournalDAOImpl implements DAOExtension {
     @Override
     public boolean insert(ParentBean item) {
         GradesJournal gradesJournal = (GradesJournal) item;
-        jdbcTemplate.update(INSERT_SQL, new Object[] {
-                gradesJournal.getDiscId(),
-                gradesJournal.getPersonId(),
+        jdbcTemplate.update(INSERT_SQL,
+                gradesJournal.getDiscName(),
+                gradesJournal.getStudentName(),
                 gradesJournal.getGrade(),
-                gradesJournal.getTeacherId()
-        });
+                gradesJournal.getTeacherName());
         return true;
     }
 
     @Override
     public boolean update(ParentBean item) {
         GradesJournal gradesJournal = (GradesJournal) item;
-        jdbcTemplate.update(UPDATE_SQL, new Object[]{
-                gradesJournal.getDiscId(),
-                gradesJournal.getPersonId(),
+        jdbcTemplate.update(UPDATE_SQL,
+                gradesJournal.getDiscName(),
+                gradesJournal.getStudentName(),
                 gradesJournal.getGrade(),
-                gradesJournal.getTeacherId(),
-                gradesJournal.getId()
-        });
+                gradesJournal.getTeacherName(),
+                gradesJournal.getId());
         return true;
     }
 

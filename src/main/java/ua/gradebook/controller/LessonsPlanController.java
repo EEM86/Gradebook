@@ -26,23 +26,17 @@ public class LessonsPlanController {
         this.personService = personService;
     }
 
-    @GetMapping(value = "lessonsplan")
-    public String showAllLessonsPlans (Model model) {
-        model.addAttribute("lessonsplan", new LessonsPlan());
-        model.addAttribute("getLessonsplan", lessonsPlanService.findAll());
-        logger.info("lessonsplan load");
-        return "lessonsplan";
-    }
-
-    @RequestMapping(value="personallessonsplan", method = RequestMethod.GET)
+    @RequestMapping(value="lessonsplan", method = RequestMethod.GET)
     public String findRelativePlanById (HttpServletRequest request, Model model) {
-        if (Person.isAdmin()) {
-            return "redirect:/lessonsplan";
-        }
-        model.addAttribute("lessonsplan", new LessonsPlan());
         Integer id = (personService.findByLogin(request.getUserPrincipal().getName())).getId();
-        model.addAttribute("getLessonsplan", lessonsPlanService.findListByObject(id));
-        logger.info("lessonsplan load");
+        model.addAttribute("lessonsplan", new LessonsPlan());
+        if (Person.isAdmin()) {
+            model.addAttribute("getLessonsplan", lessonsPlanService.findAll());
+            return "lessonsplan";
+        } else {
+            model.addAttribute("getLessonsplan", lessonsPlanService.findListByObject(id));
+        }
+        logger.info("lessonsplan loaded");
         return "lessonsplan";
     }
 

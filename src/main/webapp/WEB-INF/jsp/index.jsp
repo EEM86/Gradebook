@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"  %>
 <html>
 <head>
     <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
@@ -36,11 +36,11 @@
             </div>
         </sec:authorize>
         <div class="href1">
-            <a href="/Gradebook/personaljournal">Journal</a>
+            <a href="/Gradebook/journal">Journal</a>
         </div>
         <sec:authorize access="hasAnyAuthority('ROLE_TEACHER', 'ROLE_ADMIN')">
             <div class="href1">
-                <a href="/Gradebook/personallessonsplan">Lessons Plan</a>
+                <a href="/Gradebook/lessonsplan">Lessons Plan</a>
             </div>
         </sec:authorize>
     </div>
