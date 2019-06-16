@@ -1,49 +1,52 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.beans.Person;
 import ua.gradebook.model.dao.DAOExtension;
+import ua.gradebook.model.dao.PersonDAOImpl;
 
 import java.util.List;
 
-@Service(value="PersonService")
-public class PersonService implements AppServiceExtension {
+@Service
+public class PersonService implements AppServiceExtension<Person> {
+    private final DAOExtension<Person> personDAO;
+
     @Autowired
-    @Qualifier("PersonDAO")
-    private DAOExtension personDAO;
+    public PersonService(PersonDAOImpl personDAO) {
+        this.personDAO = personDAO;
+    }
 
     @Override
-    public List<ParentBean> findAll() {
+    public List<Person> findAll() {
         return this.personDAO.findAll();
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Person findById(Integer id) {
         return this.personDAO.findById(id);
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Person findByName(String name) {
        return this.personDAO.findByName(name);
     }
 
     @Override
-    public ParentBean findByLogin(String login) {return this.personDAO.findByLogin(login); }
+    public Person findByLogin(String login) {return this.personDAO.findByLogin(login); }
 
     @Override
-    public List<ParentBean> findListByObject(Object obj) {
+    public List<Person> findListByObject(Object obj) {
         return this.personDAO.findListByObject(obj);
     }
 
     @Override
-    public boolean insert(ParentBean item) {
+    public boolean insert(Person item) {
         return this.personDAO.insert(item);
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(Person item) {
         return this.personDAO.update(item);
     }
 

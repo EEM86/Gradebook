@@ -4,15 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Role;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository(value="RoleDAO")
-public class RoleDAOImpl implements DAO {
+@Repository
+public class RoleDAOImpl implements DAO<Role> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -28,30 +27,28 @@ public class RoleDAOImpl implements DAO {
     }
 
     @Override
-    public List<ParentBean> findAll() {
-        return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
+    public List<Role> findAll() {
+        return jdbcTemplate.query(FIND_ALL, new NewRowMapper<Role>());
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Role findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Role>());
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Role findByName(String name) {
         return jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper<Role>());
     }
 
     @Override
-    public boolean insert(ParentBean item) {
-        Role role = (Role) item;
-        return (jdbcTemplate.update(INSERT_SQL, role.getRoleName()) == 1);
+    public boolean insert(Role item) {
+        return (jdbcTemplate.update(INSERT_SQL, item.getRoleName()) == 1);
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        Role role = (Role) item;
-        return jdbcTemplate.update(UPDATE_SQL, role.getRoleName(), role.getId()) != 0;
+    public boolean update(Role item) {
+        return jdbcTemplate.update(UPDATE_SQL, item.getRoleName(), item.getId()) != 0;
     }
 
     @Override

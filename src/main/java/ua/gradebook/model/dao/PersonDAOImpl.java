@@ -4,15 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository(value="PersonDAO")
-public class PersonDAOImpl implements DAOExtension {
+@Repository
+public class PersonDAOImpl implements DAOExtension<Person> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -30,69 +29,65 @@ public class PersonDAOImpl implements DAOExtension {
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE PERSON_ID=?";
 
     @Override
-    public List<ParentBean> findAll() {
-        return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
+    public List<Person> findAll() {
+        return jdbcTemplate.query(FIND_ALL, new NewRowMapper<Person>());
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Person findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Person>());
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Person findByName(String name) {
         return jdbcTemplate.queryForObject(findByNameSQL, new Object[]{name}, new NewRowMapper<Person>());
     }
 
     @Override
-    public ParentBean findByLogin(String login) {
+    public Person findByLogin(String login) {
         return jdbcTemplate.queryForObject(findByLoginSQL, new Object[]{login}, new NewRowMapper<Person>());
     }
 
     @Override
-    public List<ParentBean> findListByObject(Object obj) {
+    public List<Person> findListByObject(Object obj) {
         String corText = "%" + obj + "%";
-        return (List) jdbcTemplate.query(FIND_NAMES, new Object[]{corText}, new NewRowMapper());
+        return jdbcTemplate.query(FIND_NAMES, new Object[]{corText}, new NewRowMapper<Person>());
     }
 
     @Override
-    public boolean insert(ParentBean item) {
-        Person person = (Person) item;
-        jdbcTemplate.update(INSERT_SQL, new Object[] {
-                person.getRoleId(),
-                person.getFirstName(),
-                person.getLastName(),
-                person.getEmail(),
-                person.getPhone(),
-                person.getAddress(),
-                person.getBirthday(),
-                person.getDepartmentId(),
-                person.getCuratorId(),
-                person.getGroupId(),
-                person.getLogin(),
-                person.getPassword()
-        });
+    public boolean insert(Person item) {
+        jdbcTemplate.update(INSERT_SQL,
+                item.getRoleId(),
+                item.getFirstName(),
+                item.getLastName(),
+                item.getEmail(),
+                item.getPhone(),
+                item.getAddress(),
+                item.getBirthday(),
+                item.getDepartmentId(),
+                item.getCuratorId(),
+                item.getGroupId(),
+                item.getLogin(),
+                item.getPassword());
         return true;
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        Person newPerson = (Person) item;
-       jdbcTemplate.update(UPDATE_SQL, new Object[]{
-               newPerson.getRoleId(),
-               newPerson.getFirstName(),
-               newPerson.getLastName(),
-               newPerson.getEmail(),
-               newPerson.getPhone(),
-               newPerson.getAddress(),
-               newPerson.getBirthday(),
-               newPerson.getDepartmentId(),
-               newPerson.getCuratorId(),
-               newPerson.getGroupId(),
-               newPerson.getLogin(),
-               newPerson.getPassword(),
-               newPerson.getId()
-        });
+    public boolean update(Person item) {
+       jdbcTemplate.update(UPDATE_SQL,
+               item.getRoleId(),
+               item.getFirstName(),
+               item.getLastName(),
+               item.getEmail(),
+               item.getPhone(),
+               item.getAddress(),
+               item.getBirthday(),
+               item.getDepartmentId(),
+               item.getCuratorId(),
+               item.getGroupId(),
+               item.getLogin(),
+               item.getPassword(),
+               item.getId());
         return true;
     }
 

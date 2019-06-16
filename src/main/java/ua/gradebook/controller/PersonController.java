@@ -2,21 +2,25 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.AppServiceExtension;
+import ua.gradebook.service.PersonService;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PersonController {
-    @Autowired
-    @Qualifier("PersonService")
-    private AppServiceExtension personService;
+    private final AppServiceExtension<Person> personService;
 
     private static final Logger logger = Logger.getLogger(PersonController.class);
+
+    @Autowired
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
 
     @GetMapping(value="persons")
     public String getPersons(Model model) {

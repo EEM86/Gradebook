@@ -1,41 +1,45 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.beans.BranchType;
+import ua.gradebook.model.dao.BranchTypeDAOImpl;
 import ua.gradebook.model.dao.DAO;
 
 import java.util.List;
 
-@Service(value="BranchTypeService")
-public class BranchTypeService implements AppService {
+@Service
+public class BranchTypeService implements AppService<BranchType> {
+
+    private final DAO<BranchType> branchTypeDAO;
+
     @Autowired
-    @Qualifier("BranchTypeDAO")
-    private DAO branchTypeDAO;
+    public BranchTypeService(BranchTypeDAOImpl branchTypeDAO) {
+        this.branchTypeDAO = branchTypeDAO;
+    }
 
     @Override
-    public List findAll() {
+    public List<BranchType> findAll() {
         return this.branchTypeDAO.findAll();
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public BranchType findById(Integer id) {
         return this.branchTypeDAO.findById(id);
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public BranchType findByName(String name) {
         return this.branchTypeDAO.findByName(name);
     }
 
     @Override
-    public boolean insert(ParentBean item) {
+    public boolean insert(BranchType item) {
         return this.branchTypeDAO.insert(item);
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(BranchType item) {
         return this.branchTypeDAO.update(item);
     }
 

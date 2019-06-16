@@ -1,18 +1,21 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.beans.Container;
+import ua.gradebook.model.dao.ContainerDAOImpl;
 import ua.gradebook.model.dao.DAO;
 
 import java.util.List;
 
-@Service(value="ContainerService")
-public class ContainerService implements AppService {
+@Service
+public class ContainerService implements AppService<Container> {
+    private final DAO<Container> containerDAO;
+
     @Autowired
-    @Qualifier("ContainerDAO")
-    private DAO containerDAO;
+    public ContainerService(ContainerDAOImpl containerDAO) {
+        this.containerDAO = containerDAO;
+    }
 
     @Override
     public List findAll() {
@@ -20,22 +23,22 @@ public class ContainerService implements AppService {
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Container findById(Integer id) {
         return this.containerDAO.findById(id);
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Container findByName(String name) {
         return this.containerDAO.findByName(name);
     }
 
     @Override
-    public boolean insert(ParentBean item) {
+    public boolean insert(Container item) {
         return this.containerDAO.insert(item);
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(Container item) {
         return this.containerDAO.update(item);
     }
 

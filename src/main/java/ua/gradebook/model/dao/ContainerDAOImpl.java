@@ -5,14 +5,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.Container;
-import ua.gradebook.model.beans.ParentBean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 @Repository(value="ContainerDAO")
-public class ContainerDAOImpl implements DAO {
+public class ContainerDAOImpl implements DAO<Container> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -27,22 +26,22 @@ public class ContainerDAOImpl implements DAO {
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ID=?";
 
     @Override
-    public List<ParentBean> findAll() {
+    public List<Container> findAll() {
         return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Container findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Container>());
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Container findByName(String name) {
         return jdbcTemplate.queryForObject(FIND_BY_NAME, new Object[]{name}, new NewRowMapper<Container>());
     }
 
     @Override
-    public boolean insert(ParentBean item) {
+    public boolean insert(Container item) {
         Container container = (Container) item;
         jdbcTemplate.update(INSERT_SQL, new Object[] {
                 container.getParentId(),
@@ -57,7 +56,7 @@ public class ContainerDAOImpl implements DAO {
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(Container item) {
         Container container = (Container) item;
         jdbcTemplate.update(UPDATE_SQL, new Object[]{
                 container.getParentId(),

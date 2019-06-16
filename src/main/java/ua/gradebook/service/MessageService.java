@@ -1,49 +1,52 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.beans.Message;
 import ua.gradebook.model.dao.DAOExtension;
+import ua.gradebook.model.dao.MessageDAOImpl;
 
 import java.util.List;
 
-@Service(value="MessageService")
-public class MessageService implements AppServiceExtension {
+@Service
+public class MessageService implements AppServiceExtension<Message> {
+    private final DAOExtension<Message> messageDAO;
+
     @Autowired
-    @Qualifier("MessageDAO")
-    private DAOExtension messageDAO;
+    public MessageService(MessageDAOImpl messageDAO) {
+        this.messageDAO = messageDAO;
+    }
 
     @Override
-    public List<ParentBean> findAll() {
+    public List<Message> findAll() {
         return this.messageDAO.findAll();
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Message findById(Integer id) {
         return this.messageDAO.findById(id);
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Message findByName(String name) {
         return this.messageDAO.findByName(name);
     }
 
     @Override
-    public List<ParentBean> findListByObject(Object id) {
+    public List<Message> findListByObject(Object id) {
         return this.messageDAO.findListByObject(id);
     }
 
     @Override
-    public ParentBean findByLogin(String login) { return null; }
+    public Message findByLogin(String login) { return null; }
 
     @Override
-    public boolean insert(ParentBean item) {
+    public boolean insert(Message item) {
         return this.messageDAO.insert(item);
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(Message item) {
         return this.messageDAO.update(item);
     }
 

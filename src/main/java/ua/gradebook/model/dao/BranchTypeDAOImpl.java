@@ -5,14 +5,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.BranchType;
-import ua.gradebook.model.beans.ParentBean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository(value="BranchTypeDAO")
-public class BranchTypeDAOImpl implements DAO{
+@Repository
+public class BranchTypeDAOImpl implements DAO<BranchType> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -28,30 +27,28 @@ public class BranchTypeDAOImpl implements DAO{
     }
 
     @Override
-    public List<ParentBean> findAll() {
-        return jdbcTemplate.query(FIND_All, new NewRowMapper());
+    public List<BranchType> findAll() {
+        return jdbcTemplate.query(FIND_All, new NewRowMapper<BranchType>());
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public BranchType findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<BranchType>());
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public BranchType findByName(String name) {
         return jdbcTemplate.queryForObject(FIND_BY_NAME, new Object[]{name}, new NewRowMapper<BranchType>());
     }
 
     @Override
-    public boolean insert(ParentBean item) {
-        BranchType branchType = (BranchType) item;
-        return (jdbcTemplate.update(INSERT_SQL, branchType.getTypeName()) == 1);
+    public boolean insert(BranchType item) {
+        return (jdbcTemplate.update(INSERT_SQL, item.getTypeName()) == 1);
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        BranchType branchType = (BranchType) item;
-        return jdbcTemplate.update(UPDATE_SQL, branchType.getTypeName(), branchType.getId()) == 1;
+    public boolean update(BranchType item) {
+        return jdbcTemplate.update(UPDATE_SQL, item.getTypeName(), item.getId()) == 1;
     }
 
     @Override
@@ -59,7 +56,7 @@ public class BranchTypeDAOImpl implements DAO{
         return (jdbcTemplate.update(DELETE_SQL, id) == 1);
     }
 
-    private static final class NewRowMapper<P> implements RowMapper<BranchType> {
+    private static final class NewRowMapper<T> implements RowMapper<BranchType> {
 
         @Override
         public BranchType mapRow(ResultSet resultSet, int i) throws SQLException {

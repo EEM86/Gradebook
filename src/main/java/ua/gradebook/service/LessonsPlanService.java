@@ -1,41 +1,45 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.beans.LessonsPlan;
 import ua.gradebook.model.dao.DAOExtension;
+import ua.gradebook.model.dao.LessonsPlanDAOImpl;
 
 import java.util.List;
 
-@Service(value="LessonsPlanService")
-public class LessonsPlanService implements AppServiceExtension {
+@Service
+public class LessonsPlanService implements AppServiceExtension<LessonsPlan> {
+
+    private final DAOExtension<LessonsPlan> lessonsPlanDAO;
+
     @Autowired
-    @Qualifier("LessonsPlanDAO")
-    private DAOExtension lessonsPlanDAO;
+    public LessonsPlanService(LessonsPlanDAOImpl lessonsPlanDAO) {
+        this.lessonsPlanDAO = lessonsPlanDAO;
+    }
 
     @Override
-    public List findAll() {
+    public List<LessonsPlan> findAll() {
         return this.lessonsPlanDAO.findAll();
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public LessonsPlan findById(Integer id) {
         return this.lessonsPlanDAO.findById(id);
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public LessonsPlan findByName(String name) {
         return this.lessonsPlanDAO.findByName(name);
     }
 
     @Override
-    public boolean insert(ParentBean item) {
+    public boolean insert(LessonsPlan item) {
         return this.lessonsPlanDAO.insert(item);
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(LessonsPlan item) {
         return this.lessonsPlanDAO.update(item);
     }
 
@@ -45,12 +49,12 @@ public class LessonsPlanService implements AppServiceExtension {
     }
 
     @Override
-    public List<ParentBean> findListByObject(Object id) {
+    public List<LessonsPlan> findListByObject(Object id) {
         return this.lessonsPlanDAO.findListByObject(id);
     }
 
     @Override
-    public ParentBean findByLogin(String login) {
+    public LessonsPlan findByLogin(String login) {
         return null;
     }
 }
