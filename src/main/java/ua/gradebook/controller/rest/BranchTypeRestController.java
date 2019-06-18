@@ -1,28 +1,31 @@
 package ua.gradebook.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.BranchType;
-import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.service.AppService;
+import ua.gradebook.service.BranchTypeService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("branchtypes-rest")
 public class BranchTypeRestController {
+
+    private final AppService<BranchType> branchTypeService;
+
     @Autowired
-    @Qualifier("BranchTypeService")
-    private AppService branchTypeService;
+    public BranchTypeRestController(BranchTypeService branchTypeService) {
+        this.branchTypeService = branchTypeService;
+    }
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllBranchTypes() {
-        List<ParentBean> parentBeanList = branchTypeService.findAll();
+        List<BranchType> parentBeanList = branchTypeService.findAll();
         return new ResponseEntity<>(parentBeanList, HttpStatus.OK);
     }
 
@@ -39,7 +42,7 @@ public class BranchTypeRestController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateBranchType(@PathVariable int id, @RequestBody BranchType branchType) {
         try {
-            BranchType model = (BranchType) branchTypeService.findById(id);
+            BranchType model = branchTypeService.findById(id);
             branchType.setId(model.getId());
             branchTypeService.update(branchType);
             return new ResponseEntity<>(model, HttpStatus.OK);
@@ -62,7 +65,7 @@ public class BranchTypeRestController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findById(@PathVariable int id) {
         try {
-            BranchType person = (BranchType) branchTypeService.findById(id);
+            BranchType person = branchTypeService.findById(id);
             return new ResponseEntity<>(person, HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -1,18 +1,22 @@
 package ua.gradebook.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ua.gradebook.model.beans.ParentBean;
+import ua.gradebook.model.beans.Discipline;
 import ua.gradebook.model.dao.DAO;
+import ua.gradebook.model.dao.DisciplineDAOImpl;
 
 import java.util.List;
 
-@Service(value="DisciplineService")
-public class DisciplineService implements AppService {
+@Service
+public class DisciplineService implements AppService<Discipline> {
+
+    private final DAO<Discipline> disciplineDAO;
+
     @Autowired
-    @Qualifier("DisciplineDAO")
-    private DAO disciplineDAO;
+    public DisciplineService(DisciplineDAOImpl disciplineDAO) {
+        this.disciplineDAO = disciplineDAO;
+    }
 
     @Override
     public List findAll() {
@@ -20,22 +24,22 @@ public class DisciplineService implements AppService {
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Discipline findById(Integer id) {
         return this.disciplineDAO.findById(id);
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Discipline findByName(String name) {
         return this.disciplineDAO.findByName(name);
     }
 
     @Override
-    public boolean insert(ParentBean item) {
+    public boolean insert(Discipline item) {
         return this.disciplineDAO.insert(item);
     }
 
     @Override
-    public boolean update(ParentBean item) {
+    public boolean update(Discipline item) {
         return this.disciplineDAO.update(item);
     }
 

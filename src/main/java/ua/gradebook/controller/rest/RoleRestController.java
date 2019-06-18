@@ -10,19 +10,24 @@ import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Role;
 import ua.gradebook.service.AppService;
+import ua.gradebook.service.RoleService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("role")
 public class RoleRestController {
+
+    private final AppService<Role> roleService;
+
     @Autowired
-    @Qualifier("RoleService")
-    private AppService roleService;
+    public RoleRestController(RoleService roleService) {
+        this.roleService = roleService;
+    }
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllRoles() {
-        List<ParentBean> parentBeanList = roleService.findAll();
+        List<Role> parentBeanList = roleService.findAll();
         return new ResponseEntity<>(parentBeanList, HttpStatus.OK);
     }
 
@@ -39,7 +44,7 @@ public class RoleRestController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateRole(@PathVariable int id, @RequestBody Role role) {
         try {
-            Role model = (Role) roleService.findById(id);
+            Role model = roleService.findById(id);
             role.setId(model.getId());
             roleService.update(role);
             return new ResponseEntity<>(model, HttpStatus.OK);
@@ -61,7 +66,7 @@ public class RoleRestController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findRoleById(@PathVariable int id) {
         try {
-            Role role = (Role) roleService.findById(id);
+            Role role = roleService.findById(id);
             return new ResponseEntity<>(role, HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

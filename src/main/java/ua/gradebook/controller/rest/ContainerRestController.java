@@ -1,28 +1,31 @@
 package ua.gradebook.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Container;
-import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.service.AppService;
+import ua.gradebook.service.ContainerService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("container")
 public class ContainerRestController {
+
+    private final AppService<Container> containerService;
+
     @Autowired
-    @Qualifier("ContainerService")
-    private AppService containerService;
+    public ContainerRestController(ContainerService containerService) {
+        this.containerService = containerService;
+    }
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllContainers() {
-        List<ParentBean> parentBeanList = containerService.findAll();
+        List<Container> parentBeanList = containerService.findAll();
         return new ResponseEntity<>(parentBeanList, HttpStatus.OK);
     }
 
@@ -39,7 +42,7 @@ public class ContainerRestController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateContainer(@PathVariable int id, @RequestBody Container container) {
         try {
-            Container model = (Container) containerService.findById(id);
+            Container model = containerService.findById(id);
             container.setId(model.getId());
             containerService.update(container);
             return new ResponseEntity<>(model, HttpStatus.OK);
@@ -62,7 +65,7 @@ public class ContainerRestController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findById(@PathVariable int id) {
         try {
-            Container person = (Container) containerService.findById(id);
+            Container person = containerService.findById(id);
             return new ResponseEntity<>(person, HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

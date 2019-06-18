@@ -5,14 +5,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.Message;
-import ua.gradebook.model.beans.ParentBean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository(value="MessageDAO")
-public class MessageDAOImpl implements DAOExtension {
+@Repository
+public class MessageDAOImpl implements DAOExtension<Message> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -26,42 +25,38 @@ public class MessageDAOImpl implements DAOExtension {
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE MESSAGE_ID=?";
 
     @Override
-    public List<ParentBean> findAll() {
-        return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
+    public List<Message> findAll() {
+        return jdbcTemplate.query(FIND_ALL, new NewRowMapper<Message>());
     }
 
     //ToDo make return type List?
     @Override
-    public ParentBean findById(Integer id) {
+    public Message findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID,
                 new Object[]{id, id}, new NewRowMapper<Message>());
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Message findByName(String name) {
         return null;
     }
 
     @Override
-    public boolean insert(ParentBean item) {
-        Message message = (Message) item;
-        jdbcTemplate.update(INSERT_SQL, new Object[] {
-                message.getReceiverId(),
-                message.getSenderId(),
-                message.getMessageText()
-        });
+    public boolean insert(Message item) {
+        jdbcTemplate.update(INSERT_SQL,
+                item.getReceiverId(),
+                item.getSenderId(),
+                item.getMessageText());
         return true;
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        Message message = (Message) item;
-        jdbcTemplate.update(UPDATE_SQL, new Object[]{
-                message.getReceiverId(),
-                message.getSenderId(),
-                message.getMessageText(),
-                message.getId()
-        });
+    public boolean update(Message item) {
+        jdbcTemplate.update(UPDATE_SQL,
+                item.getReceiverId(),
+                item.getSenderId(),
+                item.getMessageText(),
+                item.getId());
         return true;
     }
 
@@ -71,8 +66,8 @@ public class MessageDAOImpl implements DAOExtension {
     }
 
     @Override
-    public List<ParentBean> findListByObject(Object id) {
-        return (List) jdbcTemplate.query(FIND_BY_ID, new Object[]{id, id}, new NewRowMapper());
+    public List<Message> findListByObject(Object id) {
+        return jdbcTemplate.query(FIND_BY_ID, new Object[]{id, id}, new NewRowMapper<Message>());
     }
 
     private static final class NewRowMapper<P> implements RowMapper<Message> {

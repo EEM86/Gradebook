@@ -10,6 +10,7 @@ import ua.gradebook.mail.SimpleOrderManager;
 import ua.gradebook.model.beans.Message;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.AppServiceExtension;
+import ua.gradebook.service.MessageService;
 import ua.gradebook.service.PersonService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +19,12 @@ import javax.servlet.http.HttpServletRequest;
 public class MessagesController {
     private static final Logger logger = Logger.getLogger(MessagesController.class);
 
-    private final AppServiceExtension messageService;
+    private final AppServiceExtension<Message> messageService;
     private final SimpleOrderManager simpleOrderManager;
     private final PersonService personService;
 
     @Autowired
-    public MessagesController(@Qualifier("MessageService") AppServiceExtension messageService, SimpleOrderManager simpleOrderManager, PersonService personService) {
+    public MessagesController(MessageService messageService, SimpleOrderManager simpleOrderManager, PersonService personService) {
         this.messageService = messageService;
         this.simpleOrderManager = simpleOrderManager;
         this.personService = personService;

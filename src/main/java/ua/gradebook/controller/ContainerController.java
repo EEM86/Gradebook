@@ -2,20 +2,23 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Container;
 import ua.gradebook.service.AppService;
+import ua.gradebook.service.ContainerService;
 
 @Controller
 public class ContainerController {
-    @Autowired
-    @Qualifier("ContainerService")
-    private AppService containerService;
+    private final AppService<Container> containerService;
 
     private static final Logger logger = Logger.getLogger(ContainerController.class);
+
+    @Autowired
+    public ContainerController(ContainerService containerService) {
+        this.containerService = containerService;
+    }
 
     @GetMapping(value = "containers")
     public String showAllContainer(Model model) {

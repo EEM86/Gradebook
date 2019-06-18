@@ -2,20 +2,23 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Role;
 import ua.gradebook.service.AppService;
+import ua.gradebook.service.RoleService;
 
 @Controller
 public class RolesController {
-    @Autowired
-    @Qualifier("RoleService")
-    private AppService roleService;
+    private final AppService<Role> roleService;
 
     private static final Logger logger = Logger.getLogger(RolesController.class);
+
+    @Autowired
+    public RolesController(RoleService roleService) {
+        this.roleService = roleService;
+    }
 
     @GetMapping(value = "roles")
     public String showAllRoles(Model model) {

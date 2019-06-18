@@ -5,14 +5,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.GradesJournal;
-import ua.gradebook.model.beans.ParentBean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository(value="GradesJournalDAO")
-public class GradesJournalDAOImpl implements DAOExtension {
+@Repository
+public class GradesJournalDAOImpl implements DAOExtension<GradesJournal> {
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -60,17 +60,17 @@ public class GradesJournalDAOImpl implements DAOExtension {
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE JOURNAL_ID=?";
 
     @Override
-    public List<ParentBean> findAll() {
+    public List<GradesJournal> findAll() {
         return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public GradesJournal findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<GradesJournal>());
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public GradesJournal findByName(String name) {
         return null;
     }
 
@@ -85,25 +85,23 @@ public class GradesJournalDAOImpl implements DAOExtension {
         return true;
     }*/
 @Override
-public boolean insert(ParentBean item) {
-    GradesJournal gradesJournal = (GradesJournal) item;
+public boolean insert(GradesJournal item) {
     jdbcTemplate.update(INSERT_SQL,
-            gradesJournal.getDiscId(),
-            gradesJournal.getPersonId(),
-            gradesJournal.getGrade(),
-            gradesJournal.getTeacherId());
+            item.getDiscId(),
+            item.getPersonId(),
+            item.getGrade(),
+            item.getTeacherId());
     return true;
 }
 
     @Override
-    public boolean update(ParentBean item) {
-        GradesJournal gradesJournal = (GradesJournal) item;
+    public boolean update(GradesJournal item) {
         jdbcTemplate.update(UPDATE_SQL,
-                gradesJournal.getDiscName(),
-                gradesJournal.getStudentName(),
-                gradesJournal.getGrade(),
-                gradesJournal.getTeacherName(),
-                gradesJournal.getId());
+                item.getDiscName(),
+                item.getStudentName(),
+                item.getGrade(),
+                item.getTeacherName(),
+                item.getId());
         return true;
     }
 
@@ -113,8 +111,8 @@ public boolean insert(ParentBean item) {
     }
 
     @Override
-    public List<ParentBean> findListByObject(Object id) {
-        return (List) jdbcTemplate.query(FIND_RELATIVE_DATA_BY_ID, new Object[]{id, id}, new NewRowMapper<>());
+    public List<GradesJournal> findListByObject(Object id) {
+        return jdbcTemplate.query(FIND_RELATIVE_DATA_BY_ID, new Object[]{id, id}, new NewRowMapper<>());
     }
 
     private static final class NewRowMapper<P> implements RowMapper<GradesJournal> {

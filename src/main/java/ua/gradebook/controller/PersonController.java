@@ -2,7 +2,6 @@ package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PersonController {
-    @Autowired
-    @Qualifier("PersonService")
-    private AppServicePerson personService;
+    private final AppServicePerson personService;
 
     private static final Logger logger = Logger.getLogger(PersonController.class);
+
+    @Autowired
+    public PersonController(AppServicePerson personService) {
+        this.personService = personService;
+    }
 
     @GetMapping(value="persons")
     public String getPersons(Model model) {

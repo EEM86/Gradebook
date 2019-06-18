@@ -1,13 +1,13 @@
 package ua.gradebook.controller;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.LessonsPlan;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.AppServiceExtension;
+import ua.gradebook.service.LessonsPlanService;
 import ua.gradebook.service.PersonService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LessonsPlanController {
 
-    private final AppServiceExtension lessonsPlanService;
+    private final AppServiceExtension<LessonsPlan> lessonsPlanService;
     private final PersonService personService;
 
 
     private static final Logger logger = Logger.getLogger(LessonsPlanController.class);
 
-    public LessonsPlanController(@Qualifier("LessonsPlanService") AppServiceExtension lessonsPlanService, PersonService personService) {
+    public LessonsPlanController(LessonsPlanService lessonsPlanService, PersonService personService) {
         this.lessonsPlanService = lessonsPlanService;
         this.personService = personService;
     }

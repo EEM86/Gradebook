@@ -1,28 +1,31 @@
 package ua.gradebook.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.LessonsPlan;
-import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.service.AppServiceExtension;
+import ua.gradebook.service.LessonsPlanService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("lessonsplan-rest")
 public class LessonsPlanRestController {
+
+    private final AppServiceExtension<LessonsPlan> lessonsPlanService;
+
     @Autowired
-    @Qualifier("LessonsPlanService")
-    private AppServiceExtension lessonsPlanService;
+    public LessonsPlanRestController(LessonsPlanService lessonsPlanService) {
+        this.lessonsPlanService = lessonsPlanService;
+    }
 
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllLessonsPlans() {
-        List<ParentBean> parentBeanList = lessonsPlanService.findAll();
+        List<LessonsPlan> parentBeanList = lessonsPlanService.findAll();
         return new ResponseEntity<>(parentBeanList, HttpStatus.OK);
     }
 
@@ -39,7 +42,7 @@ public class LessonsPlanRestController {
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateLessonsPlan(@PathVariable int id, @RequestBody LessonsPlan lessonsPlan) {
         try {
-            LessonsPlan model = (LessonsPlan) lessonsPlanService.findById(id);
+            LessonsPlan model = lessonsPlanService.findById(id);
             lessonsPlan.setId(model.getId());
             lessonsPlanService.update(lessonsPlan);
             return new ResponseEntity<>(model, HttpStatus.OK);
@@ -61,7 +64,7 @@ public class LessonsPlanRestController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findLessonsPlanById(@PathVariable int id) {
         try {
-            LessonsPlan lessonsPlan = (LessonsPlan) lessonsPlanService.findById(id);
+            LessonsPlan lessonsPlan = lessonsPlanService.findById(id);
             return new ResponseEntity<>(lessonsPlan, HttpStatus.OK);
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

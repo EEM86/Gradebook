@@ -5,14 +5,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.Discipline;
-import ua.gradebook.model.beans.ParentBean;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-@Repository(value="DisciplineDAO")
-public class DisciplineDAOImpl implements DAO {
+@Repository
+public class DisciplineDAOImpl implements DAO<Discipline> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -25,30 +24,28 @@ public class DisciplineDAOImpl implements DAO {
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE DISC_ID=?";
 
     @Override
-    public List<ParentBean> findAll() {
+    public List<Discipline> findAll() {
         return jdbcTemplate.query(FIND_All, new NewRowMapper());
     }
 
     @Override
-    public ParentBean findById(Integer id) {
+    public Discipline findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID, new Object[]{id}, new NewRowMapper<Discipline>());
     }
 
     @Override
-    public ParentBean findByName(String name) {
+    public Discipline findByName(String name) {
         return jdbcTemplate.queryForObject(FIND_BY_NAME, new Object[]{name}, new NewRowMapper<Discipline>());
     }
 
     @Override
-    public boolean insert(ParentBean item) {
-        Discipline discipline = (Discipline) item;
-        return (jdbcTemplate.update(INSERT_SQL, discipline.getDiscName()) == 1);
+    public boolean insert(Discipline item) {
+        return (jdbcTemplate.update(INSERT_SQL, item.getDiscName()) == 1);
     }
 
     @Override
-    public boolean update(ParentBean item) {
-        Discipline discipline = (Discipline) item;
-        return jdbcTemplate.update(UPDATE_SQL, discipline.getDiscName(), discipline.getId()) == 1;
+    public boolean update(Discipline item) {
+        return jdbcTemplate.update(UPDATE_SQL, item.getDiscName(), item.getId()) == 1;
     }
 
     @Override

@@ -1,15 +1,14 @@
 package ua.gradebook.model.dao;
 
-
 import ua.gradebook.model.beans.ParentBean;
 
 import java.util.List;
 
-public interface DAO {
-    List findAll();
-    ParentBean findById(Integer id);
-    ParentBean findByName(String name);
-    boolean insert(ParentBean item);
-    boolean update(ParentBean item);
+public interface DAO<T extends ParentBean> {
+    List<T> findAll();
+    T findById(Integer id);
+    T findByName(String name);
+    boolean insert(T item);
+    boolean update(T item);
     boolean delete(int id);
 }

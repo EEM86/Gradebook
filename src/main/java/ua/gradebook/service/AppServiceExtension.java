@@ -4,6 +4,6 @@ import ua.gradebook.model.beans.ParentBean;
 
 import java.util.List;
 
-public interface AppServiceExtension extends AppService {
-    List<ParentBean> findListByObject(Object obj);
+public interface AppServiceExtension<T extends ParentBean> extends AppService<T> {
+    List<T> findListByObject(Object obj);
 }
