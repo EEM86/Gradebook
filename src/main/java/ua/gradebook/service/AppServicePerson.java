@@ -4,8 +4,8 @@ import ua.gradebook.model.beans.ParentBean;
 
 import java.util.List;
 
-public interface AppServicePerson extends AppServiceExtension{
-    ParentBean findByLogin(String login);
-    List<ParentBean> findStudents();
-    List<ParentBean> findTeacher();
+public interface AppServicePerson<T extends ParentBean> extends AppServiceExtension<T>{
+    T findByLogin(String login);
+    List<T> findStudents();
+    List<T> findTeacher();
 }

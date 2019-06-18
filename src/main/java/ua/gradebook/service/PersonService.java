@@ -3,15 +3,14 @@ package ua.gradebook.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.Person;
-import ua.gradebook.model.dao.DAOExtension;
 import ua.gradebook.model.dao.PersonDAO;
 import ua.gradebook.model.dao.PersonDAOImpl;
 
 import java.util.List;
 
 @Service
-public class PersonService implements AppServicePerson {
-    private final PersonDAO personDAO;
+public class PersonService implements AppServicePerson<Person> {
+    private final PersonDAO<Person> personDAO;
 
     @Autowired
     public PersonService(PersonDAOImpl personDAO) {

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class PersonDAOImpl implements DAOExtension<Person> {
+public class PersonDAOImpl implements PersonDAO<Person> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
