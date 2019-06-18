@@ -58,7 +58,7 @@
             <c:forEach items="${getPersons}" var="person">
                 <tr>
                     <td>${person.id}</td>
-                    <td>${person.role.roleName}</td>
+                    <td>${person.role.id}</td>
                     <td>${person.firstName}</td>
                     <td>${person.lastName}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -106,12 +106,12 @@
                 </c:if>
                 <tr>
                     <td>
-                        <form:label path="role.roleName">
+                        <form:label path="role.id">
                             <spring:message text="Role"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" path="role.roleName"/>
+                        <form:input type="text" path="role.id"/>
                     </td>
                 </tr>
                 <tr>

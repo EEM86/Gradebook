@@ -38,15 +38,9 @@ public class GradesJournalDAOImpl implements DAOExtension<GradesJournal> {
                     "LEFT JOIN L3G3_PERSON p2 ON j.TEACHER_ID = p2.ID " +
             "WHERE j.STUDENT_ID=? OR j.TEACHER_ID=?";
 
- /*   private static final String INSERT_SQL =
-            "INSERT INTO " + TABLE + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID) " +
-            "VALUES ((SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?))," +
-            "        (SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?))," +
-            "         ?," +
-            "         (SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?)))";
-*/
- private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID)"
-         + " VALUES (?, ?, ?, ?)";
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (DISC_ID, STUDENT_ID, GRADE, TEACHER_ID)"
+             + " VALUES (?, ?, ?, ?)";
+
     private static final String UPDATE_SQL =
             "UPDATE " + TABLE + " SET " +
                     "DISC_ID=(SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?)), " +
@@ -72,25 +66,14 @@ public class GradesJournalDAOImpl implements DAOExtension<GradesJournal> {
         return null;
     }
 
-/*    @Override
+    @Override
     public boolean insert(GradesJournal item) {
         jdbcTemplate.update(INSERT_SQL,
-                item.getDiscipline().getDiscName(),
-                item.getStudent().getFirstName(),
-                item.getStudent().getLastName(),
+                item.getDiscipline().getId(),
+                item.getStudent().getId(),
                 item.getGrade(),
-                item.getTeacher().getFirstName(),
-                item.getTeacher().getLastName());
+                item.getTeacher().getId());
         return true;
-    }*/
-@Override
-public boolean insert(GradesJournal item) {
-    jdbcTemplate.update(INSERT_SQL,
-            item.getDiscipline().getId(),
-            item.getStudent().getId(),
-            item.getGrade(),
-            item.getTeacher().getId());
-    return true;
 }
 
     @Override

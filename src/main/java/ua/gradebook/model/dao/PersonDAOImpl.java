@@ -18,60 +18,71 @@ public class PersonDAOImpl implements PersonDAO<Person> {
     private JdbcTemplate jdbcTemplate;
 
     private static final String TABLE = "L3G3_PERSON";
-    private static final String FIND_STUDENTS = "SELECT * FROM " + TABLE + " WHERE ROLE_ID=2";
-    private static final String FIND_TEACHERS = "SELECT * FROM " + TABLE + " WHERE ROLE_ID=3";
-    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE PERSON_ID=?";
-    private static final String findByNameSQL = "SELECT * FROM " + TABLE + " WHERE LAST_NAME=?";
-    String findByLoginSQL = "SELECT * FROM " + TABLE + " WHERE LOGIN=?";
-    private static final String FIND_NAMES = "SELECT * FROM " + TABLE + " WHERE UPPER(LAST_NAME) LIKE UPPER(?)";
-    private static final String INSERT_SQL = "INSERT INTO " + TABLE;
+    private static final String FIND_STUDENTS =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.ROLE_ID=2";
+
+    private static final String FIND_TEACHERS =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.ROLE_ID=3";
+
     private static final String FIND_ALL =
-            "SELECT p.ID, r.ROLE_NAME, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, " +
-                    "c.NAME, p2.FIRST_NAME, p2.LAST_NAME, c2.NAME, p.login, p.password FROM " + TABLE + " p " +
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
                     "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
                     "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID";
 
-//    private static final String FIND_BY_ID =
-//            "SELECT p.ID, r.ROLE_NAME, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, " +
-//                    "c.NAME, p2.FIRST_NAME, p2.LAST_NAME, c2.NAME, p.login, p.password FROM " + TABLE + " p " +
-//                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
-//                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
-//                    "WHERE p.ID=?";
-//    private static final String findByNameSQL =
-//            "SELECT p.ID, r.ROLE_NAME, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, " +
-//                    "c.NAME, p2.FIRST_NAME, p2.LAST_NAME, c2.NAME, p.login, p.password FROM " + TABLE + " p " +
-//                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
-//                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
-//                    "WHERE p.LAST_NAME=?";
-//    String findByLoginSQL =
-//            "SELECT p.ID, r.ROLE_NAME, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, " +
-//                    "c.NAME, p2.FIRST_NAME, p2.LAST_NAME, c2.NAME, p.login, p.password FROM " + TABLE + " p " +
-//                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
-//                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
-//                    "WHERE p.LOGIN=?";
-//    private static final String FIND_NAMES =
-//            "SELECT p.ID, r.ROLE_NAME, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, " +
-//                    "c.NAME, p2.FIRST_NAME, p2.LAST_NAME, c2.NAME, p.login, p.password FROM " + TABLE + " p " +
-//                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
-//                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
-//                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
-//                    "WHERE UPPER(p.LAST_NAME) LIKE UPPER(?)";
-//    private static final String INSERT_SQL =
-//            "INSERT INTO " + TABLE
-//            + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
-//            + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String FIND_BY_ID =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.ID=?";
+    private static final String findByNameSQL =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.LAST_NAME=?";
+    String findByLoginSQL =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.LOGIN=?";
+    private static final String FIND_NAMES =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE UPPER(p.LAST_NAME) LIKE UPPER(?)";
+    private static final String INSERT_SQL =
+            "INSERT INTO " + TABLE
+            + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
+            + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
-            "BIRTHDAY=?, DEPARTMENT_ID=?, CURATOR_ID=?, GROUP_ID=?, LOGIN=?, PASSWORD=? WHERE PERSON_ID=?";
-    private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE PERSON_ID=?";
+            "BIRTHDAY=?, DEPARTMENT_ID=?, CURATOR_ID=?, GROUP_ID=?, LOGIN=?, PASSWORD=? WHERE ID=?";
+    private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ID=?";
 
     @Override
     public List<Person> findAll() {
@@ -80,12 +91,12 @@ public class PersonDAOImpl implements PersonDAO<Person> {
 
     @Override
     public List<Person> findStudents() {
-        return jdbcTemplate.query(FIND_STUDENTS, new NewRowMapper());
+        return jdbcTemplate.query(FIND_STUDENTS, new NewRowMapper<Person>());
     }
 
     @Override
     public List<Person> findTeacher() {
-        return jdbcTemplate.query(FIND_TEACHERS, new NewRowMapper());
+        return jdbcTemplate.query(FIND_TEACHERS, new NewRowMapper<Person>());
     }
 
     @Override
@@ -141,7 +152,8 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                item.getCurator().getId(),
                item.getGroup().getId(),
                item.getLogin(),
-               item.getPassword());
+               item.getPassword(),
+               item.getId());
         return true;
     }
 
@@ -153,25 +165,77 @@ public class PersonDAOImpl implements PersonDAO<Person> {
     private static final class NewRowMapper<P> implements RowMapper<Person> {
         @Override
         public Person mapRow(ResultSet resultSet, int i) throws SQLException {
+            Person person = new Person();
             Role role = new Role();
             Container department = new Container();
             Person curator = new Person();
             Container group = new Container();
-            Person person = new Person();
-            person.setId(resultSet.getInt(1));
+
+            role.setId(resultSet.getInt(1));
             role.setRoleName(resultSet.getString(2));
-            person.setFirstName(resultSet.getString(3));
-            person.setLastName(resultSet.getString(4));
-            person.setEmail(resultSet.getString(5));
-            person.setPhone(resultSet.getString(6));
-            person.setAddress(resultSet.getString(7));
-            person.setBirthday(resultSet.getDate(8));
-            department.setName(resultSet.getString(9));
-            curator.setFirstName(resultSet.getString(10));
-            curator.setLastName(resultSet.getString(11));
-            group.setName(resultSet.getString(12));
-            person.setLogin(resultSet.getString(13));
-            person.setPassword(resultSet.getString(14));
+
+            person.setId(resultSet.getInt(3));
+            person.setFirstName(resultSet.getString(4));
+            person.setLastName(resultSet.getString(5));
+            person.setEmail(resultSet.getString(6));
+            person.setPhone(resultSet.getString(7));
+            person.setAddress(resultSet.getString(8));
+            person.setBirthday(resultSet.getDate(9));
+            person.setLogin(resultSet.getString(10));
+            person.setPassword(resultSet.getString(11));
+
+            if (resultSet.getInt(12) != 0) {
+                department.setId(resultSet.getInt(12));
+//                department.setParentId(resultSet.getInt(13));
+//                department.setName(resultSet.getString(14));
+//                Person deptPerson = new Person();
+//                deptPerson.setId(resultSet.getInt(15));
+//                BranchType branchType = new BranchType();
+//                branchType.setId(resultSet.getInt(16));
+//                department.setInstitutionCity(resultSet.getString(17));
+//                department.setInstitutionAddress(resultSet.getString(18));
+//                department.setPhone(resultSet.getString(19));
+//                department.setChief(deptPerson);
+//                department.setType(branchType);
+            }
+
+            curator.setId(resultSet.getInt(20));
+//            Role curatorRole = new Role();
+//            curatorRole.setId(resultSet.getInt(21));
+//            curator.setFirstName(resultSet.getString(22));
+//            curator.setLastName(resultSet.getString(23));
+//            curator.setEmail(resultSet.getString(24));
+//            curator.setPhone(resultSet.getString(25));
+//            curator.setAddress(resultSet.getString(26));
+//            curator.setBirthday(resultSet.getDate(27));
+//            Container curatorDept = new Container();
+//            curatorDept.setId(resultSet.getInt(28));
+//            Person curatorPerson = new Person();
+//            curatorPerson.setId(resultSet.getInt(29));
+//            Container curatorGroup = new Container();
+//            curatorGroup.setId(resultSet.getInt(30));
+//            curator.setLogin(resultSet.getString(31));
+//            curator.setPassword(resultSet.getString(32));
+//            curator.setRole(curatorRole);
+//            curator.setDepartment(curatorDept);
+//            curator.setGroup(curatorGroup);
+//            curator.setCurator(curatorPerson);
+
+            if (resultSet.getInt(33) != 0) {
+                group.setId(resultSet.getInt(33));
+//                group.setParentId(resultSet.getInt(34));
+//                group.setName(resultSet.getString(35));
+//                Person chiefGroup = new Person();
+//                chiefGroup.setId(resultSet.getInt(36));
+//                BranchType typeGroup = new BranchType();
+//                typeGroup.setId(resultSet.getInt(37));
+//                group.setInstitutionCity(resultSet.getString(38));
+//                group.setInstitutionAddress(resultSet.getString(39));
+//                group.setPhone(resultSet.getString(40));
+//                group.setChief(chiefGroup);
+//                group.setType(typeGroup);
+            }
+
             person.setRole(role);
             person.setDepartment(department);
             person.setCurator(curator);

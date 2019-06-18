@@ -30,10 +30,10 @@
             <c:forEach items="${getJournals}" var="journal">
                 <tr>
                     <td>${journal.id}</td>
-                    <td>${journal.discName}</td>
-                    <td>${journal.studentName}</td>
+                    <td>${journal.discipline.discName}</td>
+                    <td>${journal.student.firstName} ${journal.student.lastName}</td>
                     <td>${journal.grade}</td>
-                    <td>${journal.teacherName}</td>
+                    <td>${journal.teacher.firstName} ${journal.teacher.lastName}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <td><a href="<c:url value='/journal/edit/${journal.id}'/>">Edit</a></td>
                         <td><a href="<c:url value='/journal/delete/${journal.id}'/>">Delete</a></td>
@@ -51,7 +51,7 @@
         <c:url var="addAction" value="/journal/add"/>
         <form:form action="${addAction}" modelAttribute="journal">
             <table>
-                <c:if test="${!empty journal.discId}">
+                <c:if test="${!empty journal.discipline.id}">
                     <tr>
                         <td>
                             <form:label path="id">
@@ -66,53 +66,37 @@
                 </c:if>
                 <tr>
                     <td>
-                        <form:label value="Discipline" path="discId">
+                        <form:label value="Discipline" path="discipline.id">
                             <spring:message text="Discipline"/>
                         </form:label>
                     </td>
 
                     <td>
-                        <form:select name="select_discipline" size="1" path="discId">
-                            <c:if test="${!empty journal.discId}">
-                                <option name="discId" value="${journal.discId}">${journal.discName}</option>
+                        <form:select name="select_discipline" size="1" path="discipline.id">
+                            <c:if test="${!empty journal.discipline.id}">
+                                <option name="discId" value="${journal.discipline.id}">${journal.discipline.discName}</option>
                             </c:if>
-                            <c:if test="${empty journal.discId}">
+                            <c:if test="${empty journal.discipline.id}">
                                 <c:forEach items="${getDisciplines}" var="discipline">
                                     <option value="${discipline.id}">${discipline.discName}</option>
                                 </c:forEach>
                             </c:if>
                         </form:select>
                     </td>
-                        <%--                                            <td>
-                                                                        <form:label value="Discipline" path="discName">
-                                                                            <spring:message text="Discipline"/>
-                                                                        </form:label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <form:input type="text" path="discName"/>
-                                                                    </td>--%>
                 </tr>
 
                 <tr>
-                        <%--<td>
-                            <form:label path="studentName">
-                                <spring:message text="Student"/>
-                            </form:label>
-                        </td>
-                        <td>
-                            <form:input type="text" path="studentName"/>
-                        </td>--%>
                     <td>
-                        <form:label path="personId">
+                        <form:label path="student.id">
                             <spring:message text="Student"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:select name="select_student" size="1" path="personId">
-                            <c:if test="${!empty journal.discId}">
-                                <option name="personId" value="${journal.personId}">${journal.studentName}</option>
+                        <form:select name="select_student" size="1" path="student.id">
+                            <c:if test="${!empty journal.discipline.id}">
+                                <option name="personId" value="${journal.student.id}">${journal.student.firstName} ${journal.student.lastName}</option>
                             </c:if>
-                            <c:if test="${empty journal.discId}">
+                            <c:if test="${empty journal.discipline.id}">
                                 <c:forEach items="${getStudents}" var="student">
                                     <option name="iddisc" value="${student.id}">${student.firstName} ${student.lastName}</option>
                                 </c:forEach>
@@ -126,15 +110,12 @@
                             <spring:message text="Grade"/>
                         </form:label>
                     </td>
-                        <%--                    <td>
-                                                <form:input type="number" min="1" path="grade"/>
-                                            </td>--%>
                     <td>
                         <form:select name="select_grade" size="1" path="grade">
-                            <c:if test="${!empty journal.discId}">
+                            <c:if test="${!empty journal.discipline.id}">
                                 <option name="grade" value="${journal.grade}">${journal.grade}</option>
                             </c:if>
-                            <c:if test="${empty journal.discId}">
+                            <c:if test="${empty journal.discipline.id}">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -145,42 +126,25 @@
                     </td>
                 </tr>
                 <tr>
-                        <%--                    <td>
-                                                <form:label path="teacherName">
-                                                    <spring:message text="Teacher"/>
-                                                </form:label>
-                                            </td>
-                                            <td>
-                                                <sec:authorize access="hasRole('ROLE_TEACHER')">
-                                                    <form:input type="text" path="teacherName"/>
-                                                </sec:authorize>
-                                                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                                    <form:input type="text" path="teacherName"/>
-                                                </sec:authorize>
-                                            </td>--%>
                     <td>
-                        <form:label path="teacherId">
+                        <form:label path="teacher.id">
                             <spring:message text="Teacher"/>
                         </form:label>
                     </td>
                     <td>
                         <sec:authorize access="hasRole('ROLE_TEACHER')">
-                            <%--                            <form:input type="number" value="${teacherName.firstName} ${teacherName.lastName}" min="1"
-                                                                    path="teacherName" readonly="true" disabled="true"/>
-                                                        <form:hidden path="teacherName"/>--%>
-                            <form:select name="select_teacher" size="1" path="teacherId">
+                            <form:select name="select_teacher" size="1" path="teacher.id">
                                 <option name="teacherName" value="${teacherName.id}">${teacherName.firstName} ${teacherName.lastName}</option>
                             </form:select>
                         </sec:authorize>
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <%--<form:input type="number" min="1" path="teacherId"/>--%>
-                            <form:select name="select_teacher" size="1" path="teacherId">
-                                <c:if test="${!empty journal.discId}">
-                                    <option name="teacherId" value="${journal.teacherId}">${journal.teacherName}</option>
+                            <form:select name="select_teacher" size="1" path="teacher.id">
+                                <c:if test="${!empty journal.discipline.id}">
+                                    <option value="${journal.teacher.id}">${journal.teacher.firstName} ${journal.teacher.lastName}</option>
                                 </c:if>
-                                <c:if test="${empty journal.discId}">
+                                <c:if test="${empty journal.discipline.id}">
                                     <c:forEach items="${getTeachers}" var="teacher">
-                                        <option name="idteacher" value="${teacher.id}">${teacher.firstName} ${teacher.lastName}</option>
+                                        <option value="${teacher.id}">${teacher.firstName} ${teacher.lastName}</option>
                                     </c:forEach>
                                 </c:if>
                             </form:select>
@@ -189,11 +153,11 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <c:if test="${!empty journal.discId}">
+                        <c:if test="${!empty journal.discipline.id}">
                             <input type="submit"
                                    value="<spring:message text="Edit journal"/>"/>
                         </c:if>
-                        <c:if test="${empty journal.discId}">
+                        <c:if test="${empty journal.discipline.id}">
                             <input type="submit"
                                    value="<spring:message text="Add journal"/>"/>
                         </c:if>
