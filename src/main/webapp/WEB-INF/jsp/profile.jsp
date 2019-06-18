@@ -19,31 +19,31 @@
         <table class="tg" width="100%" var="person">
             <tr>
                 <th width="60">ID</th>
-                <th width="60">roleId</th>
+                <th width="60">role</th>
                 <th width="120">FirstName</th>
                 <th width="120">LastName</th>
                 <th width="120">email</th>
                 <th width="120">phone</th>
                 <th width="120">address</th>
                 <th width="120">birthday</th>
-                <th width="60">departmentId</th>
-                <th width="60">curatorId</th>
-                <th width="60">groupId</th>
+                <th width="60">department</th>
+                <th width="60">curator</th>
+                <th width="60">group</th>
                 <th width="120">login</th>
                 <th width="120">password</th>
             </tr>
                 <tr>
                     <td>${person.id}</td>
-                    <td>${person.roleId}</td>
+                    <td>${person.role.roleName}</td>
                     <td>${person.firstName}</td>
                     <td>${person.lastName}</td>
                     <td>${person.email}</td>
                     <td>${person.phone}</td>
                     <td>${person.address}</td>
                     <td>${person.birthday}</td>
-                    <td>${person.departmentId}</td>
-                    <td>${person.curatorId}</td>
-                    <td>${person.groupId}</td>
+                    <td>${person.department.name}</td>
+                    <td>${person.curator.firstName} ${person.curator.lastName}</td>
+                    <td>${person.group.name}</td>
                     <td>${person.login}</td>
                     <td>${person.password}</td>
                 </tr>
@@ -71,13 +71,13 @@
                 </tr>
             <tr>
                 <td>
-                    <form:label path="roleId">
-                        <spring:message text="RoleId"/>
+                    <form:label path="role.roleName">
+                        <spring:message text="Role"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="roleId" readonly="true" disabled="true"/>
-                    <form:hidden path="roleId"/>
+                    <form:input path="role.roleName" readonly="true" disabled="true"/>
+                    <form:hidden path="role.roleName"/>
                 </td>
             </tr>
             <tr>
@@ -147,35 +147,46 @@
             </tr>
             <tr>
                 <td>
-                    <form:label path="departmentId">
-                        <spring:message text="DepartID"/>
+                    <form:label path="department.name">
+                        <spring:message text="Department"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="departmentId" readonly="true" disabled="true"/>
-                    <form:hidden path="departmentId"/>
+                    <form:input path="department.name" readonly="true" disabled="true"/>
+                    <form:hidden path="department.name"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="curatorId">
-                        <spring:message text="CuratorId"/>
+                    <form:label path="curator.firstName">
+                        <spring:message text="Curator name"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="curatorId" readonly="true" disabled="true"/>
-                    <form:hidden path="curatorId"/>
+                    <form:input path="curator.firstName" readonly="true" disabled="true"/>
+                    <form:hidden path="curator.firstName"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="groupId">
-                        <spring:message text="GroupId"/>
+                    <form:label path="curator.lastName">
+                        <spring:message text="Curator surname"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="groupId" readonly="true" disabled="true"/>
-                    <form:hidden path="groupId"/>
+                    <form:input path="curator.lastName" readonly="true" disabled="true"/>
+                    <form:hidden path="curator.lastName"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form:label path="group.name">
+                        <spring:message text="Group"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="group.name" readonly="true" disabled="true"/>
+                    <form:hidden path="group.name"/>
                 </td>
             </tr>
             <tr>

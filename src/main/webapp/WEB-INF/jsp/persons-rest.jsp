@@ -43,9 +43,9 @@
             </div>
             <div class="modal-body">
                 <div class="form-group row">
-                    <label for="roleId" class="col-sm-2 col-form-label">RoleID</label>
+                    <label for="role" class="col-sm-2 col-form-label">RoleID</label>
                     <div class="col-sm-10">
-                        <input type="number" min="1" class="form-control edt-field" id="roleId" placeholder="Role Id">
+                        <input type="number" min="1" class="form-control edt-field" id="role" placeholder="Role Id">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -92,15 +92,15 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="curatorId" class="col-sm-2 col-form-label">Curator ID</label>
+                    <label for="curator" class="col-sm-2 col-form-label">Curator ID</label>
                     <div class="col-sm-10">
-                        <input type="number" min="1" class="form-control edt-field" id="curatorId" placeholder="Curator ID">
+                        <input type="number" min="1" class="form-control edt-field" id="curator" placeholder="Curator ID">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="groupId" class="col-sm-2 col-form-label">Group ID</label>
+                    <label for="group" class="col-sm-2 col-form-label">Group ID</label>
                     <div class="col-sm-10">
-                        <input type="number" min="1" class="form-control edt-field" id="groupId" placeholder="Group ID">
+                        <input type="number" min="1" class="form-control edt-field" id="group" placeholder="Group ID">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -221,7 +221,7 @@
 <table class="tg" width="100%" id="tableD">
     <tr>
         <th width="80">ID</th>
-        <th width="80">roleId</th>
+        <th width="80">role</th>
         <th width="120">FirstName</th>
         <th width="120">LastName</th>
         <th width="120">email</th>
@@ -229,8 +229,8 @@
         <th width="120">address</th>
         <th width="120">birthday</th>
         <th width="120">departmentId</th>
-        <th width="120">curatorId</th>
-        <th width="120">groupId</th>
+        <th width="120">curator</th>
+        <th width="120">group</th>
         <th width="120">login</th>
         <th width="120">password</th>
         <th width="80">Edit</th>

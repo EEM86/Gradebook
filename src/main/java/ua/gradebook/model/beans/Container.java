@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Container extends ParentBean {
     private Integer parentId;
     private String name;
-    private Integer chiefId;
-    private Integer typeId;
+    private Person chief;
+    private BranchType type;
     private String institutionCity;
     private String institutionAddress;
     private String phone;
@@ -14,11 +14,11 @@ public class Container extends ParentBean {
     public Container() {
     }
 
-    public Container(String name, Integer parentId, Integer chief_id, Integer type, String institution_city, String institution_address, String phone) {
+    public Container(String name, Integer parentId, Person chief_id, BranchType type, String institution_city, String institution_address, String phone) {
         this.name = name;
         this.parentId = parentId;
-        this.chiefId = chief_id;
-        this.typeId = type;
+        this.chief = chief_id;
+        this.type = type;
         this.institutionCity = institution_city;
         this.institutionAddress = institution_address;
         this.phone = phone;
@@ -40,20 +40,20 @@ public class Container extends ParentBean {
         this.parentId = parentId;
     }
 
-    public Integer getChiefId() {
-        return chiefId;
+    public Person getChief() {
+        return chief;
     }
 
-    public void setChiefId(Integer chiefId) {
-        this.chiefId = chiefId;
+    public void setChief(Person chief) {
+        this.chief = chief;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public BranchType getType() {
+        return type;
     }
 
-    public void setTypeId(Integer type) {
-        this.typeId = type;
+    public void setType(BranchType type) {
+        this.type = type;
     }
 
     public String getInstitutionCity() {
@@ -87,8 +87,8 @@ public class Container extends ParentBean {
         Container container = (Container) o;
         return Objects.equals(parentId, container.parentId) &&
                 Objects.equals(name, container.name) &&
-                Objects.equals(chiefId, container.chiefId) &&
-                Objects.equals(typeId, container.typeId) &&
+                Objects.equals(chief, container.chief) &&
+                Objects.equals(type, container.type) &&
                 Objects.equals(institutionCity, container.institutionCity) &&
                 Objects.equals(institutionAddress, container.institutionAddress) &&
                 Objects.equals(phone, container.phone);
@@ -96,7 +96,7 @@ public class Container extends ParentBean {
 
     @Override
     public int hashCode() {
-        return Objects.hash(parentId, name, chiefId, typeId, institutionCity, institutionAddress, phone);
+        return Objects.hash(parentId, name, chief, type, institutionCity, institutionAddress, phone);
     }
 
     @Override
@@ -105,8 +105,8 @@ public class Container extends ParentBean {
                 "id=" + id +
                 ", parentId=" + parentId +
                 ", name='" + name + '\'' +
-                ", chiefId=" + chiefId +
-                ", typeId=" + typeId +
+                ", chief=" + chief +
+                ", type=" + type +
                 ", institutionCity='" + institutionCity + '\'' +
                 ", institutionAddress='" + institutionAddress + '\'' +
                 ", phone='" + phone + '\'' +

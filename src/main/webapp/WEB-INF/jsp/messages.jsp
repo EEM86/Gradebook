@@ -26,8 +26,8 @@
             <c:forEach items="${getMessages}" var="message">
                 <tr>
                     <td>${message.id}</td>
-                    <td>${message.receiverId}</td>
-                    <td>${message.senderId}</td>
+                    <td>${message.receiver.firstName} ${message.receiver.lastName}</td>
+                    <td>${message.sender.firstName} ${message.sender.lastName}</td>
                     <td>${message.messageText}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <td><a href="<c:url value='/messages/delete/${message.id}'/>">Delete</a></td>
@@ -45,24 +45,44 @@
         <table>
             <tr>
                 <td>
-                    <form:label path="receiverId">
-                        <spring:message text="Receiver"/>
+                    <form:label path="receiver.firstName">
+                        <spring:message text="Receiver Name"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="number" min="1" pattern="[0-999]" path="receiverId" size="8" />
+                    <form:input type="text" path="receiver.firstName" />
                 </td>
             </tr>
-
             <tr>
                 <td>
-                    <form:label path="senderId">
-                        <spring:message text="Sender"/>
+                    <form:label path="receiver.lastName">
+                        <spring:message text="Receiver surname"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input value="${idSender}" path="senderId" readonly="true" disabled="true"/>
-                    <form:hidden value="${idSender}" path="senderId"/>
+                    <form:input type="text" path="receiver.lastName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form:label path="sender.firstName">
+                        <spring:message text="Sender name"/>
+                    </form:label>
+                </td>
+                <td>
+                    <%--<form:input path="sender.firstName" readonly="true" disabled="true"/>--%>
+                    <form:input path="sender.firstName"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form:label path="sender.lastName">
+                        <spring:message text="Sender surname"/>
+                    </form:label>
+                </td>
+                <td>
+                    <%--<form:input value="sender.lastName" path="sender.lastName" readonly="true" disabled="true"/>--%>
+                    <form:input path="sender.lastName"/>
                 </td>
             </tr>
             <tr>

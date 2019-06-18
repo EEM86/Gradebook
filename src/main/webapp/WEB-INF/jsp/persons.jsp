@@ -36,7 +36,7 @@
         <table class="tg" width="100%">
             <tr>
                 <th width="60">ID</th>
-                <th width="60">roleId</th>
+                <th width="60">role</th>
                 <th width="120">FirstName</th>
                 <th width="120">LastName</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -45,9 +45,9 @@
                     <th width="120">address</th>
                     <th width="120">birthday</th>
                 </sec:authorize>
-                <th width="60">departmentId</th>
-                <th width="60">curatorId</th>
-                <th width="60">groupId</th>
+                <th width="60">department</th>
+                <th width="120">curator</th>
+                <th width="60">group</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <th width="120">login</th>
                     <th width="120">password</th>
@@ -58,7 +58,7 @@
             <c:forEach items="${getPersons}" var="person">
                 <tr>
                     <td>${person.id}</td>
-                    <td>${person.roleId}</td>
+                    <td>${person.role.roleName}</td>
                     <td>${person.firstName}</td>
                     <td>${person.lastName}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -67,9 +67,9 @@
                         <td>${person.address}</td>
                         <td>${person.birthday}</td>
                     </sec:authorize>
-                    <td>${person.departmentId}</td>
-                    <td>${person.curatorId}</td>
-                    <td>${person.groupId}</td>
+                    <td>${person.department.name}</td>
+                    <td>${person.curator.firstName} ${person.curator.lastName}</td>
+                    <td>${person.group.name}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <td>${person.login}</td>
                         <td>${person.password}</td>
@@ -106,12 +106,12 @@
                 </c:if>
                 <tr>
                     <td>
-                        <form:label path="roleId">
-                            <spring:message text="RoleId"/>
+                        <form:label path="role.roleName">
+                            <spring:message text="Role"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="roleId"/>
+                        <form:input type="text" path="role.roleName"/>
                     </td>
                 </tr>
                 <tr>
@@ -176,32 +176,42 @@
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="departmentId">
-                            <spring:message text="DepartID"/>
+                        <form:label path="department.name">
+                            <spring:message text="Department"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="departmentId"/>
+                        <form:input type="text" path="department.name"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="curatorId">
-                            <spring:message text="CuratorId"/>
+                        <form:label path="curator.firstName">
+                            <spring:message text="Curator name"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="curatorId"/>
+                        <form:input type="text" path="curator.firstName"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="groupId">
-                            <spring:message text="GroupId"/>
+                        <form:label path="curator.lastName">
+                            <spring:message text="Curator surname"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="groupId"/>
+                        <form:input type="text" path="curator.lastName"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form:label path="group.name">
+                            <spring:message text="Group"/>
+                        </form:label>
+                    </td>
+                    <td>
+                        <form:input type="text" path="group.name"/>
                     </td>
                 </tr>
                 <tr>

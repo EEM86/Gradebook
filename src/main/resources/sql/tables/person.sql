@@ -1,5 +1,5 @@
 CREATE TABLE L3G3_person (
-	person_id number(19) NOT NULL,
+	id number(19) NOT NULL,
 	role_id number(19) NOT NULL,
 	first_name varchar2(20) NOT NULL,
 	last_name varchar2(20) NOT NULL,
@@ -12,5 +12,5 @@ CREATE TABLE L3G3_person (
 	group_id  number(19),
 	login varchar2(20) UNIQUE NOT NULL,
 	password varchar2(20) NOT NULL,
-	constraint L3G3_PERSON_PK PRIMARY KEY (person_id)
+	constraint L3G3_PERSON_PK PRIMARY KEY (id)
 );

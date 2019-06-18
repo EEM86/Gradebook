@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.gradebook.model.beans.Message;
+import ua.gradebook.model.beans.Person;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,12 +17,27 @@ public class MessageDAOImpl implements DAOExtension<Message> {
     private JdbcTemplate jdbcTemplate;
 
     private static final String TABLE = "L3G3_message";
-    private static final String FIND_ALL = "SELECT * FROM " + TABLE;
-    private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE RECEIVER_ID=? OR SENDER_ID=?";
-    private static final String INSERT_SQL = "INSERT INTO " + TABLE +
-            " (RECEIVER_ID, SENDER_ID, MESSAGE) VALUES (?, ?, ?)";
+    private static final String FIND_ALL =
+            "SELECT l.MESSAGE_ID, p.ID, p.FIRST_NAME, p.LAST_NAME, p2.ID, p2.FIRST_NAME, p2.LAST_NAME, l.MESSAGE FROM " + TABLE + " l " +
+             "LEFT JOIN L3G3_PERSON p ON l.RECEIVER_ID = p.ID " +
+             "LEFT JOIN L3G3_PERSON p2 ON l.SENDER_ID = p2.ID";
+    private static final String FIND_BY_ID =
+            "SELECT l.MESSAGE_ID, p.ID, p.FIRST_NAME, p.LAST_NAME, p2.ID, p2.FIRST_NAME, p2.LAST_NAME, l.MESSAGE FROM " + TABLE + " l " +
+                    "LEFT JOIN L3G3_PERSON p ON l.RECEIVER_ID = p.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON l.SENDER_ID = p2.ID " +
+                    "WHERE l.RECEIVER_ID=? OR l.SENDER_ID=?";
+    private static final String INSERT_SQL =
+            "INSERT INTO " + TABLE +
+            " (RECEIVER_ID, SENDER_ID, MESSAGE) " +
+            "VALUES (" +
+            "(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
+            "(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
+            "?)";
     private static final String UPDATE_SQL = "UPDATE " + TABLE +
-            " SET RECEIVER_ID=?, SENDER_ID=?, MESSAGE=? WHERE MESSAGE_ID=?";
+            " SET RECEIVER_ID=(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
+            "SENDER_ID=(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
+            "MESSAGE=? " +
+            "WHERE MESSAGE_ID=?";
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE MESSAGE_ID=?";
 
     @Override
@@ -29,7 +45,6 @@ public class MessageDAOImpl implements DAOExtension<Message> {
         return jdbcTemplate.query(FIND_ALL, new NewRowMapper<Message>());
     }
 
-    //ToDo make return type List?
     @Override
     public Message findById(Integer id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID,
@@ -44,8 +59,10 @@ public class MessageDAOImpl implements DAOExtension<Message> {
     @Override
     public boolean insert(Message item) {
         jdbcTemplate.update(INSERT_SQL,
-                item.getReceiverId(),
-                item.getSenderId(),
+                item.getReceiver().getFirstName(),
+                item.getReceiver().getLastName(),
+                item.getSender().getFirstName(),
+                item.getSender().getLastName(),
                 item.getMessageText());
         return true;
     }
@@ -53,8 +70,10 @@ public class MessageDAOImpl implements DAOExtension<Message> {
     @Override
     public boolean update(Message item) {
         jdbcTemplate.update(UPDATE_SQL,
-                item.getReceiverId(),
-                item.getSenderId(),
+                item.getReceiver().getFirstName(),
+                item.getReceiver().getLastName(),
+                item.getSender().getFirstName(),
+                item.getSender().getLastName(),
                 item.getMessageText(),
                 item.getId());
         return true;
@@ -74,11 +93,19 @@ public class MessageDAOImpl implements DAOExtension<Message> {
 
         @Override
         public Message mapRow(ResultSet resultSet, int i) throws SQLException {
+            Person receiver = new Person();
+            Person sender = new Person();
             Message message = new Message();
             message.setId(resultSet.getInt(1));
-            message.setReceiverId(resultSet.getInt(2));
-            message.setSenderId(resultSet.getInt(3));
-            message.setMessageText(resultSet.getString(4));
+            receiver.setId(resultSet.getInt(2));
+            receiver.setFirstName(resultSet.getString(3));
+            receiver.setLastName(resultSet.getString(4));
+            sender.setId(resultSet.getInt(5));
+            sender.setFirstName(resultSet.getString(6));
+            sender.setLastName(resultSet.getString(7));
+            message.setMessageText(resultSet.getString(8));
+            message.setReceiver(receiver);
+            message.setSender(sender);
             return message;
         }
     }

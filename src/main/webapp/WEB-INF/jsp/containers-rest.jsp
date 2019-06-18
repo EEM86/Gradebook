@@ -51,9 +51,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="chiefId" class="col-sm-2 col-form-label">Chief ID</label>
+                    <label for="chief" class="col-sm-2 col-form-label">Chief ID</label>
                     <div class="col-sm-10">
-                        <input type="number" min="1" class="form-control edt-field" id="chiefId" placeholder="Chief ID">
+                        <input type="number" min="1" class="form-control edt-field" id="chief" placeholder="Chief ID">
                     </div>
                 </div>
                 <div class="form-group row">

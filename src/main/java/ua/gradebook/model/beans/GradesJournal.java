@@ -3,28 +3,25 @@ package ua.gradebook.model.beans;
 import java.util.Objects;
 
 public class GradesJournal extends ParentBean {
-    private String discName;
-    private Integer discId;
-    private String studentName;
-    private Integer personId;
+    private Discipline discipline;
+    private Person student;
     private Integer grade;
-    private String teacherName;
-    private Integer teacherId;
+    private Person teacher;
 
-    public Integer getDiscId() {
-        return discId;
+    public Discipline getDiscipline() {
+        return discipline;
     }
 
-    public void setDiscId(Integer discipline) {
-        this.discId = discipline;
+    public void setDiscipline(Discipline discipline) {
+        this.discipline = discipline;
     }
 
-    public Integer getPersonId() {
-        return personId;
+    public Person getStudent() {
+        return student;
     }
 
-    public void setPersonId(Integer personId) {
-        this.personId = personId;
+    public void setStudent(Person student) {
+        this.student = student;
     }
 
     public Integer getGrade() {
@@ -35,65 +32,39 @@ public class GradesJournal extends ParentBean {
         this.grade = grade;
     }
 
-    public Integer getTeacherId() {
-        return teacherId;
+    public Person getTeacher() {
+        return teacher;
     }
 
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public String getDiscName() {
-        return discName;
-    }
-
-    public void setDiscName(String discName) {
-        this.discName = discName;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+    public void setTeacher(Person teacher) {
+        this.teacher = teacher;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         GradesJournal that = (GradesJournal) o;
-        return Objects.equals(discId, that.discId) &&
-                Objects.equals(personId, that.personId) &&
+        return Objects.equals(discipline, that.discipline) &&
+                Objects.equals(student, that.student) &&
                 Objects.equals(grade, that.grade) &&
-                Objects.equals(teacherId, that.teacherId);
+                Objects.equals(teacher, that.teacher);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(discId, personId, grade, teacherId);
+        return Objects.hash(super.hashCode(), discipline, student, grade, teacher);
     }
 
     @Override
     public String toString() {
         return "GradesJournal{" +
                 "id=" + id +
-                ", discName='" + discName + '\'' +
-                ", discId=" + discId +
-                ", studentName='" + studentName + '\'' +
-                ", personId=" + personId +
+                ", discipline=" + discipline +
+                ", person=" + student +
                 ", grade=" + grade +
-                ", teacherName='" + teacherName + '\'' +
-                ", teacherId=" + teacherId +
+                ", teacher=" + teacher +
                 '}';
     }
 }

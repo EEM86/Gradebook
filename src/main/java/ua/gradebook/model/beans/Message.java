@@ -3,24 +3,24 @@ package ua.gradebook.model.beans;
 import java.util.Objects;
 
 public class Message extends ParentBean {
-    private Integer receiverId;
-    private Integer senderId;
+    private Person receiver;
+    private Person sender;
     private String messageText;
 
-    public Integer getReceiverId() {
-        return receiverId;
+    public Person getReceiver() {
+        return receiver;
     }
 
-    public void setReceiverId(Integer receiverId) {
-        this.receiverId = receiverId;
+    public void setReceiver(Person receiver) {
+        this.receiver = receiver;
     }
 
-    public Integer getSenderId() {
-        return senderId;
+    public Person getSender() {
+        return sender;
     }
 
-    public void setSenderId(Integer senderId) {
-        this.senderId = senderId;
+    public void setSender(Person sender) {
+        this.sender = sender;
     }
 
     public String getMessageText() {
@@ -36,22 +36,22 @@ public class Message extends ParentBean {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return Objects.equals(receiverId, message.receiverId) &&
-                Objects.equals(senderId, message.senderId) &&
+        return Objects.equals(receiver, message.receiver) &&
+                Objects.equals(sender, message.sender) &&
                 Objects.equals(messageText, message.messageText);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(receiverId, senderId, messageText);
+        return Objects.hash(receiver, sender, messageText);
     }
 
     @Override
     public String toString() {
         return "Message{" +
                 "id=" + id +
-                ", receiverId=" + receiverId +
-                ", senderId=" + senderId +
+                ", receiver=" + receiver +
+                ", sender=" + sender +
                 ", messageText='" + messageText + '\'' +
                 '}';
     }

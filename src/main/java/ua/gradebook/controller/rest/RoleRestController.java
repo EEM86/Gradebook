@@ -1,13 +1,11 @@
 package ua.gradebook.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Role;
 import ua.gradebook.service.AppService;
 import ua.gradebook.service.RoleService;
