@@ -7,14 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Person;
-import ua.gradebook.service.AppServiceExtension;
+import ua.gradebook.service.AppServicePerson;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PersonController {
     @Autowired
     @Qualifier("PersonService")
-    private AppServiceExtension personService;
+    private AppServicePerson personService;
 
     private static final Logger logger = Logger.getLogger(PersonController.class);
 

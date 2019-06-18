@@ -38,13 +38,15 @@ public class GradesJournalDAOImpl implements DAOExtension {
                 "LEFT JOIN L3G3_PERSON p2 ON j.TEACHER_ID = p2.PERSON_ID " +
             "WHERE j.PERSON_ID=? OR j.TEACHER_ID=?";
 
-    private static final String INSERT_SQL =
+ /*   private static final String INSERT_SQL =
             "INSERT INTO " + TABLE + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID) " +
             "VALUES ((SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?))," +
             "        (SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?))," +
             "         ?," +
             "         (SELECT PERSON_ID FROM L3G3_PERSON WHERE UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) = UPPER(?)))";
-
+*/
+ private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (DISC_ID, PERSON_ID, GRADE, TEACHER_ID)"
+         + " VALUES (?, ?, ?, ?)";
     private static final String UPDATE_SQL =
             "UPDATE " + TABLE + " SET " +
                     "DISC_ID=(SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?)), " +
@@ -72,7 +74,7 @@ public class GradesJournalDAOImpl implements DAOExtension {
         return null;
     }
 
-    @Override
+/*    @Override
     public boolean insert(ParentBean item) {
         GradesJournal gradesJournal = (GradesJournal) item;
         jdbcTemplate.update(INSERT_SQL,
@@ -81,7 +83,17 @@ public class GradesJournalDAOImpl implements DAOExtension {
                 gradesJournal.getGrade(),
                 gradesJournal.getTeacherName());
         return true;
-    }
+    }*/
+@Override
+public boolean insert(ParentBean item) {
+    GradesJournal gradesJournal = (GradesJournal) item;
+    jdbcTemplate.update(INSERT_SQL,
+            gradesJournal.getDiscId(),
+            gradesJournal.getPersonId(),
+            gradesJournal.getGrade(),
+            gradesJournal.getTeacherId());
+    return true;
+}
 
     @Override
     public boolean update(ParentBean item) {
@@ -103,11 +115,6 @@ public class GradesJournalDAOImpl implements DAOExtension {
     @Override
     public List<ParentBean> findListByObject(Object id) {
         return (List) jdbcTemplate.query(FIND_RELATIVE_DATA_BY_ID, new Object[]{id, id}, new NewRowMapper<>());
-    }
-
-    @Override
-    public ParentBean findByLogin(String login) {
-        return null;
     }
 
     private static final class NewRowMapper<P> implements RowMapper<GradesJournal> {

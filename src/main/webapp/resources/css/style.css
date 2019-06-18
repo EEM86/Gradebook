@@ -107,3 +107,12 @@ a{
     background-color: #f9f9f9
 }
 
+.select_term{
+    margin: 10px 30px 0px 30px;
+    height: 20px;
+}
+
+/*.select_discipline{
+    display: inline-block;
+}*/
+

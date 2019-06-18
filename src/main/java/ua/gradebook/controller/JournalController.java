@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.gradebook.model.beans.Discipline;
 import ua.gradebook.model.beans.GradesJournal;
+import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.service.AppServiceExtension;
+import ua.gradebook.service.DisciplineService;
 import ua.gradebook.service.PersonService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,19 +20,26 @@ public class JournalController {
 
     private final AppServiceExtension journalService;
     private final PersonService personService;
+    private final DisciplineService disciplineService;
 
     private static final Logger logger = Logger.getLogger(JournalController.class);
 
-    public JournalController( @Qualifier("JournalService")AppServiceExtension journalService,
-                              PersonService personService) {
+    public JournalController(@Qualifier("JournalService") AppServiceExtension journalService,
+                             PersonService personService, DisciplineService disciplineService) {
         this.journalService = journalService;
         this.personService = personService;
+        this.disciplineService = disciplineService;
     }
 
     @RequestMapping(value="journal", method = RequestMethod.GET)
     public String showRelativeJournalById(HttpServletRequest request, Model model) {
-        Integer id = (personService.findByLogin(request.getUserPrincipal().getName())).getId();
-        model.addAttribute("teacher", id);
+        model.addAttribute("discipline", new Discipline());
+        model.addAttribute("getDisciplines", disciplineService.findAll());
+        model.addAttribute("getStudents", personService.findStudents());
+        model.addAttribute("getTeachers", personService.findTeacher());
+        ParentBean person = personService.findByLogin(request.getUserPrincipal().getName());
+        Integer id = person.getId();
+        model.addAttribute("teacherName", person);
         model.addAttribute("journal", new GradesJournal());
         if (Person.isAdmin()) {
             model.addAttribute("getJournals", journalService.findAll());

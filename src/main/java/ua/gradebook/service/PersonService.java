@@ -5,18 +5,29 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.dao.DAOExtension;
+import ua.gradebook.model.dao.PersonDAO;
 
 import java.util.List;
 
 @Service(value="PersonService")
-public class PersonService implements AppServiceExtension {
+public class PersonService implements AppServicePerson {
     @Autowired
     @Qualifier("PersonDAO")
-    private DAOExtension personDAO;
+    private PersonDAO personDAO;
 
     @Override
     public List<ParentBean> findAll() {
         return this.personDAO.findAll();
+    }
+
+    @Override
+    public List<ParentBean> findStudents() {
+        return this.personDAO.findStudents();
+    }
+
+    @Override
+    public List<ParentBean> findTeacher() {
+        return this.personDAO.findTeacher();
     }
 
     @Override

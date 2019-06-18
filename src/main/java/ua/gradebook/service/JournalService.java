@@ -48,9 +48,4 @@ public class JournalService implements AppServiceExtension {
     public List<ParentBean> findListByObject(Object id) {
         return this.journalDAO.findListByObject(id);
     }
-
-    @Override
-    public ParentBean findByLogin(String login) {
-        return null;
-    }
 }

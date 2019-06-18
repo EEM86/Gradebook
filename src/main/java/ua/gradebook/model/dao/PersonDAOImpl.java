@@ -12,12 +12,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository(value="PersonDAO")
-public class PersonDAOImpl implements DAOExtension {
+public class PersonDAOImpl implements PersonDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     private static final String TABLE = "L3G3_PERSON";
     private static final String FIND_ALL = "SELECT * FROM " + TABLE;
+    private static final String FIND_STUDENTS = "SELECT * FROM " + TABLE + " WHERE ROLE_ID=2";
+    private static final String FIND_TEACHERS = "SELECT * FROM " + TABLE + " WHERE ROLE_ID=3";
     private static final String FIND_BY_ID = "SELECT * FROM " + TABLE + " WHERE PERSON_ID=?";
     private static final String findByNameSQL = "SELECT * FROM " + TABLE + " WHERE LAST_NAME=?";
     String findByLoginSQL = "SELECT * FROM " + TABLE + " WHERE LOGIN=?";
@@ -32,6 +34,16 @@ public class PersonDAOImpl implements DAOExtension {
     @Override
     public List<ParentBean> findAll() {
         return jdbcTemplate.query(FIND_ALL, new NewRowMapper());
+    }
+
+    @Override
+    public List<ParentBean> findStudents() {
+        return jdbcTemplate.query(FIND_STUDENTS, new NewRowMapper());
+    }
+
+    @Override
+    public List<ParentBean> findTeacher() {
+        return jdbcTemplate.query(FIND_TEACHERS, new NewRowMapper());
     }
 
     @Override

@@ -75,9 +75,6 @@ public class MessageDAOImpl implements DAOExtension {
         return (List) jdbcTemplate.query(FIND_BY_ID, new Object[]{id, id}, new NewRowMapper());
     }
 
-    @Override
-    public ParentBean findByLogin(String login) { return null; }
-
     private static final class NewRowMapper<P> implements RowMapper<Message> {
 
         @Override

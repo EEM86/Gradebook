@@ -35,9 +35,6 @@ public class MessageService implements AppServiceExtension {
     }
 
     @Override
-    public ParentBean findByLogin(String login) { return null; }
-
-    @Override
     public boolean insert(ParentBean item) {
         return this.messageDAO.insert(item);
     }

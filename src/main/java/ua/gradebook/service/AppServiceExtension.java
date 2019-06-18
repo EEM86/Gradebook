@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface AppServiceExtension extends AppService {
     List<ParentBean> findListByObject(Object obj);
-    ParentBean findByLogin(String login);
 }

@@ -48,9 +48,4 @@ public class LessonsPlanService implements AppServiceExtension {
     public List<ParentBean> findListByObject(Object id) {
         return this.lessonsPlanDAO.findListByObject(id);
     }
-
-    @Override
-    public ParentBean findByLogin(String login) {
-        return null;
-    }
 }

@@ -103,11 +103,6 @@ public class LessonsPlanDAOImpl implements DAOExtension {
         return (List) jdbcTemplate.query(FIND_RELATIVE_PLAN_BY_ID, new Object[]{id}, new NewRowMapper());
     }
 
-    @Override
-    public ParentBean findByLogin(String login) {
-        return null;
-    }
-
     private static final class NewRowMapper<P> implements RowMapper<LessonsPlan> {
 
         @Override
