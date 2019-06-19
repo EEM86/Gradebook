@@ -73,14 +73,11 @@
 
                     <td>
                         <form:select name="select_discipline" size="1" path="discipline.id">
-                            <c:if test="${!empty journal.discipline.id}">
-                                <option name="discId" value="${journal.discipline.id}">${journal.discipline.discName}</option>
-                            </c:if>
-                            <c:if test="${empty journal.discipline.id}">
-                                <c:forEach items="${getDisciplines}" var="discipline">
-                                    <option value="${discipline.id}">${discipline.discName}</option>
-                                </c:forEach>
-                            </c:if>
+                            <c:forEach items="${getDisciplines}" var="discipline">
+                                <option value="${discipline.id}"
+                                        <c:if test="${journal.getDiscipline().getId() == discipline.id}"> selected </c:if>
+                                >${discipline.discName}</option>
+                            </c:forEach>
                         </form:select>
                     </td>
                 </tr>
@@ -93,14 +90,11 @@
                     </td>
                     <td>
                         <form:select name="select_student" size="1" path="student.id">
-                            <c:if test="${!empty journal.discipline.id}">
-                                <option name="personId" value="${journal.student.id}">${journal.student.firstName} ${journal.student.lastName}</option>
-                            </c:if>
-                            <c:if test="${empty journal.discipline.id}">
-                                <c:forEach items="${getStudents}" var="student">
-                                    <option name="iddisc" value="${student.id}">${student.firstName} ${student.lastName}</option>
-                                </c:forEach>
-                            </c:if>
+                            <c:forEach items="${getStudents}" var="student">
+                                <option value="${student.id}"
+                                        <c:if test="${journal.getStudent().getId() == student.id}"> selected </c:if>
+                                >${student.firstName} ${student.lastName}</option>
+                            </c:forEach>
                         </form:select>
                     </td>
                 </tr>
@@ -112,16 +106,11 @@
                     </td>
                     <td>
                         <form:select name="select_grade" size="1" path="grade">
-                            <c:if test="${!empty journal.discipline.id}">
-                                <option name="grade" value="${journal.grade}">${journal.grade}</option>
-                            </c:if>
-                            <c:if test="${empty journal.discipline.id}">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </c:if>
+                            <option value="1" <c:if test="${journal.grade == 1}"> selected </c:if>>1</option>
+                            <option value="2" <c:if test="${journal.grade == 2}"> selected </c:if>>2</option>
+                            <option value="3" <c:if test="${journal.grade == 3}"> selected </c:if>>3</option>
+                            <option value="4" <c:if test="${journal.grade == 4}"> selected </c:if>>4</option>
+                            <option value="5" <c:if test="${journal.grade == 5}"> selected </c:if>>5</option>
                         </form:select>
                     </td>
                 </tr>
@@ -132,23 +121,18 @@
                         </form:label>
                     </td>
                     <td>
-                        <sec:authorize access="hasRole('ROLE_TEACHER')">
-                            <form:select name="select_teacher" size="1" path="teacher.id">
+                        <form:select name="select_teacher" size="1" path="teacher.id">
+                            <sec:authorize access="hasRole('ROLE_TEACHER')">
                                 <option name="teacherName" value="${teacherName.id}">${teacherName.firstName} ${teacherName.lastName}</option>
-                            </form:select>
-                        </sec:authorize>
-                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <form:select name="select_teacher" size="1" path="teacher.id">
-                                <c:if test="${!empty journal.discipline.id}">
-                                    <option value="${journal.teacher.id}">${journal.teacher.firstName} ${journal.teacher.lastName}</option>
-                                </c:if>
-                                <c:if test="${empty journal.discipline.id}">
-                                    <c:forEach items="${getTeachers}" var="teacher">
-                                        <option value="${teacher.id}">${teacher.firstName} ${teacher.lastName}</option>
-                                    </c:forEach>
-                                </c:if>
-                            </form:select>
-                        </sec:authorize>
+                            </sec:authorize>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                <c:forEach items="${getTeachers}" var="teacher">
+                                    <option value="${teacher.id}"
+                                            <c:if test="${journal.getTeacher().getId() == teacher.id}"> selected </c:if>
+                                    >${teacher.firstName} ${teacher.lastName}</option>
+                                </c:forEach>
+                            </sec:authorize>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>

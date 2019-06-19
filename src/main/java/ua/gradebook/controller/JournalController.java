@@ -33,7 +33,6 @@ public class JournalController {
 
     @RequestMapping(value="journal", method = RequestMethod.GET)
     public String showRelativeJournalById(HttpServletRequest request, Model model) {
-        model.addAttribute("discipline", new Discipline());
         model.addAttribute("getDisciplines", disciplineService.findAll());
         model.addAttribute("getStudents", personService.findStudents());
         model.addAttribute("getTeachers", personService.findTeacher());
@@ -70,6 +69,9 @@ public class JournalController {
 
     @RequestMapping(value = "/journal/edit/{id}")
     public String editJournal(@PathVariable("id") int id, Model model){
+        model.addAttribute("getDisciplines", disciplineService.findAll());
+        model.addAttribute("getStudents", personService.findStudents());
+        model.addAttribute("getTeachers", personService.findTeacher());
         model.addAttribute("journal", this.journalService.findById(id));
         model.addAttribute("getJournals", this.journalService.findAll());
         return "journal";

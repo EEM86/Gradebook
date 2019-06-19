@@ -62,43 +62,60 @@
                     </tr>
                 </c:if>
                 <tr>
+                        <%--                    <td>
+                                                <form:label value="Discipline" path="discipline.discName">
+                                                    <spring:message text="Discipline"/>
+                                                </form:label>
+                                            </td>
+                                            <td>
+                                                <form:input type="text" path="discipline.discName"/>
+                                            </td>--%>
                     <td>
-                        <form:label value="Discipline" path="discipline.discName">
+                        <form:label value="Discipline" path="discipline.id">
                             <spring:message text="Discipline"/>
                         </form:label>
                     </td>
+
                     <td>
-                        <form:input type="text" path="discipline.discName"/>
+                        <form:select name="select_discipline" size="1" path="discipline.id">
+                            <c:forEach items="${getDisciplines}" var="discipline">
+                                <option value="${discipline.id}"
+                                        <c:if test="${lessonsplan.getDiscipline().getId() == discipline.id}"> selected </c:if>
+                                >${discipline.discName}</option>
+                            </c:forEach>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="teacher.firstName">
-                            <spring:message text="Teacher Name"/>
+                        <form:label path="teacher.id">
+                            <spring:message text="Teacher"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" path="teacher.firstName"/>
+                        <form:select name="select_teacher" size="1" path="teacher.id">
+                            <c:forEach items="${getTeachers}" var="teacher">
+                                <option value="${teacher.id}"
+                                        <c:if test="${lessonsplan.getTeacher().getId() == teacher.id}"> selected </c:if>
+                                >${teacher.firstName} ${teacher.lastName}</option>
+                            </c:forEach>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="teacher.lastName">
-                            <spring:message text="Teacher Surname"/>
-                        </form:label>
-                    </td>
-                    <td>
-                        <form:input type="text" path="teacher.lastName"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="group.name">
+                        <form:label path="group.id">
                             <spring:message text="Group"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" path="group.name"/>
+                        <form:select name="select_group" size="1" path="group.id">
+                            <c:forEach items="${getGroups}" var="group">
+                                <option value="${group.id}"
+                                        <c:if test="${lessonsplan.getGroup().getId() == group.id}"> selected </c:if>
+                                >${group.name}</option>
+                            </c:forEach>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>

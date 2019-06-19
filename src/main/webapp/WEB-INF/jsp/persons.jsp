@@ -58,7 +58,7 @@
             <c:forEach items="${getPersons}" var="person">
                 <tr>
                     <td>${person.id}</td>
-                    <td>${person.role.id}</td>
+                    <td>${person.role.roleName}</td>
                     <td>${person.firstName}</td>
                     <td>${person.lastName}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">

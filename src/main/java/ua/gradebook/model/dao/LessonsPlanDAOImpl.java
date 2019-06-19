@@ -40,21 +40,10 @@ public class LessonsPlanDAOImpl implements DAOExtension<LessonsPlan> {
                     "LEFT JOIN L3G3_CONTAINER c ON l.GROUP_ID = c.ID " +
                     "WHERE l.TEACHER_ID=?";
 
-    private static final String INSERT_SQL =
-            "INSERT INTO " + TABLE + " (DISC_ID, TEACHER_ID, GROUP_ID, HOURS) " +
-                "VALUES (" +
-                    "(SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?)), " +
-                    "(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-                    "(SELECT ID FROM L3G3_CONTAINER WHERE UPPER(NAME) = UPPER(?)), " +
-                    "?)";
-
-    private static final String UPDATE_SQL =
-            "UPDATE " + TABLE + " SET " +
-                    "DISC_ID=(SELECT DISC_ID FROM L3G3_DISCIPLINE WHERE UPPER(DISC_NAME)=UPPER(?)), " +
-                    "TEACHER_ID=(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-                    "GROUP_ID=(SELECT ID FROM L3G3_CONTAINER WHERE UPPER(NAME) = UPPER(?)), " +
-                    "HOURS=?" +
-                    "WHERE ID=?";
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE +
+            " (DISC_ID, TEACHER_ID, GROUP_ID, HOURS) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE_SQL = "UPDATE " + TABLE +
+            " SET DISC_ID=?, TEACHER_ID=?, GROUP_ID=?, HOURS=? WHERE ID=?";
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ID=?";
 
     @Override
@@ -76,10 +65,9 @@ public class LessonsPlanDAOImpl implements DAOExtension<LessonsPlan> {
     @Override
     public boolean insert(LessonsPlan item) {
         jdbcTemplate.update(INSERT_SQL,
-                item.getDiscipline().getDiscName(),
-                item.getTeacher().getFirstName(),
-                item.getTeacher().getLastName(),
-                item.getGroup().getName(),
+                item.getDiscipline().getId(),
+                item.getTeacher().getId(),
+                item.getGroup().getId(),
                 item.getHours());
         return true;
     }
@@ -87,10 +75,9 @@ public class LessonsPlanDAOImpl implements DAOExtension<LessonsPlan> {
     @Override
     public boolean update(LessonsPlan item) {
         jdbcTemplate.update(UPDATE_SQL,
-                item.getDiscipline().getDiscName(),
-                item.getTeacher().getFirstName(),
-                item.getTeacher().getLastName(),
-                item.getGroup().getName(),
+                item.getDiscipline().getId(),
+                item.getTeacher().getId(),
+                item.getGroup().getId(),
                 item.getHours(),
                 item.getId());
         return true;
@@ -110,13 +97,23 @@ public class LessonsPlanDAOImpl implements DAOExtension<LessonsPlan> {
 
         @Override
         public LessonsPlan mapRow(ResultSet resultSet, int i) throws SQLException {
-            Person person = (new BeanPropertyRowMapper<>(Person.class)).mapRow(resultSet, i);
-            Discipline discipline = (new BeanPropertyRowMapper<>(Discipline.class)).mapRow(resultSet, i);
-            Container container = (new BeanPropertyRowMapper<>(Container.class)).mapRow(resultSet, i);
+            Discipline discipline = new Discipline();
+            discipline.setId(resultSet.getInt(2));
+            discipline.setDiscName(resultSet.getString(3));
+
+            Person teacher = new Person();
+            teacher.setId(resultSet.getInt(4));
+            teacher.setFirstName(resultSet.getString(5));
+            teacher.setLastName(resultSet.getString(6));
+
+            Container container = new Container();
+            container.setId(resultSet.getInt(7));
+            container.setName(resultSet.getString(8));
+
             LessonsPlan lessonsPlan = (new BeanPropertyRowMapper<>(LessonsPlan.class)).mapRow(resultSet, i);
             lessonsPlan.setDiscipline(discipline);
             lessonsPlan.setGroup(container);
-            lessonsPlan.setTeacher(person);
+            lessonsPlan.setTeacher(teacher);
             return lessonsPlan;
         }
     }

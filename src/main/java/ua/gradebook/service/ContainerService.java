@@ -3,14 +3,15 @@ package ua.gradebook.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.Container;
+import ua.gradebook.model.dao.ContainerDAO;
 import ua.gradebook.model.dao.ContainerDAOImpl;
 import ua.gradebook.model.dao.DAO;
 
 import java.util.List;
 
 @Service
-public class ContainerService implements AppService<Container> {
-    private final DAO<Container> containerDAO;
+public class ContainerService implements AppServiceContainer<Container> {
+    private final ContainerDAO<Container> containerDAO;
 
     @Autowired
     public ContainerService(ContainerDAOImpl containerDAO) {
@@ -45,5 +46,15 @@ public class ContainerService implements AppService<Container> {
     @Override
     public boolean delete(int id) {
         return this.containerDAO.delete(id);
+    }
+
+    @Override
+    public List<Container> findGroups() {
+        return this.containerDAO.findGroups();
+    }
+
+    @Override
+    public List<Container> findDepatments() {
+        return this.containerDAO.findDepatments();
     }
 }
