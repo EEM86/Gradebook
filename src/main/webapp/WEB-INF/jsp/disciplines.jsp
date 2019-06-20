@@ -60,7 +60,7 @@
                 <tr>
                     <td>
                         <form:label path="discName">
-                            <spring:message text="discName"/>
+                            <spring:message text="Discipline name"/>
                         </form:label>
                     </td>
                     <td>

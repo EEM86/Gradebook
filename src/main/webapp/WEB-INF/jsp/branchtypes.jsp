@@ -55,7 +55,7 @@
             <tr>
                 <td>
                     <form:label path="typeName">
-                        <spring:message text="typeName"/>
+                        <spring:message text="Type Name"/>
                     </form:label>
                 </td>
                 <td>

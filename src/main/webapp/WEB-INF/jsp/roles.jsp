@@ -55,11 +55,11 @@
         <tr>
             <td>
                 <form:label path="roleName">
-                    <spring:message text="RoleName"/>
+                    <spring:message text="Role Name"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="roleName"/>
+                <form:input path="roleName" value="ROLE_"/>
             </td>
         </tr>
         <tr>
