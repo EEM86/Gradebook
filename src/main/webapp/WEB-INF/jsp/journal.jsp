@@ -18,10 +18,10 @@
         <table class="tg">
             <tr>
                 <th width="80">ID</th>
-                <th width="80">Discipline Name</th>
-                <th width="80">Student Name</th>
+                <th width="200">Discipline Name</th>
+                <th width="200">Student Name</th>
                 <th width="40">Grade</th>
-                <th width="80">Teacher</th>
+                <th width="200">Teacher</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <th width="60">Edit</th>
                     <th width="60">Delete</th>

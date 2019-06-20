@@ -27,10 +27,6 @@ hr{
     display: block;
 }
 
-table {
-
-}
-
 .p1bold{
     font-weight:bold;
 }
@@ -70,7 +66,7 @@ a{
     border-collapse: collapse;
     border-spacing: 0;
     border-color: #ccc;
-    width: 70%;
+    /*width: 70%;*/
     padding: 10px;
     margin: auto;
     text-align: center;

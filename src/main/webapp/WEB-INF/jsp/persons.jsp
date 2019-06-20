@@ -33,24 +33,24 @@
     <br>
     <br>
     <c:if test="${!empty getPersons}">
-        <table class="tg" width="100%">
+        <table class="tg">
             <tr>
                 <th width="60">ID</th>
                 <th width="60">role</th>
-                <th width="120">FirstName</th>
-                <th width="120">LastName</th>
+                <th width="100">FirstName</th>
+                <th width="100">LastName</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <th width="120">email</th>
-                    <th width="120">phone</th>
+                    <th width="100">email</th>
+                    <th width="100">phone</th>
                     <th width="120">address</th>
                     <th width="120">birthday</th>
                 </sec:authorize>
-                <th width="60">department</th>
-                <th width="120">curator</th>
+                <th width="120">department</th>
+                <th width="150">curator</th>
                 <th width="60">group</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <th width="120">login</th>
-                    <th width="120">password</th>
+                    <th width="80">login</th>
+                    <th width="80">password</th>
                     <th width="60">Edit</th>
                     <th width="60">Delete</th>
                 </sec:authorize>
@@ -188,8 +188,8 @@
                     </td>
                     <td>
                         <form:select name="select_group" size="1" path="department.id">
+                            <option value="">No department</option>
                             <c:forEach items="${getDepartments}" var="department">
-                                <option value="">No department</option>
                                 <option value="${department.id}"
                                         <c:if test="${person.getDepartment().getId() == department.id}"> selected </c:if>
                                 >${department.name}</option>
@@ -205,8 +205,8 @@
                     </td>
                     <td>
                         <form:select name="select_curator" size="1" path="curator.id">
+                            <option value="">No curator</option>
                             <c:forEach items="${getCurators}" var="curator">
-                                <option value="">No curator</option>
                                 <option value="${curator.id}"
                                         <c:if test="${person.getCurator().getId() == person.id}"> selected </c:if>
                                 >${curator.firstName} ${curator.lastName}</option>
@@ -222,8 +222,8 @@
                     </td>
                     <td>
                         <form:select name="select_group" size="1" path="group.id">
+                            <option value="">No group</option>
                             <c:forEach items="${getGroups}" var="group">
-                                <option value="">No group</option>
                                 <option value="${group.id}"
                                         <c:if test="${person.getGroup().getId() == group.id}"> selected </c:if>
                                 >${group.name}</option>

@@ -17,12 +17,12 @@
             <table class="tg">
                 <tr>
                     <th width="40">ID</th>
-                    <th width="40">Parent</th>
-                    <th width="120">Name</th>
-                    <th width="80">Chief</th>
+                    <th width="200">Parent</th>
+                    <th width="200">Name</th>
+                    <th width="150">Chief</th>
                     <th width="80">Type</th>
                     <th width="100">Institution City</th>
-                    <th width="120">Institution Address</th>
+                    <th width="200">Institution Address</th>
                     <th width="80">Phone</th>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <th width="60">Edit</th>

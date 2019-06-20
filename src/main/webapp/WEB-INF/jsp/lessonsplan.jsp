@@ -16,8 +16,8 @@
         <table class="tg">
             <tr>
                 <th width="80">ID</th>
-                <th width="80">Discipline Name</th>
-                <th width="80">Teacher Name</th>
+                <th width="200">Discipline Name</th>
+                <th width="120">Teacher Name</th>
                 <th width="80">Group</th>
                 <th width="40">Hours</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -62,14 +62,6 @@
                     </tr>
                 </c:if>
                 <tr>
-                        <%--                    <td>
-                                                <form:label value="Discipline" path="discipline.discName">
-                                                    <spring:message text="Discipline"/>
-                                                </form:label>
-                                            </td>
-                                            <td>
-                                                <form:input type="text" path="discipline.discName"/>
-                                            </td>--%>
                     <td>
                         <form:label value="Discipline" path="discipline.id">
                             <spring:message text="Discipline"/>

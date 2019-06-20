@@ -16,9 +16,9 @@
         <table class="tg">
             <tr>
                 <th width="40">ID</th>
-                <th width="80">Receiver</th>
-                <th width="80">Sender</th>
-                <th width="200">message</th>
+                <th width="120">Receiver</th>
+                <th width="120">Sender</th>
+                <th width="700">message</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <th width="60">Delete</th>
                 </sec:authorize>
