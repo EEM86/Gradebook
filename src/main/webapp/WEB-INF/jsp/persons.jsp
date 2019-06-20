@@ -111,7 +111,13 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" path="role.id"/>
+                        <form:select name="select_role" size="1" path="role.id">
+                            <c:forEach items="${getRoles}" var="role">
+                                <option value="${role.id}"
+                                        <c:if test="${person.getRole().getId() == role.id}"> selected </c:if>
+                                >${role.roleName}</option>
+                            </c:forEach>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>
@@ -176,42 +182,53 @@
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="department.name">
+                        <form:label path="department.id">
                             <spring:message text="Department"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" path="department.name"/>
+                        <form:select name="select_group" size="1" path="department.id">
+                            <c:forEach items="${getDepartments}" var="department">
+                                <option value="">No department</option>
+                                <option value="${department.id}"
+                                        <c:if test="${person.getDepartment().getId() == department.id}"> selected </c:if>
+                                >${department.name}</option>
+                            </c:forEach>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="curator.firstName">
-                            <spring:message text="Curator name"/>
+                        <form:label path="curator.id">
+                            <spring:message text="Curator"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" path="curator.firstName"/>
+                        <form:select name="select_curator" size="1" path="curator.id">
+                            <c:forEach items="${getCurators}" var="curator">
+                                <option value="">No curator</option>
+                                <option value="${curator.id}"
+                                        <c:if test="${person.getCurator().getId() == person.id}"> selected </c:if>
+                                >${curator.firstName} ${curator.lastName}</option>
+                            </c:forEach>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="curator.lastName">
-                            <spring:message text="Curator surname"/>
-                        </form:label>
-                    </td>
-                    <td>
-                        <form:input type="text" path="curator.lastName"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="group.name">
+                        <form:label path="group.id">
                             <spring:message text="Group"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" path="group.name"/>
+                        <form:select name="select_group" size="1" path="group.id">
+                            <c:forEach items="${getGroups}" var="group">
+                                <option value="">No group</option>
+                                <option value="${group.id}"
+                                        <c:if test="${person.getGroup().getId() == group.id}"> selected </c:if>
+                                >${group.name}</option>
+                            </c:forEach>
+                        </form:select>
                     </td>
                 </tr>
                 <tr>

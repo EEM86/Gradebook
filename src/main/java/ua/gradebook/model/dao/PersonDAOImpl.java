@@ -60,7 +60,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE p.LAST_NAME=?";
-    String findByLoginSQL =
+    private static final String findByLoginSQL =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
                     "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
                     "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
@@ -68,6 +68,14 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE p.LOGIN=?";
+    private static final String findAllWithoutOneLoginSQL =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.ID!=?";
     private static final String FIND_NAMES =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
                     "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
@@ -112,6 +120,11 @@ public class PersonDAOImpl implements PersonDAO<Person> {
     @Override
     public Person findByLogin(String login) {
         return jdbcTemplate.queryForObject(findByLoginSQL, new Object[]{login}, new NewRowMapper<Person>());
+    }
+
+    @Override
+    public List<Person> findAllWithoutOneId(Integer id) {
+        return jdbcTemplate.query(findAllWithoutOneLoginSQL, new Object[]{id}, new NewRowMapper<Person>());
     }
 
     @Override
@@ -187,7 +200,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
             if (resultSet.getInt(12) != 0) {
                 department.setId(resultSet.getInt(12));
 //                department.setParentId(resultSet.getInt(13));
-//                department.setName(resultSet.getString(14));
+                department.setName(resultSet.getString(14));
 //                Person deptPerson = new Person();
 //                deptPerson.setId(resultSet.getInt(15));
 //                BranchType branchType = new BranchType();
@@ -202,8 +215,8 @@ public class PersonDAOImpl implements PersonDAO<Person> {
             curator.setId(resultSet.getInt(20));
 //            Role curatorRole = new Role();
 //            curatorRole.setId(resultSet.getInt(21));
-//            curator.setFirstName(resultSet.getString(22));
-//            curator.setLastName(resultSet.getString(23));
+            curator.setFirstName(resultSet.getString(22));
+            curator.setLastName(resultSet.getString(23));
 //            curator.setEmail(resultSet.getString(24));
 //            curator.setPhone(resultSet.getString(25));
 //            curator.setAddress(resultSet.getString(26));
@@ -224,7 +237,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
             if (resultSet.getInt(33) != 0) {
                 group.setId(resultSet.getInt(33));
 //                group.setParentId(resultSet.getInt(34));
-//                group.setName(resultSet.getString(35));
+                group.setName(resultSet.getString(35));
 //                Person chiefGroup = new Person();
 //                chiefGroup.setId(resultSet.getInt(36));
 //                BranchType typeGroup = new BranchType();

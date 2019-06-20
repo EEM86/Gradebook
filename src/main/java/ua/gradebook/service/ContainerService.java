@@ -54,7 +54,7 @@ public class ContainerService implements AppServiceContainer<Container> {
     }
 
     @Override
-    public List<Container> findDepatments() {
-        return this.containerDAO.findDepatments();
+    public List<Container> findDepartments() {
+        return this.containerDAO.findDepartments();
     }
 }

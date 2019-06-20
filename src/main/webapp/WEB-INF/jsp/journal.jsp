@@ -121,18 +121,19 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:select name="select_teacher" size="1" path="teacher.id">
-                            <sec:authorize access="hasRole('ROLE_TEACHER')">
-                                <option name="teacherName" value="${teacherName.id}">${teacherName.firstName} ${teacherName.lastName}</option>
-                            </sec:authorize>
-                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <sec:authorize access="hasRole('ROLE_TEACHER')">
+                            <form:input value="${teacherName.firstName} ${teacherName.lastName}" path="teacher.id" readonly="true" disabled="true"/>
+                            <form:hidden value="${teacherName.id}" path="teacher.id"/>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <form:select name="select_teacher" size="1" path="teacher.id">
                                 <c:forEach items="${getTeachers}" var="teacher">
                                     <option value="${teacher.id}"
                                             <c:if test="${journal.getTeacher().getId() == teacher.id}"> selected </c:if>
                                     >${teacher.firstName} ${teacher.lastName}</option>
                                 </c:forEach>
-                            </sec:authorize>
-                        </form:select>
+                            </form:select>
+                        </sec:authorize>
                     </td>
                 </tr>
                 <tr>

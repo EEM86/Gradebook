@@ -26,18 +26,10 @@ public class MessageDAOImpl implements DAOExtension<Message> {
                     "LEFT JOIN L3G3_PERSON p ON l.RECEIVER_ID = p.ID " +
                     "LEFT JOIN L3G3_PERSON p2 ON l.SENDER_ID = p2.ID " +
                     "WHERE l.RECEIVER_ID=? OR l.SENDER_ID=?";
-    private static final String INSERT_SQL =
-            "INSERT INTO " + TABLE +
-            " (RECEIVER_ID, SENDER_ID, MESSAGE) " +
-            "VALUES (" +
-            "(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-            "(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-            "?)";
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE +
+            " (RECEIVER_ID, SENDER_ID, MESSAGE) VALUES (?, ?, ?)";
     private static final String UPDATE_SQL = "UPDATE " + TABLE +
-            " SET RECEIVER_ID=(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-            "SENDER_ID=(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-            "MESSAGE=? " +
-            "WHERE MESSAGE_ID=?";
+            " SET RECEIVER_ID=?, SENDER_ID=?, MESSAGE=? WHERE MESSAGE_ID=?";
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE MESSAGE_ID=?";
 
     @Override
@@ -59,10 +51,8 @@ public class MessageDAOImpl implements DAOExtension<Message> {
     @Override
     public boolean insert(Message item) {
         jdbcTemplate.update(INSERT_SQL,
-                item.getReceiver().getFirstName(),
-                item.getReceiver().getLastName(),
-                item.getSender().getFirstName(),
-                item.getSender().getLastName(),
+                item.getReceiver().getId(),
+                item.getSender().getId(),
                 item.getMessageText());
         return true;
     }
@@ -70,10 +60,9 @@ public class MessageDAOImpl implements DAOExtension<Message> {
     @Override
     public boolean update(Message item) {
         jdbcTemplate.update(UPDATE_SQL,
-                item.getReceiver().getFirstName(),
-                item.getReceiver().getLastName(),
-                item.getSender().getFirstName(),
-                item.getSender().getLastName(),
+                item.getReceiver().getId(),
+                item.getReceiver().getId(),
+                item.getSender().getId(),
                 item.getMessageText(),
                 item.getId());
         return true;

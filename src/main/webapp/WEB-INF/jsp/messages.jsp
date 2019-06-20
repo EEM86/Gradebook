@@ -45,44 +45,29 @@
         <table>
             <tr>
                 <td>
-                    <form:label path="receiver.firstName">
-                        <spring:message text="Receiver Name"/>
+                    <form:label path="receiver.id">
+                        <spring:message text="Receiver"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="text" path="receiver.firstName" />
+                    <form:select name="select_receiver" size="1" path="receiver.id">
+                        <c:forEach items="${getPersons}" var="person">
+                            <option value="${person.id}"
+                                    <c:if test="${message.getReceiver().getId() == person.id}"> selected </c:if>
+                            >${person.firstName} ${person.lastName}</option>
+                        </c:forEach>
+                    </form:select>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="receiver.lastName">
-                        <spring:message text="Receiver surname"/>
+                    <form:label path="sender.id">
+                        <spring:message text="Sender"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="text" path="receiver.lastName" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form:label path="sender.firstName">
-                        <spring:message text="Sender name"/>
-                    </form:label>
-                </td>
-                <td>
-                    <%--<form:input path="sender.firstName" readonly="true" disabled="true"/>--%>
-                    <form:input path="sender.firstName"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form:label path="sender.lastName">
-                        <spring:message text="Sender surname"/>
-                    </form:label>
-                </td>
-                <td>
-                    <%--<form:input value="sender.lastName" path="sender.lastName" readonly="true" disabled="true"/>--%>
-                    <form:input path="sender.lastName"/>
+                    <form:input value="${idSender.firstName} ${idSender.lastName}" path="sender.id" readonly="true" disabled="true"/>
+                    <form:hidden value="${idSender.getId()}" path="sender.id"/>
                 </td>
             </tr>
             <tr>

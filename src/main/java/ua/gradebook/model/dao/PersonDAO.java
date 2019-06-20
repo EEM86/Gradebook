@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface PersonDAO<T extends ParentBean> extends DAOExtension<T> {
     T findByLogin(String login);
+    List<T> findAllWithoutOneId(Integer id);
     List<T> findStudents();
     List<T> findTeacher();
 }

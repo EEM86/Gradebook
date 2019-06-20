@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AppServiceContainer<T extends ParentBean> extends AppService<T> {
     List<T> findGroups();
-    List<T> findDepatments();
+    List<T> findDepartments();
 }

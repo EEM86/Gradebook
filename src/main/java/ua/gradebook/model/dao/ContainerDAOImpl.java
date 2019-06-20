@@ -20,46 +20,37 @@ public class ContainerDAOImpl implements ContainerDAO<Container> {
 
     private static final String TABLE = "L3G3_CONTAINER";
     private static final String FIND_ALL =
-            "SELECT c.ID, c.PARENT_ID, c.NAME, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "SELECT c.ID, c.PARENT_ID, d.NAME, c.NAME, c.CHIEF_ID, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+                    "LEFT JOIN L3G3_CONTAINER d ON c.PARENT_ID = d.ID " +
                     "LEFT JOIN L3G3_PERSON p ON c.CHIEF_ID = p.ID " +
                     "LEFT JOIN L3G3_BRANCH_TYPE b ON c.TYPE_ID = b.TYPE_ID";
-
     private static final String FIND_BY_ID = "" +
-            "SELECT c.ID, c.PARENT_ID, c.NAME, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "SELECT c.ID, c.PARENT_ID, d.NAME, c.NAME, c.CHIEF_ID, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "LEFT JOIN L3G3_CONTAINER d ON c.PARENT_ID = d.ID " +
             "LEFT JOIN L3G3_PERSON p ON c.CHIEF_ID = p.ID " +
             "LEFT JOIN L3G3_BRANCH_TYPE b ON c.TYPE_ID = b.TYPE_ID " +
             "WHERE c.ID=?";
     private static final String FIND_BY_NAME =
-            "SELECT c.ID, c.PARENT_ID, c.NAME, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "SELECT c.ID, c.PARENT_ID, d.NAME, c.NAME, c.CHIEF_ID, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+                    "LEFT JOIN L3G3_CONTAINER d ON c.PARENT_ID = d.ID " +
                     "LEFT JOIN L3G3_PERSON p ON c.CHIEF_ID = p.ID " +
                     "LEFT JOIN L3G3_BRANCH_TYPE b ON c.TYPE_ID = b.TYPE_ID " +
                     "WHERE c.NAME=?";
     private static final String FIND_GROUPS = "" +
-            "SELECT c.ID, c.PARENT_ID, c.NAME, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "SELECT c.ID, c.PARENT_ID, d.NAME, c.NAME, c.CHIEF_ID, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "LEFT JOIN L3G3_CONTAINER d ON c.PARENT_ID = d.ID " +
             "LEFT JOIN L3G3_PERSON p ON c.CHIEF_ID = p.ID " +
             "LEFT JOIN L3G3_BRANCH_TYPE b ON c.TYPE_ID = b.TYPE_ID " +
             "WHERE c.TYPE_ID=3";
     private static final String FIND_DEPARTMENTS = "" +
-            "SELECT c.ID, c.PARENT_ID, c.NAME, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "SELECT c.ID, c.PARENT_ID, d.NAME, c.NAME, c.CHIEF_ID, p.FIRST_NAME, p.LAST_NAME, c.TYPE_ID, b.TYPE_NAME, c.INSTITUTION_CITY, c.INSTITUTION_ADDRESS, c.PHONE FROM " + TABLE + " c " +
+            "LEFT JOIN L3G3_CONTAINER d ON c.PARENT_ID = d.ID " +
             "LEFT JOIN L3G3_PERSON p ON c.CHIEF_ID = p.ID " +
             "LEFT JOIN L3G3_BRANCH_TYPE b ON c.TYPE_ID = b.TYPE_ID " +
             "WHERE c.TYPE_ID=2";
-    private static final String INSERT_SQL =
-            "INSERT INTO " + TABLE + " (PARENT_ID, NAME, CHIEF_ID, TYPE_ID, INSTITUTION_CITY, INSTITUTION_ADDRESS, PHONE)" +
-            " VALUES (?, " +
-                    "?, " +
-                    "(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-                    "(SELECT TYPE_ID FROM L3G3_BRANCH_TYPE WHERE UPPER(TYPE_NAME) = UPPER(?)), " +
-                    "?, " +
-                    "?, " +
-                    "?)";
-    private static final String UPDATE_SQL =
-            "UPDATE " + TABLE +
-            " SET PARENT_ID=?, " +
-            "NAME=?, " +
-            "CHIEF_ID=(SELECT ID FROM L3G3_PERSON WHERE UPPER(FIRST_NAME) = UPPER(?) AND UPPER(LAST_NAME) =  UPPER(?)), " +
-            "TYPE_ID=(SELECT TYPE_ID FROM L3G3_BRANCH_TYPE WHERE UPPER(TYPE_NAME) = UPPER(?)), " +
-            "INSTITUTION_CITY=?, INSTITUTION_ADDRESS=?, PHONE=? " +
+    private static final String INSERT_SQL = "INSERT INTO " + TABLE + " (PARENT_ID, NAME, CHIEF_ID, TYPE_ID, INSTITUTION_CITY, INSTITUTION_ADDRESS, PHONE)" +
+            " VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET PARENT_ID=?, NAME=?, CHIEF_ID=?, TYPE_ID=?, INSTITUTION_CITY=?, INSTITUTION_ADDRESS=?, PHONE=? " +
             "WHERE ID=?";
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ID=?";
 
@@ -81,11 +72,10 @@ public class ContainerDAOImpl implements ContainerDAO<Container> {
     @Override
     public boolean insert(Container item) {
         jdbcTemplate.update(INSERT_SQL,
-                item.getParentId(),
+                item.getParent().getId(),
                 item.getName(),
-                item.getChief().getFirstName(),
-                item.getChief().getLastName(),
-                item.getType().getTypeName(),
+                item.getChief().getId(),
+                item.getType().getId(),
                 item.getInstitutionCity(),
                 item.getInstitutionAddress(),
                 item.getPhone());
@@ -95,11 +85,10 @@ public class ContainerDAOImpl implements ContainerDAO<Container> {
     @Override
     public boolean update(Container item) {
         jdbcTemplate.update(UPDATE_SQL,
-                item.getParentId(),
+                item.getParent().getId(),
                 item.getName(),
-                item.getChief().getFirstName(),
-                item.getChief().getLastName(),
-                item.getType().getTypeName(),
+                item.getChief().getId(),
+                item.getType().getId(),
                 item.getInstitutionCity(),
                 item.getInstitutionAddress(),
                 item.getPhone(),
@@ -118,7 +107,7 @@ public class ContainerDAOImpl implements ContainerDAO<Container> {
     }
 
     @Override
-    public List<Container> findDepatments() {
+    public List<Container> findDepartments() {
         return jdbcTemplate.query(FIND_DEPARTMENTS, new NewRowMapper<Container>());
     }
 
@@ -126,24 +115,30 @@ public class ContainerDAOImpl implements ContainerDAO<Container> {
 
         @Override
         public Container mapRow(ResultSet resultSet, int i) throws SQLException {
-            Person chief = (new BeanPropertyRowMapper<>(Person.class)).mapRow(resultSet, i);
-            BranchType type = new BranchType();
-            type.setId(resultSet.getInt(6));
-            type.setTypeName(resultSet.getString(7));
-
             Container container = new Container();
             container.setId(resultSet.getInt(1));
-            if ((resultSet.getObject(2) == null)) {
-                container.setParentId((Integer) resultSet.getObject(2));
-            } else {
-                container.setParentId(Integer.valueOf(resultSet.getObject(2).toString()));
-            }
-            container.setName(resultSet.getString(3));
+
+            Container parent = new Container();
+            parent.setId(resultSet.getInt(2));
+            parent.setName(resultSet.getString(3));
+            container.setParent(parent);
+
+            container.setName(resultSet.getString(4));
+
+            Person chief = new Person();
+            chief.setId(resultSet.getInt(5));
+            chief.setFirstName(resultSet.getString(6));
+            chief.setLastName(resultSet.getString(7));
             container.setChief(chief);
+
+            BranchType type = new BranchType();
+            type.setId(resultSet.getInt(8));
+            type.setTypeName(resultSet.getString(9));
             container.setType(type);
-            container.setInstitutionCity(resultSet.getString(8));
-            container.setInstitutionAddress(resultSet.getString(9));
-            container.setPhone(resultSet.getString(10));
+
+            container.setInstitutionCity(resultSet.getString(10));
+            container.setInstitutionAddress(resultSet.getString(11));
+            container.setPhone(resultSet.getString(12));
             return container;
         }
     }

@@ -35,6 +35,7 @@ public class SimpleOrderManager {
                         + ", you've received a new message in Gradebook!");
         try{
             this.mailSender.send(msg);
+            logger.info("message send");
         }
         catch (MailException ex) {
             logger.error("MailException error ", ex);

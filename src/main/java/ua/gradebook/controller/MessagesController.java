@@ -31,13 +31,14 @@ public class MessagesController {
 
     @RequestMapping(value="messages", method = RequestMethod.GET)
     public String showMessagesById(HttpServletRequest request, Model model) {
-        Integer id = (personService.findByLogin(request.getUserPrincipal().getName())).getId();
-        model.addAttribute("idSender", id);
+        Person person = personService.findByLogin(request.getUserPrincipal().getName());
+        model.addAttribute("getPersons", personService.findAllWithoutOneId(person.getId()));
+        model.addAttribute("idSender", person);
         model.addAttribute("message", new Message());
         if (Person.isAdmin()) {
             model.addAttribute("getMessages", messageService.findAll());
         } else {
-            model.addAttribute("getMessages", messageService.findListByObject(id));
+            model.addAttribute("getMessages", messageService.findListByObject(person.getId()));
         }
         logger.info("messages load");
         return "messages";
@@ -56,7 +57,8 @@ public class MessagesController {
         } else {
             this.messageService.update(message);
         }
-        simpleOrderManager.sendMessage(message.getReceiver());
+        Person receiver = personService.findById(message.getReceiver().getId());
+        simpleOrderManager.sendMessage(receiver);
         return "redirect:/messages";
     }
 }

@@ -3,7 +3,7 @@ package ua.gradebook.model.beans;
 import java.util.Objects;
 
 public class Container extends ParentBean {
-    private Integer parentId;
+    private Container parent;
     private String name;
     private Person chief;
     private BranchType type;
@@ -14,13 +14,13 @@ public class Container extends ParentBean {
     public Container() {
     }
 
-    public Container(String name, Integer parentId, Person chief_id, BranchType type, String institution_city, String institution_address, String phone) {
+    public Container(Container parent, String name, Person chief, BranchType type, String institutionCity, String institutionAddress, String phone) {
+        this.parent = parent;
         this.name = name;
-        this.parentId = parentId;
-        this.chief = chief_id;
+        this.chief = chief;
         this.type = type;
-        this.institutionCity = institution_city;
-        this.institutionAddress = institution_address;
+        this.institutionCity = institutionCity;
+        this.institutionAddress = institutionAddress;
         this.phone = phone;
     }
 
@@ -32,12 +32,12 @@ public class Container extends ParentBean {
         this.name = name;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Container getParent() {
+        return parent;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setParent(Container parent) {
+        this.parent = parent;
     }
 
     public Person getChief() {
@@ -85,7 +85,7 @@ public class Container extends ParentBean {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Container container = (Container) o;
-        return Objects.equals(parentId, container.parentId) &&
+        return Objects.equals(parent, container.parent) &&
                 Objects.equals(name, container.name) &&
                 Objects.equals(chief, container.chief) &&
                 Objects.equals(type, container.type) &&
@@ -96,14 +96,14 @@ public class Container extends ParentBean {
 
     @Override
     public int hashCode() {
-        return Objects.hash(parentId, name, chief, type, institutionCity, institutionAddress, phone);
+        return Objects.hash(parent, name, chief, type, institutionCity, institutionAddress, phone);
     }
 
     @Override
     public String toString() {
         return "Container{" +
                 "id=" + id +
-                ", parentId=" + parentId +
+                ", parentId=" + parent +
                 ", name='" + name + '\'' +
                 ", chief=" + chief +
                 ", type=" + type +
