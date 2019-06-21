@@ -33,7 +33,7 @@
                     <td>${journal.discipline.discName}</td>
                     <td>${journal.student.firstName} ${journal.student.lastName}</td>
                     <td>${journal.grade}</td>
-                    <td>${journal.teacher.firstName} ${journal.teacher.lastName}</td>
+                    <td><a href="persons/${journal.teacher.id}" target="_blank">${journal.teacher.firstName} ${journal.teacher.lastName}</a></td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <td><a href="<c:url value='/journal/edit/${journal.id}'/>">Edit</a></td>
                         <td><a href="<c:url value='/journal/delete/${journal.id}'/>">Delete</a></td>

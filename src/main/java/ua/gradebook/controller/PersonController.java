@@ -12,17 +12,18 @@ import ua.gradebook.service.AppServicePerson;
 import ua.gradebook.service.ContainerService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 @Controller
 public class PersonController {
-    private final AppServicePerson personService;
+    private final AppServicePerson<Person> personService;
     private final AppService<Role> roleService;
     private final ContainerService containerService;
 
     private static final Logger logger = Logger.getLogger(PersonController.class);
 
     @Autowired
-    public PersonController(AppServicePerson personService, AppService<Role> roleService, ContainerService containerService) {
+    public PersonController(AppServicePerson<Person> personService, AppService<Role> roleService, ContainerService containerService) {
         this.personService = personService;
         this.roleService = roleService;
         this.containerService = containerService;
@@ -71,6 +72,16 @@ public class PersonController {
     public String searchPerson(@RequestParam("lastName") String lastName, Model model) {
         model.addAttribute("person", new Person());
         model.addAttribute("getPersons", this.personService.findListByObject(lastName));
+        return "persons";
+    }
+
+    @GetMapping(value="persons/{id}")
+    public String getConcretePerson(@PathVariable("id") int id, Model model) {
+        model.addAttribute("person", new Person());
+        Person concretePerson = this.personService.findById(id);
+        ArrayList<Person> res = new ArrayList<>();
+        res.add(concretePerson);
+        model.addAttribute("getPersons", res);
         return "persons";
     }
 

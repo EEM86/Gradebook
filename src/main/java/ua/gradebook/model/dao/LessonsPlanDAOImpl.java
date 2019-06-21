@@ -89,8 +89,8 @@ public class LessonsPlanDAOImpl implements DAOExtension<LessonsPlan> {
     }
 
     @Override
-    public List<LessonsPlan> findListByObject(Object id) {
-        return jdbcTemplate.query(FIND_RELATIVE_PLAN_BY_ID, new Object[]{id}, new NewRowMapper<LessonsPlan>());
+    public List<LessonsPlan> findListByObject(Object obj) {
+        return jdbcTemplate.query(FIND_RELATIVE_PLAN_BY_ID, new Object[]{obj}, new NewRowMapper<LessonsPlan>());
     }
 
     private static final class NewRowMapper<P> implements RowMapper<LessonsPlan> {
