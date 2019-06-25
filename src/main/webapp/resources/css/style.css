@@ -108,7 +108,12 @@ a{
     height: 20px;
 }
 
-/*.select_discipline{
-    display: inline-block;
-}*/
+ul.red_messages{
+    float:right;
+}
+
+ul.red_messages li {
+    list-style-type: none;
+    color:red;'
+}
 

@@ -3,22 +3,46 @@ package ua.gradebook.model.beans;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+//import javax.validation.constraints.NotNull;
+
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
 public class Person extends ParentBean {
     private Role role;
+//    @Size(min=2, max=20, message = "{name.size.error}")
+    @NotBlank(message = "Please, enter first name!")
+//    @NotNull(message = "Please, enter first name!")
     private String firstName;
+
+//    @Size(min=2, max=20)
+//    @NotNull(message = "Please, enter last name!")
+    @NotEmpty(message = "Please, enter last name!")
     private String lastName;
+//    @NotNull
+    @Size(min=5, max=30, message = "{email.size.error}")
     private String email;
+//    @NotNull
+//    @Size(min=2, max=15)
     private String phone;
+//    @NotNull
+//    @Size(min=2, max=30)
     private String address;
+//    @NotNull
     private Date birthday;
     private Container department;
     private Person curator;
     private Container group;
+/*    @NotNull
+    @Max(20)*/
     private String login;
+/*    @NotNull
+    @Max(20)*/
     private String password;
 
     public Person() {

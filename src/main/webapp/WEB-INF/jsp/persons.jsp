@@ -123,21 +123,24 @@
                 <tr>
                     <td>
                         <form:label path="firstName">
-                            <spring:message text="FirstName"/>
+                            <spring:message text="First Name"/>
                         </form:label>
                     </td>
                     <td>
                         <form:input path="firstName"/>
+                        <form:errors path="firstName"/>
                     </td>
+                    <%--<td form:if="${#fields.hasErrors('firstName')}" form:errors="{firstName}">firstName Error</td>--%>
                 </tr>
                 <tr>
                     <td>
                         <form:label path="lastName">
-                            <spring:message text="LastName"/>
+                            <spring:message text="Last Name"/>
                         </form:label>
                     </td>
                     <td>
                         <form:input path="lastName"/>
+                        <form:errors path="lastName"/>
                     </td>
                 </tr>
                 <tr>
@@ -148,6 +151,7 @@
                     </td>
                     <td>
                         <form:input type="email" path="email"/>
+                        <form:errors path="email"/>
                     </td>
                 </tr>
                 <tr>
@@ -263,7 +267,24 @@
                         </c:if>
                     </td>
                 </tr>
+<%--                <tr>
+                    <td>
+                        <c:if
+                                test="${not empty flowRequestContext.messageContext.allMessages}">
+                            <ul class="red_messages">
+                                <c:forEach items="${flowRequestContext.messageContext.allMessages}"
+                                           var="message">
+
+                                    <li>${message.text}</li>
+
+                                </c:forEach>
+
+                            </ul>
+                        </c:if>
+                    </td>
+                </tr>--%>
             </table>
+
         </form:form>
     </sec:authorize>
 </section>

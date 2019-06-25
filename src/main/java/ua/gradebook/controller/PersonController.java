@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.model.beans.Person;
 import ua.gradebook.model.beans.Role;
@@ -12,6 +13,7 @@ import ua.gradebook.service.AppServicePerson;
 import ua.gradebook.service.ContainerService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 @Controller
@@ -42,7 +44,11 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/persons/add", method = RequestMethod.POST)
-    public String addPerson(@ModelAttribute("person") Person person){
+    public String addPerson(@Valid @ModelAttribute("person") Person person, BindingResult result){
+        if (result.hasErrors()) {
+            System.out.println("Errors:" + result.toString());
+            return "/persons";
+        }
         if (person.getId() == null) {
             this.personService.insert(person);
         } else {
