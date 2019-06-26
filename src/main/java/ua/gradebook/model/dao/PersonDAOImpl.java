@@ -25,7 +25,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
-                    "WHERE p.ROLE_ID=2";
+                    "WHERE p.ROLE_ID=" + Role.STUDENT_ID;
 
     private static final String FIND_TEACHERS =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
@@ -34,7 +34,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
-                    "WHERE p.ROLE_ID=3";
+                    "WHERE p.ROLE_ID=" + Role.TEACHER_ID;
 
     private static final String FIND_ALL =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
@@ -52,6 +52,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE p.ID=?";
+
     private static final String findByNameSQL =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
                     "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
@@ -60,6 +61,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE p.LAST_NAME=?";
+
     private static final String findByLoginSQL =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
                     "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
@@ -68,6 +70,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE p.LOGIN=?";
+
     private static final String findAllWithoutOneLoginSQL =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
                     "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
@@ -76,6 +79,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE p.ID!=?";
+
     private static final String FIND_NAMES =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
                     "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
@@ -84,12 +88,33 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE UPPER(p.LAST_NAME) LIKE UPPER(?)";
+
+    private static final String FIND_PERSONS_FROM_GROUP =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.GROUP_ID = ?";
+
+    private static final String FIND_PERSONS_FROM_DEPARTMENT =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.DEPARTMENT_ID = ?";
+
     private static final String INSERT_SQL =
             "INSERT INTO " + TABLE
             + " (ROLE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE, ADDRESS, BIRTHDAY, DEPARTMENT_ID, CURATOR_ID, GROUP_ID, LOGIN, PASSWORD)"
             + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET  ROLE_ID=?, FIRST_NAME=?, LAST_NAME=?, EMAIL=?, PHONE=?, ADDRESS=?," +
             "BIRTHDAY=?, DEPARTMENT_ID=?, CURATOR_ID=?, GROUP_ID=?, LOGIN=?, PASSWORD=? WHERE ID=?";
+
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ID=?";
 
     @Override
@@ -131,6 +156,16 @@ public class PersonDAOImpl implements PersonDAO<Person> {
     public List<Person> findListByObject(Object obj) {
         String corText = "%" + obj + "%";
         return jdbcTemplate.query(FIND_NAMES, new Object[]{corText}, new NewRowMapper<Person>());
+    }
+
+    @Override
+    public List<Person> findPersonsFromGroup(Integer groupId) {
+        return jdbcTemplate.query(FIND_PERSONS_FROM_GROUP, new Object[]{groupId}, new NewRowMapper<Person>());
+    }
+
+    @Override
+    public List<Person> findPersonsFromDepartment(Integer departmentId) {
+        return jdbcTemplate.query(FIND_PERSONS_FROM_DEPARTMENT, new Object[]{departmentId}, new NewRowMapper<Person>());
     }
 
     @Override

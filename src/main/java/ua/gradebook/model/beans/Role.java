@@ -3,6 +3,10 @@ package ua.gradebook.model.beans;
 import java.util.Objects;
 
 public class Role extends ParentBean {
+    public static final int ADMIN_ID = 1;
+    public static final int STUDENT_ID = 2;
+    public static final int TEACHER_ID = 3;
+
     private String roleName;
 
     public Role() {

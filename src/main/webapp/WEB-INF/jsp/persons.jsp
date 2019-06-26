@@ -39,8 +39,8 @@
                 <th width="60">role</th>
                 <th width="100">FirstName</th>
                 <th width="100">LastName</th>
+                <th width="100">email</th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <th width="100">email</th>
                     <th width="100">phone</th>
                     <th width="120">address</th>
                     <th width="120">birthday</th>
@@ -61,8 +61,8 @@
                     <td>${person.role.roleName}</td>
                     <td>${person.firstName}</td>
                     <td>${person.lastName}</td>
+                    <td>${person.email}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <td>${person.email}</td>
                         <td>${person.phone}</td>
                         <td>${person.address}</td>
                         <td>${person.birthday}</td>

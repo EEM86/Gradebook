@@ -176,5 +176,55 @@
     </section>
 </sec:authorize>
 
+<sec:authorize access="hasAnyRole('ROLE_STUDENT', 'ROLE_TEACHER')">
+    <section>
+        <table class="tg" width="100%" var="getRootContainer">
+            <tr>
+                <th width="200">Name</th>
+                <th width="150">Chief</th>
+                <th width="80">Type</th>
+                <th width="100">Institution City</th>
+                <th width="200">Institution Address</th>
+                <th width="80">Phone</th>
+            </tr>
+        <c:if test="${!empty getRootContainer}">
+            <tr>
+                <td><a href="root-container/${getRootContainer.id}">${getRootContainer.name}</a></td>
+                <td><a href="/Gradebook/persons/${getRootContainer.chief.id}" target="_blank">${getRootContainer.chief.firstName} ${getRootContainer.chief.lastName}</a></td>
+                <td>${getRootContainer.type.typeName}</td>
+                <td>${getRootContainer.institutionCity}</td>
+                <td>${getRootContainer.institutionAddress}</td>
+                <td>${getRootContainer.phone}</td>
+            </tr>
+        </c:if>
+        <c:if test="${!empty getGroups}">
+            <c:forEach items="${getGroups}" var="container">
+            <tr>
+                <td><a href="/Gradebook/persons/container/${container.id}">${container.name}</a></td>
+                <td><a href="/Gradebook/persons/${container.chief.id}" target="_blank">${container.chief.firstName} ${container.chief.lastName}</a></td>
+                <td>${container.type.typeName}</td>
+                <td>${container.institutionCity}</td>
+                <td>${container.institutionAddress}</td>
+                <td>${container.phone}</td>
+            </tr>
+            </c:forEach>
+        </c:if>
+        <c:if test="${!empty getDepartments}">
+            <c:forEach items="${getDepartments}" var="container">
+                <tr>
+                    <td><a href="/Gradebook/persons/container/${container.id}">${container.name}</a></td>
+                    <td><a href="/Gradebook/persons/${container.chief.id}" target="_blank">${container.chief.firstName} ${container.chief.lastName}</a></td>
+                    <td>${container.type.typeName}</td>
+                    <td>${container.institutionCity}</td>
+                    <td>${container.institutionAddress}</td>
+                    <td>${container.phone}</td>
+                </tr>
+            </c:forEach>
+        </c:if>
+        </table>
+
+</sec:authorize>
+<br><br>
+<a href="/Gradebook/">Back to main menu</a>
 </body>
 </html>

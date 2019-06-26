@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ua.gradebook.model.beans.Container;
 import ua.gradebook.model.dao.ContainerDAO;
 import ua.gradebook.model.dao.ContainerDAOImpl;
-import ua.gradebook.model.dao.DAO;
 
 import java.util.List;
 
@@ -48,13 +47,39 @@ public class ContainerService implements AppServiceContainer<Container> {
         return this.containerDAO.delete(id);
     }
 
+    /**
+     * This request returns all groups from the table.
+     */
     @Override
     public List<Container> findGroups() {
         return this.containerDAO.findGroups();
     }
 
+    /**
+     * This request returns child groups of a parent container
+     */
+    @Override
+    public List<Container> findGroups(int rootId) {
+        return this.containerDAO.findGroups(rootId);
+    }
+
+    /**
+     * This request returns all departments from the table.
+     */
     @Override
     public List<Container> findDepartments() {
         return this.containerDAO.findDepartments();
     }
+
+    /**
+     * This request returns child departments of a parent container
+     */
+    @Override
+    public List<Container> findDepartments(int rootId) {
+        return this.containerDAO.findDepartments(rootId);
+    }
+
+    @Override
+    public Container findRootContainer(int groupId) {
+        return this.containerDAO.findRootContainer(groupId); }
 }

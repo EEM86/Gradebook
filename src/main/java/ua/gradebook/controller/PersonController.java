@@ -96,4 +96,16 @@ public class PersonController {
         model.addAttribute("person", this.personService.findByLogin(request.getUserPrincipal().getName()));
         return "profile";
     }
+
+    @GetMapping(value="persons/container/{id}")
+    public String getPersonsFromContainer(@PathVariable("id") int id, Model model, HttpServletRequest request) {
+        model.addAttribute("person", new Person());
+        Person loggedPerson = personService.findByLogin(request.getUserPrincipal().getName());
+        if (loggedPerson.getRole().getId() == Role.STUDENT_ID) {
+            model.addAttribute("getPersons", personService.findPersonsFromGroup(id));
+        } else if (loggedPerson.getRole().getId() == Role.TEACHER_ID) {
+            model.addAttribute("getPersons", personService.findPersonsFromDepartment(id));
+        }
+        return "persons";
+    }
 }

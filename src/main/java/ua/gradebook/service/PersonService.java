@@ -56,6 +56,16 @@ public class PersonService implements AppServicePerson<Person> {
     }
 
     @Override
+    public List<Person> findPersonsFromGroup(Integer id) {
+        return this.personDAO.findPersonsFromGroup(id);
+    }
+
+    @Override
+    public List<Person> findPersonsFromDepartment(Integer id) {
+        return this.personDAO.findPersonsFromDepartment(id);
+    }
+
+    @Override
     public boolean insert(Person item) {
         return this.personDAO.insert(item);
     }

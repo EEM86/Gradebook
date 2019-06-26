@@ -24,10 +24,15 @@
         <div class="href1">
             <a href="/Gradebook/messages">Messages</a>
         </div>
-        <div class="href1">
-            <a href="/Gradebook/containers">Containers</a>
-        </div>
+        <sec:authorize access="hasAnyRole('ROLE_STUDENT', 'ROLE_TEACHER')">
+            <div class="href1">
+                <a href="/Gradebook/root-container">Containers</a>
+            </div>
+        </sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <div class="href1">
+                <a href="/Gradebook/containers">Containers</a>
+            </div>
             <div class="href1">
                 <a href="/Gradebook/branchtypes">Branch Type</a>
             </div>
