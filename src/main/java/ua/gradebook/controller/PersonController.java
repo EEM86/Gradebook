@@ -55,8 +55,7 @@ public class PersonController {
             model.addAttribute("getDepartments", containerService.findDepartments());
             model.addAttribute("getPersons", personService.findAll());
             model.addAttribute("getCurators", personService.findAll());
-            model.addAttribute("person", person);
-            return "/persons";
+            return "edit-error";
         }
         if (person.getId() == null) {
             this.personService.insert(person);
