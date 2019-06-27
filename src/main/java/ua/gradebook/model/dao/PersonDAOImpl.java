@@ -70,6 +70,22 @@ public class PersonDAOImpl implements PersonDAO<Person> {
                     "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
                     "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
                     "WHERE p.LOGIN=?";
+    private static final String findByEmailSQL =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.EMAIL=?";
+    private static final String findByPhoneSQL =
+            "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
+                    "c.*, p2.*, c2.*  FROM " + TABLE + " p " +
+                    "LEFT JOIN L3G3_ROLE r ON p.ROLE_ID = r.ROLE_ID " +
+                    "LEFT JOIN L3G3_CONTAINER c on p.DEPARTMENT_ID = c.ID " +
+                    "LEFT JOIN L3G3_PERSON p2 ON p.CURATOR_ID = p2.ID " +
+                    "LEFT JOIN L3G3_CONTAINER c2 ON p.GROUP_ID = c2.ID " +
+                    "WHERE p.PHONE=?";
 
     private static final String findAllWithoutOneLoginSQL =
             "SELECT r.ROLE_ID, r.ROLE_NAME, p.ID, p.FIRST_NAME, p.LAST_NAME, p.EMAIL, p.PHONE, p.ADDRESS, p.BIRTHDAY, p.login, p.password, " +
@@ -145,6 +161,16 @@ public class PersonDAOImpl implements PersonDAO<Person> {
     @Override
     public Person findByLogin(String login) {
         return jdbcTemplate.queryForObject(findByLoginSQL, new Object[]{login}, new NewRowMapper<Person>());
+    }
+
+    @Override
+    public Person findByEmail(String email) {
+        return jdbcTemplate.queryForObject(findByEmailSQL, new Object[]{email}, new NewRowMapper<Person>());
+    }
+
+    @Override
+    public Person findByPhone(String phone) {
+        return jdbcTemplate.queryForObject(findByPhoneSQL, new Object[]{phone}, new NewRowMapper<Person>());
     }
 
     @Override

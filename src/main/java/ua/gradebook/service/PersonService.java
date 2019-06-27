@@ -46,6 +46,16 @@ public class PersonService implements AppServicePerson<Person> {
     public Person findByLogin(String login) {return this.personDAO.findByLogin(login); }
 
     @Override
+    public Person findByEmail(String email) {
+        return this.personDAO.findByEmail(email);
+    }
+
+    @Override
+    public Person findByPhone(String phone) {
+        return this.personDAO.findByPhone(phone);
+    }
+
+    @Override
     public List<Person> findAllWithoutOneId(Integer id) {
         return this.personDAO.findAllWithoutOneId(id);
     }

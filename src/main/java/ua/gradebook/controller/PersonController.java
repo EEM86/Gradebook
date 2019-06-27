@@ -11,6 +11,7 @@ import ua.gradebook.model.beans.Role;
 import ua.gradebook.service.AppService;
 import ua.gradebook.service.AppServicePerson;
 import ua.gradebook.service.ContainerService;
+import ua.gradebook.service.PersonValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -21,14 +22,16 @@ public class PersonController {
     private final AppServicePerson<Person> personService;
     private final AppService<Role> roleService;
     private final ContainerService containerService;
+    private final PersonValidator personValidator;
 
     private static final Logger logger = Logger.getLogger(PersonController.class);
 
     @Autowired
-    public PersonController(AppServicePerson<Person> personService, AppService<Role> roleService, ContainerService containerService) {
+    public PersonController(AppServicePerson<Person> personService, AppService<Role> roleService, ContainerService containerService, PersonValidator personValidator) {
         this.personService = personService;
         this.roleService = roleService;
         this.containerService = containerService;
+        this.personValidator = personValidator;
     }
 
     @GetMapping(value="persons")
@@ -45,12 +48,14 @@ public class PersonController {
 
     @RequestMapping(value = "/persons/add", method = RequestMethod.POST)
     public String addPerson(@Valid @ModelAttribute("person") Person person, BindingResult result, Model model){
+        personValidator.validate(person, result);
         if (result.hasErrors()) {
             model.addAttribute("getRoles", roleService.findAll());
             model.addAttribute("getGroups", containerService.findGroups());
             model.addAttribute("getDepartments", containerService.findDepartments());
             model.addAttribute("getPersons", personService.findAll());
             model.addAttribute("getCurators", personService.findAll());
+            model.addAttribute("person", person);
             return "/persons";
         }
         if (person.getId() == null) {
