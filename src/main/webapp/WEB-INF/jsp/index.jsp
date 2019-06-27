@@ -87,10 +87,10 @@
 </header>
 
 <div class="logout" margin-left="20px">
-    Вы вошли как:
+    You are logged in as:
     <b><sec:authentication property="principal.username"/></b>
 
-    <br>с ролью:
+    <br>your role:
     <b><sec:authentication property="principal.authorities"/></b>
     <br><a href="${pageContext.request.contextPath}/logout"..>Sign Out</a>
 </div>

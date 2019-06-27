@@ -273,11 +273,12 @@ public class PersonDAOImpl implements PersonDAO<Person> {
 //                department.setType(branchType);
             }
 
-            curator.setId(resultSet.getInt(20));
+            if (resultSet.getInt(20) != 0) {
+                curator.setId(resultSet.getInt(20));
 //            Role curatorRole = new Role();
 //            curatorRole.setId(resultSet.getInt(21));
-            curator.setFirstName(resultSet.getString(22));
-            curator.setLastName(resultSet.getString(23));
+                curator.setFirstName(resultSet.getString(22));
+                curator.setLastName(resultSet.getString(23));
 //            curator.setEmail(resultSet.getString(24));
 //            curator.setPhone(resultSet.getString(25));
 //            curator.setAddress(resultSet.getString(26));
@@ -294,6 +295,7 @@ public class PersonDAOImpl implements PersonDAO<Person> {
 //            curator.setDepartment(curatorDept);
 //            curator.setGroup(curatorGroup);
 //            curator.setCurator(curatorPerson);
+            }
 
             if (resultSet.getInt(33) != 0) {
                 group.setId(resultSet.getInt(33));
