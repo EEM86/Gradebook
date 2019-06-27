@@ -41,7 +41,6 @@ public class PersonController {
         model.addAttribute("getDepartments", containerService.findDepartments());
         model.addAttribute("person", new Person());
         model.addAttribute("getPersons", personService.findAll());
-        model.addAttribute("getCurators", personService.findAll());
         logger.info("persons load");
         return "persons";
     }
@@ -53,7 +52,6 @@ public class PersonController {
             model.addAttribute("getRoles", roleService.findAll());
             model.addAttribute("getGroups", containerService.findGroups());
             model.addAttribute("getDepartments", containerService.findDepartments());
-            model.addAttribute("getPersons", personService.findAll());
             model.addAttribute("getCurators", personService.findAll());
             return "edit-error";
         }

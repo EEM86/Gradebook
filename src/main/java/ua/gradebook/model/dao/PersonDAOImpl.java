@@ -1,6 +1,7 @@
 package ua.gradebook.model.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -160,17 +161,29 @@ public class PersonDAOImpl implements PersonDAO<Person> {
 
     @Override
     public Person findByLogin(String login) {
+        try {
         return jdbcTemplate.queryForObject(findByLoginSQL, new Object[]{login}, new NewRowMapper<Person>());
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override
     public Person findByEmail(String email) {
-        return jdbcTemplate.queryForObject(findByEmailSQL, new Object[]{email}, new NewRowMapper<Person>());
+        try {
+            return jdbcTemplate.queryForObject(findByEmailSQL, new Object[]{email}, new NewRowMapper<Person>());
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override
     public Person findByPhone(String phone) {
-        return jdbcTemplate.queryForObject(findByPhoneSQL, new Object[]{phone}, new NewRowMapper<Person>());
+        try {
+            return jdbcTemplate.queryForObject(findByPhoneSQL, new Object[]{phone}, new NewRowMapper<Person>());
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override

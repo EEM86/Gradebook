@@ -212,7 +212,7 @@
                     <td>
                         <form:select name="select_curator" size="1" path="curator.id">
                             <option value="">No curator</option>
-                            <c:forEach items="${getCurators}" var="curator">
+                            <c:forEach items="${getPersons}" var="curator">
                                 <option value="${curator.id}"
                                         <c:if test="${person.getCurator().getId() == curator.id}"> selected </c:if>
                                 >${curator.firstName} ${curator.lastName}</option>
