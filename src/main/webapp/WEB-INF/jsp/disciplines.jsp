@@ -44,7 +44,7 @@
 
         <form:form action="${addAction}" modelAttribute="discipline">
             <table>
-                <c:if test="${!empty discipline.discName}">
+                <c:if test="${!empty discipline.id}">
                     <tr>
                         <td>
                             <form:label path="id">
@@ -64,16 +64,16 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="discName"/>
+                        <form:input path="discName" required="true" maxlength="50"/>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <c:if test="${!empty discipline.discName}">
+                        <c:if test="${!empty discipline.id}">
                             <input type="submit"
                                    value="<spring:message text="Edit Discipline"/>"/>
                         </c:if>
-                        <c:if test="${empty discipline.discName}">
+                        <c:if test="${empty discipline.id}">
                             <input type="submit"
                                    value="<spring:message text="Add Discipline"/>"/>
                         </c:if>

@@ -39,7 +39,7 @@
 
     <form:form action="${addAction}" modelAttribute="branchtype">
         <table>
-            <c:if test="${!empty branchtype.typeName}">
+            <c:if test="${!empty branchtype.id}">
                 <tr>
                     <td>
                         <form:label path="id">
@@ -59,16 +59,16 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="typeName"/>
+                    <form:input path="typeName" required="true" maxlength="20"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <c:if test="${!empty branchtype.typeName}">
+                    <c:if test="${!empty branchtype.id}">
                         <input type="submit"
                                value="<spring:message text="Edit branch type"/>"/>
                     </c:if>
-                    <c:if test="${empty branchtype.typeName}">
+                    <c:if test="${empty branchtype.id}">
                         <input type="submit"
                                value="<spring:message text="Add branch type"/>"/>
                     </c:if>

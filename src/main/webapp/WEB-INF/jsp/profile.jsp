@@ -120,7 +120,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="phone"/>
+                    <form:input path="phone" required="true" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -196,7 +196,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="login"/>
+                    <form:input path="login" required="true" maxlength="20"/>
                 </td>
             </tr>
             <tr>
@@ -206,7 +206,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="password"/>
+                    <form:input path="password" required="true" maxlength="20"/>
                 </td>
             </tr>
             <tr>

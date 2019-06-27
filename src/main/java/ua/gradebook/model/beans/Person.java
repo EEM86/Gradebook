@@ -3,11 +3,8 @@ package ua.gradebook.model.beans;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-//import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.*;
 
 import java.sql.Date;
 import java.util.Collection;
@@ -15,34 +12,38 @@ import java.util.Objects;
 
 public class Person extends ParentBean {
     private Role role;
-//    @Size(min=2, max=20, message = "{name.size.error}")
-    @NotBlank(message = "Please, enter first name!")
-//    @NotNull(message = "Please, enter first name!")
+
+    @NotBlank(message = "{firstName.notBlank.error}")
+    @Size(max = 20, message = "{firstName.size.error}")
     private String firstName;
 
-//    @Size(min=2, max=20)
-//    @NotNull(message = "Please, enter last name!")
-    @NotEmpty(message = "Please, enter last name!")
+    @NotBlank(message = "{lastName.notBlank.error}")
+    @Size(max = 20, message = "{lastName.size.error}")
     private String lastName;
-//    @NotNull
+
+    @NotBlank(message = "{email.notBlank.error}!")
     @Size(min=5, max=30, message = "{email.size.error}")
     private String email;
-//    @NotNull
-//    @Size(min=2, max=15)
+
+    @NotBlank(message = "{phone.notBlank.error}")
+    @Size(max = 15, message = "{phone.size.error}")
     private String phone;
-//    @NotNull
-//    @Size(min=2, max=30)
+
+    @NotBlank(message = "{address.notBlank.error}")
+    @Size(max = 30, message = "{address.size.error}")
     private String address;
-//    @NotNull
+
     private Date birthday;
     private Container department;
     private Person curator;
     private Container group;
-/*    @NotNull
-    @Max(20)*/
+
+    @NotBlank(message = "{login.notBlank.error}")
+    @Size(max = 20, message = "{login.size.error}")
     private String login;
-/*    @NotNull
-    @Max(20)*/
+
+    @NotBlank(message = "{password.notBlank.error}")
+    @Size(max = 20, message = "{password.size.error}")
     private String password;
 
     public Person() {

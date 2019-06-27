@@ -44,9 +44,13 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/persons/add", method = RequestMethod.POST)
-    public String addPerson(@Valid @ModelAttribute("person") Person person, BindingResult result){
+    public String addPerson(@Valid @ModelAttribute("person") Person person, BindingResult result, Model model){
         if (result.hasErrors()) {
-            System.out.println("Errors:" + result.toString());
+            model.addAttribute("getRoles", roleService.findAll());
+            model.addAttribute("getGroups", containerService.findGroups());
+            model.addAttribute("getDepartments", containerService.findDepartments());
+            model.addAttribute("getPersons", personService.findAll());
+            model.addAttribute("getCurators", personService.findAll());
             return "/persons";
         }
         if (person.getId() == null) {

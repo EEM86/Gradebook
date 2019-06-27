@@ -6,7 +6,6 @@ public class BranchType extends ParentBean {
     public static final int UNIVERSITY_ID = 1;
     public static final int DEPARTMENT_ID = 2;
     public static final int GROUP_ID = 3;
-
     private String typeName;
 
     public BranchType() {

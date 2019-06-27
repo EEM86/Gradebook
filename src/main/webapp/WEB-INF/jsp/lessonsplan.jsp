@@ -48,7 +48,7 @@
         <c:url var="addAction" value="/lessonsplan/add"/>
         <form:form action="${addAction}" modelAttribute="lessonsplan">
             <table>
-                <c:if test="${!empty lessonsplan.discipline.id}">
+                <c:if test="${!empty lessonsplan.id}">
                     <tr>
                         <td>
                             <form:label path="id">
@@ -117,16 +117,16 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="number" min="1" path="hours"/>
+                        <form:input required="true" type="number" min="1" max="2147483647" path="hours" />
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <c:if test="${!empty lessonsplan.discipline.id}">
+                        <c:if test="${!empty lessonsplan.id}">
                             <input type="submit"
                                    value="<spring:message text="Edit lessons plan"/>"/>
                         </c:if>
-                        <c:if test="${empty lessonsplan.discipline.id}">
+                        <c:if test="${empty lessonsplan.id}">
                             <input type="submit"
                                    value="<spring:message text="Add lessons plan"/>"/>
                         </c:if>

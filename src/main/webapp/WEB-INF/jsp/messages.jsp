@@ -77,7 +77,7 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input type="text" size="100px" path="messageText"/>
+                    <form:input type="text" size="100px" path="messageText" required="true" maxlength="255"/>
                 </td>
             </tr>
 

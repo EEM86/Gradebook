@@ -57,7 +57,7 @@
 
         <form:form action="${addAction}" modelAttribute="container">
             <table>
-                <c:if test="${!empty container.name}">
+                <c:if test="${!empty container.id}">
                     <tr>
                         <td>
                             <form:label path="id">
@@ -94,7 +94,7 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="name"/>
+                        <form:input path="name" required="true" maxlength="50"/>
                     </td>
                 </tr>
                 <tr>
@@ -161,11 +161,11 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <c:if test="${!empty container.name}">
+                        <c:if test="${!empty container.id}">
                             <input type="submit"
                                    value="<spring:message text="Edit Container"/>"/>
                         </c:if>
-                        <c:if test="${empty container.name}">
+                        <c:if test="${empty container.id}">
                             <input type="submit"
                                    value="<spring:message text="Add Container"/>"/>
                         </c:if>

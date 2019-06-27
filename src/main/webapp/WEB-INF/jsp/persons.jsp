@@ -91,7 +91,7 @@
 
         <form:form action="${addAction}" modelAttribute="person">
             <table>
-                <c:if test="${!empty person.lastName}">
+                <c:if test="${!empty person.id}">
                     <tr>
                         <td>
                             <form:label path="id">
@@ -128,9 +128,8 @@
                     </td>
                     <td>
                         <form:input path="firstName"/>
-                        <form:errors path="firstName"/>
+                        <form:errors path="firstName" cssClass="error"/>
                     </td>
-                    <%--<td form:if="${#fields.hasErrors('firstName')}" form:errors="{firstName}">firstName Error</td>--%>
                 </tr>
                 <tr>
                     <td>
@@ -140,7 +139,7 @@
                     </td>
                     <td>
                         <form:input path="lastName"/>
-                        <form:errors path="lastName"/>
+                        <form:errors path="lastName" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -151,7 +150,7 @@
                     </td>
                     <td>
                         <form:input type="email" path="email"/>
-                        <form:errors path="email"/>
+                        <form:errors path="email" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -162,6 +161,7 @@
                     </td>
                     <td>
                         <form:input path="phone"/>
+                        <form:errors path="phone" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -172,6 +172,7 @@
                     </td>
                     <td>
                         <form:input path="address"/>
+                        <form:errors path="address" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -181,7 +182,8 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input type="text" id="datepicker" path="birthday"/>
+                        <form:input id="datepicker" path="birthday" value = "1980-12-12" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+                        <form:errors path="birthday" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -212,7 +214,7 @@
                             <option value="">No curator</option>
                             <c:forEach items="${getCurators}" var="curator">
                                 <option value="${curator.id}"
-                                        <c:if test="${person.getCurator().getId() == person.id}"> selected </c:if>
+                                        <c:if test="${person.getCurator().getId() == curator.id}"> selected </c:if>
                                 >${curator.firstName} ${curator.lastName}</option>
                             </c:forEach>
                         </form:select>
@@ -243,6 +245,7 @@
                     </td>
                     <td>
                         <form:input path="login"/>
+                        <form:errors path="login" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
@@ -253,36 +256,21 @@
                     </td>
                     <td>
                         <form:input path="password"/>
+                        <form:errors path="password" cssClass="error"/>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <c:if test="${!empty person.lastName}">
+                        <c:if test="${!empty person.id}">
                             <input type="submit"
                                    value="<spring:message text="Edit Person"/>"/>
                         </c:if>
-                        <c:if test="${empty person.lastName}">
+                        <c:if test="${empty person.id}">
                             <input type="submit"
                                    value="<spring:message text="Add Person"/>"/>
                         </c:if>
                     </td>
                 </tr>
-<%--                <tr>
-                    <td>
-                        <c:if
-                                test="${not empty flowRequestContext.messageContext.allMessages}">
-                            <ul class="red_messages">
-                                <c:forEach items="${flowRequestContext.messageContext.allMessages}"
-                                           var="message">
-
-                                    <li>${message.text}</li>
-
-                                </c:forEach>
-
-                            </ul>
-                        </c:if>
-                    </td>
-                </tr>--%>
             </table>
 
         </form:form>
