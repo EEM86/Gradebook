@@ -58,32 +58,32 @@
 
     <form:form action="${editAction}" modelAttribute="person">
         <table>
-                <tr>
-                    <td>
-                        <form:label path="id">
-                            <spring:message text="ID"/>
-                        </form:label>
-                    </td>
-                    <td>
-                        <form:input path="id" readonly="true" disabled="true"/>
-                        <form:hidden path="id"/>
-                    </td>
-                </tr>
             <tr>
                 <td>
-                    <form:label path="role.roleName">
+                    <form:label path="id">
+                        <spring:message text="ID"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="id" readonly="true" disabled="true"/>
+                    <form:hidden path="id"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form:label path="role.id">
                         <spring:message text="Role"/>
                     </form:label>
                 </td>
                 <td>
                     <form:input path="role.roleName" readonly="true" disabled="true"/>
-                    <form:hidden path="role.roleName"/>
+                    <form:hidden path="role.id"/>
                 </td>
             </tr>
             <tr>
                 <td>
                     <form:label path="firstName">
-                        <spring:message text="FirstName"/>
+                        <spring:message text="First Name"/>
                     </form:label>
                 </td>
                 <td>
@@ -94,7 +94,7 @@
             <tr>
                 <td>
                     <form:label path="lastName">
-                        <spring:message text="LastName"/>
+                        <spring:message text="Last Name"/>
                     </form:label>
                 </td>
                 <td>
@@ -147,46 +147,35 @@
             </tr>
             <tr>
                 <td>
-                    <form:label path="department.name">
+                    <form:label path="department.id">
                         <spring:message text="Department"/>
                     </form:label>
                 </td>
                 <td>
                     <form:input path="department.name" readonly="true" disabled="true"/>
-                    <form:hidden path="department.name"/>
+                    <form:hidden path="department.id"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="curator.firstName">
-                        <spring:message text="Curator name"/>
+                    <form:label path="curator.id">
+                        <spring:message text="Curator"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="curator.firstName" readonly="true" disabled="true"/>
-                    <form:hidden path="curator.firstName"/>
+                    <form:input path="curator.id" value="${person.curator.firstName} ${person.curator.lastName}" readonly="true" disabled="true"/>
+                    <form:hidden path="curator.id"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form:label path="curator.lastName">
-                        <spring:message text="Curator surname"/>
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="curator.lastName" readonly="true" disabled="true"/>
-                    <form:hidden path="curator.lastName"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <form:label path="group.name">
+                    <form:label path="group.id">
                         <spring:message text="Group"/>
                     </form:label>
                 </td>
                 <td>
                     <form:input path="group.name" readonly="true" disabled="true"/>
-                    <form:hidden path="group.name"/>
+                    <form:hidden path="group.id"/>
                 </td>
             </tr>
             <tr>
