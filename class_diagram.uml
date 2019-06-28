@@ -3,921 +3,259 @@
   <ID>JAVA</ID>
   <OriginalElement>ua.gradebook</OriginalElement>
   <nodes>
-    <node x="1453.5187619791072" y="1994.0">ua.gradebook.controller.PersonController</node>
-    <node x="5546.177597402597" y="2004.5">ua.gradebook.controller.rest.DisciplineRestController</node>
-    <node x="4141.221983121838" y="1142.0">ua.gradebook.model.dao.BranchTypeDAOImpl.NewRowMapper</node>
-    <node x="4709.177597402597" y="1142.0">ua.gradebook.model.dao.GradesJournalDAOImpl.NewRowMapper</node>
-    <node x="3812.421983121838" y="1391.0">ua.gradebook.service.AppService</node>
-    <node x="987.8562619791073" y="1119.5">ua.gradebook.mail.SimpleOrderManager</node>
-    <node x="341.875" y="726.0">ua.gradebook.model.beans.Message</node>
-    <node x="6170.927597402597" y="2004.5">ua.gradebook.controller.rest.RoleRestController</node>
-    <node x="2363.9275974025973" y="1391.0">ua.gradebook.model.dao.ContainerDAOImpl</node>
-    <node x="6067.927597402597" y="1667.0">ua.gradebook.service.RoleService</node>
-    <node x="1311.2062619791072" y="1645.0">ua.gradebook.service.PersonService</node>
-    <node x="5404.427597402597" y="1142.0">ua.gradebook.model.dao.DisciplineDAOImpl.NewRowMapper</node>
-    <node x="1205.0" y="2234.0">ua.gradebook.security.SecurityWebApplicationInitiallizer</node>
-    <node x="5999.8437619791075" y="714.0">ua.gradebook.model.beans.Role</node>
-    <node x="4475.193761979107" y="2005.0">ua.gradebook.controller.JournalController</node>
-    <node x="174.5" y="1142.0">ua.gradebook.model.dao.MessageDAOImpl.NewRowMapper</node>
-    <node x="0.0" y="2004.5">ua.gradebook.controller.rest.MessageRestController</node>
-    <node x="895.4275974025977" y="2016.0">ua.gradebook.controller.MessagesController</node>
-    <node x="4813.802597402597" y="715.0">ua.gradebook.model.beans.GradesJournal</node>
-    <node x="3860.617384793952" y="0.0">ua.gradebook.model.beans.ParentBean</node>
-    <node x="272.5" y="1380.0">ua.gradebook.model.dao.MessageDAOImpl</node>
-    <node x="2167.6775974025973" y="272.0">ua.gradebook.model.beans.Container</node>
-    <node x="569.4275974025977" y="2004.5">ua.gradebook.controller.rest.PersonRestController</node>
-    <node x="6067.927597402597" y="1379.5">ua.gradebook.model.dao.RoleDAOImpl</node>
-    <node x="6022.177597402597" y="1142.0">ua.gradebook.model.dao.RoleDAOImpl.NewRowMapper</node>
-    <node x="5471.177597402597" y="1391.0">ua.gradebook.model.dao.DisciplineDAOImpl</node>
-    <node x="348.25" y="1656.0">ua.gradebook.service.MessageService</node>
-    <node x="1979.5187619791072" y="2004.5">ua.gradebook.controller.rest.ContainerRestController</node>
-    <node x="4067.421983121838" y="1379.5">ua.gradebook.model.dao.BranchTypeDAOImpl</node>
-    <node x="4749.427597402597" y="1656.0">ua.gradebook.service.JournalService</node>
-    <node x="991.8723619097163" y="571.0">ua.gradebook.model.beans.Person</node>
-    <node x="3039.421983121838" y="1380.0">ua.gradebook.model.dao.LessonsPlanDAOImpl</node>
-    <node x="3178.1775974025973" y="2005.0">ua.gradebook.controller.LessonsPlanController</node>
-    <node x="3147.5604286457738" y="715.0">ua.gradebook.model.beans.LessonsPlan</node>
-    <node x="5471.177597402597" y="1667.0">ua.gradebook.service.DisciplineService</node>
-    <node x="4067.421983121838" y="1667.0">ua.gradebook.service.BranchTypeService</node>
-    <node x="5428.885428645774" y="748.0">ua.gradebook.model.beans.Discipline</node>
-    <node x="2226.4275974025973" y="748.0">ua.gradebook.model.dao.ContainerDAOImpl.NewRowMapper</node>
-    <node x="5273.427597402597" y="2016.0">ua.gradebook.controller.DisciplinesController</node>
-    <node x="3785.693761979107" y="2004.5">ua.gradebook.controller.rest.BranchTypeRestController</node>
-    <node x="393.0" y="2234.0">ua.gradebook.controller.ExceptionController</node>
-    <node x="3388.421983121838" y="1656.0">ua.gradebook.service.LessonsPlanService</node>
-    <node x="4202.193761979107" y="2016.0">ua.gradebook.controller.BranchTypeController</node>
-    <node x="4315.32709531244" y="725.5">ua.gradebook.model.beans.BranchType</node>
-    <node x="900.0" y="2234.0">ua.gradebook.aop.LoggingAspect</node>
-    <node x="1721.5187619791072" y="1961.0">ua.gradebook.controller.HomeController</node>
-    <node x="4749.427597402597" y="1380.0">ua.gradebook.model.dao.GradesJournalDAOImpl</node>
-    <node x="5905.177597402597" y="2016.0">ua.gradebook.controller.RolesController</node>
-    <node x="3557.421983121838" y="1087.0">ua.gradebook.model.dao.DAO</node>
-    <node x="3001.2469831218377" y="1142.0">ua.gradebook.model.dao.LessonsPlanDAOImpl.NewRowMapper</node>
-    <node x="0.0" y="2234.0">ua.gradebook.security.SecurityConfig</node>
-    <node x="4906.427597402597" y="2004.5">ua.gradebook.controller.rest.JournalRestController</node>
-    <node x="1261.8562619791073" y="1142.0">ua.gradebook.model.dao.PersonDAOImpl.NewRowMapper</node>
-    <node x="1311.2062619791072" y="1369.0">ua.gradebook.model.dao.PersonDAOImpl</node>
-    <node x="2654.3847402597403" y="1667.0">ua.gradebook.service.ContainerService</node>
-    <node x="2487.6854286457738" y="2016.0">ua.gradebook.controller.ContainerController</node>
-    <node x="2743.6854286457738" y="2004.5">ua.gradebook.controller.rest.LessonsPlanRestController</node>
+    <node x="0.0" y="1227.0">ua.gradebook.controller.PersonController</node>
+    <node x="2689.0" y="1227.0">ua.gradebook.controller.rest.DisciplineRestController</node>
+    <node x="2403.5" y="1130.0">ua.gradebook.model.dao.BranchTypeDAOImpl.NewRowMapper</node>
+    <node x="3833.0" y="1130.0">ua.gradebook.model.dao.GradesJournalDAOImpl.NewRowMapper</node>
+    <node x="1153.0" y="332.0">ua.gradebook.service.AppService</node>
+    <node x="1992.0" y="1501.0">ua.gradebook.mail.SimpleOrderManager</node>
+    <node x="2165.5" y="331.5">ua.gradebook.model.beans.Message</node>
+    <node x="4180.0" y="1227.0">ua.gradebook.controller.rest.RoleRestController</node>
+    <node x="2668.0" y="752.5">ua.gradebook.model.dao.ContainerDAOImpl</node>
+    <node x="912.0" y="697.0">ua.gradebook.service.PersonService</node>
+    <node x="1853.0" y="796.0">ua.gradebook.service.RoleService</node>
+    <node x="3258.5" y="1130.0">ua.gradebook.model.dao.DisciplineDAOImpl.NewRowMapper</node>
+    <node x="4115.0" y="1501.0">ua.gradebook.security.SecurityWebApplicationInitiallizer</node>
+    <node x="942.0" y="331.0">ua.gradebook.model.beans.Role</node>
+    <node x="606.0" y="1501.0">ua.gradebook.controller.JournalController</node>
+    <node x="3534.0" y="1130.0">ua.gradebook.model.dao.MessageDAOImpl.NewRowMapper</node>
+    <node x="3456.0" y="1227.0">ua.gradebook.controller.rest.MessageRestController</node>
+    <node x="2401.0" y="1501.0">ua.gradebook.controller.MessagesController</node>
+    <node x="4153.25" y="320.5">ua.gradebook.model.beans.GradesJournal</node>
+    <node x="2271.0" y="0.0">ua.gradebook.model.beans.ParentBean</node>
+    <node x="3514.0" y="796.5">ua.gradebook.model.dao.MessageDAOImpl</node>
+    <node x="276.0" y="265.0">ua.gradebook.model.beans.Container</node>
+    <node x="4495.0" y="796.0">ua.gradebook.model.dao.RoleDAOImpl</node>
+    <node x="3829.0" y="1227.0">ua.gradebook.controller.rest.PersonRestController</node>
+    <node x="4485.5" y="1130.0">ua.gradebook.model.dao.RoleDAOImpl.NewRowMapper</node>
+    <node x="3268.0" y="807.5">ua.gradebook.model.dao.DisciplineDAOImpl</node>
+    <node x="2413.0" y="796.0">ua.gradebook.model.dao.BranchTypeDAOImpl</node>
+    <node x="3073.0" y="1227.0">ua.gradebook.controller.rest.ContainerRestController</node>
+    <node x="1267.0" y="785.0">ua.gradebook.service.MessageService</node>
+    <node x="2086.0" y="785.0">ua.gradebook.service.JournalService</node>
+    <node x="3627.25" y="199.0">ua.gradebook.model.beans.Person</node>
+    <node x="2953.0" y="796.5">ua.gradebook.model.dao.LessonsPlanDAOImpl</node>
+    <node x="0.0" y="1501.0">ua.gradebook.controller.LessonsPlanController</node>
+    <node x="731.0" y="309.0">ua.gradebook.model.beans.LessonsPlan</node>
+    <node x="623.0" y="796.0">ua.gradebook.service.DisciplineService</node>
+    <node x="0.0" y="796.0">ua.gradebook.service.BranchTypeService</node>
+    <node x="2678.5" y="1130.0">ua.gradebook.model.dao.ContainerDAOImpl.NewRowMapper</node>
+    <node x="4364.25" y="353.5">ua.gradebook.model.beans.Discipline</node>
+    <node x="1404.0" y="1501.0">ua.gradebook.controller.DisciplinesController</node>
+    <node x="1894.0" y="1227.0">ua.gradebook.controller.rest.BranchTypeRestController</node>
+    <node x="3303.0" y="1501.0">ua.gradebook.controller.ExceptionController</node>
+    <node x="308.0" y="785.0">ua.gradebook.service.LessonsPlanService</node>
+    <node x="1068.0" y="1501.0">ua.gradebook.controller.BranchTypeController</node>
+    <node x="2376.5" y="331.0">ua.gradebook.model.beans.BranchType</node>
+    <node x="3810.0" y="1501.0">ua.gradebook.aop.LoggingAspect</node>
+    <node x="3813.0" y="796.5">ua.gradebook.model.dao.GradesJournalDAOImpl</node>
+    <node x="647.0" y="1227.0">ua.gradebook.controller.HomeController</node>
+    <node x="3427.25" y="332.0">ua.gradebook.model.dao.DAO</node>
+    <node x="1726.0" y="1501.0">ua.gradebook.controller.RolesController</node>
+    <node x="2973.0000000000005" y="1130.0">ua.gradebook.model.dao.LessonsPlanDAOImpl.NewRowMapper</node>
+    <node x="2910.0" y="1501.0">ua.gradebook.security.SecurityConfig</node>
+    <node x="2297.0" y="1227.0">ua.gradebook.controller.rest.JournalRestController</node>
+    <node x="4140.0" y="708.5">ua.gradebook.model.dao.PersonDAOImpl</node>
+    <node x="4193.5" y="1130.0">ua.gradebook.model.dao.PersonDAOImpl.NewRowMapper</node>
+    <node x="1566.0" y="741.0">ua.gradebook.service.ContainerService</node>
+    <node x="930.0" y="1227.0">ua.gradebook.controller.ContainerController</node>
+    <node x="1489.0" y="1227.0">ua.gradebook.controller.rest.LessonsPlanRestController</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="ua.gradebook.controller.PersonController" target="ua.gradebook.service.PersonService">
-      <point x="-82.66666666666652" y="-81.0" />
-      <point x="1494.8520953124407" y="1941.0" />
-      <point x="1473.0812619791072" y="1941.0" />
-      <point x="32.375" y="103.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.BranchTypeRestController" target="ua.gradebook.service.BranchTypeService">
-      <point x="119.33333333333303" y="-70.5" />
-      <point x="4084.02709531244" y="1941.0" />
-      <point x="4125.921983121838" y="1941.0" />
-      <point x="-58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.DisciplineDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.Discipline">
-      <point x="-61.25" y="-26.0" />
-      <point x="5465.677597402597" y="1067.0" />
-      <point x="5485.968761979107" y="1067.0" />
-      <point x="-11.41666666666697" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.service.BranchTypeService" target="ua.gradebook.model.dao.BranchTypeDAOImpl">
-      <point x="0.0" y="-81.0" />
-      <point x="0.0" y="92.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.GradesJournalDAOImpl" target="ua.gradebook.model.beans.GradesJournal">
-      <point x="64.0" y="-92.0" />
-      <point x="4973.427597402597" y="1349.0" />
-      <point x="5027.802597402597" y="1349.0" />
-      <point x="5027.802597402597" y="1067.0" />
-      <point x="4918.802597402597" y="1067.0" />
-      <point x="35.0" y="59.0" />
-    </edge>
-    <edge source="ua.gradebook.service.DisciplineService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="78.0" y="-81.0" />
-      <point x="5666.177597402597" y="1625.0" />
-      <point x="5858.177597402597" y="1625.0" />
-      <point x="5858.177597402597" y="142.0" />
-      <point x="3951.6459562225236" y="142.0" />
-      <point x="37.02857142857147" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.DisciplineRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="113.0" y="-70.5" />
-      <point x="5828.677597402597" y="1941.0" />
-      <point x="5861.263311688312" y="1941.0" />
-      <point x="5861.263311688312" y="132.0" />
-      <point x="3954.731670508238" y="132.0" />
-      <point x="40.11428571428587" y="26.0" />
-    </edge>
     <edge source="ua.gradebook.service.PersonService" target="ua.gradebook.service.AppService">
-      <point x="86.33333333333348" y="-103.0" />
-      <point x="1527.0395953124407" y="1605.0" />
-      <point x="3829.1362688361232" y="1605.0" />
-      <point x="-100.28571428571468" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.MessageRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-109.33333333333303" y="-70.5" />
-      <point x="54.66666666666697" y="1941.0" />
-      <point x="143.7892857142856" y="1941.0" />
-      <point x="143.7892857142856" y="72.0" />
-      <point x="3862.160241936809" y="72.0" />
-      <point x="-52.457142857143026" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.JournalController" target="ua.gradebook.model.beans.GradesJournal">
-      <point x="-36.5" y="-70.0" />
-      <point x="4584.693761979107" y="1931.0" />
-      <point x="4687.677597402597" y="1931.0" />
-      <point x="4687.677597402597" y="1047.0" />
-      <point x="4825.469264069265" y="1047.0" />
-      <point x="-58.33333333333303" y="59.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.MessageDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="60.59999999999991" y="-92.0" />
-      <point x="484.5999999999999" y="1309.0" />
-      <point x="689.875" y="1309.0" />
-      <point x="689.875" y="102.0" />
-      <point x="3871.4173847939524" y="102.0" />
-      <point x="-43.19999999999982" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.LessonsPlanRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-120.0" y="-70.5" />
-      <point x="2803.6854286457738" y="1931.0" />
-      <point x="2952.2041259789803" y="1931.0" />
-      <point x="2952.2041259789803" y="202.0" />
-      <point x="3902.274527651095" y="202.0" />
-      <point x="-12.342857142857156" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.LessonsPlanController" target="ua.gradebook.model.beans.Person">
-      <point x="-101.625" y="-70.0" />
-      <point x="3212.0525974025973" y="1881.0" />
-      <point x="2064.8303164551708" y="1881.0" />
-      <point x="2064.8303164551708" y="1007.0" />
-      <point x="1468.5996346369893" y="1007.0" />
-      <point x="200.72727272727298" y="203.0" />
+      <point x="0.0" y="-191.5" />
+      <point x="1079.5" y="677.0" />
+      <point x="1231.75" y="677.0" />
+      <point x="-11.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.RoleDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.RoleDAOImpl">
-      <point x="54.25" y="26.0" />
-      <point x="0.0" y="-92.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.ContainerDAOImpl" target="ua.gradebook.model.dao.ContainerDAOImpl.NewRowMapper">
-      <point x="-46.80000000000018" y="-81.0" />
-      <point x="2434.127597402597" y="1299.0" />
-      <point x="2353.9275974025973" y="1299.0" />
-      <point x="2353.9275974025973" y="1067.0" />
-      <point x="2409.4275974025973" y="1067.0" />
-      <point x="61.0" y="26.0" />
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="92.5" />
     </edge>
     <edge source="ua.gradebook.model.beans.GradesJournal" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-59.0" />
-      <point x="4883.802597402597" y="202.0" />
-      <point x="3933.131670508238" y="202.0" />
-      <point x="18.51428571428596" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.MessageDAOImpl" target="ua.gradebook.model.dao.MessageDAOImpl.NewRowMapper">
-      <point x="-121.20000000000005" y="-92.0" />
-      <point x="302.8000000000002" y="1349.0" />
-      <point x="234.25" y="1349.0" />
-      <point x="-59.75" y="26.0" />
+      <point x="0.0" y="-92.5" />
+      <point x="4248.75" y="149.0" />
+      <point x="2433.35" y="149.0" />
+      <point x="66.84999999999991" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.dao.LessonsPlanDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.LessonsPlanDAOImpl">
-      <point x="63.75" y="26.0" />
-      <point x="3192.4969831218377" y="1309.0" />
-      <point x="3197.921983121838" y="1309.0" />
-      <point x="0.0" y="-92.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.RoleRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="94.33333333333303" y="-70.5" />
-      <point x="6406.760930735931" y="1941.0" />
-      <point x="6336.68235930736" y="1941.0" />
-      <point x="6336.68235930736" y="92.0" />
-      <point x="3967.074527651095" y="92.0" />
-      <point x="52.457142857143026" y="26.0" />
+      <point x="-4.547473508864641E-13" y="-26.0" />
+      <point x="0.0" y="92.0" />
     </edge>
     <edge source="ua.gradebook.service.AppService" target="ua.gradebook.model.beans.ParentBean">
       <point x="0.0" y="-81.0" />
-      <point x="3929.421983121838" y="242.0" />
-      <point x="3920.788813365381" y="242.0" />
-      <point x="6.171428571428805" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.service.PersonService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-86.33333333333348" y="-103.0" />
-      <point x="1354.3729286457738" y="1615.0" />
-      <point x="696.0464285714284" y="1615.0" />
-      <point x="696.0464285714284" y="122.0" />
-      <point x="3877.5888133653807" y="122.0" />
-      <point x="-37.02857142857147" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.BranchTypeRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-119.33333333333303" y="-70.5" />
-      <point x="3845.360428645774" y="1941.0" />
-      <point x="3801.921983121838" y="1941.0" />
-      <point x="3801.921983121838" y="252.0" />
-      <point x="3917.7030990796666" y="252.0" />
-      <point x="3.0857142857144026" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.RoleDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="93.60000000000036" y="-92.5" />
-      <point x="6278.527597402597" y="1349.0" />
-      <point x="6330.510930735931" y="1349.0" />
-      <point x="6330.510930735931" y="112.0" />
-      <point x="3960.9030990796664" y="112.0" />
-      <point x="46.28571428571422" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.JournalRestController" target="ua.gradebook.model.beans.GradesJournal">
-      <point x="0.0" y="-70.5" />
-      <point x="5079.927597402597" y="1941.0" />
-      <point x="5085.12793550279" y="1941.0" />
-      <point x="5085.12793550279" y="1057.0" />
-      <point x="4942.135930735931" y="1057.0" />
-      <point x="58.33333333333303" y="59.0" />
+      <point x="1243.0" y="169.0" />
+      <point x="2337.85" y="169.0" />
+      <point x="-28.65000000000009" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.dao.GradesJournalDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="-128.0" y="-92.0" />
-      <point x="4781.427597402597" y="1319.0" />
-      <point x="3718.296983121838" y="1319.0" />
-      <point x="43.875" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.MessageRestController" target="ua.gradebook.service.MessageService">
-      <point x="109.33333333333326" y="-70.5" />
-      <point x="273.33333333333303" y="1941.0" />
-      <point x="424.0" y="1941.0" />
-      <point x="-75.75" y="92.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.LessonsPlanController" target="ua.gradebook.service.LessonsPlanService">
-      <point x="101.625" y="-70.0" />
-      <point x="3415.3025974025973" y="1941.0" />
-      <point x="3626.171983121838" y="1941.0" />
-      <point x="79.25" y="92.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.HomeController" target="ua.gradebook.service.PersonService">
-      <point x="-59.5" y="-114.0" />
-      <point x="1781.0187619791072" y="1931.0" />
-      <point x="1537.8312619791072" y="1931.0" />
-      <point x="97.125" y="103.0" />
+      <point x="0.0" y="-92.0" />
+      <point x="3966.5" y="667.0" />
+      <point x="3551.0" y="667.0" />
+      <point x="33.75" y="81.0" />
     </edge>
     <edge source="ua.gradebook.service.LessonsPlanService" target="ua.gradebook.service.AppService">
-      <point x="105.66666666666663" y="-92.0" />
-      <point x="3652.5886497885044" y="1625.0" />
-      <point x="3895.9934116932664" y="1625.0" />
-      <point x="-33.42857142857156" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.GradesJournalDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.GradesJournal">
-      <point x="-66.75" y="-26.0" />
-      <point x="4775.927597402597" y="1067.0" />
-      <point x="4872.135930735931" y="1067.0" />
-      <point x="-11.66666666666697" y="59.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.LessonsPlanRestController" target="ua.gradebook.service.LessonsPlanService">
-      <point x="120.0" y="-70.5" />
-      <point x="3043.6854286457738" y="1931.0" />
-      <point x="3467.671983121838" y="1931.0" />
-      <point x="-79.25" y="92.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.MessageDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.Message">
-      <point x="59.75" y="-26.0" />
-      <point x="353.75" y="1067.0" />
-      <point x="405.625" y="1067.0" />
-      <point x="-12.75" y="48.0" />
+      <point x="0.0" y="-103.5" />
+      <point x="455.5" y="657.0" />
+      <point x="1186.75" y="657.0" />
+      <point x="-56.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.beans.BranchType" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-48.5" />
-      <point x="4400.32709531244" y="222.0" />
-      <point x="3926.9602419368093" y="222.0" />
-      <point x="12.342857142857156" y="26.0" />
+      <point x="0.0" y="-82.0" />
+      <point x="2472.0" y="179.0" />
+      <point x="2376.05" y="179.0" />
+      <point x="9.550000000000182" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.beans.Role" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-60.0" />
-      <point x="6087.8437619791075" y="122.0" />
-      <point x="3957.8173847939524" y="122.0" />
-      <point x="43.20000000000027" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.MessageDAOImpl" target="ua.gradebook.model.beans.Message">
-      <point x="0.0" y="-92.0" />
-      <point x="424.0" y="1067.0" />
-      <point x="431.125" y="1067.0" />
-      <point x="12.75" y="48.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.ContainerDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.Container">
-      <point x="61.0" y="-26.0" />
-      <point x="2409.4275974025973" y="551.0" />
-      <point x="2392.6775974025973" y="551.0" />
-      <point x="25.0" y="114.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.GradesJournalDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="128.0" y="-92.0" />
-      <point x="5037.427597402597" y="1349.0" />
-      <point x="5228.341883116883" y="1349.0" />
-      <point x="5228.341883116883" y="192.0" />
-      <point x="3936.217384793952" y="192.0" />
-      <point x="21.59999999999991" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.RoleRestController" target="ua.gradebook.service.RoleService">
-      <point x="-94.33333333333303" y="-70.5" />
-      <point x="6218.094264069265" y="1941.0" />
-      <point x="6243.427597402597" y="1941.0" />
-      <point x="58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.service.LessonsPlanService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-92.0" />
-      <point x="3546.921983121838" y="232.0" />
-      <point x="3911.5316705082378" y="232.0" />
-      <point x="-3.0857142857144026" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.MessagesController" target="ua.gradebook.service.MessageService">
-      <point x="-110.0" y="-59.0" />
-      <point x="917.4275974025977" y="1921.0" />
-      <point x="575.5" y="1921.0" />
-      <point x="75.75" y="92.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.RoleDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.Role">
-      <point x="54.25" y="-26.0" />
-      <point x="6184.927597402597" y="1067.0" />
-      <point x="6102.5104286457745" y="1067.0" />
-      <point x="14.66666666666697" y="60.0" />
+      <point x="-4.547473508864641E-13" y="-82.0" />
+      <point x="1037.4999999999995" y="159.0" />
+      <point x="2318.75" y="159.0" />
+      <point x="-47.75" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.beans.Message" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-48.0" />
-      <point x="418.375" y="92.0" />
-      <point x="3868.331670508238" y="92.0" />
-      <point x="-46.28571428571422" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.service.JournalService" target="ua.gradebook.model.dao.GradesJournalDAOImpl">
-      <point x="0.0" y="-92.0" />
-      <point x="0.0" y="92.0" />
+      <point x="0.0" y="-81.5" />
+      <point x="2261.0" y="179.0" />
+      <point x="2356.95" y="179.0" />
+      <point x="-9.550000000000182" y="59.5" />
     </edge>
     <edge source="ua.gradebook.service.DisciplineService" target="ua.gradebook.service.AppService">
-      <point x="-78.0" y="-81.0" />
-      <point x="5510.177597402597" y="1605.0" />
-      <point x="3996.279125978981" y="1605.0" />
-      <point x="66.85714285714312" y="81.0" />
+      <point x="0.0" y="-92.5" />
+      <point x="757.5" y="667.0" />
+      <point x="1209.25" y="667.0" />
+      <point x="-33.75" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.MessageDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="121.20000000000005" y="-92.0" />
-      <point x="545.1999999999998" y="1319.0" />
-      <point x="3572.046983121838" y="1319.0" />
-      <point x="-102.375" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.service.PersonService" target="ua.gradebook.model.dao.PersonDAOImpl">
-      <point x="0.0" y="-103.0" />
-      <point x="0.0" y="103.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.RolesController" target="ua.gradebook.service.RoleService">
-      <point x="71.0" y="-59.0" />
-      <point x="6082.677597402597" y="1941.0" />
-      <point x="6126.427597402597" y="1941.0" />
-      <point x="-58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.mail.SimpleOrderManager" target="ua.gradebook.model.beans.Person">
-      <point x="0.0" y="-48.5" />
-      <point x="1114.8562619791073" y="1067.0" />
-      <point x="1117.3269073642618" y="1067.0" />
-      <point x="-150.5454545454545" y="203.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.HomeController" target="ua.gradebook.model.beans.Person">
-      <point x="59.5" y="-114.0" />
-      <point x="1900.0187619791072" y="1017.0" />
-      <point x="1418.4178164551709" y="1017.0" />
-      <point x="150.5454545454545" y="203.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.LessonsPlanRestController" target="ua.gradebook.model.beans.LessonsPlan">
-      <point x="0.0" y="-70.5" />
-      <point x="2923.6854286457738" y="1941.0" />
-      <point x="2990.7469831218377" y="1941.0" />
-      <point x="2990.7469831218377" y="1057.0" />
-      <point x="3159.2270953124403" y="1057.0" />
-      <point x="-58.333333333333314" y="59.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.DisciplineDAOImpl" target="ua.gradebook.model.dao.DisciplineDAOImpl.NewRowMapper">
-      <point x="-46.80000000000018" y="-81.0" />
-      <point x="5541.3775974025975" y="1289.0" />
-      <point x="5465.677597402597" y="1289.0" />
-      <point x="-61.25" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.PersonDAOImpl" target="ua.gradebook.model.dao.PersonDAOImpl.NewRowMapper">
-      <point x="-51.80000000000018" y="-103.0" />
-      <point x="1388.906261979107" y="1299.0" />
-      <point x="1318.8562619791073" y="1299.0" />
-      <point x="-57.0" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.ContainerDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="46.80000000000018" y="-81.0" />
-      <point x="2527.7275974025974" y="1309.0" />
-      <point x="2711.591883116883" y="1309.0" />
-      <point x="2711.591883116883" y="182.0" />
-      <point x="3896.1030990796667" y="182.0" />
-      <point x="-18.514285714285506" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.BranchTypeRestController" target="ua.gradebook.model.beans.BranchType">
-      <point x="0.0" y="-70.5" />
-      <point x="3964.693761979107" y="1941.0" />
-      <point x="4056.921983121838" y="1941.0" />
-      <point x="4056.921983121838" y="1037.0" />
-      <point x="4329.493761979107" y="1037.0" />
-      <point x="-70.83333333333303" y="48.5" />
-    </edge>
-    <edge source="ua.gradebook.controller.BranchTypeController" target="ua.gradebook.model.beans.BranchType">
-      <point x="0.0" y="-59.0" />
-      <point x="4328.693761979107" y="1931.0" />
-      <point x="4432.421983121838" y="1931.0" />
-      <point x="4432.421983121838" y="1067.0" />
-      <point x="4442.82709531244" y="1067.0" />
-      <point x="42.5" y="48.5" />
+      <point x="0.0" y="-92.0" />
+      <point x="3653.5" y="677.0" />
+      <point x="3528.5" y="677.0" />
+      <point x="11.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.BranchTypeDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="-93.60000000000036" y="-92.5" />
-      <point x="4090.8219831218375" y="1349.0" />
-      <point x="3689.046983121838" y="1349.0" />
-      <point x="14.625" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.service.LessonsPlanService" target="ua.gradebook.model.dao.LessonsPlanDAOImpl">
-      <point x="-105.66666666666674" y="-92.0" />
-      <point x="3441.255316455171" y="1595.0" />
-      <point x="3197.921983121838" y="1595.0" />
-      <point x="0.0" y="92.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.MessageRestController" target="ua.gradebook.model.beans.Message">
-      <point x="0.0" y="-70.5" />
-      <point x="164.0" y="1047.0" />
-      <point x="354.625" y="1047.0" />
-      <point x="-63.75" y="48.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.DisciplineRestController" target="ua.gradebook.service.DisciplineService">
-      <point x="-113.0" y="-70.5" />
-      <point x="5602.677597402597" y="1941.0" />
-      <point x="5646.677597402597" y="1941.0" />
-      <point x="58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.MessagesController" target="ua.gradebook.mail.SimpleOrderManager">
-      <point x="66.0" y="-59.0" />
-      <point x="1093.4275974025977" y="1921.0" />
-      <point x="1114.8562619791073" y="1921.0" />
-      <point x="0.0" y="48.5" />
+      <point x="0.0" y="-92.5" />
+      <point x="2530.5" y="647.0" />
+      <point x="3438.5" y="647.0" />
+      <point x="-78.75" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.beans.Discipline" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-26.0" />
-      <point x="5497.385428645774" y="162.0" />
-      <point x="3945.4745276510953" y="162.0" />
-      <point x="30.857142857143117" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.LessonsPlanDAOImpl" target="ua.gradebook.model.beans.LessonsPlan">
-      <point x="63.39999999999998" y="-92.0" />
-      <point x="3261.3219831218375" y="1309.0" />
-      <point x="3266.7469831218377" y="1309.0" />
-      <point x="3266.7469831218377" y="1067.0" />
-      <point x="3229.2270953124403" y="1067.0" />
-      <point x="11.666666666666629" y="59.0" />
-    </edge>
-    <edge source="ua.gradebook.model.beans.Person" target="ua.gradebook.model.beans.Container">
-      <point x="207.0" y="-203.0" />
-      <point x="1474.8723619097163" y="531.0" />
-      <point x="2242.6775974025973" y="531.0" />
-      <point x="-125.0" y="114.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.LessonsPlanDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.LessonsPlan">
-      <point x="63.75" y="-26.0" />
-      <point x="3192.4969831218377" y="1067.0" />
-      <point x="3205.8937619791072" y="1067.0" />
-      <point x="-11.666666666666686" y="59.0" />
+      <point x="0.0" y="-59.5" />
+      <point x="4459.75" y="139.0" />
+      <point x="2452.45" y="139.0" />
+      <point x="85.94999999999982" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.beans.Person" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-207.0" y="-203.0" />
-      <point x="1060.8723619097163" y="551.0" />
-      <point x="1086.1652190525738" y="551.0" />
-      <point x="1086.1652190525738" y="142.0" />
-      <point x="3883.7602419368095" y="142.0" />
-      <point x="-30.857142857142662" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.MessagesController" target="ua.gradebook.model.beans.Message">
-      <point x="-22.0" y="-59.0" />
-      <point x="1005.4275974025977" y="1901.0" />
-      <point x="672.75" y="1901.0" />
-      <point x="672.75" y="1057.0" />
-      <point x="482.125" y="1057.0" />
-      <point x="63.75" y="48.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.LessonsPlanDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-126.80000000000001" y="-92.0" />
-      <point x="3071.1219831218377" y="1309.0" />
-      <point x="2955.289840264695" y="1309.0" />
-      <point x="2955.289840264695" y="212.0" />
-      <point x="3905.3602419368094" y="212.0" />
-      <point x="-9.257142857142753" y="26.0" />
+      <point x="0.0" y="-214.0" />
+      <point x="3880.25" y="159.0" />
+      <point x="2414.25" y="159.0" />
+      <point x="47.75" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.dao.DisciplineDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.DisciplineDAOImpl">
-      <point x="61.25" y="26.0" />
-      <point x="0.0" y="-81.0" />
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="81.0" />
     </edge>
-    <edge source="ua.gradebook.model.dao.BranchTypeDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.BranchType">
-      <point x="63.5" y="-26.0" />
-      <point x="4331.721983121838" y="1067.0" />
-      <point x="4414.493761979107" y="1067.0" />
-      <point x="14.16666666666697" y="48.5" />
+    <edge source="ua.gradebook.service.MessageService" target="ua.gradebook.service.AppService">
+      <point x="0.0" y="-103.5" />
+      <point x="1406.5" y="677.0" />
+      <point x="1254.25" y="677.0" />
+      <point x="11.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.service.JournalService" target="ua.gradebook.service.AppService">
-      <point x="-106.66666666666697" y="-92.0" />
-      <point x="4802.760930735931" y="1615.0" />
-      <point x="3962.8505545504095" y="1615.0" />
-      <point x="33.42857142857156" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.ContainerRestController" target="ua.gradebook.service.ContainerService">
-      <point x="112.66666666666674" y="-70.5" />
-      <point x="2261.1854286457738" y="1911.0" />
-      <point x="2712.8847402597403" y="1911.0" />
-      <point x="-58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.ContainerController" target="ua.gradebook.model.beans.Container">
-      <point x="-78.66666666666652" y="-59.0" />
-      <point x="2527.0187619791072" y="1891.0" />
-      <point x="2608.4275974025973" y="1891.0" />
-      <point x="2608.4275974025973" y="551.0" />
-      <point x="2492.6775974025973" y="551.0" />
-      <point x="125.0" y="114.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.PersonDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-103.59999999999991" y="-103.0" />
-      <point x="1337.1062619791073" y="1309.0" />
-      <point x="699.1321428571428" y="1309.0" />
-      <point x="699.1321428571428" y="132.0" />
-      <point x="3880.674527651095" y="132.0" />
-      <point x="-33.942857142857065" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.ContainerRestController" target="ua.gradebook.model.beans.Container">
-      <point x="0.0" y="-70.5" />
-      <point x="2148.5187619791072" y="1941.0" />
-      <point x="2215.9275974025977" y="1941.0" />
-      <point x="2215.9275974025977" y="541.0" />
-      <point x="2292.6775974025973" y="541.0" />
-      <point x="-75.0" y="114.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.PersonDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.PersonDAOImpl">
-      <point x="57.0" y="26.0" />
-      <point x="1432.8562619791073" y="1309.0" />
-      <point x="1440.7062619791072" y="1309.0" />
-      <point x="0.0" y="-103.0" />
+      <point x="0.0" y="-103.5" />
+      <point x="2239.5" y="647.0" />
+      <point x="1321.75" y="647.0" />
+      <point x="78.75" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.RoleDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="-93.60000000000036" y="-92.5" />
-      <point x="6091.327597402596" y="1279.0" />
-      <point x="3776.796983121838" y="1279.0" />
-      <point x="102.375" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.ContainerController" target="ua.gradebook.service.ContainerService">
-      <point x="78.66666666666652" y="-59.0" />
-      <point x="2684.3520953124403" y="1921.0" />
-      <point x="2829.8847402597403" y="1921.0" />
-      <point x="58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.BranchTypeDAOImpl" target="ua.gradebook.model.beans.BranchType">
       <point x="0.0" y="-92.5" />
-      <point x="4184.421983121838" y="1329.0" />
-      <point x="4130.721983121838" y="1329.0" />
-      <point x="4130.721983121838" y="1047.0" />
-      <point x="4357.82709531244" y="1047.0" />
-      <point x="-42.5" y="48.5" />
+      <point x="4594.0" y="647.0" />
+      <point x="3596.0" y="647.0" />
+      <point x="78.75" y="81.0" />
     </edge>
-    <edge source="ua.gradebook.service.ContainerService" target="ua.gradebook.model.dao.ContainerDAOImpl">
-      <point x="-78.0" y="-81.0" />
-      <point x="2693.3847402597403" y="1595.0" />
-      <point x="2480.9275974025973" y="1595.0" />
-      <point x="0.0" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.DisciplineDAOImpl" target="ua.gradebook.model.beans.Discipline">
-      <point x="46.80000000000018" y="-81.0" />
-      <point x="5634.977597402598" y="1339.0" />
-      <point x="5682.302597402597" y="1339.0" />
-      <point x="5682.302597402597" y="1057.0" />
-      <point x="5531.635428645774" y="1057.0" />
-      <point x="34.25" y="26.0" />
+    <edge source="ua.gradebook.model.dao.PersonDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.PersonDAOImpl">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="180.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.MessageDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.MessageDAOImpl">
-      <point x="59.75" y="26.0" />
-      <point x="353.75" y="1349.0" />
-      <point x="363.4000000000001" y="1349.0" />
-      <point x="-60.59999999999991" y="-92.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.ContainerRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-112.66666666666674" y="-70.5" />
-      <point x="2035.8520953124405" y="1941.0" />
-      <point x="2122.0187619791072" y="1941.0" />
-      <point x="2122.0187619791072" y="162.0" />
-      <point x="3889.931670508238" y="162.0" />
-      <point x="-24.68571428571431" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.service.RoleService" target="ua.gradebook.service.AppService">
-      <point x="-78.0" y="-81.0" />
-      <point x="6106.927597402597" y="1595.0" />
-      <point x="4029.7076974075517" y="1595.0" />
-      <point x="100.28571428571377" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.DisciplinesController" target="ua.gradebook.service.DisciplineService">
-      <point x="80.33333333333303" y="-59.0" />
-      <point x="5474.260930735931" y="1941.0" />
-      <point x="5529.677597402597" y="1941.0" />
-      <point x="-58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.RoleRestController" target="ua.gradebook.model.beans.Role">
-      <point x="0.0" y="-70.5" />
-      <point x="6312.427597402597" y="1047.0" />
-      <point x="6161.1770953124405" y="1047.0" />
-      <point x="73.33333333333303" y="60.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.PersonDAOImpl" target="ua.gradebook.model.beans.Person">
-      <point x="51.80000000000018" y="-103.0" />
-      <point x="1492.5062619791074" y="1309.0" />
-      <point x="1531.1062619791073" y="1309.0" />
-      <point x="1531.1062619791073" y="1047.0" />
-      <point x="1267.8723619097163" y="1047.0" />
-      <point x="0.0" y="203.0" />
-    </edge>
-    <edge source="ua.gradebook.service.BranchTypeService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="78.0" y="-81.0" />
-      <point x="4262.421983121838" y="1625.0" />
-      <point x="4600.193761979107" y="1625.0" />
-      <point x="4600.193761979107" y="212.0" />
-      <point x="3930.0459562225237" y="212.0" />
-      <point x="15.428571428571558" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.JournalRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="115.66666666666697" y="-70.5" />
-      <point x="5195.594264069265" y="1941.0" />
-      <point x="5234.513311688312" y="1941.0" />
-      <point x="5234.513311688312" y="172.0" />
-      <point x="3942.388813365381" y="172.0" />
-      <point x="27.771428571428714" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.BranchTypeDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-46.80000000000018" y="-92.5" />
-      <point x="4137.621983121838" y="1339.0" />
-      <point x="3989.2148402646944" y="1339.0" />
-      <point x="3989.2148402646944" y="232.0" />
-      <point x="3923.874527651095" y="232.0" />
-      <point x="9.257142857142753" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.PersonRestController" target="ua.gradebook.service.PersonService">
-      <point x="102.0" y="-70.5" />
-      <point x="824.4275974025977" y="1931.0" />
-      <point x="1343.5812619791072" y="1931.0" />
-      <point x="-97.125" y="103.0" />
-    </edge>
-    <edge source="ua.gradebook.service.MessageService" target="ua.gradebook.model.dao.MessageDAOImpl">
-      <point x="-75.75" y="-92.0" />
+      <point x="0.0" y="-26.0" />
       <point x="0.0" y="92.0" />
     </edge>
-    <edge source="ua.gradebook.service.MessageService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="75.75" y="-92.0" />
-      <point x="575.5" y="1625.0" />
-      <point x="692.960714285714" y="1625.0" />
-      <point x="692.960714285714" y="112.0" />
-      <point x="3874.5030990796663" y="112.0" />
-      <point x="-40.11428571428587" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.MessagesController" target="ua.gradebook.model.beans.Person">
-      <point x="22.0" y="-59.0" />
-      <point x="1049.4275974025977" y="1891.0" />
-      <point x="977.3562619791073" y="1891.0" />
-      <point x="977.3562619791073" y="1067.0" />
-      <point x="1067.1450891824438" y="1067.0" />
-      <point x="-200.72727272727252" y="203.0" />
+    <edge source="ua.gradebook.service.RoleService" target="ua.gradebook.service.AppService">
+      <point x="0.0" y="-92.5" />
+      <point x="1959.5" y="657.0" />
+      <point x="1299.25" y="657.0" />
+      <point x="56.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.BranchTypeDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.BranchTypeDAOImpl">
-      <point x="63.5" y="26.0" />
-      <point x="4331.721983121838" y="1349.0" />
-      <point x="4278.021983121838" y="1349.0" />
-      <point x="93.60000000000036" y="-92.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.RoleDAOImpl" target="ua.gradebook.model.beans.Role">
-      <point x="46.80000000000018" y="-92.5" />
-      <point x="6231.727597402598" y="1339.0" />
-      <point x="6275.552597402597" y="1339.0" />
-      <point x="6275.552597402597" y="1057.0" />
-      <point x="6131.8437619791075" y="1057.0" />
-      <point x="44.0" y="60.0" />
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="92.5" />
     </edge>
     <edge source="ua.gradebook.model.dao.ContainerDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="93.59999999999991" y="-81.0" />
-      <point x="2574.527597402597" y="1339.0" />
-      <point x="3630.546983121838" y="1339.0" />
-      <point x="-43.875" y="81.0" />
+      <point x="0.0" y="-136.0" />
+      <point x="2800.5" y="657.0" />
+      <point x="3461.0" y="657.0" />
+      <point x="-56.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.beans.Container" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-114.5" />
-      <point x="2367.6775974025973" y="172.0" />
-      <point x="3893.0173847939523" y="172.0" />
-      <point x="-21.59999999999991" y="26.0" />
+      <point x="0.0" y="-148.0" />
+      <point x="493.5" y="139.0" />
+      <point x="2280.55" y="139.0" />
+      <point x="-85.94999999999982" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.dao.GradesJournalDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.GradesJournalDAOImpl">
-      <point x="66.75" y="26.0" />
-      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="92.0" />
     </edge>
     <edge source="ua.gradebook.service.BranchTypeService" target="ua.gradebook.service.AppService">
-      <point x="-78.0" y="-81.0" />
-      <point x="4106.421983121838" y="1625.0" />
-      <point x="3929.421983121838" y="1625.0" />
-      <point x="0.0" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.PersonRestController" target="ua.gradebook.model.beans.ParentBean">
-      <point x="-102.0" y="-70.5" />
-      <point x="620.4275974025977" y="1931.0" />
-      <point x="146.875" y="1931.0" />
-      <point x="146.875" y="82.0" />
-      <point x="3865.2459562225235" y="82.0" />
-      <point x="-49.37142857142862" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.RoleDAOImpl" target="ua.gradebook.model.dao.RoleDAOImpl.NewRowMapper">
-      <point x="-46.80000000000018" y="-92.5" />
-      <point x="6138.1275974025975" y="1269.0" />
-      <point x="6076.427597402597" y="1269.0" />
-      <point x="-54.25" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.GradesJournalDAOImpl" target="ua.gradebook.model.dao.GradesJournalDAOImpl.NewRowMapper">
-      <point x="-64.0" y="-92.0" />
-      <point x="4845.427597402597" y="1309.0" />
-      <point x="4775.927597402597" y="1309.0" />
-      <point x="-66.75" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.PersonController" target="ua.gradebook.model.beans.Person">
-      <point x="82.66666666666652" y="-81.0" />
-      <point x="1660.1854286457738" y="1941.0" />
-      <point x="1691.413649788504" y="1941.0" />
-      <point x="1691.413649788504" y="1027.0" />
-      <point x="1368.2359982733528" y="1027.0" />
-      <point x="100.36363636363649" y="203.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.JournalRestController" target="ua.gradebook.service.JournalService">
-      <point x="-115.66666666666697" y="-70.5" />
-      <point x="4964.260930735931" y="1941.0" />
-      <point x="4989.427597402597" y="1941.0" />
-      <point x="80.0" y="92.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.DisciplineRestController" target="ua.gradebook.model.beans.Discipline">
-      <point x="0.0" y="-70.5" />
-      <point x="5715.677597402597" y="1047.0" />
-      <point x="5554.468761979107" y="1047.0" />
-      <point x="57.08333333333303" y="26.0" />
+      <point x="0.0" y="-92.5" />
+      <point x="144.0" y="647.0" />
+      <point x="1164.25" y="647.0" />
+      <point x="-78.75" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.DAO" target="ua.gradebook.model.beans.ParentBean">
       <point x="0.0" y="-81.0" />
-      <point x="3674.421983121838" y="242.0" />
-      <point x="3914.617384793952" y="242.0" />
-      <point x="0.0" y="26.0" />
+      <point x="3517.25" y="169.0" />
+      <point x="2395.15" y="169.0" />
+      <point x="28.65000000000009" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.dao.DisciplineDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="-93.60000000000036" y="-81.0" />
-      <point x="5494.577597402596" y="1299.0" />
-      <point x="3747.546983121838" y="1299.0" />
-      <point x="73.125" y="81.0" />
+      <point x="0.0" y="-81.0" />
+      <point x="3381.0" y="677.0" />
+      <point x="3506.0" y="677.0" />
+      <point x="-11.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.beans.LessonsPlan" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-59.0" />
-      <point x="3217.5604286457738" y="222.0" />
-      <point x="3908.445956222524" y="222.0" />
-      <point x="-6.1714285714283506" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.DisciplineDAOImpl" target="ua.gradebook.model.beans.ParentBean">
-      <point x="93.60000000000036" y="-81.0" />
-      <point x="5681.777597402597" y="1349.0" />
-      <point x="5855.091883116883" y="1349.0" />
-      <point x="5855.091883116883" y="152.0" />
-      <point x="3948.5602419368092" y="152.0" />
-      <point x="33.942857142857065" y="26.0" />
+      <point x="0.0" y="-104.0" />
+      <point x="826.5" y="149.0" />
+      <point x="2299.65" y="149.0" />
+      <point x="-66.84999999999991" y="59.5" />
     </edge>
     <edge source="ua.gradebook.model.dao.PersonDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="103.59999999999991" y="-103.0" />
-      <point x="1544.3062619791071" y="1329.0" />
-      <point x="3601.296983121838" y="1329.0" />
-      <point x="-73.125" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.BranchTypeDAOImpl" target="ua.gradebook.model.dao.BranchTypeDAOImpl.NewRowMapper">
-      <point x="46.80000000000018" y="-92.5" />
-      <point x="4231.221983121838" y="1349.0" />
-      <point x="4204.721983121838" y="1349.0" />
-      <point x="-63.5" y="26.0" />
+      <point x="0.0" y="-180.0" />
+      <point x="4307.5" y="657.0" />
+      <point x="3573.5" y="657.0" />
+      <point x="56.25" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.ContainerDAOImpl.NewRowMapper" target="ua.gradebook.model.dao.ContainerDAOImpl">
-      <point x="-61.0" y="26.0" />
-      <point x="2287.4275974025973" y="1067.0" />
-      <point x="2342.9275974025973" y="1067.0" />
-      <point x="2342.9275974025973" y="1309.0" />
-      <point x="2387.3275974025973" y="1309.0" />
-      <point x="-93.59999999999991" y="-81.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.JournalController" target="ua.gradebook.service.JournalService">
-      <point x="109.5" y="-70.0" />
-      <point x="4730.693761979107" y="1941.0" />
-      <point x="4829.427597402597" y="1941.0" />
-      <point x="-80.0" y="92.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.rest.PersonRestController" target="ua.gradebook.model.beans.Person">
-      <point x="0.0" y="-70.5" />
-      <point x="722.4275974025977" y="1057.0" />
-      <point x="1016.9632710006254" y="1057.0" />
-      <point x="-250.909090909091" y="203.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.JournalController" target="ua.gradebook.model.beans.Person">
-      <point x="-109.5" y="-70.0" />
-      <point x="4511.693761979107" y="1871.0" />
-      <point x="2098.7233074336527" y="1871.0" />
-      <point x="2098.7233074336527" y="997.0" />
-      <point x="1518.7814528188073" y="997.0" />
-      <point x="250.909090909091" y="203.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.DisciplinesController" target="ua.gradebook.model.beans.Discipline">
-      <point x="-80.33333333333303" y="-59.0" />
-      <point x="5313.594264069265" y="1941.0" />
-      <point x="5262.635428645774" y="1941.0" />
-      <point x="5262.635428645774" y="1047.0" />
-      <point x="5440.3020953124405" y="1047.0" />
-      <point x="-57.08333333333303" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.service.JournalService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="106.66666666666697" y="-92.0" />
-      <point x="5016.094264069265" y="1625.0" />
-      <point x="5231.427597402597" y="1625.0" />
-      <point x="5231.427597402597" y="182.0" />
-      <point x="3939.3030990796665" y="182.0" />
-      <point x="24.68571428571431" y="26.0" />
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="136.0" />
     </edge>
     <edge source="ua.gradebook.service.ContainerService" target="ua.gradebook.service.AppService">
-      <point x="78.0" y="-81.0" />
-      <point x="2849.3847402597403" y="1615.0" />
-      <point x="3862.564840264695" y="1615.0" />
-      <point x="-66.85714285714312" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.LessonsPlanDAOImpl" target="ua.gradebook.model.dao.LessonsPlanDAOImpl.NewRowMapper">
-      <point x="-63.39999999999998" y="-92.0" />
-      <point x="3134.521983121838" y="1299.0" />
-      <point x="3064.9969831218377" y="1299.0" />
-      <point x="-63.75" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.service.DisciplineService" target="ua.gradebook.model.dao.DisciplineDAOImpl">
-      <point x="0.0" y="-81.0" />
-      <point x="0.0" y="81.0" />
+      <point x="0.0" y="-147.5" />
+      <point x="1699.5" y="667.0" />
+      <point x="1276.75" y="667.0" />
+      <point x="33.75" y="81.0" />
     </edge>
     <edge source="ua.gradebook.model.dao.LessonsPlanDAOImpl" target="ua.gradebook.model.dao.DAO">
-      <point x="126.79999999999995" y="-92.0" />
-      <point x="3324.7219831218376" y="1349.0" />
-      <point x="3659.796983121838" y="1349.0" />
-      <point x="-14.625" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.service.RoleService" target="ua.gradebook.model.dao.RoleDAOImpl">
-      <point x="0.0" y="-81.0" />
-      <point x="0.0" y="92.5" />
-    </edge>
-    <edge source="ua.gradebook.controller.BranchTypeController" target="ua.gradebook.service.BranchTypeService">
-      <point x="-84.33333333333303" y="-59.0" />
-      <point x="4244.360428645774" y="1941.0" />
-      <point x="4242.921983121838" y="1941.0" />
-      <point x="58.5" y="81.0" />
-    </edge>
-    <edge source="ua.gradebook.service.ContainerService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="0.0" y="-81.0" />
-      <point x="2771.3847402597403" y="192.0" />
-      <point x="3899.1888133653806" y="192.0" />
-      <point x="-15.428571428571558" y="26.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.RolesController" target="ua.gradebook.model.beans.Role">
-      <point x="0.0" y="-59.0" />
-      <point x="6011.677597402597" y="1067.0" />
-      <point x="6043.8437619791075" y="1067.0" />
-      <point x="-44.0" y="60.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.MessagesController" target="ua.gradebook.service.PersonService">
-      <point x="110.0" y="-59.0" />
-      <point x="1137.4275974025977" y="1941.0" />
-      <point x="1408.3312619791072" y="1941.0" />
-      <point x="-32.375" y="103.0" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.ContainerDAOImpl" target="ua.gradebook.model.beans.Container">
-      <point x="0.0" y="-81.0" />
-      <point x="2480.9275974025973" y="551.0" />
-      <point x="2442.6775974025973" y="551.0" />
-      <point x="75.0" y="114.5" />
-    </edge>
-    <edge source="ua.gradebook.model.dao.PersonDAOImpl.NewRowMapper" target="ua.gradebook.model.beans.Person">
-      <point x="57.0" y="-26.0" />
-      <point x="1432.8562619791073" y="1057.0" />
-      <point x="1217.6905437278983" y="1057.0" />
-      <point x="-50.18181818181802" y="203.0" />
-    </edge>
-    <edge source="ua.gradebook.controller.LessonsPlanController" target="ua.gradebook.model.beans.LessonsPlan">
-      <point x="-33.875" y="-70.0" />
-      <point x="3279.8025974025973" y="1911.0" />
-      <point x="3366.921983121838" y="1911.0" />
-      <point x="3366.921983121838" y="1057.0" />
-      <point x="3252.5604286457738" y="1057.0" />
-      <point x="35.0" y="59.0" />
-    </edge>
-    <edge source="ua.gradebook.service.RoleService" target="ua.gradebook.model.beans.ParentBean">
-      <point x="78.0" y="-81.0" />
-      <point x="6262.927597402597" y="1625.0" />
-      <point x="6333.596645021645" y="1625.0" />
-      <point x="6333.596645021645" y="102.0" />
-      <point x="3963.988813365381" y="102.0" />
-      <point x="49.37142857142862" y="26.0" />
+      <point x="-4.547473508864641E-13" y="-92.0" />
+      <point x="3100.4999999999995" y="667.0" />
+      <point x="3483.5" y="667.0" />
+      <point x="-33.75" y="81.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="556.5" y="908.5" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.34983008958912576" x="2902.0649403115367" y="359.3390985806601" />
+  <SelectedNodes>
+    <node>ua.gradebook.controller.PersonController</node>
+  </SelectedNodes>
   <Categories>
     <Category>Constructors</Category>
     <Category>Methods</Category>

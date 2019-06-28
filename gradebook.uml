@@ -3,14 +3,14 @@
   <ID>DATABASE</ID>
   <OriginalElement>9a9b75e2-8964-41dc-8da1-03c065c19ec6.SCHEMA:YEVHEN</OriginalElement>
   <nodes>
-    <node x="78.75" y="513.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_DISCIPLINE</node>
-    <node x="216.8694403261676" y="66.67531504818382">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_CONTAINER</node>
-    <node x="7.333333333333314" y="799.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_LESSONSPLAN</node>
-    <node x="-162.06940326167538" y="0.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_BRANCH_TYPE</node>
-    <node x="229.62499999999997" y="799.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_GRADESJOURNAL</node>
-    <node x="730.4172535211267" y="166.00370644922162">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_ROLE</node>
-    <node x="779.2410118606376" y="591.2824314306894">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_MESSAGE</node>
-    <node x="373.7628026933533" y="389.91697553743506">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON</node>
+    <node x="78.49074074074073" y="513.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_DISCIPLINE</node>
+    <node x="179.1157407407408" y="125.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_CONTAINER</node>
+    <node x="7.157407407407391" y="799.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_LESSONSPLAN</node>
+    <node x="319.3263888888889" y="392.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON</node>
+    <node x="229.86574074074073" y="799.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_GRADESJOURNAL</node>
+    <node x="453.11574074074076" y="191.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_ROLE</node>
+    <node x="436.86574074074076" y="810.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_MESSAGE</node>
+    <node x="212.6157407407408" y="0.0">9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_BRANCH_TYPE</node>
   </nodes>
   <notes />
   <edges>
@@ -19,70 +19,70 @@
       <point x="0.0" y="37.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_GRADESJOURNAL" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_DISCIPLINE">
-      <point x="-62.66666666666663" y="-70.5" />
-      <point x="260.95833333333337" y="749.0" />
-      <point x="218.25" y="749.0" />
+      <point x="-62.333333333333314" y="-70.5" />
+      <point x="261.0324074074074" y="749.0" />
+      <point x="217.99074074074073" y="749.0" />
       <point x="46.5" y="37.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_MESSAGE" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON">
       <point x="46.75" y="-59.5" />
-      <point x="577.875" y="779.0" />
-      <point x="514.8541666666666" y="779.0" />
-      <point x="88.74999999999997" y="158.5" />
-    </edge>
-    <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_CONTAINER">
-      <point x="-26.62500000000003" y="-158.5" />
-      <point x="399.47916666666663" y="362.0" />
-      <point x="338.125" y="362.0" />
-      <point x="31.75" y="103.5" />
+      <point x="577.1157407407408" y="779.0" />
+      <point x="514.5763888888889" y="779.0" />
+      <point x="88.75000000000003" y="158.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_LESSONSPLAN" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_DISCIPLINE">
       <point x="0.0" y="-70.5" />
-      <point x="99.83333333333331" y="779.0" />
-      <point x="125.25" y="779.0" />
+      <point x="99.65740740740739" y="779.0" />
+      <point x="124.99074074074073" y="779.0" />
       <point x="-46.5" y="37.5" />
+    </edge>
+    <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_CONTAINER">
+      <point x="-26.62499999999997" y="-158.5" />
+      <point x="399.2013888888889" y="362.0" />
+      <point x="337.86574074074076" y="362.0" />
+      <point x="31.75" y="103.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON">
       <point x="-88.75" y="158.5" />
-      <point x="391.5128026933533" y="726.9169755374351" />
-      <point x="353.7628026933533" y="726.9169755374351" />
-      <point x="353.7628026933533" y="548.4169755374351" />
+      <point x="337.0763888888889" y="729.0" />
+      <point x="299.3263888888889" y="729.0" />
+      <point x="299.3263888888889" y="550.5" />
       <point x="-106.5" y="-0.0" />
-    </edge>
-    <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_ROLE">
-      <point x="79.87499999999997" y="-158.5" />
-      <point x="505.97916666666663" y="372.0" />
-      <point x="547.875" y="372.0" />
-      <point x="0.0" y="37.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_LESSONSPLAN" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_CONTAINER">
       <point x="-61.66666666666663" y="-70.5" />
-      <point x="38.166666666666686" y="779.0" />
+      <point x="37.99074074074076" y="779.0" />
       <point x="41.0" y="779.0" />
       <point x="41.0" y="372.0" />
-      <point x="211.12499999999997" y="372.0" />
+      <point x="210.8657407407408" y="372.0" />
       <point x="-95.25" y="103.5" />
+    </edge>
+    <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_ROLE">
+      <point x="79.87500000000003" y="-158.5" />
+      <point x="505.7013888888889" y="372.0" />
+      <point x="547.6157407407408" y="372.0" />
+      <point x="0.0" y="37.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_LESSONSPLAN" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON">
       <point x="61.66666666666663" y="-70.5" />
-      <point x="161.49999999999994" y="759.0" />
-      <point x="372.8541666666667" y="759.0" />
+      <point x="161.32407407407402" y="759.0" />
+      <point x="372.5763888888889" y="759.0" />
       <point x="-53.25" y="158.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_GRADESJOURNAL" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON">
-      <point x="62.666666666666686" y="-70.5" />
-      <point x="386.29166666666663" y="779.0" />
-      <point x="443.8541666666667" y="779.0" />
+      <point x="62.333333333333314" y="-70.5" />
+      <point x="385.699074074074" y="779.0" />
+      <point x="443.5763888888889" y="779.0" />
       <point x="17.75" y="158.5" />
     </edge>
     <edge source="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_CONTAINER" target="9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON">
       <point x="95.25" y="103.5" />
-      <point x="401.625" y="352.0" />
-      <point x="452.72916666666663" y="352.0" />
-      <point x="26.624999999999957" y="-158.5" />
+      <point x="401.36574074074076" y="352.0" />
+      <point x="452.4513888888889" y="352.0" />
+      <point x="26.62500000000003" y="-158.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.4800711743772242" x="401.00807232805914" y="565.645727123477" />
+  <settings layout="Hierarchic Group" zoom="1.2800711743772244" x="352.19309102663726" y="325.8285456501309" />
   <SelectedNodes>
     <node>9a9b75e2-8964-41dc-8da1-03c065c19ec6.TABLE:YEVHEN.L3G3_PERSON</node>
   </SelectedNodes>
