@@ -8,9 +8,6 @@ public class LessonsPlan extends ParentBean {
     private Container group;
     private Integer hours;
 
-    public LessonsPlan() {
-    }
-
     public Discipline getDiscipline() {
         return discipline;
     }

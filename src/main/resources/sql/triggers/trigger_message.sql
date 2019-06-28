@@ -4,4 +4,3 @@ CREATE trigger L3G3_BI_MESSAGE
 begin
   select L3G3_MESSAGE_SEQ.nextval into :NEW.message_id from dual;
 end;
-/

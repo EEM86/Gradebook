@@ -4,4 +4,3 @@ CREATE trigger L3G3_BI_BRANCH_TYPE
 begin
     select L3G3_BRANCH_TYPE_SEQ.nextval into :NEW.type_id from dual;
 end;
-/

@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ua.gradebook.model.beans.Discipline;
 import ua.gradebook.model.beans.GradesJournal;
 import ua.gradebook.model.beans.ParentBean;
 import ua.gradebook.model.beans.Person;

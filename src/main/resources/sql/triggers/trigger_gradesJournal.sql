@@ -4,4 +4,3 @@ CREATE trigger L3G3_BI_GRADESJOURNAL
 begin
   select L3G3_GRADESJOURNAL_SEQ.nextval into :NEW.ID from dual;
 end;
-/

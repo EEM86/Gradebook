@@ -4,4 +4,3 @@ CREATE trigger L3G3_BI_CONTAINER
 begin
   select L3G3_CONTAINER_SEQ.nextval into :NEW.id from dual;
 end;
-/

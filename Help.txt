@@ -1,8 +1,7 @@
-If you are in troubles with liquibase, you should:
+If you are in troubles with liquibase on start the application, you should:
 Delete all application tables in DB, using script below.
 Then manually clean up this table: DATABASECHANGELOG;
 
-/
 drop sequence L3G3_BRANCH_TYPE_SEQ;
 drop sequence L3G3_CONTAINER_SEQ;
 drop sequence L3G3_DISCIPLINE_SEQ;
@@ -48,4 +47,3 @@ drop table L3G3_GRADESJOURNAL;
 drop table L3G3_DISCIPLINE;
 drop table L3G3_CONTAINER;
 drop table L3G3_BRANCH_TYPE;
-/

@@ -3,7 +3,7 @@ package ua.gradebook.model.beans;
 import java.util.Objects;
 
 public class ParentBean {
-    Integer id;
+    public Integer id;
 
     public void setId(Integer id) {
         this.id = id;

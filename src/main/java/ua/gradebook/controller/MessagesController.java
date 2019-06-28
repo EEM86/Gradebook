@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.gradebook.mail.SimpleOrderManager;
 import ua.gradebook.model.beans.Message;
@@ -14,7 +13,6 @@ import ua.gradebook.service.MessageService;
 import ua.gradebook.service.PersonService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 @Controller
 public class MessagesController {

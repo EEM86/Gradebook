@@ -4,4 +4,3 @@ CREATE trigger L3G3_BI_LESSONSPLAN
 begin
   select L3G3_LESSONSPLAN_SEQ.nextval into :NEW.ID from dual;
 end;
-/

@@ -23,9 +23,6 @@ public class RoleDAOImpl implements DAO<Role> {
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE ROLE_ID=?";
     private static final String INSERT_SQL = "INSERT into " + TABLE + " (ROLE_NAME)" + "VALUES(?)";
 
-    public RoleDAOImpl() {
-    }
-
     @Override
     public List<Role> findAll() {
         return jdbcTemplate.query(FIND_ALL, new NewRowMapper<Role>());

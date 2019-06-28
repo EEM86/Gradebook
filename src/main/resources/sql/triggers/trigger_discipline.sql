@@ -4,4 +4,3 @@ CREATE trigger L3G3_BI_DISCIPLINE
 begin
   select L3G3_DISCIPLINE_SEQ.nextval into :NEW.disc_id from dual;
 end;
-/

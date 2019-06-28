@@ -23,9 +23,6 @@ public class BranchTypeDAOImpl implements DAO<BranchType> {
     private static final String UPDATE_SQL = "UPDATE " + TABLE + " SET TYPE_NAME=? WHERE TYPE_ID=?";
     private static final String DELETE_SQL = "DELETE FROM " + TABLE + " WHERE TYPE_ID=?";
 
-    public BranchTypeDAOImpl() {
-    }
-
     @Override
     public List<BranchType> findAll() {
         return jdbcTemplate.query(FIND_All, new NewRowMapper<BranchType>());
