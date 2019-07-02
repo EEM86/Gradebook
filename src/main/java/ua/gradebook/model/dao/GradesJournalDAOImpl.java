@@ -87,7 +87,7 @@ public class GradesJournalDAOImpl implements DAOExtension<GradesJournal> {
 
     @Override
     public List<GradesJournal> findListByObject(Object id) {
-        return jdbcTemplate.query(FIND_RELATIVE_DATA_BY_ID, new Object[]{id, id}, new NewRowMapper<>());
+        return jdbcTemplate.query(FIND_RELATIVE_DATA_BY_ID, new Object[]{id, id}, new NewRowMapper<GradesJournal>());
     }
 
     private static final class NewRowMapper<P> implements RowMapper<GradesJournal> {
