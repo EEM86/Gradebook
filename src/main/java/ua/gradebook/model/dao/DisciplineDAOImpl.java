@@ -25,7 +25,7 @@ public class DisciplineDAOImpl implements DAO<Discipline> {
 
     @Override
     public List<Discipline> findAll() {
-        return jdbcTemplate.query(FIND_All, new NewRowMapper());
+        return jdbcTemplate.query(FIND_All, new NewRowMapper<Discipline>());
     }
 
     @Override

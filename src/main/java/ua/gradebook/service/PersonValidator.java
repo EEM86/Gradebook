@@ -23,16 +23,16 @@ public class PersonValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         Person person = (Person) o;
-        if ((personService.findByEmail(person.getEmail())!=null) &&
-        (person.getId()!=(personService.findByEmail(person.getEmail())).getId())) {
+        if ((personService.findByEmail(person.getEmail()) != null) &&
+        (!(personService.findByEmail(person.getEmail())).getId().equals(person.getId()))) {
             errors.rejectValue("email", "", "This email already exists!");
         }
-        if ((personService.findByPhone(person.getPhone())!=null) &&
-        (person.getId()!=(personService.findByPhone(person.getPhone())).getId())){
+        if ((personService.findByPhone(person.getPhone()) != null) &&
+        (!(personService.findByPhone(person.getPhone())).getId().equals(person.getId()))){
             errors.rejectValue("phone", "", "This phone already exists!");
         }
-        if ((personService.findByLogin(person.getLogin())!=null) &&
-        (person.getId()!=(personService.findByLogin(person.getLogin())).getId())){
+        if ((personService.findByLogin(person.getLogin()) != null) &&
+        (!(personService.findByLogin(person.getLogin())).getId().equals(person.getId()))){
             errors.rejectValue("login", "", "This login already exists!");
         }
 
